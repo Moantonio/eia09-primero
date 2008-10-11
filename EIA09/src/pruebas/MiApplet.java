@@ -7,8 +7,14 @@ package pruebas;
  * @author Luis
  *
  */
-import java.applet.*;
-import java.awt.*;
+import java.applet.Applet;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Graphics;
+import java.awt.Label;
+import java.awt.Menu;
+import java.awt.MenuBar;
+import java.awt.MenuItem;
 
 public class MiApplet extends Applet implements Runnable
 {
@@ -25,9 +31,10 @@ public class MiApplet extends Applet implements Runnable
 		// Fijamos color de fondo
 		Color cFondo = new Color(230,230,230);
 		this.setBackground(cFondo);
-		
+
 		// Fijamos un layout
-		setLayout( new FlowLayout( FlowLayout.CENTER,10,10) );
+		FlowLayout layout = new FlowLayout(FlowLayout.CENTER,10,10);
+		setLayout(layout);
 
 		// Añadimos componentes
 		Label x = new Label("EIA'09");
