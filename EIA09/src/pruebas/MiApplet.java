@@ -9,8 +9,6 @@ package pruebas;
  */
 import java.applet.*;
 import java.awt.*;
-import java.util.*;
-import java.text.DateFormat;
 
 public class MiApplet extends Applet implements Runnable
 {
@@ -20,7 +18,7 @@ public class MiApplet extends Applet implements Runnable
 	private static final long serialVersionUID = 1L;
 private Thread hilo = null;
    private Font fuente;
-   private String horaActual = "00:00:00";
+   private String texto = "";
 
    public void init()
    {  
@@ -39,11 +37,7 @@ private Thread hilo = null;
       Thread hiloActual = Thread.currentThread();
       while (hilo == hiloActual)
       {
-         //obtener la hora actual
-         Calendar cal = Calendar.getInstance();
-         Date hora = cal.getTime();
-         DateFormat df = DateFormat.getTimeInstance();
-         horaActual = df.format(hora);
+         texto = new String ("EIA 09");
          repaint();
          try
          {
@@ -58,8 +52,8 @@ private Thread hilo = null;
       g.draw3DRect(1, 1, getSize().width-3, getSize().height-3, false);
       //Establecer la Fuente
       g.setFont(fuente);
-      //mostrar la Hora
-      g.drawString(horaActual,14,40);
+      //mostrar el texto
+      g.drawString(texto,14,40);
    }   
    public void stop()
    {   
