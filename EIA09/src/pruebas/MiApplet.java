@@ -14,7 +14,11 @@ import java.text.DateFormat;
 
 public class MiApplet extends Applet implements Runnable
 {
-   private Thread hilo = null;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+private Thread hilo = null;
    private Font fuente;
    private String horaActual = "00:00:00";
 
