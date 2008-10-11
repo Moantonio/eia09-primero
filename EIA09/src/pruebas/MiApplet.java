@@ -12,26 +12,29 @@ import java.awt.*;
 
 public class MiApplet extends Applet implements Runnable
 {
-   /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-private Thread hilo = null;
+   private static final long serialVersionUID = 1L;
+   private Thread hilo = null;
    private Font fuente;
    private String texto = "";
 
    public void init()
-   {  
-      fuente = new Font("Verdana", Font.BOLD, 24);
+   {
+	   // Fijamos el tamaño del applet
+	   int ancho = 500;
+	   int alto = 500;
+	   this.setSize(ancho, alto);
+       fuente = new Font("Verdana", Font.BOLD, 24);
    }
+   
    public void start()
    {
       if (hilo == null)
       {
-         hilo = new Thread(this, "Reloj");
+         hilo = new Thread(this, "Prueba");
          hilo.start();
       }
    }  
+   
    public void run()
    {
       Thread hiloActual = Thread.currentThread();
@@ -46,15 +49,17 @@ private Thread hilo = null;
          catch (InterruptedException e){}
       }
    }  
+   
    public void paint(Graphics g)
    {   
       //Dibujar un rectangulo alrededor del contenedor
       g.draw3DRect(1, 1, getSize().width-3, getSize().height-3, false);
       //Establecer la Fuente
       g.setFont(fuente);
-      //mostrar el texto
+      //Mostrar el texto
       g.drawString(texto,14,40);
    }   
+   
    public void stop()
    {   
       hilo = null;
