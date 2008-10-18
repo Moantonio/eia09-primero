@@ -13,13 +13,24 @@ import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Label;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
+import util.Constants;
+
+
 public class MiApplet extends Applet implements Runnable
 {
+   
+   Logger log = Logger.getLogger( this.getClass() );
 	private static final long serialVersionUID = 1L;
 	private Thread hilo = null;
 
 	public void init()
 	{	
+		PropertyConfigurator.configure(Constants.LOG4J_PROPERTIES);
+		   
+		log.info( "INICIO DE APLICACION" );
 		// Fijamos el tamaño del applet
 		int ancho = 500;
 		int alto = 500;
@@ -70,7 +81,8 @@ public class MiApplet extends Applet implements Runnable
 		//Dibujar un rectangulo alrededor del contenedor
 		g.draw3DRect(5, 5, getSize().width-10, getSize().height-10, false);
 	}   
-
+   
+  
 	public void stop()
 	{   
 		hilo = null;
