@@ -1,7 +1,7 @@
 /**
  * 
  */
-package pruebas;
+package tests;
 
 /**
  * @author Luis
