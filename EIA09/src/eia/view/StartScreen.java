@@ -1,4 +1,4 @@
-package eia.vista;
+package eia.view;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
