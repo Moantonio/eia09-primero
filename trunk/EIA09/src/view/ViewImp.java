@@ -1,15 +1,12 @@
-/**
- * 
- */
 package view;
 
 /**
- * @author Luis
- *
+ * Implementa la vista de la aplicación según el 
+ * patrón Model-View-Controller (MVC).
+ * @author Vicente Cruz & Enrique Gallego & Luis González.
  */
 public class ViewImp implements View {
 
-	@Override
 	public void refreshView() {
 		// TODO Auto-generated method stub
 		
