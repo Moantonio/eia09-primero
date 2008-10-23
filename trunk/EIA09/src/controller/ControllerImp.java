@@ -20,19 +20,34 @@ public class ControllerImp implements Controller{
 	 */
 	private View view;
 
+	/**
+	 * Constructor por defecto.
+	 */
+	public ControllerImp(){
+		model = null;
+		view = null;
+	}
+	
+	/**
+	 * Constructor por parámetros.
+	 * @param modelo Modelo a asociar al controlador.
+	 * @param vista Vista a asociar al controlador.
+	 */
+	public ControllerImp(Model model, View view){
+		this.model = model;
+		this.view = view;
+	}
+	
 	public void refreshView() {
-		// TODO Auto-generated method stub
-
+		view.refreshView();
 	}
 
 	public void setModel(Model model) {
-		// TODO Auto-generated method stub
-
+		this.model = model;
 	}
 
 	public void setView(View view) {
-		// TODO Auto-generated method stub
-
+		this.view = view;
 	}
 
 }
