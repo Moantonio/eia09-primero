@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.io.IOException;
@@ -17,8 +18,9 @@ import org.apache.log4j.PropertyConfigurator;
 
 import util.Constants;
 
-public class StartScreen extends JApplet{
+public class StartScreen extends JApplet {
 
+	private static final long serialVersionUID = 1L;
 	Logger log = Logger.getLogger(this.getClass());
 	JButton b_entrar = new JButton( "Entrar");   // Botón Entrar
 	JLabel etiqueta_imagen = new JLabel();      // Etiqueta donde pondremos imagen
@@ -35,16 +37,15 @@ public class StartScreen extends JApplet{
 	private void jbInit() throws Exception {
 
 		PropertyConfigurator.configure(Constants.LOG4J_PROPERTIES);
-
-		/*** Asignno un administrador de diseño FlowLayout ***/
+		/*** Asigno un administrador de diseño FlowLayout ***/
 		this.setSize(new Dimension(576,348));
-		this.setLayout( new FlowLayout());
-
-		etiqueta_imagen.setBorder( BorderFactory.createRaisedBevelBorder());
+		FlowLayout layout = new FlowLayout();
+		this.setLayout(layout);
+		//etiqueta_imagen.setBorder( BorderFactory.createRaisedBevelBorder());
 		etiqueta_imagen.setPreferredSize(new Dimension(576, 308));
-
 		loadImage();
-
+		Color colorBlanco = new Color(255,255,255);
+		b_entrar.setBackground(colorBlanco);
 		add(etiqueta_imagen);
 		add(b_entrar);
 	} 
@@ -73,6 +74,7 @@ public class StartScreen extends JApplet{
 			log.error(e.getMessage());
 		}
 	}
+
 
 
 
