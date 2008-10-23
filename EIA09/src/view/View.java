@@ -3,7 +3,7 @@ package view;
 /**
  * Interface que modela la vista en el patrón 
  * Model-View-Controller (MVC).
- * @author Vicente Cruz % Enrique Gallego & Luis González.
+ * @author Vicente Cruz & Enrique Gallego & Luis González.
  */
 public interface View {
 

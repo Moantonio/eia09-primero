@@ -6,7 +6,7 @@ import model.Model;
 /**
  * Implementa el controlador de la aplicación según el 
  * patrón Model-View-Controller (MVC).
- * @author Vicente Cruz % Enrique Gallego & Luis González.
+ * @author Vicente Cruz & Enrique Gallego & Luis González.
  */
 public class ControllerImp implements Controller{
 

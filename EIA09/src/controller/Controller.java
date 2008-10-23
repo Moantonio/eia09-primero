@@ -6,7 +6,7 @@ import model.Model;
 /**
  * Interface que modela el controlador en el patrón 
  * Model-View-Controller (MVC).
- * @author Vicente Cruz % Enrique Gallego & Luis González.
+ * @author Vicente Cruz & Enrique Gallego & Luis González.
  */
 public interface Controller {
 
