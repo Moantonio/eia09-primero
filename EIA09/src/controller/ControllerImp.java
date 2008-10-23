@@ -3,7 +3,7 @@ package controller;
 import view.View;
 import model.Model;
 
-public class ControllerImp implements controller{
+public class ControllerImp implements Controller{
 
 	private Model model;
 	private View view;
