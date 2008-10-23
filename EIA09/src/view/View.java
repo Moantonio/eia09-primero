@@ -1,11 +1,6 @@
 package view;
 
-/**
- * 
- * @author 
- *
- */
 public interface View {
 
-	public void actualizarVista();
+	public void refreshView();
 }
