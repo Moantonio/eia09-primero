@@ -1,0 +1,12 @@
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="formRegistro" type="forms.RegistroForm" />
+	<form-bean name="formConfirmacion" type="forms.ConfirmacionForm" /></form-beans>
+	<action-mappings>
+		<action path="/Registrar" type="actions.RegistrarAction" name="formRegistro" scope="request" input="/index.jsp" validate="true">
+			<forward name="confirmarRegistro" path="/confirmacion.jsp" /><forward name="failure" path="/index.jsp" redirect="false" />
+		</action>
+	<action path="/Confirmar" type="actions.ConfirmarAction" name="formConfirmacion" input="/confirmacion.jsp" scope="request"><forward name="registroOK" path="/registroOK.jsp" redirect="false" /></action></action-mappings>
+	<message-resources parameter="ApplicationResources" />
+</struts-config>
