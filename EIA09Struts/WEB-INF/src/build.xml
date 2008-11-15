@@ -1,7 +1,7 @@
-<project name="Struts 2 Tutorial" basedir="../" default="all">
+<project name="EIA09" basedir="../" default="all">
     <!-- Project settings -->
-    <property name="project.title" value="RoseIndia Struts 2 Tutorials"/>
-	<property name="project.jar.file" value="StrutsTutorial.jar"/>
+    <property name="project.title" value="Evaluación del Impacto Ambiental"/>
+	<property name="project.jar.file" value="EIA09.jar"/>
 	  <path id="class.path">
 		<fileset dir="lib">
 		  <include name="**/*.jar"/>
@@ -35,7 +35,7 @@
 
 		<target name="resources">
 			<copy todir="src/classes" includeEmptyDirs="no">				
-				<fileset dir="src/java">
+				<fileset dir="src">
 				<patternset>
 					<include name="**/*.conf"/>
 					<include name="**/*.properties"/>
