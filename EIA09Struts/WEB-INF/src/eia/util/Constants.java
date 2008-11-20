@@ -2,5 +2,5 @@ package eia.util;
 
 public class Constants {
 
-	public static int MaxArray = 100;
+	public static int MaxArray = 50;
 }
