@@ -1,13 +1,16 @@
-/**
- * 
- */
 package eia.model;
 
 import eia.util.Constants;
 
 /**
- * @author usuario_local
- *
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
+
+/**
+ * 
  */
 public class Proyecto {
 	
@@ -26,12 +29,18 @@ public class Proyecto {
 	 */
 	private Alternativa[] alternativas;
 	
-	//private factores
-	
+	//TODO Arbol de factores
+
+	/**
+	 * 
+	 * @param informacion
+	 * @param tipo
+	 */
 	public Proyecto (InfoProyecto informacion, TipoProyecto tipo){
 		this.informacion = informacion;
 		this.tipo = tipo;
 		alternativas = new Alternativa[Constants.MaxArray];
+		//TODO inicializar factores
 	}
 	
 	/**
@@ -41,48 +50,55 @@ public class Proyecto {
 		informacion = null;
 		tipo = null;
 		alternativas = null;
+		//TODO inicializar factores
 	}
 
 	/**
-	 * @return the informacion
+	 * 
+	 * @return 
 	 */
 	public InfoProyecto getInformacion() {
 		return informacion;
 	}
 
 	/**
-	 * @param informacion the informacion to set
+	 * 
+	 * @param informacion
 	 */
 	public void setInformacion(InfoProyecto informacion) {
 		this.informacion = informacion;
 	}
 
 	/**
-	 * @return the tipo
+	 * 
+	 * @return
 	 */
 	public TipoProyecto getTipo() {
 		return tipo;
 	}
 
 	/**
-	 * @param tipo the tipo to set
+	 * 
+	 * @param tipo
 	 */
 	public void setTipo(TipoProyecto tipo) {
 		this.tipo = tipo;
 	}
 
 	/**
-	 * @return the alternativas
+	 * @return
 	 */
 	public Alternativa[] getAlternativas() {
 		return alternativas;
 	}
 
 	/**
-	 * @param alternativas the alternativas to set
+	 * @param alternativas 
 	 */
 	public void setAlternativas(Alternativa[] alternativas) {
 		this.alternativas = alternativas;
 	}
+	
+	// TODO Set y Get de factores
 
 }

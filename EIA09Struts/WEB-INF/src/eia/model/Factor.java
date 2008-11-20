@@ -1,11 +1,14 @@
-/**
- * 
- */
 package eia.model;
 
 /**
- * @author 
- *
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
+
+/**
+ * 
  */
 public class Factor {
 	/**
