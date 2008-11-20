@@ -1,56 +1,59 @@
-/**
- * 
- */
 package eia.model;
 
 /**
- * @author usuario_local
- *
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
+
+/**
+ * Clase que implementa un efecto/impacto ambiental.
  */
 public class Efecto {
 
 	/**
-	 * 
+	 * Acción asociada al efecto/impacto.
 	 */
 	private Accion accion;
 	
 	/**
-	 * 
+	 * Factor asociado al efecto/impacto.
 	 */
 	private Factor factor;
 	
 	/**
-	 * 
+	 * Nombre del efecto/impacto ambiental.
 	 */
 	private String id;
 	
 	/**
-	 * 
+	 * Descripción del efecto/impacto ambiental.
 	 */
 	private String descripcion;
 	
 	/**
-	 * 
+	 * Valor del efecto/impacto por simple enjuiciamiento.
 	 */
 	private ValorJuicio juicio;
 
 	/**
-	 * 
+	 * Importancia (incidencia: análisis cualitativo) del efecto/impacto ambiental.
 	 */
 	private double importancia;
 	
 	/**
-	 * 
+	 * Valor según análisis cuantitativo del efecto/impacto.
 	 */
 	private double valorCuantitativo;
 	
 	/**
-	 * 
+	 * Valor total del efecto/impacto.
 	 */
 	private double valorTotal;
 	
 	/**
-	 * 
+	 * Constructor por defecto.
 	 */
 	public Efecto(){
 		accion = null;
@@ -64,147 +67,147 @@ public class Efecto {
 	}
 	
 	/**
-	 * 
-	 * @param a
-	 * @param f
-	 * @param i
-	 * @param d
-	 * @param j
+	 * Constructor por parámetros.
+	 * @param accion Acción a asociar al efecto/impacto.
+	 * @param factor Factor a asociar al efecto/impacto.
+	 * @param id Nombre del efecto/impacto.
+	 * @param descripcion Descripcion del efecto/impacto.
+	 * @param juicio Valor del efecto/impacto por simple enjuiciamiento.
 	 */
-	public Efecto(Accion a, Factor f, String i, String d, ValorJuicio j){
-		accion = a;
-		factor = f;
-		id = i;
-		descripcion = d;
-		juicio = j;
+	public Efecto(Accion accion, Factor factor, String id, String descripcion, ValorJuicio juicio){
+		this.accion = accion;
+		this.factor = factor;
+		this.id = id;
+		this.descripcion = descripcion;
+		this.juicio = juicio;
 		importancia = 0;
 		valorCuantitativo = 0;
 		valorTotal = 0;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'accion'.
+	 * @return Acción asociada al efecto/impacto.
 	 */
 	public Accion getAccion() {
 		return accion;
 	}
 
 	/**
-	 * 
-	 * @param accion
+	 * Mutador para el atributo 'accion'.
+	 * @param accion Acción ambiental a asociar al efecto/impacto.
 	 */
 	public void setAccion(Accion accion) {
 		this.accion = accion;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'factor'.
+	 * @return Factor asociado al efecto/impacto.
 	 */
 	public Factor getFactor() {
 		return factor;
 	}
 
 	/**
-	 * 
-	 * @param factor
+	 * Mutador para el atributo 'factor'.
+	 * @param factor Factor a asociar al efecto/impacto.
 	 */
 	public void setFactor(Factor factor) {
 		this.factor = factor;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'id'.
+	 * @return Nombre del efecto/impacto.
 	 */
 	public String getId() {
 		return id;
 	}
 
 	/**
-	 * 
-	 * @param id
+	 * Mutador para el atributo 'id'.
+	 * @param id Nombre a asociar al efecto/impacto.
 	 */
 	public void setId(String id) {
 		this.id = id;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'descripcion'.
+	 * @return Descripción del efecto/impacto.
 	 */
 	public String getDescripcion() {
 		return descripcion;
 	}
 
 	/**
-	 * 
-	 * @param descripcion
+	 * Mutador para el atributo 'descripcion'.
+	 * @param descripcion Descripción a asociar al efecto/impacto.
 	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'juicio'.
+	 * @return Valor del efecto/impacto por simple enjuiciamiento.
 	 */
 	public ValorJuicio getJuicio() {
 		return juicio;
 	}
 
 	/**
-	 * 
-	 * @param juicio
+	 * Mutador para el atributo 'juicio'.
+	 * @param juicio Valor a asociar del efecto/impacto por simple enjuiciamiento.
 	 */
 	public void setJuicio(ValorJuicio juicio) {
 		this.juicio = juicio;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'importancia'.
+	 * @return Valor del efecto/impacto según análisis cualitativo (incidencia).
 	 */
 	public double getImportancia() {
 		return importancia;
 	}
 
 	/**
-	 * 
-	 * @param importancia
+	 * Mutador para el atributo 'importancia'.
+	 * @param importancia Valor, según análisis cualitativo, a asociar al efecto/impacto.
 	 */
 	public void setImportancia(double importancia) {
 		this.importancia = importancia;
 	}
 
 	/**
-	 * 
-	 * @return
-	 */
+	 * Accesor para el atributo 'valorCuantitativo'.
+	 * @return Valor del efecto/impacto según análisis cuantitativo.
+	 */ 
 	public double getValorCuantitativo() {
 		return valorCuantitativo;
 	}
 
 	/**
-	 * 
-	 * @param valorCuantitativo
+	 * Mutador para el atributo 'valorCuantitativo'.
+	 * @param valorCuantitativo Valor, según análisis cuantitativo, a asociar al efecto/impacto.
 	 */
 	public void setValorCuantitativo(double valorCuantitativo) {
 		this.valorCuantitativo = valorCuantitativo;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'valorTotal'.
+	 * @return Valor total del efecto/impacto.
 	 */
 	public double getValorTotal() {
 		return valorTotal;
 	}
 
 	/**
-	 * 
-	 * @param valorTotal
+	 * Mutador para el atributo 'valorTotal'.
+	 * @param valorTotal  Valor total del efecto/impacto a asociar.
 	 */
 	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;
