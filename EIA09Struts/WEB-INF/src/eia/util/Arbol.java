@@ -142,8 +142,6 @@ public class Arbol {
 	 */
 	public boolean eliminaElemento(String id){
 		boolean exito = false;
-		
-		// RAIZ
 		if (elemento.toString() == id){
 			elemento = null;
 			exito = true;
