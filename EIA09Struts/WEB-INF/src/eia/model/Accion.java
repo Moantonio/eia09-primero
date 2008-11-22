@@ -47,4 +47,12 @@ public class Accion {
 	public String getId(){
 		return id;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String toString(){
+		return id;
+	}
 }

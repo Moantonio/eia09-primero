@@ -71,4 +71,12 @@ public class Factor {
 	public int getPeso(){
 		return peso;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String toString(){
+		return id;
+	}
 }
