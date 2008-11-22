@@ -1,7 +1,7 @@
 package eia.model;
 
 import java.util.ArrayList;
-
+import eia.util.Arbol;
 
 /**
  * @author SI: EIA'09
@@ -19,8 +19,11 @@ public class Alternativa {
 	 * Nombre de la alternativa de realización.
 	 */
 	private String id;
-	
-	//TODO Arbol de acciones
+	 
+	/**
+	 * 
+	 */
+	//TODO private Arbol acciones;
 	
 	/**
 	 * Lista de efectos (impactos) asociados a la alternativa de realización.
@@ -38,7 +41,7 @@ public class Alternativa {
 	public Alternativa(){
 		
 		id ="";
-		// TODO Inicializar acciones
+		//TODO acciones = new Arbol();
 		efectos = new ArrayList<Efecto>();
 		valorTotal = 0;
 	}
@@ -50,7 +53,7 @@ public class Alternativa {
 	public Alternativa(String id){
 		
 		this.id = id;
-		// TODO Inicializar acciones
+		//TODO acciones = new Arbol();
 		efectos = new ArrayList<Efecto>();
 		valorTotal = 0;
 	}

@@ -1,6 +1,7 @@
 package eia.model;
 
 import java.util.ArrayList;
+import eia.util.Arbol;
 
 /**
  * @author SI: EIA'09
@@ -29,7 +30,7 @@ public class Proyecto {
 	 */
 	private ArrayList<Alternativa> alternativas;
 	
-	//TODO Arbol de factores
+	//TODO private Arbol factores;
 
 	/**
 	 * 
@@ -40,7 +41,7 @@ public class Proyecto {
 		this.informacion = informacion;
 		this.tipo = tipo;
 		alternativas = new ArrayList<Alternativa>();
-		//TODO inicializar factores
+		//TODO factores = new Arbol();
 	}
 	
 	/**
@@ -50,7 +51,7 @@ public class Proyecto {
 		informacion = null;
 		tipo = null;
 		alternativas = null;
-		//TODO inicializar factores
+		//TODO factores = new Arbol();
 	}
 
 	/**
@@ -99,6 +100,6 @@ public class Proyecto {
 		this.alternativas = alternativas;
 	}
 	
-	// TODO Set y Get de factores
+	// TODO Getter y Setter del arbol de factores.
 
 }
