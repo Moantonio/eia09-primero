@@ -157,13 +157,4 @@ public class Arbol {
 		}
 		return exito;
 	}
-	
-	public String toString(){
-		
-		String info = elemento.toString();
-		for(int i = 0;i< hijos.size();i++){
-			info = info + '\n' + hijos.get(i).toString();
-		}
-		return info;
-	}
 }
