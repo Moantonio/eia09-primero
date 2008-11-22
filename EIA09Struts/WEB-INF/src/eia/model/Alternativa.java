@@ -23,7 +23,7 @@ public class Alternativa {
 	/**
 	 * 
 	 */
-	//TODO private Arbol acciones;
+	private Arbol<Accion> acciones;
 	
 	/**
 	 * Lista de efectos (impactos) asociados a la alternativa de realización.
@@ -41,7 +41,7 @@ public class Alternativa {
 	public Alternativa(){
 		
 		id ="";
-		//TODO acciones = new Arbol();
+		acciones = new Arbol<Accion>();
 		efectos = new ArrayList<Efecto>();
 		valorTotal = 0;
 	}
@@ -53,7 +53,7 @@ public class Alternativa {
 	public Alternativa(String id){
 		
 		this.id = id;
-		//TODO acciones = new Arbol();
+		acciones = new Arbol<Accion>();
 		efectos = new ArrayList<Efecto>();
 		valorTotal = 0;
 	}
@@ -84,7 +84,7 @@ public class Alternativa {
 
 	/**
 	 * Mutador para el atributo 'efectos'.
-	 * @param efectos Lista de efectos a asociar a la alternativa de realización
+	 * @param efectos Lista de efectos a asociar a la alternativa de realización.
 	 */
 	public void setEfectos(ArrayList<Efecto> efectos) {
 		this.efectos = efectos;
@@ -105,7 +105,22 @@ public class Alternativa {
 	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;
 	}
+
+	/**
+	 * Accesor para el atributo 'acciones'.
+	 * @return Arbol de acciones asociadas a la alternativa de realización.
+	 */
+	public Arbol<Accion> getAcciones() {
+		return acciones;
+	}
+
+	/**
+	 * Mutador para el atributo 'acciones'.
+	 * @param acciones Lista de acciones a asociar a la alternativa de realización.
+	 */
+	public void setAcciones(Arbol<Accion> acciones) {
+		this.acciones = acciones;
+	}
 	
-	//TODO Getter y Setter del arbol de acciones.
 	
 }
