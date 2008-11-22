@@ -1,6 +1,6 @@
 package eia.model;
 
-import eia.util.Constants;
+import java.util.ArrayList;
 
 /**
  * @author SI: EIA'09
@@ -27,7 +27,7 @@ public class Proyecto {
 	/**
 	 * 
 	 */
-	private Alternativa[] alternativas;
+	private ArrayList<Alternativa> alternativas;
 	
 	//TODO Arbol de factores
 
@@ -39,7 +39,7 @@ public class Proyecto {
 	public Proyecto (InfoProyecto informacion, TipoProyecto tipo){
 		this.informacion = informacion;
 		this.tipo = tipo;
-		alternativas = new Alternativa[Constants.MaxArray];
+		alternativas = new ArrayList<Alternativa>();
 		//TODO inicializar factores
 	}
 	
@@ -88,14 +88,14 @@ public class Proyecto {
 	/**
 	 * @return
 	 */
-	public Alternativa[] getAlternativas() {
+	public ArrayList<Alternativa> getAlternativas() {
 		return alternativas;
 	}
 
 	/**
 	 * @param alternativas 
 	 */
-	public void setAlternativas(Alternativa[] alternativas) {
+	public void setAlternativas(ArrayList<Alternativa> alternativas) {
 		this.alternativas = alternativas;
 	}
 	

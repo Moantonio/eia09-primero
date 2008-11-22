@@ -1,6 +1,7 @@
 package eia.model;
 
-import eia.util.*;
+import java.util.ArrayList;
+
 
 /**
  * @author SI: EIA'09
@@ -24,7 +25,7 @@ public class Alternativa {
 	/**
 	 * Lista de efectos (impactos) asociados a la alternativa de realización.
 	 */
-	private Efecto[] efectos;
+	private ArrayList<Efecto> efectos;
 	
 	/**
 	 * Valor total del impacto de la alternativa de realización.
@@ -38,10 +39,22 @@ public class Alternativa {
 		
 		id ="";
 		// TODO Inicializar acciones
-		efectos = new Efecto[Constants.MaxArray];
+		efectos = new ArrayList<Efecto>();
 		valorTotal = 0;
 	}
 
+	/**
+	 * Constructor por parámetro.
+	 * @param id Nombre de la alternativa de realización.
+	 */
+	public Alternativa(String id){
+		
+		this.id = id;
+		// TODO Inicializar acciones
+		efectos = new ArrayList<Efecto>();
+		valorTotal = 0;
+	}
+	
 	/**
 	 * Accesor para el atributo 'id'.
 	 * @return Nombre de la alternativa de realización.
@@ -62,7 +75,7 @@ public class Alternativa {
 	 * Accesor para el atributo 'efectos'.
 	 * @return Lista de efectos asociados a la alternativa de realización.
 	 */
-	public Efecto[] getEfectos() {
+	public ArrayList<Efecto> getEfectos() {
 		return efectos;
 	}
 
@@ -70,7 +83,7 @@ public class Alternativa {
 	 * Mutador para el atributo 'efectos'.
 	 * @param efectos Lista de efectos a asociar a la alternativa de realización
 	 */
-	public void setEfectos(Efecto[] efectos) {
+	public void setEfectos(ArrayList<Efecto> efectos) {
 		this.efectos = efectos;
 	}
 
