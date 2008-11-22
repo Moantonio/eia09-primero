@@ -114,6 +114,11 @@ public class Arbol {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
 	public Object buscarElemento(String id){
 		return (buscarInfoElemento(null,0,id)).getElemento();
 	}
