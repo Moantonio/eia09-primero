@@ -47,6 +47,11 @@ public class InfoProyecto {
 	/**
 	 * 
 	 */
+	private String region;
+	
+	/**
+	 * 
+	 */
 	private String pais;
 	
 	/**
@@ -69,6 +74,7 @@ public class InfoProyecto {
 		this.autor = "";
 		this.poblacion = "";
 		this.provincia = "";
+		this.region = "";
 		this.pais = "";
 		this.fecha = null;
 		this.vidaUtil = 0;
@@ -82,12 +88,13 @@ public class InfoProyecto {
 	 * @param autor
 	 * @param poblacion
 	 * @param provincia
+	 * @param region
 	 * @param pais
 	 * @param fecha
 	 * @param vidaUtil
 	 */
 	public InfoProyecto(String nombre, String descripcion, String compania,
-			String autor, String poblacion, String provincia, String pais,
+			String autor, String poblacion, String provincia, String region, String pais,
 			Date fecha, int vidaUtil) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -95,6 +102,7 @@ public class InfoProyecto {
 		this.autor = autor;
 		this.poblacion = poblacion;
 		this.provincia = provincia;
+		this.region = region;
 		this.pais = pais;
 		this.fecha = fecha;
 		this.vidaUtil = vidaUtil;
@@ -242,5 +250,20 @@ public class InfoProyecto {
 	 */
 	public void setVidaUtil(int vidaUtil) {
 		this.vidaUtil = vidaUtil;
+	}
+
+	/**
+	 * 
+	 * @param region
+	 */
+	public void setRegion(String region) {
+		this.region = region;
+	}
+	
+	/**
+	 * @return
+	 */
+	public String getRegion() {
+		return region;
 	}
 }
