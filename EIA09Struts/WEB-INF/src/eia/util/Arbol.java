@@ -104,16 +104,16 @@ public class Arbol<Object> {
 	 * @param id
 	 * @return
 	 */
-	private nodoBusqueda buscarInfoElemento(Arbol<Object> padre, int posicion, String id){
+	private nodoBusqueda<Object> buscarInfoElemento(Arbol<Object> padre, int posicion, String id){
 		
 		if (elemento.toString() == id){
-			nodoBusqueda elementoEncontrado = new nodoBusqueda(padre,elemento,posicion);
+			nodoBusqueda<Object> elementoEncontrado = new nodoBusqueda<Object>(padre,elemento,posicion);
 			return elementoEncontrado;
 		}
 		if (!this.esHoja()){
 			int i = 0;
 			int numHijos = hijos.size();
-			nodoBusqueda elementoEncontrado = null;
+			nodoBusqueda<Object> elementoEncontrado = null;
 			while (i<numHijos && elementoEncontrado == null){
 				elementoEncontrado = hijos.get(i).buscarInfoElemento(this,i,id);
 				i++;
@@ -128,9 +128,8 @@ public class Arbol<Object> {
 	 * @param id
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
 	public Object buscarElemento(String id){
-		nodoBusqueda busqueda = (buscarInfoElemento(null,0,id));
+		nodoBusqueda<Object> busqueda = (buscarInfoElemento(null,0,id));
 		if (busqueda!=null){
 			return (Object) busqueda.getElemento();
 		}
@@ -148,7 +147,7 @@ public class Arbol<Object> {
 			elemento = null;
 			exito = true;
 		}else{
-			nodoBusqueda elemBusqueda = buscarInfoElemento(null,0,id);
+			nodoBusqueda<Object> elemBusqueda = buscarInfoElemento(null,0,id);
 			if (elemBusqueda!=null){
 				int posicion = elemBusqueda.getPosicion();
 				elemBusqueda.getPadre().getHijos().remove(posicion);	

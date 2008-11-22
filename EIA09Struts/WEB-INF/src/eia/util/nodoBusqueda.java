@@ -5,9 +5,10 @@ package eia.util;
  * @author Luis
  *
  */
-public class nodoBusqueda {
+@SuppressWarnings("hiding")
+public class nodoBusqueda<Object> {
 
-	Arbol padre;
+	Arbol<Object> padre;
 	Object elemento;
 	int posicion;
 	
@@ -23,8 +24,8 @@ public class nodoBusqueda {
 	 * @param elemento
 	 * @param posicion
 	 */
-	public nodoBusqueda(Arbol padre2, Object elemento, int posicion){
-		this.padre = padre2;
+	public nodoBusqueda(Arbol<Object> padre, Object elemento, int posicion){
+		this.padre = padre;
 		this.elemento = elemento;
 		this.posicion = posicion;
 	}
@@ -33,7 +34,7 @@ public class nodoBusqueda {
 	 * 
 	 * @return
 	 */
-	public Arbol getPadre() {
+	public Arbol<Object> getPadre() {
 		return padre;
 	}
 	
@@ -41,7 +42,7 @@ public class nodoBusqueda {
 	 * 
 	 * @param padre
 	 */
-	public void setPadre(Arbol padre) {
+	public void setPadre(Arbol<Object> padre) {
 		this.padre = padre;
 	}
 	
