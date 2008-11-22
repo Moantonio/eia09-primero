@@ -12,7 +12,8 @@ import java.util.ArrayList;
 /**
  * 
  */
-public class Arbol {
+@SuppressWarnings("hiding")
+public class Arbol<Object> {
 	
 	/**
 	 * 
@@ -22,14 +23,14 @@ public class Arbol {
 	/**
 	 * 
 	 */
-	private ArrayList<Arbol> hijos;
+	private ArrayList<Arbol<Object>> hijos;
 
 	/**
 	 * 
 	 * @param elemento
 	 * @param hijos
 	 */
-	public Arbol(Object elemento, ArrayList<Arbol> hijos){
+	public Arbol(Object elemento, ArrayList<Arbol<Object>> hijos){
 		this.elemento = elemento;
 		this.hijos = hijos;
 	}
@@ -39,7 +40,7 @@ public class Arbol {
 	 */
 	public Arbol(){
 		elemento = null;
-		hijos = new ArrayList<Arbol>();
+		hijos = new ArrayList<Arbol<Object>>();
 	}
 	
 	/**
@@ -47,7 +48,7 @@ public class Arbol {
 	 */
 	public Arbol(Object elemento){
 		this.elemento = elemento;
-		hijos = new ArrayList<Arbol>();
+		hijos = new ArrayList<Arbol<Object>>();
 	}
 	
 	/**
@@ -70,7 +71,7 @@ public class Arbol {
 	 * 
 	 * @return
 	 */
-	public ArrayList<Arbol> getHijos(){
+	public ArrayList<Arbol<Object>> getHijos(){
 		return hijos;
 	}
 	
@@ -78,7 +79,7 @@ public class Arbol {
 	 * 
 	 * @param hijos
 	 */
-	public void setHijos(ArrayList<Arbol> hijos){
+	public void setHijos(ArrayList<Arbol<Object>> hijos){
 		this.hijos = hijos;
 	}
 	
@@ -94,7 +95,7 @@ public class Arbol {
 	 * 
 	 * @param hijo
 	 */
-	public void añadirHijo(Arbol hijo){
+	public void añadirHijo(Arbol<Object> hijo){
 		hijos.add(hijo);
 	}
 	
@@ -103,7 +104,7 @@ public class Arbol {
 	 * @param id
 	 * @return
 	 */
-	private nodoBusqueda buscarInfoElemento(Arbol padre, int posicion, String id){
+	private nodoBusqueda buscarInfoElemento(Arbol<Object> padre, int posicion, String id){
 		
 		if (elemento.toString() == id){
 			nodoBusqueda elementoEncontrado = new nodoBusqueda(padre,elemento,posicion);
@@ -127,10 +128,11 @@ public class Arbol {
 	 * @param id
 	 * @return
 	 */
+	@SuppressWarnings("unchecked")
 	public Object buscarElemento(String id){
 		nodoBusqueda busqueda = (buscarInfoElemento(null,0,id));
 		if (busqueda!=null){
-			return busqueda.getElemento();
+			return (Object) busqueda.getElemento();
 		}
 		return null;
 	}
