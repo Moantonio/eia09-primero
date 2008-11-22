@@ -44,6 +44,14 @@ public class Arbol {
 	
 	/**
 	 * 
+	 */
+	public Arbol(Object elemento){
+		this.elemento = elemento;
+		hijos = new ArrayList<Arbol>();
+	}
+	
+	/**
+	 * 
 	 * @param elemento
 	 */
 	public void setElemento(Object elemento){
@@ -120,7 +128,11 @@ public class Arbol {
 	 * @return
 	 */
 	public Object buscarElemento(String id){
-		return (buscarInfoElemento(null,0,id)).getElemento();
+		nodoBusqueda busqueda = (buscarInfoElemento(null,0,id));
+		if (busqueda!=null){
+			return busqueda.getElemento();
+		}
+		return null;
 	}
 	
 	/**
@@ -140,8 +152,18 @@ public class Arbol {
 			if (elemBusqueda!=null){
 				int posicion = elemBusqueda.getPosicion();
 				elemBusqueda.getPadre().getHijos().remove(posicion);	
+				exito = true;
 			}
 		}
 		return exito;
+	}
+	
+	public String toString(){
+		
+		String info = elemento.toString();
+		for(int i = 0;i< hijos.size();i++){
+			info = info + '\n' + hijos.get(i).toString();
+		}
+		return info;
 	}
 }
