@@ -21,7 +21,7 @@ public class Alternativa {
 	private String id;
 	 
 	/**
-	 * 
+	 * Arbol de acciones de la alternativa de realización.
 	 */
 	private Arbol<Accion> acciones;
 	

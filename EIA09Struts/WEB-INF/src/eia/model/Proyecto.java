@@ -30,7 +30,10 @@ public class Proyecto {
 	 */
 	private ArrayList<Alternativa> alternativas;
 	
-	//TODO private Arbol factores;
+	/**
+	 * 
+	 */
+	private Arbol<Factor> factores;
 
 	/**
 	 * 
@@ -41,7 +44,7 @@ public class Proyecto {
 		this.informacion = informacion;
 		this.tipo = tipo;
 		alternativas = new ArrayList<Alternativa>();
-		//TODO factores = new Arbol();
+		factores = new Arbol<Factor>();
 	}
 	
 	/**
@@ -51,7 +54,7 @@ public class Proyecto {
 		informacion = null;
 		tipo = null;
 		alternativas = null;
-		//TODO factores = new Arbol();
+		factores = new Arbol<Factor>();
 	}
 
 	/**
@@ -99,7 +102,20 @@ public class Proyecto {
 	public void setAlternativas(ArrayList<Alternativa> alternativas) {
 		this.alternativas = alternativas;
 	}
-	
-	// TODO Getter y Setter del arbol de factores.
 
+	/**
+	 * 
+	 * @return
+	 */
+	public Arbol<Factor> getFactores() {
+		return factores;
+	}
+	
+    /**
+     * 
+     * @param factores
+     */
+	public void setFactores(Arbol<Factor> factores) {
+		this.factores = factores;
+	}
 }
