@@ -2,33 +2,33 @@ package eia.util;
 
 import java.util.ArrayList;
 
-
 /**
- * 
- * @author 
- *
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
  */
 
 /**
- * 
+ * Clase que implementa la estructura 'Árbol general'.
  */
 @SuppressWarnings("hiding")
 public class Arbol<Object> {
 	
 	/**
-	 * 
+	 * Objeto contenido por el nodo.
 	 */
 	private Object elemento;
 
 	/**
-	 * 
+	 * Listado de árboles hijo del nodo (ramificaciones).
 	 */
 	private ArrayList<Arbol<Object>> hijos;
 
 	/**
-	 * 
-	 * @param elemento
-	 * @param hijos
+	 * Constructor por parámetros.
+	 * @param elemento Objeto a contener el nodo (raiz) del árbol.
+	 * @param hijos Árboles hijo del nodo (raiz) del árbol.
 	 */
 	public Arbol(Object elemento, ArrayList<Arbol<Object>> hijos){
 		this.elemento = elemento;
@@ -36,7 +36,7 @@ public class Arbol<Object> {
 	}
 
 	/**
-	 * 
+	 * Constructor por defecto.
 	 */
 	public Arbol(){
 		elemento = null;
@@ -44,7 +44,8 @@ public class Arbol<Object> {
 	}
 	
 	/**
-	 * 
+	 * Constructor por parámetro.
+	 * @param elemento Objeto a contener el nodo (raiz) del árbol.
 	 */
 	public Arbol(Object elemento){
 		this.elemento = elemento;
@@ -52,57 +53,60 @@ public class Arbol<Object> {
 	}
 	
 	/**
-	 * 
-	 * @param elemento
+	 * Mutador para el atributo 'elemento'.
+	 * @param elemento Objeto a asociar al nodo (raiz) del árbol.
 	 */
 	public void setElemento(Object elemento){
 		this.elemento = elemento;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'elemento'.
+	 * @return Objeto contenido por el nodo (raiz) del árbol.
 	 */
 	public Object getElemento(){
 		return elemento;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'hijos'.
+	 * @return Árboles hijo asociados al nodo (raiz) del árbol.
 	 */
 	public ArrayList<Arbol<Object>> getHijos(){
 		return hijos;
 	}
 	
 	/**
-	 * 
-	 * @param hijos
+	 * Mutador para el atributo 'hijos'.
+	 * @param hijos Árboles hijo a asociar al nodo (raiz) del árbol.
 	 */
 	public void setHijos(ArrayList<Arbol<Object>> hijos){
 		this.hijos = hijos;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Comprueba si el árbol representa un nodo hoja (sin hijos).
+	 * @return TRUE si es hoja, FALSE en caso contrario.
 	 */
 	public boolean esHoja(){
 		return hijos.size() == 0;
 	}
 	
 	/**
-	 * 
-	 * @param hijo
+	 * Inserta un árbol hijo al árbol (nodo) actual.
+	 * @param hijo Árbol a añadir como hijo.
 	 */
 	public void añadirHijo(Arbol<Object> hijo){
 		hijos.add(hijo);
 	}
 	
 	/**
-	 * 
-	 * @param id
-	 * @return
+	 * Busca información acerca de un elemento en el árbol.
+	 * @param padre Padre del nodo árbol actual donde iniciamos la búsqueda.
+	 * @param posicion Posición de hijo del nodo actual del árbol donde iniciamos la búsqueda.
+	 * @param id Identificación para la búsqueda del elemento en el árbol.
+	 * @return Información general acerca del elemento buscado (si se ha encontrado),
+	 * 		   siendo 'null' en caso contrario.
 	 */
 	private NodoBusqueda<Object> buscarInfoElemento(Arbol<Object> padre, int posicion, String id){
 		
@@ -124,9 +128,9 @@ public class Arbol<Object> {
 	}
 	
 	/**
-	 * 
-	 * @param id
-	 * @return
+	 * Busca un elemento en el árbol.
+	 * @param id Identificación para la búsqueda del elemento en el árbol.
+	 * @return Elemento buscado (si se ha encontrado), siendo 'null' en caso contrario.
 	 */
 	public Object buscarElemento(String id){
 		NodoBusqueda<Object> busqueda = (buscarInfoElemento(null,0,id));
@@ -137,9 +141,9 @@ public class Arbol<Object> {
 	}
 	
 	/**
-	 * 
-	 * @param id
-	 * @return
+	 * Elimina un elemento (si existe) del árbol.
+	 * @param id Identificación del elemento para su eliminación del árbol.
+	 * @return TRUE si se ha podido eliminar, FALSE en caso contrario.
 	 */
 	public boolean eliminaElemento(String id){
 		boolean exito = false;

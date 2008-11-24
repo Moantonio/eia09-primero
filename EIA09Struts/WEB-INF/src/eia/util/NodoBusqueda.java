@@ -1,5 +1,15 @@
 package eia.util;
 
+/**
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
+
+/**
+ * Clase que implementa una estructura de información de un objeto contenido en un árbol.
+ */
 @SuppressWarnings("hiding")
 public class NodoBusqueda<Object> {
 
