@@ -49,8 +49,8 @@ public class Accion {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Vuelca sobre un String la información sobre la acción.
+	 * @return Cadena de caracteres con información sobre la acción.
 	 */
 	public String toString(){
 		return id;

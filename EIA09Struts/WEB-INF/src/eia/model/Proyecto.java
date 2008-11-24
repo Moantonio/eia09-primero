@@ -11,34 +11,34 @@ import eia.util.Arbol;
  */
 
 /**
- * 
+ * Clase que implementa un proyecto de estudio de impacto ambiental.
  */
 public class Proyecto {
 	
 	/**
-	 * 
+	 * Ficha de información general del proyecto de estudio.
 	 */
 	private InfoProyecto informacion;
 	
 	/**
-	 * 
+	 * Tipo de proyecto de estudio.
 	 */
 	private TipoProyecto tipo;
 	
 	/**
-	 * 
+	 * Alternativas de realización del proyecto.
 	 */
 	private ArrayList<Alternativa> alternativas;
 	
 	/**
-	 * 
+	 * Factores ambientales influyentes para el estudio del proyecto.
 	 */
 	private Arbol<Factor> factores;
 
 	/**
-	 * 
-	 * @param informacion
-	 * @param tipo
+	 * Contructor por parámetros.
+	 * @param informacion Ficha de información del proyecto de estudio.
+	 * @param tipo Tipo del proyecto de estudio.
 	 */
 	public Proyecto (InfoProyecto informacion, TipoProyecto tipo){
 		this.informacion = informacion;
@@ -48,7 +48,7 @@ public class Proyecto {
 	}
 	
 	/**
-	 * 
+	 * Constructor por defecto.
 	 */
 	public Proyecto() {
 		informacion = null;
@@ -58,62 +58,64 @@ public class Proyecto {
 	}
 
 	/**
-	 * 
-	 * @return 
+	 * Accesor para el atributo 'informacion'.
+	 * @return Ficha de información del proyecto.
 	 */
 	public InfoProyecto getInformacion() {
 		return informacion;
 	}
 
 	/**
-	 * 
-	 * @param informacion
+	 * Mutador para el atributo 'informacion'.
+	 * @param informacion Ficha de información a asociar al proyecto.
 	 */
 	public void setInformacion(InfoProyecto informacion) {
 		this.informacion = informacion;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'tipo'.
+	 * @return Tipo del proyecto de estudio.
 	 */
 	public TipoProyecto getTipo() {
 		return tipo;
 	}
 
 	/**
-	 * 
-	 * @param tipo
+	 * Mutador para el atributo 'informacion'.
+	 * @param tipo Tipo de proyecto de estudio a asociar.
 	 */
 	public void setTipo(TipoProyecto tipo) {
 		this.tipo = tipo;
 	}
 
 	/**
-	 * @return
+	 * Accesor para el atributo 'alternativas'.
+	 * @return Alternativas de realización del proyecto.
 	 */
 	public ArrayList<Alternativa> getAlternativas() {
 		return alternativas;
 	}
 
 	/**
-	 * @param alternativas 
+	 * Mutador para el atributo 'alternativas'.
+	 * @param alternativas  Alternativas de realización a asociar al proyecto.
 	 */
 	public void setAlternativas(ArrayList<Alternativa> alternativas) {
 		this.alternativas = alternativas;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'factores'.
+	 * @return Factores ambientales influyentes para el estudio del proyecto.
 	 */
 	public Arbol<Factor> getFactores() {
 		return factores;
 	}
 	
     /**
-     * 
-     * @param factores
+     * Mutador para el atributo 'factores'.
+     * @param factores Factores ambientes influyentes a asociar al proyecto.
      */
 	public void setFactores(Arbol<Factor> factores) {
 		this.factores = factores;

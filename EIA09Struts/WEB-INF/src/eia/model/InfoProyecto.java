@@ -10,62 +10,63 @@ import java.util.Date;
  */
 
 /**
- * 
+ * Clase que implementa la ficha con la información 
+ * de un proyecto de estudio de impacto ambiental.
  */
 public class InfoProyecto {
 
 	/**
-	 * 
+	 * Nombre del proyecto de estudio de impacto ambiental.
 	 */
 	private String nombre;
 	
 	/**
-	 * 
+	 * Descripción del proyecto de estudio de impacto ambiental.
 	 */
 	private String descripcion;
 	
 	/**
-	 * 
+	 * Compañía propietaria del proyecto de estudio de impacto ambiental.
 	 */
 	private String compania;
 	
 	/**
-	 * 
+	 * Autor propietario del proyecto de estudio de impacto ambiental.
 	 */
 	private String autor;
 	
 	/**
-	 * 
+	 * Población de realización del proyecto de estudio de impacto ambiental.
 	 */
 	private String poblacion;
 	
 	/**
-	 * 
+	 * Provincia de realización del proyecto de estudio de impacto ambiental.
 	 */
 	private String provincia;
 	
 	/**
-	 * 
+	 * Región de realización del proyecto de estudio de impacto ambiental.
 	 */
 	private String region;
 	
 	/**
-	 * 
+	 * Pais de realización del proyecto de estudio de impacto ambiental.
 	 */
 	private String pais;
 	
 	/**
-	 * 
+	 * Fecha de realización del proyecto de estudio de impacto ambiental.
 	 */
 	private Date fecha;
 	
 	/**
-	 * 
+	 * Vida útil del proyecto de estudio de impacto ambiental.
 	 */
 	private int vidaUtil;
 	
 	/**
-	 * 
+	 * Constructor por defecto.
 	 */
 	public InfoProyecto() {
 		this.nombre = "";
@@ -81,7 +82,7 @@ public class InfoProyecto {
 	}
 	
 	/**
-	 * 
+	 * Constructor por parámetros.
 	 * @param nombre
 	 * @param descripcion
 	 * @param compania
@@ -109,159 +110,160 @@ public class InfoProyecto {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'nombre'.
+	 * @return Nombre del proyecto de estudio.
 	 */
 	public String getNombre() {
 		return nombre;
 	}
 
 	/**
-	 * 
-	 * @param nombre
+	 * Mutador para el atributo 'nombre'.
+	 * @param nombre Nombre a asociar del proyecto de estudio.
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'descripcion'.
+	 * @return Descripción del proyecto de estudio.
 	 */
 	public String getDescripcion() {
 		return descripcion;
 	}
 
 	/**
-	 * 
-	 * @param descripcion
+	 * Mutador para el atributo 'descripcion'.
+	 * @param descripcion Descripción a asociar del proyecto de estudio.
 	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'compania'.
+	 * @return Compañía propietaria del proyecto de estudio.
 	 */
 	public String getCompania() {
 		return compania;
 	}
 
 	/**
-	 * 
-	 * @param compania
+	 * Mutador para el atributo 'compania'.
+	 * @param compania Compañía propietaria del proyecto de estudio a asociar.
 	 */
 	public void setCompania(String compania) {
 		this.compania = compania;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'autor'.
+	 * @return Autor propietario del proyecto de estudio.
 	 */
 	public String getAutor() {
 		return autor;
 	}
 
 	/**
-	 * 
-	 * @param autor
+	 * Mutador para el atributo 'autor'.
+	 * @param autor Autor propietario del proyecto de estudio a asociar.
 	 */
 	public void setAutor(String autor) {
 		this.autor = autor;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'poblacion'.
+	 * @return Población de realización del proyecto de estudio.
 	 */
 	public String getPoblacion() {
 		return poblacion;
 	}
 
 	/**
-	 * 
-	 * @param poblacion
+	 * Mutador para el atributo 'poblacion'.
+	 * @param poblacion Población de realización del proyecto de estudio a asociar.
 	 */
 	public void setPoblacion(String poblacion) {
 		this.poblacion = poblacion;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'provincia'.
+	 * @return Provincia de realización del proyecto de estudio.
 	 */
 	public String getProvincia() {
 		return provincia;
 	}
 
 	/**
-	 * 
-	 * @param provincia
+	 * Mutador para el atributo 'provincia'.
+	 * @param provincia Provincia de realización del proyecto de estudio a asociar.
 	 */
 	public void setProvincia(String provincia) {
 		this.provincia = provincia;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'pais'.
+	 * @return Pais de realización del proyecto de estudio.
 	 */
 	public String getPais() {
 		return pais;
 	}
 
 	/**
-	 * 
-	 * @param pais
+	 * Mutador para el atributo 'pais'.
+	 * @param pais Pais de realización del proyecto de estudio a asociar.
 	 */
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'fecha'.
+	 * @return Fecha de realización del proyecto de estudio.
 	 */
 	public Date getFecha() {
 		return fecha;
 	}
 
 	/**
-	 * 
-	 * @param fecha
+	 * Mutador para el atributo 'fecha'.
+	 * @param fecha Fecha de realización del proyecto de estudio a asociar.
 	 */
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Accesor para el atributo 'vidaUtil'.
+	 * @return Vida útil del proyecto de estudio.
 	 */
 	public int getVidaUtil() {
 		return vidaUtil;
 	}
 
 	/**
-	 * 
-	 * @param vidaUtil
+	 * Mutador para el atributo 'vidaUtil'.
+	 * @param vidaUtil Vida útil del proyecto de estudio a asociar.
 	 */
 	public void setVidaUtil(int vidaUtil) {
 		this.vidaUtil = vidaUtil;
 	}
 
 	/**
-	 * 
-	 * @param region
+	 * Mutador para el atributo 'region'.
+	 * @param region Región de realización del proyecto de estudio a asociar.
 	 */
 	public void setRegion(String region) {
 		this.region = region;
 	}
 	
 	/**
-	 * @return
+	 * Accesor para el atributo 'region'.
+	 * @return Región de realización del proyecto de estudio.
 	 */
 	public String getRegion() {
 		return region;
