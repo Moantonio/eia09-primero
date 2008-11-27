@@ -2,6 +2,7 @@ package eia.model;
 
 import java.util.ArrayList;
 import eia.util.Arbol;
+import eia.util.TipoProyecto;
 
 /**
  * @author SI: EIA'09

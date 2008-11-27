@@ -1,5 +1,8 @@
 package eia.model;
 
+import eia.util.CaracterEfecto;
+import eia.util.ValorJuicio;
+
 /**
  * @author SI: EIA'09
  * 		   Vicente Cruz Mínguez.
@@ -51,6 +54,11 @@ public class Efecto {
 	 * Valor total del efecto/impacto.
 	 */
 	private double valorTotal;
+	
+	/**
+	 * 
+	 */
+	private CaracterEfecto caracter;
 	
 	/**
 	 * Constructor por defecto.
@@ -211,5 +219,13 @@ public class Efecto {
 	 */
 	public void setValorTotal(double valorTotal) {
 		this.valorTotal = valorTotal;
+	}
+
+	public CaracterEfecto getCaracter() {
+		return caracter;
+	}
+
+	public void setCaracter(CaracterEfecto caracter) {
+		this.caracter = caracter;
 	}
 }
