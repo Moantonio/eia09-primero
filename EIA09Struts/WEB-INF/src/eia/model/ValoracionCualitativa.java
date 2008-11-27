@@ -72,7 +72,41 @@ public class ValoracionCualitativa {
 	 * FALSE: No sinérgico
 	 */
 	private boolean sinergia;
-
+	
+	/**
+	 * 
+	 */
+	private double incidencia;
+	
+	/**
+	 * 
+	 * @param signo
+	 * @param momento
+	 * @param inmediatez
+	 * @param reversibilidad
+	 * @param recuperabilidad
+	 * @param acumulacion
+	 * @param periodicidad
+	 * @param persistencia
+	 * @param continuidad
+	 * @param sinergia
+	 */
+	public ValoracionCualitativa(boolean signo, int momento, boolean inmediatez, boolean reversibilidad,
+			boolean recuperabilidad, boolean acumulacion, boolean periodicidad, boolean persistencia, 
+			boolean continuidad, boolean sinergia){
+		this.signo = signo;
+		this.momento = momento;
+		this.inmediatez = inmediatez;
+		this.reversibilidad = reversibilidad;
+		this.recuperabilidad = recuperabilidad;
+		this.acumulacion = acumulacion;
+		this.periodicidad = periodicidad;
+		this.persistencia = persistencia;
+		this.continuidad = continuidad;
+		this.sinergia = sinergia;
+		incidencia = 0;
+	}
+	
 	public boolean isSigno() {
 		return signo;
 	}
@@ -151,6 +185,14 @@ public class ValoracionCualitativa {
 
 	public void setSinergia(boolean sinergia) {
 		this.sinergia = sinergia;
+	}
+
+	public double getIncidencia() {
+		return incidencia;
+	}
+
+	public void setIncidencia(double incidencia) {
+		this.incidencia = incidencia;
 	}
 
 }
