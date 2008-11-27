@@ -38,9 +38,9 @@ public class Efecto {
 	private ValorJuicio juicio;
 
 	/**
-	 * Importancia (incidencia: análisis cualitativo) del efecto/impacto ambiental.
+	 * 
 	 */
-	private double importancia;
+	private ValoracionCualitativa valCualitativa;
 	
 	/**
 	 * Valor según análisis cuantitativo del efecto/impacto.
@@ -61,7 +61,7 @@ public class Efecto {
 		id = "";
 		descripcion = "";
 		juicio = null;
-		importancia = 0;
+		valCualitativa = null;
 		valorCuantitativo = 0;
 		valorTotal = 0;
 	}
@@ -80,7 +80,7 @@ public class Efecto {
 		this.id = id;
 		this.descripcion = descripcion;
 		this.juicio = juicio;
-		importancia = 0;
+		valCualitativa = null;
 		valorCuantitativo = 0;
 		valorTotal = 0;
 	}
@@ -166,19 +166,19 @@ public class Efecto {
 	}
 
 	/**
-	 * Accesor para el atributo 'importancia'.
-	 * @return Valor del efecto/impacto según análisis cualitativo (incidencia).
+	 * Accesor para el atributo 'valCualitativa'.
+	 * @return 
 	 */
-	public double getImportancia() {
-		return importancia;
+	public ValoracionCualitativa getValCualitativa() {
+		return valCualitativa;
 	}
 
 	/**
-	 * Mutador para el atributo 'importancia'.
-	 * @param importancia Valor, según análisis cualitativo, a asociar al efecto/impacto.
+	 * Mutador para el atributo 'valCualitativa'.
+	 * @param 
 	 */
-	public void setImportancia(double importancia) {
-		this.importancia = importancia;
+	public void setValCualitativa(ValoracionCualitativa valCualitativa) {
+		this.valCualitativa = valCualitativa;
 	}
 
 	/**
