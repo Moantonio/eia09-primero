@@ -122,5 +122,19 @@ public class Alternativa {
 		this.acciones = acciones;
 	}
 	
+	/**
+	 * 
+	 */
+	public void calcularValorTotal(){
+		double valor = 0;
+		if (efectos.size()!=0){
+			for(int i = 0; i<efectos.size();i++){
+				if (efectos.get(i).getValorTotal() == 0)
+					efectos.get(i).calcularValorTotal();
+				valor += efectos.get(i).getValorTotal();
+			}
+			valorTotal = valor;
+		}
+	}
 	
 }

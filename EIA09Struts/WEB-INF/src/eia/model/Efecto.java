@@ -228,4 +228,16 @@ public class Efecto {
 	public void setCaracter(CaracterEfecto caracter) {
 		this.caracter = caracter;
 	}
+	
+	public void calcularValorCuantitativo(){
+		//TODO sfafafafa
+	}
+	
+	public void calcularValorTotal(){
+		if (juicio == ValorJuicio.significativo && valCualitativa!=null && valorCuantitativo!=0){
+			valorTotal = valorCuantitativo * valCualitativa.getIncidencia()* factor.getPeso();
+		}else{
+			valorTotal = 0;
+		}
+	}
 }
