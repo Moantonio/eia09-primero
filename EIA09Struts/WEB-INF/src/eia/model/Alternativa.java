@@ -123,7 +123,8 @@ public class Alternativa {
 	}
 	
 	/**
-	 * 
+	 * Función para calcular el valor total de impacto de la alternativa,
+	 * estableciendo dicho valor en el atributo 'valorTotal'.
 	 */
 	public void calcularValorTotal(){
 		double valor = 0;
