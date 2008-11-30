@@ -83,16 +83,16 @@ public class InfoProyecto {
 	
 	/**
 	 * Constructor por parámetros.
-	 * @param nombre
-	 * @param descripcion
-	 * @param compania
-	 * @param autor
-	 * @param poblacion
-	 * @param provincia
-	 * @param region
-	 * @param pais
-	 * @param fecha
-	 * @param vidaUtil
+	 * @param nombre Nombre del proyecto de estudio.
+	 * @param descripcion Descripción del proyecto de estudio.
+	 * @param compania Compañía propietaria del proyecto de estudio.
+	 * @param autor Autor propietario del proyecto de estudio.
+	 * @param poblacion Población de realización del proyecto de estudio.
+	 * @param provincia Provincia de realización del proyecto de estudio.
+	 * @param region Región de realización del proyecto de estudio.
+	 * @param pais Pais de realización del proyecto de estudio.
+	 * @param fecha Fecha de realización del proyecto de estudio.
+	 * @param vidaUtil Vida útil del proyecto de estudio.
 	 */
 	public InfoProyecto(String nombre, String descripcion, String compania,
 			String autor, String poblacion, String provincia, String region, String pais,

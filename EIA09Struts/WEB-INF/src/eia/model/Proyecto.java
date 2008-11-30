@@ -3,7 +3,6 @@ package eia.model;
 import java.util.ArrayList;
 import eia.util.Arbol;
 import eia.util.TipoProyecto;
-import java.math.*;
 
 /**
  * @author SI: EIA'09
@@ -124,12 +123,13 @@ public class Proyecto {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Función para la obtención de la mejor alternativa realizable de las
+	 * establecidas en el proyecto.
+	 * @return Mejor alternativa de realización del proyecto.
 	 */
 	public Alternativa analizarAlternativas(){
 		int numAlternativas = alternativas.size();
-		double mejorValor = -100;
+		double mejorValor = -100; //TODO Iniciliación correcta!
 		Alternativa mejorAlternativa = null;
 		for (int i=0; i<numAlternativas;i++){
 			if(mejorValor < alternativas.get(i).getValorTotal()){

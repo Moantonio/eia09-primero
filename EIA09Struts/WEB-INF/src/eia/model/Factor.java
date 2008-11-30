@@ -21,7 +21,6 @@ public class Factor {
 	 */
 	private int peso;
 	
-	
 	/**
 	 * Constructor por defecto.
 	 */

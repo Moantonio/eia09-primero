@@ -1,7 +1,19 @@
 package eia.model;
 
+/**
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
+
+/**
+ * Clase que implementa la información para el análisis/valoración 
+ * cualitativa completa de un efecto/impacto ambiental.
+ */
 public class ValoracionCualitativa {
 	
+	// Constantes para los distintos valores de los atributos
 	public static final int SIG_POSITIVO = +1;
 	public static final int SIG_NEGATIVO = -1;
 	public static final int ACU_SIMPLE = 1;
@@ -40,23 +52,28 @@ public class ValoracionCualitativa {
 	public static final int EFE_INDIRECTO_SEC = 2;
 	public static final int EFE_INDIRECTO_TER = 1;
 
+	//TODO ¿Es éste el mejor sitio para dejar las constantes?
+	
 	/**
-	 * Signo
+	 * Signo asociado al efecto/impacto: positivo o negativo.
 	 */
 	private int signo;
 	
 	/**
-	 * Acumulación
+	 * Acumulación asociada al efecto/impacto: 
+	 * simple, acumulativo o sinérgico.
 	 */
 	private int acumulacion;
 	
 	/**
-	 * 
+	 * Extensión (área de influencia) asociada al efecto/impacto: 
+	 * puntual, parcial, extenso, total o crítica. 
 	 */
 	private int extension;
 	
 	/**
-	 * 
+	 * Intensidad (grado de destrucción) asociada al efecto/impacto: 
+	 * baja, media, alta, muy alta o total.
 	 */
 	private int intensidad;
 	
