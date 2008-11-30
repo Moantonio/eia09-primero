@@ -60,71 +60,76 @@ public class ValoracionCualitativa {
 	private int signo;
 	
 	/**
-	 * Acumulación asociada al efecto/impacto: 
+	 * Valor de acumulación asociada al efecto/impacto: 
 	 * simple, acumulativo o sinérgico.
 	 */
 	private int acumulacion;
 	
 	/**
-	 * Extensión (área de influencia) asociada al efecto/impacto: 
+	 * Valor de extensión (área de influencia) asociada al efecto/impacto: 
 	 * puntual, parcial, extenso, total o crítica. 
 	 */
 	private int extension;
 	
 	/**
-	 * Intensidad (grado de destrucción) asociada al efecto/impacto: 
+	 * Valor de intensidad (grado de destrucción) asociada al efecto/impacto: 
 	 * baja, media, alta, muy alta o total.
 	 */
 	private int intensidad;
 	
 	/**
-	 * 
+	 * Valor de persistencia asociada al efecto/impacto: 
+	 * fugaz, temporal o permanente.
 	 */
 	private int persistencia;
 	
 	/**
-	 * 
+	 * Valor de reversibilidad asociada al efecto/impacto:
+	 * corto plazo, medio plazo, largo plazo o irreversible.
 	 */
 	private int reversibilidad;
 	
-	/*
-	 * 
+	/**
+	 * Valor de recuperabilidad (medios humanos) asociada al efecto/impacto:
+	 * inmediata, medio plazo, mitigable, largo plazo o irrecuperable.
 	 */
 	private int recuperabilidad;
 	
 	/**
-	 * 
+	 * Valor de periodicidad asociada al efecto/impacto: 
+	 * discontinuo, periódico o continuo.
 	 */
 	private int periodicidad;
 	
 	/**
-	 * 
-	 * 
+	 * Valor del momento (plazo de manifestación) asociado al efecto/impacto:
+	 * crítico, inmediato, medio plazo o largo plazo.
 	 */
 	private int momento;
 	
 	/**
-	 * 
+	 * Valor de efecto asociado al efecto/impacto:
+	 * directo, indirecto secundario o indirecto terciario.
 	 */
 	private int efecto;
 	
 	/**
-	 * 
+	 * Valor de impacto (importancia) del efecto según valoración cualitativa.
 	 */
 	private double incidencia;
 
 	/**
-	 * 
-	 * @param signo
-	 * @param acumulacion
-	 * @param extensión
-	 * @param intensidad
-	 * @param persistencia
-	 * @param reversibilidad
-	 * @param recuperabilidad
-	 * @param periodicidad
-	 * @param momento
-	 * @param efecto
+	 * Constructor por parámetros.
+	 * @param signo Signo del efecto/impacto.
+	 * @param acumulacion Valor de acumulación del efecto/impacto.
+	 * @param extensión Valor de extensión del efecto/impacto.
+	 * @param intensidad Valor de intensidad del efecto/impacto.
+	 * @param persistencia Valor de persistencia del efecto/impacto.
+	 * @param reversibilidad Valor de reversibilidad del efecto/impacto.
+	 * @param recuperabilidad Valor de recuperabilidad del efecto/impacto.
+	 * @param periodicidad Valor de periodicidad del efecto/impacto.
+	 * @param momento Valor del momento del efecto/impacto.
+	 * @param efecto Valor de efecto del efecto/impacto.
 	 */
 	public ValoracionCualitativa(int signo, int acumulacion, int extension,
 			int intensidad, int persistencia, int reversibilidad,
@@ -144,17 +149,7 @@ public class ValoracionCualitativa {
 	}
 	
 	/**
-	 * 
-	 * @param signo
-	 * @param acumulacion
-	 * @param extensión
-	 * @param intensidad
-	 * @param persistencia
-	 * @param reversibilidad
-	 * @param recuperabilidad
-	 * @param periodicidad
-	 * @param momento
-	 * @param efecto
+	 * Constructor por defecto.
 	 */
 	public ValoracionCualitativa() {
 		super();
@@ -172,162 +167,187 @@ public class ValoracionCualitativa {
 	}
 	
 	/**
-	 * @return the signo
+	 * Accesor para el atributo 'signo'.
+	 * @return Signo del efecto/impacto.
 	 */
 	public int getSigno() {
 		return signo;
 	}
 
 	/**
-	 * @param signo the signo to set
+	 * Mutador para el atributo 'signo'.
+	 * @param signo Signo a asociar al efecto/impacto.
 	 */
 	public void setSigno(int signo) {
 		this.signo = signo;
 	}
 
 	/**
-	 * @return the acumulacion
+	 * Accesor para el atributo 'acumulacion'.
+	 * @return Valor de acumulación del efecto/impacto.
 	 */
 	public int getAcumulacion() {
 		return acumulacion;
 	}
 
 	/**
-	 * @param acumulacion the acumulacion to set
+	 * Mutador para el atributo 'signo'.
+	 * @param acumulacion Valor de acumulación a asociar al efecto/impacto.
 	 */
 	public void setAcumulacion(int acumulacion) {
 		this.acumulacion = acumulacion;
 	}
 
 	/**
-	 * @return the extensión
+	 * Accesor para el atributo 'extension'.
+	 * @return Valor de extensión del efecto/impacto.
 	 */
 	public int getExtension() {
 		return extension;
 	}
 
 	/**
-	 * @param extensión the extensión to set
+	 * Mutador para el atributo 'extension'.
+	 * @param extension Valor de extensión a asociar al efecto/impacto.
 	 */
 	public void setExtension(int extension) {
 		this.extension = extension;
 	}
 
 	/**
-	 * @return the intensidad
+	 * Accesor para el atributo 'intensidad'.
+	 * @return Valor de intensidad del efecto/impacto.
 	 */
 	public int getIntensidad() {
 		return intensidad;
 	}
 
 	/**
-	 * @param intensidad the intensidad to set
+	 * Mutador para el atributo 'intensidad'.
+	 * @param intensidad Valor de intensidad a asociar al efecto/impacto.
 	 */
 	public void setIntensidad(int intensidad) {
 		this.intensidad = intensidad;
 	}
 
 	/**
-	 * @return the persistencia
+	 * Accesor para el atributo 'persistencia'.
+	 * @return Valor de persistencia del efecto/impacto.
 	 */
 	public int getPersistencia() {
 		return persistencia;
 	}
 
 	/**
-	 * @param persistencia the persistencia to set
+	 * Mutador para el atributo 'persistencia'.
+	 * @param persistencia Valor de persistencia a asociar al efecto/impacto.
 	 */
 	public void setPersistencia(int persistencia) {
 		this.persistencia = persistencia;
 	}
 
 	/**
-	 * @return the reversibilidad
+	 * Accesor para el atributo 'reversibilidad'.
+	 * @return Valor de reversibilidad del efecto/impacto.
 	 */
 	public int getReversibilidad() {
 		return reversibilidad;
 	}
 
 	/**
-	 * @param reversibilidad the reversibilidad to set
+	 * Mutador para el atributo 'reversibilidad'.
+	 * @param reversibilidad Valor de reversibilidad a asociar al efecto/impacto.
 	 */
 	public void setReversibilidad(int reversibilidad) {
 		this.reversibilidad = reversibilidad;
 	}
 
 	/**
-	 * @return the recuperabilidad
+	 * Accesor para el atributo 'recuperabilidad'.
+	 * @return Valor de recuperabilidad del efecto/impacto.
 	 */
 	public int getRecuperabilidad() {
 		return recuperabilidad;
 	}
 
 	/**
-	 * @param recuperabilidad the recuperabilidad to set
+	 * Mutador para el atributo 'recuperabilidad'.
+	 * @param recuperabilidad Valor de recuperabilidad a asociar al efecto/impacto.
 	 */
 	public void setRecuperabilidad(int recuperabilidad) {
 		this.recuperabilidad = recuperabilidad;
 	}
 
 	/**
-	 * @return the periodicidad
+	 * Accesor para el atributo 'periodicidad'.
+	 * @return Valor de periodicidad del efecto/impacto.
 	 */
 	public int getPeriodicidad() {
 		return periodicidad;
 	}
 
 	/**
-	 * @param periodicidad the periodicidad to set
+	 * Mutador para el atributo 'periodicidad'.
+	 * @param periodicidad Valor de periodicidad a asociar al efecto/impacto.
 	 */
 	public void setPeriodicidad(int periodicidad) {
 		this.periodicidad = periodicidad;
 	}
 
 	/**
-	 * @return the momento
+	 * Accesor para el atributo 'momento'.
+	 * @return Valor del momento del efecto/impacto.
 	 */
 	public int getMomento() {
 		return momento;
 	}
 
 	/**
-	 * @param momento the momento to set
+	 * Mutador para el atributo 'momento'.
+	 * @param momento Valor del momento a asociar al efecto/impacto.
 	 */
 	public void setMomento(int momento) {
 		this.momento = momento;
 	}
 
 	/**
-	 * @return the efecto
+	 * Accesor para el atributo 'efecto'.
+	 * @return Valor de efecto del efecto/impacto.
 	 */
 	public int getEfecto() {
 		return efecto;
 	}
 
 	/**
-	 * @param efecto the efecto to set
+	 * Mutador para el atributo 'efecto'.
+	 * @param efecto Valor de efecto a asociar al efecto/impacto.
 	 */
 	public void setEfecto(int efecto) {
 		this.efecto = efecto;
 	}
 
 	/**
-	 * @return the incidencia
+	 * Accesor para el atributo 'incidencia'.
+	 * @return Valor de incidencia del efecto/impacto.
 	 */
 	public double getIncidencia() {
 		return incidencia;
 	}
 
 	/**
-	 * @param incidencia the incidencia to set
+	 * Mutador para el atributo 'incidencia'.
+	 * @param incidencia Valor de incidencia a asociar al efecto/impacto.
 	 */
 	public void setIncidencia(double incidencia) {
 		this.incidencia = incidencia;
 	}
 	
+	/**
+	 * Función para el cálculo del valor máximo, usado para la obtención de la incidencia.
+	 * @return Valor máximo.
+	 */
 	private int calculaMaximo(){
 		int max = 0;
-		
 		if (acumulacion!=0)
 			max+= ValoracionCualitativa.ACU_SINERGICO;
 		if (extension!=0)
@@ -349,9 +369,12 @@ public class ValoracionCualitativa {
 		return max;	
 	}
 	
+	/**
+	 * Función para el cálculo del valor mínimo, usado para la obtención de la incidencia.
+	 * @return Valor mínimo.
+	 */
 	private int calculaMinimo(){
 		int min = 0;
-		
 		if (acumulacion!=0)
 			min+= ValoracionCualitativa.ACU_SIMPLE;
 		if (extension!=0)
@@ -373,6 +396,10 @@ public class ValoracionCualitativa {
 		return min;	
 	}
 	
+	/**
+	 * Función para calcular el valor de impacto del efecto según análisis
+	 * cualitativo completo, estableciendo dicho valor en el atributo 'incidencia'.
+	 */
 	public void calcularValoracion(){
 		int min = calculaMinimo();
 		int max = calculaMaximo();
@@ -381,5 +408,4 @@ public class ValoracionCualitativa {
 	   incidencia = (signo*(suma - min)/(max-min));  
 	}
 	
- }
-
+}
