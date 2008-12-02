@@ -23,7 +23,8 @@ public class ValoracionCualitativa {
 	public static final int EXT_PARCIAL = 2;
 	public static final int EXT_EXTENSO = 4;
 	public static final int EXT_TOTAL = 6;
-	public static final int EXT_CRITICA = 8;
+	public static final int EXT_NO_CRITICA = 0;
+	public static final int EXT_CRITICA = 4;
 	public static final int INT_BAJA = 1;
 	public static final int INT_MEDIA = 4;
 	public static final int INT_ALTA = 4;
@@ -47,7 +48,8 @@ public class ValoracionCualitativa {
 	public static final int MOM_LARGO_PLAZO = 1;
 	public static final int MOM_MEDIO_PLAZO = 2;
 	public static final int MOM_INMEDIATO = 4;
-	public static final int MOM_CRITICO = 6;
+	public static final int MOM_NO_CRITICO = 0;
+	public static final int MOM_CRITICO = 4;
 	public static final int EFE_DIRECTO = 3;
 	public static final int EFE_INDIRECTO_SEC = 2;
 	public static final int EFE_INDIRECTO_TER = 1;
@@ -67,7 +69,7 @@ public class ValoracionCualitativa {
 	
 	/**
 	 * Valor de extensión (área de influencia) asociada al efecto/impacto: 
-	 * puntual, parcial, extenso, total o crítica. 
+	 * puntual, parcial, extenso o total. 
 	 */
 	private int extension;
 	
@@ -103,7 +105,7 @@ public class ValoracionCualitativa {
 	
 	/**
 	 * Valor del momento (plazo de manifestación) asociado al efecto/impacto:
-	 * crítico, inmediato, medio plazo o largo plazo.
+	 * inmediato, medio plazo o largo plazo.
 	 */
 	private int momento;
 	
