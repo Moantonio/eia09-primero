@@ -404,7 +404,7 @@ public class ValoracionCualitativa {
 		if (acumulacion!=0)
 			max+= ValoracionCualitativa.ACU_SINERGICO;
 		if (extension!=0)
-			max+= ValoracionCualitativa.EXT_CRITICA;
+			max+= ValoracionCualitativa.EXT_TOTAL;
 		if (intensidad!=0)
 			max+= ValoracionCualitativa.INT_TOTAL;
 		if (persistencia!=0)
@@ -416,7 +416,7 @@ public class ValoracionCualitativa {
 		if (periodicidad!=0)
 			max+= ValoracionCualitativa.PER_CONTINUO;
 		if (momento!=0)
-			max+= ValoracionCualitativa.MOM_CRITICO;
+			max+= ValoracionCualitativa.MOM_INMEDIATO;
 		if (efecto!=0)
 			max+= ValoracionCualitativa.EFE_DIRECTO;
 		return max;	
@@ -456,8 +456,8 @@ public class ValoracionCualitativa {
 	public void calcularValoracion(){
 		int min = calculaMinimo();
 		int max = calculaMaximo();
-		int suma =(acumulacion+extension+intensidad+persistencia+
-				reversibilidad+recuperabilidad+periodicidad+momento+efecto);
+		int suma =(acumulacion+extension+extensionCritica+intensidad+persistencia+
+				reversibilidad+recuperabilidad+periodicidad+momento+momentoCritico+efecto);
 	   incidencia = (signo*(suma - min)/(max-min));  
 	}
 
