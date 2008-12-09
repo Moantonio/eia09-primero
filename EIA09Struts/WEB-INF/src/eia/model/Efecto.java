@@ -46,9 +46,9 @@ public class Efecto {
 	private ValoracionCualitativa valCualitativa;
 	
 	/**
-	 * Valor según análisis cuantitativo del efecto/impacto.
+	 * Valoración cuantitativa del efecto/impacto ambiental.
 	 */
-	private double valorCuantitativo;
+	private ValoracionCuantitativa valCuantitativa;
 	
 	/**
 	 * Valor total del efecto/impacto.
@@ -70,7 +70,7 @@ public class Efecto {
 		descripcion = "";
 		juicio = null;
 		valCualitativa = null;
-		valorCuantitativo = 0;
+		valCuantitativa = null;
 		valorTotal = 0;
 		caracter = null; 
 	}
@@ -89,7 +89,7 @@ public class Efecto {
 		this.descripcion = descripcion;
 		this.juicio = null;
 		valCualitativa = null;
-		valorCuantitativo = 0;
+		valCuantitativa = null;
 		valorTotal = 0;
 		caracter = null; 
 	}
@@ -109,7 +109,7 @@ public class Efecto {
 		this.descripcion = descripcion;
 		this.juicio = juicio;
 		valCualitativa = null;
-		valorCuantitativo = 0;
+		valCuantitativa = null;
 		valorTotal = 0;
 		caracter = null; 
 	}
@@ -196,7 +196,7 @@ public class Efecto {
 
 	/**
 	 * Accesor para el atributo 'valCualitativa'.
-	 * @return 
+	 * @return Valoración cualitativa asociada al efecto/impacto.
 	 */
 	public ValoracionCualitativa getValCualitativa() {
 		return valCualitativa;
@@ -204,26 +204,26 @@ public class Efecto {
 
 	/**
 	 * Mutador para el atributo 'valCualitativa'.
-	 * @param 
+	 * @param valCualitativa Valoración cualitativa a asociar al efecto/impacto.
 	 */
 	public void setValCualitativa(ValoracionCualitativa valCualitativa) {
 		this.valCualitativa = valCualitativa;
 	}
 
 	/**
-	 * Accesor para el atributo 'valorCuantitativo'.
-	 * @return Valor del efecto/impacto según análisis cuantitativo.
-	 */ 
-	public double getValorCuantitativo() {
-		return valorCuantitativo;
+	 * Accesor para el atributo 'valCuantitativa'.
+	 * @return Valoración cuantitativa asociada al efecto/impacto.
+	 */
+	public ValoracionCuantitativa getValCuantitativa() {
+		return valCuantitativa;
 	}
 
 	/**
-	 * Mutador para el atributo 'valorCuantitativo'.
-	 * @param valorCuantitativo Valor, según análisis cuantitativo, a asociar al efecto/impacto.
+	 * Mutador para el atributo 'valCuantitativa'.
+	 * @param valCuantitativa Valoración cuantitativa a asociar al efecto/impacto.
 	 */
-	public void setValorCuantitativo(double valorCuantitativo) {
-		this.valorCuantitativo = valorCuantitativo;
+	public void setValCuantitativa(ValoracionCuantitativa valCuantitativa) {
+		this.valCuantitativa = valCuantitativa;
 	}
 
 	/**
@@ -271,8 +271,8 @@ public class Efecto {
 	 * estableciendo dicho valor en el atributo 'valorTotal'.
 	 */
 	public void calcularValorTotal(){
-		if (juicio == ValorJuicio.significativo && valCualitativa!=null && valorCuantitativo!=0){
-			valorTotal = valorCuantitativo * valCualitativa.getIncidencia()* factor.getPeso();
+		if (juicio == ValorJuicio.significativo && valCualitativa!=null && valCuantitativa!=null){
+			valorTotal = valCuantitativa. * valCualitativa.getIncidencia()* factor.getPeso();
 		}else{
 			valorTotal = 0;
 		}
