@@ -272,7 +272,7 @@ public class Efecto {
 	 */
 	public void calcularValorTotal(){
 		if (juicio == ValorJuicio.significativo && valCualitativa!=null && valCuantitativa!=null){
-			valorTotal = valCuantitativa. * valCualitativa.getIncidencia()* factor.getPeso();
+			valorTotal = valCuantitativa.getMagnitudImpacto() * valCualitativa.getIncidencia()* factor.getPeso();
 		}else{
 			valorTotal = 0;
 		}
