@@ -73,6 +73,13 @@ public class ValoracionCualitativa {
 	 */
 	private int extension;
 	
+	
+	/**
+	 * Valor de la extensión crítica (área de influencia) asociada al efecto/impacto: 
+	 * crítica o no crítica. 
+	 */
+	private int extensionCritica;
+	
 	/**
 	 * Valor de intensidad (grado de destrucción) asociada al efecto/impacto: 
 	 * baja, media, alta, muy alta o total.
@@ -110,6 +117,12 @@ public class ValoracionCualitativa {
 	private int momento;
 	
 	/**
+	 * Valor del momento crítico (plazo de manifestación) asociado al efecto/impacto:
+	 * crítico o no crítico.
+	 */
+	private int momentoCritico;
+	
+	/**
 	 * Valor de efecto asociado al efecto/impacto:
 	 * directo, indirecto secundario o indirecto terciario.
 	 */
@@ -125,27 +138,31 @@ public class ValoracionCualitativa {
 	 * @param signo Signo del efecto/impacto.
 	 * @param acumulacion Valor de acumulación del efecto/impacto.
 	 * @param extensión Valor de extensión del efecto/impacto.
+	 * @param extensionCritica Valor de la extensión crítica del efecto/impacto.
 	 * @param intensidad Valor de intensidad del efecto/impacto.
 	 * @param persistencia Valor de persistencia del efecto/impacto.
 	 * @param reversibilidad Valor de reversibilidad del efecto/impacto.
 	 * @param recuperabilidad Valor de recuperabilidad del efecto/impacto.
 	 * @param periodicidad Valor de periodicidad del efecto/impacto.
 	 * @param momento Valor del momento del efecto/impacto.
+	 * @param momentoCritico Valor del momento crítico del efecto/impacto.
 	 * @param efecto Valor de efecto del efecto/impacto.
 	 */
-	public ValoracionCualitativa(int signo, int acumulacion, int extension,
-			int intensidad, int persistencia, int reversibilidad,
-			int recuperabilidad, int periodicidad, int momento, int efecto) {
+	public ValoracionCualitativa(int signo, int acumulacion, int extension, int extensionCritica,
+			int intensidad, int persistencia, int reversibilidad, int recuperabilidad, 
+			int periodicidad, int momento, int momentoCritico, int efecto) {
 		super();
 		this.signo = signo;
 		this.acumulacion = acumulacion;
 		this.extension = extension;
+		this.extensionCritica = extensionCritica;
 		this.intensidad = intensidad;
 		this.persistencia = persistencia;
 		this.reversibilidad = reversibilidad;
 		this.recuperabilidad = recuperabilidad;
 		this.periodicidad = periodicidad;
 		this.momento = momento;
+		this.momentoCritico = momentoCritico;
 		this.efecto = efecto;
 		incidencia = 0;
 	}
@@ -158,12 +175,14 @@ public class ValoracionCualitativa {
 		this.signo = ValoracionCualitativa.SIG_POSITIVO;
 		this.acumulacion = 0;
 		this.extension = 0;
+		this.extensionCritica = 0;
 		this.intensidad = 0;
 		this.persistencia = 0;
 		this.reversibilidad = 0;
 		this.recuperabilidad = 0;
 		this.periodicidad = 0;
 		this.momento = 0;
+		this.momentoCritico = 0;
 		this.efecto = 0;
 		incidencia = 0;
 	}
@@ -216,6 +235,22 @@ public class ValoracionCualitativa {
 		this.extension = extension;
 	}
 
+	/**
+	 * Accesor para el atributo 'extensionCritica'.
+	 * @return Valor de extensión crítica del efecto/impacto
+	 */
+	public int getExtensionCritica() {
+		return extensionCritica;
+	}
+
+	/**
+	 * Mutador para el atributo 'extensionCritica'.
+	 * @param extensionCritica Valor de extensión crítica a asociar al efecto/impacto.
+	 */
+	public void setExtensionCritica(int extensionCritica) {
+		this.extensionCritica = extensionCritica;
+	}
+	
 	/**
 	 * Accesor para el atributo 'intensidad'.
 	 * @return Valor de intensidad del efecto/impacto.
@@ -310,6 +345,22 @@ public class ValoracionCualitativa {
 	 */
 	public void setMomento(int momento) {
 		this.momento = momento;
+	}
+	
+	/**
+	 * Accesor para el atributo 'momentoCritico'.
+	 * @return Valor del momento crítico del efecto/impacto.
+	 */
+	public int getMomentoCritico() {
+		return momentoCritico;
+	}
+
+	/**
+	 * Mutador para el atributo 'momentoCritico'.
+	 * @param momentoCritico Valor del momento crítico a asociar al efecto/impacto.
+	 */
+	public void setMomentoCritico(int momentoCritico) {
+		this.momentoCritico = momentoCritico;
 	}
 
 	/**
@@ -409,5 +460,9 @@ public class ValoracionCualitativa {
 				reversibilidad+recuperabilidad+periodicidad+momento+efecto);
 	   incidencia = (signo*(suma - min)/(max-min));  
 	}
+
+
+
+
 	
 }
