@@ -201,15 +201,164 @@ public class ValoracionCuantitativa {
 			num = -2*(double)Math.pow(x, 2)+ 2*(max+min)*x - 2*max*min;
 		}
 		else{
-			num = 2*(double)Math.pow(x, 2)- 2*(max+min*x + 2*max*min;		
+			num = 2*(double)Math.pow(x, 2)- 2*(max+min)*x + 2*max*min;		
 		}
 		den = (double)Math.pow(max-min,2);
 		return num/den;
 	}
 	
+	/**
+	 * 
+	 * @param x
+	 * @param max
+	 * @param min
+	 * @return
+	 */
+	private double parabolicaDoble1DeCreciente(double x, double max, double min){
+		double num,den,y;
+		den = (double)Math.pow(max-min,2);
+		if((x>=min)&&(x<= (max+min)/2)){
+			num = 2*(double)Math.pow(x, 2)- 2*(max+min)*x + 2*max*min;
+			y = num/den +1;
+		}
+		else{
+			num = -2*(double)Math.pow(x, 2)+ 2*(max+min)*x - 2*max*min;
+			y = num/den;
+		}
+		return y;
+	}
+	
+	/**
+	 * 
+	 * @param x
+	 * @param max
+	 * @param min
+	 * @return
+	 */
+	private double parabolicaDoble2Creciente(double x, double max, double min){
+		double num,den,y;
+		den = (double)Math.pow(max-min,2);
+		if((x>=min)&&(x<= (max+min)/2)){
+			num = 2*(double)Math.pow(x, 2)- 4*min*x + 2*(double)Math.pow(min, 2);
+			y = num/den;
+		}
+		else{
+			num = -2*(double)Math.pow(x, 2)+ 4*max*x - 2*(double)Math.pow(max, 2);
+			y = num/den +1;
+		}
+		return y;
+	}
+	
+	/**
+	 * 
+	 * @param x
+	 * @param max
+	 * @param min
+	 * @return
+	 */
+	private double parabolicaDoble2DeCreciente(double x, double max, double min){
+		double num,den,y;
+		den = (double)Math.pow(max-min,2);
+		if((x>=min)&&(x<= (max+min)/2)){
+			num = -2*(double)Math.pow(x, 2)+ 4*min*x - 2*(double)Math.pow(min, 2);
+			y = num/den +1;
+		}
+		else{
+			num = 2*(double)Math.pow(x, 2)- 4*max*x + 2*(double)Math.pow(max, 2);
+			y = num/den;
+		}
+		return y;
+	}
+	
+	/**
+	 * 
+	 * @param x
+	 * @param a
+	 * @param max
+	 * @param min
+	 * @return
+	 */
+	private double maximoIntermedio(double x, double a, double max, double min){
+		double num = -x + 2*a*x + (double)Math.pow(min, 2) - 2*a*min;
+		double den = (double)Math.pow(a-min, 2);
+		return num/den;
+	}
+	
+	/**
+	 * 
+	 * @param x
+	 * @param a
+	 * @param max
+	 * @param min
+	 * @return
+	 */
+	private double minimoIntermedio(double x, double a, double max, double min){
+		double num = (double)Math.pow(x, 2)- 2*a*x + (double)Math.pow(a, 2); 
+		double den = (double)Math.pow(a-min, 2);
+		return num/den;
+	}
+	
+	/**
+	 * 
+	 * @param x
+	 * @param umbral
+	 * @param max
+	 * @param min
+	 * @return
+	 */
+	private double umbralCreciente(double x, double umbral, double max, double min){
+		double y;
+		if ((x>=min)&&(x<umbral)){
+			y=0;
+		}
+		else{
+			y=1;
+		}
+		return y;
+	}
+	
+	/**
+	 * 
+	 * @param x
+	 * @param umb
+	 * @param max
+	 * @param min
+	 * @return
+	 */
+	private double umbralDecreciente(double x, double umbral, double max, double min){
+		double y;
+		if ((x>=min)&&(x<umbral)){
+			y=1;
+		}
+		else{
+			y=0;
+		}
+		return y;
+	}
 	
 	
-	
-	
+	/**
+	 * 
+	 * @param numFuncion
+	 * @param opc
+	 */
+	public void calcularValoracion(int numFuncion, double opc){
+		switch (numFuncion){
+			case 1: magnitudImpacto = linealCreciente(indicador,mayorValorIndicador,menorValorIndicador);
+			case 2: magnitudImpacto = linealDecreciente(indicador,mayorValorIndicador,menorValorIndicador);
+			case 3: magnitudImpacto = parabolica1Creciente(indicador,mayorValorIndicador,menorValorIndicador);
+			case 4: magnitudImpacto = parabolica1Decreciente(indicador,mayorValorIndicador,menorValorIndicador);
+			case 5: magnitudImpacto = parabolica2Creciente(indicador,mayorValorIndicador,menorValorIndicador);
+			case 6: magnitudImpacto = parabolica2Decreciente(indicador,mayorValorIndicador,menorValorIndicador);
+			case 7: magnitudImpacto = parabolicaDoble1Creciente(indicador,mayorValorIndicador,menorValorIndicador);
+			case 8: magnitudImpacto = parabolicaDoble1DeCreciente(indicador,mayorValorIndicador,menorValorIndicador);
+			case 9: magnitudImpacto = parabolicaDoble2Creciente(indicador,mayorValorIndicador,menorValorIndicador);
+			case 10: magnitudImpacto = parabolicaDoble2DeCreciente(indicador,mayorValorIndicador,menorValorIndicador);
+			case 11: magnitudImpacto = maximoIntermedio(indicador,opc,mayorValorIndicador,menorValorIndicador);
+			case 12: magnitudImpacto = minimoIntermedio(indicador,opc,mayorValorIndicador,menorValorIndicador);
+			case 13: magnitudImpacto = umbralCreciente(indicador,opc,mayorValorIndicador,menorValorIndicador);
+			case 14: magnitudImpacto = umbralDecreciente(indicador,opc,mayorValorIndicador,menorValorIndicador);
+		}
+	}
 	
 }
