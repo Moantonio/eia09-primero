@@ -461,8 +461,4 @@ public class ValoracionCualitativa {
 	   incidencia = (signo*(suma - min)/(max-min));  
 	}
 
-
-
-
-	
 }
