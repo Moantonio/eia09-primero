@@ -73,7 +73,6 @@ public class ValoracionCualitativa {
 	 */
 	private int extension;
 	
-	
 	/**
 	 * Valor de la extensión crítica (área de influencia) asociada al efecto/impacto: 
 	 * crítica o no crítica. 

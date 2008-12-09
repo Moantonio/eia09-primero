@@ -1,5 +1,7 @@
 package eia.model;
 
+import java.math.*;
+
 /**
  * @author SI: EIA'09
  * 		   Vicente Cruz Mínguez.
@@ -109,5 +111,105 @@ public class ValoracionCuantitativa {
 	public void setMagnitudImpacto(double magnitudImpacto) {
 		this.magnitudImpacto = magnitudImpacto;
 	}
+	
+	/**
+	 * Función de transformación lineal creciente.
+	 * @param x Variable independiente de la función.
+	 * @param max Valor máximo que podrá tomar la variable 'x'. 
+	 * @param min Valor mínimo que podrá tomar la variable 'x'. 
+	 * @return Resultado de la operación.
+	 */
+	private double linealCreciente(double x, double max, double min){
+		double y = (x - min)/(max-min);
+		return y;
+	}
+	
+	/**
+	 * Función de transformación lineal decreciente.
+	 * @param x Variable independiente de la función.
+	 * @param max Valor máximo que podrá tomar la variable 'x'. 
+	 * @param min Valor mínimo que podrá tomar la variable 'x'. 
+	 * @return Resultado de la operación.
+	 */
+	private double linealDecreciente(double x, double max, double min){
+		double y = (max - x)/(max-min);
+		return y;	
+	}
+	
+	/**
+	 * 
+	 * @param x
+	 * @param max
+	 * @param min
+	 * @return
+	 */
+	private double parabolica1Creciente(double x, double max, double min){
+		double num = - (double)Math.pow(x,2)+ 2*max*x + (double)Math.pow(min, 2)- 2* max * min;
+		double den = (double)Math.pow(max-min, 2);
+		return num/den;		
+	}
 
+	/**
+	 * 
+	 * @param x
+	 * @param max
+	 * @param min
+	 * @return
+	 */
+	private double parabolica1Decreciente(double x, double max, double min){
+		double num = (double)Math.pow(x,2)+ 2*max*x + (double)Math.pow(max, 2);
+		double den = (double)Math.pow(max-min, 2);
+		return num/den;
+	}
+	
+	/**
+	 * 
+	 * @param x
+	 * @param max
+	 * @param min
+	 * @return
+	 */
+	private double parabolica2Creciente(double x, double max, double min){
+		double num = (double)Math.pow(x,2)+ 2*min*x + (double)Math.pow(min, 2);
+		double den = (double)Math.pow(max-min, 2);
+		return num/den;		
+	}
+	
+	/**
+	 * 
+	 * @param x
+	 * @param max
+	 * @param min
+	 * @return
+	 */
+	private double parabolica2Decreciente(double x, double max, double min){
+		double num = -(double)Math.pow(x, 2)+ 2*min*x + (double)Math.pow(max, 2)-2*min*max;
+		double den = (double)Math.pow(max-min, 2);
+		return num/den;		
+	}
+	
+	/**
+	 * 
+	 * @param x
+	 * @param max
+	 * @param min
+	 * @return
+	 */
+	private double parabolicaDoble1Creciente(double x, double max, double min){
+		double num,den;
+		if((x>=min)&&(x<= (max+min)/2)){
+			num = -2*(double)Math.pow(x, 2)+ 2*(max+min)*x - 2*max*min;
+		}
+		else{
+			num = 2*(double)Math.pow(x, 2)- 2*(max+min*x + 2*max*min;		
+		}
+		den = (double)Math.pow(max-min,2);
+		return num/den;
+	}
+	
+	
+	
+	
+	
+	
 }
