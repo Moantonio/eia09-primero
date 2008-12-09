@@ -1,7 +1,5 @@
 package eia.model;
 
-import java.math.*;
-
 /**
  * @author SI: EIA'09
  * 		   Vicente Cruz Mínguez.
@@ -137,11 +135,11 @@ public class ValoracionCuantitativa {
 	}
 	
 	/**
-	 * 
-	 * @param x
-	 * @param max
-	 * @param min
-	 * @return
+	 * Función de transformación parabólica creciente.
+	 * @param x Variable independiente de la función.
+	 * @param max Valor máximo que podrá tomar la variable 'x'. 
+	 * @param min Valor mínimo que podrá tomar la variable 'x'. 
+	 * @return Resultado de la operación.
 	 */
 	private double parabolica1Creciente(double x, double max, double min){
 		double num = - (double)Math.pow(x,2)+ 2*max*x + (double)Math.pow(min, 2)- 2* max * min;
@@ -150,11 +148,11 @@ public class ValoracionCuantitativa {
 	}
 
 	/**
-	 * 
-	 * @param x
-	 * @param max
-	 * @param min
-	 * @return
+	 * Función de transformación parabólica decreciente.
+	 * @param x Variable independiente de la función.
+	 * @param max Valor máximo que podrá tomar la variable 'x'. 
+	 * @param min Valor mínimo que podrá tomar la variable 'x'. 
+	 * @return Resultado de la operación.
 	 */
 	private double parabolica1Decreciente(double x, double max, double min){
 		double num = (double)Math.pow(x,2)+ 2*max*x + (double)Math.pow(max, 2);
@@ -163,11 +161,11 @@ public class ValoracionCuantitativa {
 	}
 	
 	/**
-	 * 
-	 * @param x
-	 * @param max
-	 * @param min
-	 * @return
+	 * Función de transformación parabólica creciente.
+	 * @param x Variable independiente de la función.
+	 * @param max Valor máximo que podrá tomar la variable 'x'. 
+	 * @param min Valor mínimo que podrá tomar la variable 'x'. 
+	 * @return Resultado de la operación.
 	 */
 	private double parabolica2Creciente(double x, double max, double min){
 		double num = (double)Math.pow(x,2)+ 2*min*x + (double)Math.pow(min, 2);
@@ -176,11 +174,11 @@ public class ValoracionCuantitativa {
 	}
 	
 	/**
-	 * 
-	 * @param x
-	 * @param max
-	 * @param min
-	 * @return
+	 * Función de transformación parabólica decreciente.
+	 * @param x Variable independiente de la función.
+	 * @param max Valor máximo que podrá tomar la variable 'x'. 
+	 * @param min Valor mínimo que podrá tomar la variable 'x'. 
+	 * @return Resultado de la operación.
 	 */
 	private double parabolica2Decreciente(double x, double max, double min){
 		double num = -(double)Math.pow(x, 2)+ 2*min*x + (double)Math.pow(max, 2)-2*min*max;
@@ -189,11 +187,11 @@ public class ValoracionCuantitativa {
 	}
 	
 	/**
-	 * 
-	 * @param x
-	 * @param max
-	 * @param min
-	 * @return
+	 * Función de transformación parabólica doble creciente.
+	 * @param x Variable independiente de la función.
+	 * @param max Valor máximo que podrá tomar la variable 'x'. 
+	 * @param min Valor mínimo que podrá tomar la variable 'x'. 
+	 * @return Resultado de la operación.
 	 */
 	private double parabolicaDoble1Creciente(double x, double max, double min){
 		double num,den;
@@ -208,11 +206,11 @@ public class ValoracionCuantitativa {
 	}
 	
 	/**
-	 * 
-	 * @param x
-	 * @param max
-	 * @param min
-	 * @return
+	 * Función de transformación parabólica doble decreciente.
+	 * @param x Variable independiente de la función.
+	 * @param max Valor máximo que podrá tomar la variable 'x'. 
+	 * @param min Valor mínimo que podrá tomar la variable 'x'. 
+	 * @return Resultado de la operación.
 	 */
 	private double parabolicaDoble1DeCreciente(double x, double max, double min){
 		double num,den,y;
@@ -229,11 +227,11 @@ public class ValoracionCuantitativa {
 	}
 	
 	/**
-	 * 
-	 * @param x
-	 * @param max
-	 * @param min
-	 * @return
+	 * Función de transformación parabólica doble creciente.
+	 * @param x Variable independiente de la función.
+	 * @param max Valor máximo que podrá tomar la variable 'x'. 
+	 * @param min Valor mínimo que podrá tomar la variable 'x'. 
+	 * @return Resultado de la operación.
 	 */
 	private double parabolicaDoble2Creciente(double x, double max, double min){
 		double num,den,y;
@@ -250,11 +248,11 @@ public class ValoracionCuantitativa {
 	}
 	
 	/**
-	 * 
-	 * @param x
-	 * @param max
-	 * @param min
-	 * @return
+	 * Función de transformación parabólica doble decreciente.
+	 * @param x Variable independiente de la función.
+	 * @param max Valor máximo que podrá tomar la variable 'x'. 
+	 * @param min Valor mínimo que podrá tomar la variable 'x'. 
+	 * @return Resultado de la operación.
 	 */
 	private double parabolicaDoble2DeCreciente(double x, double max, double min){
 		double num,den,y;
@@ -271,26 +269,26 @@ public class ValoracionCuantitativa {
 	}
 	
 	/**
-	 * 
-	 * @param x
-	 * @param a
-	 * @param max
-	 * @param min
-	 * @return
+	 * Función de transformación máximo intermedio.
+	 * @param x Variable independiente de la función.
+	 * @param a Valor de alcance máximo.
+	 * @param max Valor máximo que podrá tomar la variable 'x'. 
+	 * @param min Valor mínimo que podrá tomar la variable 'x'. 
+	 * @return Resultado de la operación.
 	 */
 	private double maximoIntermedio(double x, double a, double max, double min){
-		double num = -x + 2*a*x + (double)Math.pow(min, 2) - 2*a*min;
+		double num = -(double)Math.pow(x, 2) + 2*a*x + (double)Math.pow(min, 2) - 2*a*min;
 		double den = (double)Math.pow(a-min, 2);
 		return num/den;
 	}
 	
 	/**
-	 * 
-	 * @param x
-	 * @param a
-	 * @param max
-	 * @param min
-	 * @return
+	 * Función de transformación mínimo intermedio.
+	 * @param x Variable independiente de la función.
+	 * @param a Valor de alcance mínimo.
+	 * @param max Valor máximo que podrá tomar la variable 'x'. 
+	 * @param min Valor mínimo que podrá tomar la variable 'x'. 
+	 * @return Resultado de la operación.
 	 */
 	private double minimoIntermedio(double x, double a, double max, double min){
 		double num = (double)Math.pow(x, 2)- 2*a*x + (double)Math.pow(a, 2); 
@@ -299,12 +297,12 @@ public class ValoracionCuantitativa {
 	}
 	
 	/**
-	 * 
-	 * @param x
-	 * @param umbral
-	 * @param max
-	 * @param min
-	 * @return
+	 * Función de transformación con valor umbral creciente.
+	 * @param x Variable independiente de la función.
+	 * @param umbral Valor del umbral.
+	 * @param max Valor máximo que podrá tomar la variable 'x'. 
+	 * @param min Valor mínimo que podrá tomar la variable 'x'. 
+	 * @return Resultado de la operación.
 	 */
 	private double umbralCreciente(double x, double umbral, double max, double min){
 		double y;
@@ -318,12 +316,12 @@ public class ValoracionCuantitativa {
 	}
 	
 	/**
-	 * 
-	 * @param x
-	 * @param umb
-	 * @param max
-	 * @param min
-	 * @return
+	 * Función de transformación con valor umbral decreciente.
+	 * @param x Variable independiente de la función.
+	 * @param umbral Valor del umbral.
+	 * @param max Valor máximo que podrá tomar la variable 'x'. 
+	 * @param min Valor mínimo que podrá tomar la variable 'x'. 
+	 * @return Resultado de la operación.
 	 */
 	private double umbralDecreciente(double x, double umbral, double max, double min){
 		double y;
@@ -338,9 +336,10 @@ public class ValoracionCuantitativa {
 	
 	
 	/**
-	 * 
-	 * @param numFuncion
-	 * @param opc
+	 * Función para calcular el valor de impacto del efecto según análisis
+	 * cuantitativo, estableciendo dicho valor en el atributo 'magnitudImpacto'.
+	 * @param numFuncion Número de función de transformación a aplicar.
+	 * @param opc Parámetro opcional ('a', 'umbral') para las funciones que lo demanden.
 	 */
 	public void calcularValoracion(int numFuncion, double opc){
 		switch (numFuncion){
