@@ -5,7 +5,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JDialog;
@@ -15,10 +14,11 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.TableColumnModel;
 
 public class formPrincipal {
 
@@ -57,8 +57,10 @@ public class formPrincipal {
 	private JMenu eliminarAlternativaMenu = null;
 	private JMenu modificarAlternativaMenu = null;
 	private JPanel infoProyectoPanel = null;
+	private JPanel alternativasPanel = null;
 	private JScrollPane alternativasScrollPane = null;
 	private JTable alternativasTable = null;
+
 	/**
 	 * This method initializes framePrincipal
 	 *
@@ -72,6 +74,7 @@ public class formPrincipal {
 			framePrincipal.setSize(500, 500);
 			framePrincipal.setContentPane(getPanelContenidoPrincipal());
 			framePrincipal.setTitle("EIA09");
+			framePrincipal.setResizable(false);
 		}
 		return framePrincipal;
 	}
@@ -86,7 +89,7 @@ public class formPrincipal {
 			panelContenidoPrincipal = new JPanel();
 			panelContenidoPrincipal.setLayout(null);
 			panelContenidoPrincipal.add(getInfoProyectoPanel(), null);
-			panelContenidoPrincipal.add(getAlternativasScrollPane(), null);
+			panelContenidoPrincipal.add(getAlternativasPanel(), null);
 		}
 		return panelContenidoPrincipal;
 	}
@@ -568,11 +571,26 @@ public class formPrincipal {
 		if (infoProyectoPanel == null) {
 			infoProyectoPanel = new JPanel();
 			infoProyectoPanel.setLayout(null);
-			infoProyectoPanel.setBounds(new Rectangle(20, 32, 454, 158));
-			infoProyectoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),"Proyecto"));
-
+			infoProyectoPanel.setBounds(new Rectangle(31, 24, 434, 172));
+			infoProyectoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Proyecto"));
 		}
 		return infoProyectoPanel;
+	}
+
+	/**
+	 * This method initializes alternativasPanel
+	 *
+	 * @return javax.swing.JPanel
+	 */
+	private JPanel getAlternativasPanel() {
+		if (alternativasPanel == null) {
+			alternativasPanel = new JPanel();
+			alternativasPanel.setLayout(null);
+			alternativasPanel.setBounds(new Rectangle(28, 228, 434, 188));
+			alternativasPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Alternativas"));
+			alternativasPanel.add(getAlternativasScrollPane(), null);
+		}
+		return alternativasPanel;
 	}
 
 	/**
@@ -583,7 +601,7 @@ public class formPrincipal {
 	private JScrollPane getAlternativasScrollPane() {
 		if (alternativasScrollPane == null) {
 			alternativasScrollPane = new JScrollPane();
-			alternativasScrollPane.setBounds(new Rectangle(23, 269, 445, 134));
+			alternativasScrollPane.setBounds(new Rectangle(16, 31, 401, 100));
 			alternativasScrollPane.setViewportView(getAlternativasTable());
 		}
 		return alternativasScrollPane;
@@ -596,7 +614,17 @@ public class formPrincipal {
 	 */
 	private JTable getAlternativasTable() {
 		if (alternativasTable == null) {
-			alternativasTable = new JTable();
+			String[] columnas = {"Alternativa", "Valoración"};
+			Object[][] datos = {{"Alternativa 0", "X"}};
+			alternativasTable = new JTable(datos,columnas);
+			//alternativasTable.setEnabled(false);
+			alternativasTable.getTableHeader().setReorderingAllowed(false);
+			TableColumnModel col = alternativasTable.getColumnModel();
+			col.getColumn(0).setResizable(false);
+			col.getColumn(1).setResizable(false);
+			col.getColumn(0).setPreferredWidth(350);
+
+
 		}
 		return alternativasTable;
 	}
