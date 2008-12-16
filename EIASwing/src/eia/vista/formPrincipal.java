@@ -26,6 +26,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+import java.awt.Dimension;
 
 public class formPrincipal {
 
@@ -89,6 +90,9 @@ public class formPrincipal {
 	private JTextField vidaUtilTextField = null;
 	private JLabel mesesLabel = null;
 	private JButton modificarButton = null;
+	private JButton anadirAltButton = null;
+	private JButton eliminarAltButton = null;
+	private JButton editarAltButton = null;
 	/**
 	 * This method initializes framePrincipal
 	 *
@@ -633,8 +637,9 @@ public class formPrincipal {
 			nombreLabel.setText("Nombre:");
 			infoProyectoPanel = new JPanel();
 			infoProyectoPanel.setLayout(null);
-			infoProyectoPanel.setBounds(new Rectangle(25, 11, 434, 210));
 			infoProyectoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Descripción del proyecto", TitledBorder.LEADING, TitledBorder.TOP, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
+			infoProyectoPanel.setSize(new Dimension(434, 210));
+			infoProyectoPanel.setLocation(new Point(30, 11));
 			infoProyectoPanel.add(getNombreTextField(), null);
 			infoProyectoPanel.add(nombreLabel, null);
 			infoProyectoPanel.add(descripcionLabel, null);
@@ -670,9 +675,13 @@ public class formPrincipal {
 		if (alternativasPanel == null) {
 			alternativasPanel = new JPanel();
 			alternativasPanel.setLayout(null);
-			alternativasPanel.setBounds(new Rectangle(25, 237, 434, 173));
 			alternativasPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Alternativas de realización"));
+			alternativasPanel.setSize(new Dimension(434, 173));
+			alternativasPanel.setLocation(new Point(30, 237));
 			alternativasPanel.add(getAlternativasScrollPane(), null);
+			alternativasPanel.add(getAnadirAltButton(), null);
+			alternativasPanel.add(getEliminarAltButton(), null);
+			alternativasPanel.add(getEditarAltButton(), null);
 		}
 		return alternativasPanel;
 	}
@@ -699,7 +708,7 @@ public class formPrincipal {
 	private JTable getAlternativasTable() {
 		if (alternativasTable == null) {
 			String[] columnas = {"Alternativa", "Valoración"};
-			Object[][] datos = {{"Alternativa 0", "X"}};
+			Object[][] datos = {{"Alternativa 0", "0.578"}};
 			alternativasTable = new JTable(datos,columnas);
 			//alternativasTable.setEnabled(false);
 			alternativasTable.getTableHeader().setReorderingAllowed(false);
@@ -869,6 +878,57 @@ public class formPrincipal {
 			modificarButton.setName("");
 		}
 		return modificarButton;
+	}
+
+	/**
+	 * This method initializes anadirAltButton
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getAnadirAltButton() {
+		if (anadirAltButton == null) {
+			anadirAltButton = new JButton();
+			anadirAltButton.setName("");
+			anadirAltButton.setText("Añadir");
+			anadirAltButton.setLocation(new Point(135, 138));
+			anadirAltButton.setSize(new Dimension(88, 17));
+			anadirAltButton.setBackground(Color.white);
+		}
+		return anadirAltButton;
+	}
+
+	/**
+	 * This method initializes eliminarAltButton
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getEliminarAltButton() {
+		if (eliminarAltButton == null) {
+			eliminarAltButton = new JButton();
+			eliminarAltButton.setName("");
+			eliminarAltButton.setText("Eliminar");
+			eliminarAltButton.setLocation(new Point(327, 138));
+			eliminarAltButton.setSize(new Dimension(88, 17));
+			eliminarAltButton.setBackground(Color.white);
+		}
+		return eliminarAltButton;
+	}
+
+	/**
+	 * This method initializes editarAltButton
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getEditarAltButton() {
+		if (editarAltButton == null) {
+			editarAltButton = new JButton();
+			editarAltButton.setName("");
+			editarAltButton.setText("Editar");
+			editarAltButton.setLocation(new Point(231, 138));
+			editarAltButton.setSize(new Dimension(88, 17));
+			editarAltButton.setBackground(Color.white);
+		}
+		return editarAltButton;
 	}
 
 	/**
