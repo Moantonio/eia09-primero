@@ -20,6 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
 import javax.swing.JTextField;
+import javax.swing.JTextArea;
 
 public class formPrincipal {
 
@@ -67,7 +68,21 @@ public class formPrincipal {
 	private JLabel tipoLabel = null;
 	private JLabel companiaLabel = null;
 	private JLabel autorLabel = null;
-
+	private JLabel poblacionLabel = null;
+	private JLabel paisLabel = null;
+	private JLabel provinciaLabel = null;
+	private JLabel fechaLabel = null;
+	private JLabel vidaUtilLabel = null;
+	private JTextField tipoTextField = null;
+	private JTextArea descripcionTextArea = null;
+	private JTextField companiaTextField = null;
+	private JTextField poblacionTextField = null;
+	private JTextField paisTextField = null;
+	private JTextField provinciaTextField = null;
+	private JTextField autorTextField = null;
+	private JTextField fechaTextField = null;
+	private JTextField vidaUtilTextField = null;
+	private JLabel mesesLabel = null;
 	/**
 	 * This method initializes framePrincipal
 	 *
@@ -576,24 +591,42 @@ public class formPrincipal {
 	 */
 	private JPanel getInfoProyectoPanel() {
 		if (infoProyectoPanel == null) {
+			mesesLabel = new JLabel();
+			mesesLabel.setBounds(new Rectangle(374, 148, 48, 16));
+			mesesLabel.setText("meses");
+			vidaUtilLabel = new JLabel();
+			vidaUtilLabel.setBounds(new Rectangle(289, 148, 54, 16));
+			vidaUtilLabel.setText("Vida útil:");
+			fechaLabel = new JLabel();
+			fechaLabel.setBounds(new Rectangle(168, 148, 44, 16));
+			fechaLabel.setText("Fecha:");
+			provinciaLabel = new JLabel();
+			provinciaLabel.setBounds(new Rectangle(229, 123, 59, 16));
+			provinciaLabel.setText("Provincia:");
+			paisLabel = new JLabel();
+			paisLabel.setBounds(new Rectangle(54, 148, 29, 16));
+			paisLabel.setText("Pais:");
+			poblacionLabel = new JLabel();
+			poblacionLabel.setBounds(new Rectangle(22, 124, 60, 16));
+			poblacionLabel.setText("Población:");
 			autorLabel = new JLabel();
-			autorLabel.setBounds(new Rectangle(149, 128, 60, 16));
-			autorLabel.setText("Compañía:");
+			autorLabel.setBounds(new Rectangle(249, 98, 37, 16));
+			autorLabel.setText("Autor:");
 			companiaLabel = new JLabel();
-			companiaLabel.setBounds(new Rectangle(202, 99, 97, 16));
+			companiaLabel.setBounds(new Rectangle(20, 98, 61, 16));
 			companiaLabel.setText("Compañía:");
 			tipoLabel = new JLabel();
-			tipoLabel.setBounds(new Rectangle(55, 93, 102, 13));
+			tipoLabel.setBounds(new Rectangle(245, 27, 80, 19));
 			tipoLabel.setText("Tipo proyecto:");
 			descripcionLabel = new JLabel();
-			descripcionLabel.setBounds(new Rectangle(17, 60, 80, 16));
+			descripcionLabel.setBounds(new Rectangle(8, 66, 72, 16));
 			descripcionLabel.setText("Descripción:");
 			nombreLabel = new JLabel();
-			nombreLabel.setBounds(new Rectangle(19, 29, 50, 19));
+			nombreLabel.setBounds(new Rectangle(32, 27, 50, 19));
 			nombreLabel.setText("Nombre:");
 			infoProyectoPanel = new JPanel();
 			infoProyectoPanel.setLayout(null);
-			infoProyectoPanel.setBounds(new Rectangle(31, 24, 434, 172));
+			infoProyectoPanel.setBounds(new Rectangle(25, 11, 434, 183));
 			infoProyectoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Proyecto"));
 			infoProyectoPanel.add(getNombreTextField(), null);
 			infoProyectoPanel.add(nombreLabel, null);
@@ -601,6 +634,21 @@ public class formPrincipal {
 			infoProyectoPanel.add(tipoLabel, null);
 			infoProyectoPanel.add(companiaLabel, null);
 			infoProyectoPanel.add(autorLabel, null);
+			infoProyectoPanel.add(poblacionLabel, null);
+			infoProyectoPanel.add(paisLabel, null);
+			infoProyectoPanel.add(provinciaLabel, null);
+			infoProyectoPanel.add(fechaLabel, null);
+			infoProyectoPanel.add(vidaUtilLabel, null);
+			infoProyectoPanel.add(getTipoTextField(), null);
+			infoProyectoPanel.add(getDescripcionTextArea(), null);
+			infoProyectoPanel.add(getCompaniaTextField(), null);
+			infoProyectoPanel.add(getPoblacionTextField(), null);
+			infoProyectoPanel.add(getPaisTextField(), null);
+			infoProyectoPanel.add(getProvinciaTextField(), null);
+			infoProyectoPanel.add(getAutorTextField(), null);
+			infoProyectoPanel.add(getFechaTextField(), null);
+			infoProyectoPanel.add(getVidaUtilTextField(), null);
+			infoProyectoPanel.add(mesesLabel, null);
 		}
 		return infoProyectoPanel;
 	}
@@ -658,16 +706,134 @@ public class formPrincipal {
 	}
 
 	/**
-	 * This method initializes nombreTextField	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes nombreTextField
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getNombreTextField() {
 		if (nombreTextField == null) {
 			nombreTextField = new JTextField();
-			nombreTextField.setBounds(new Rectangle(77, 30, 151, 18));
+			nombreTextField.setBounds(new Rectangle(88, 29, 151, 18));
 		}
 		return nombreTextField;
+	}
+
+	/**
+	 * This method initializes tipoTextField
+	 *
+	 * @return javax.swing.JTextField
+	 */
+	private JTextField getTipoTextField() {
+		if (tipoTextField == null) {
+			tipoTextField = new JTextField();
+			tipoTextField.setBounds(new Rectangle(329, 28, 87, 18));
+		}
+		return tipoTextField;
+	}
+
+	/**
+	 * This method initializes descripcionTextArea
+	 *
+	 * @return javax.swing.JTextArea
+	 */
+	private JTextArea getDescripcionTextArea() {
+		if (descripcionTextArea == null) {
+			descripcionTextArea = new JTextArea();
+			descripcionTextArea.setBounds(new Rectangle(88, 54, 327, 36));
+			//descripcionTextArea.
+		}
+		return descripcionTextArea;
+	}
+
+	/**
+	 * This method initializes companiaTextField
+	 *
+	 * @return javax.swing.JTextField
+	 */
+	private JTextField getCompaniaTextField() {
+		if (companiaTextField == null) {
+			companiaTextField = new JTextField();
+			companiaTextField.setBounds(new Rectangle(88, 98, 125, 18));
+		}
+		return companiaTextField;
+	}
+
+	/**
+	 * This method initializes poblacionTextField
+	 *
+	 * @return javax.swing.JTextField
+	 */
+	private JTextField getPoblacionTextField() {
+		if (poblacionTextField == null) {
+			poblacionTextField = new JTextField();
+			poblacionTextField.setBounds(new Rectangle(88, 123, 125, 18));
+		}
+		return poblacionTextField;
+	}
+
+	/**
+	 * This method initializes paisTextField
+	 *
+	 * @return javax.swing.JTextField
+	 */
+	private JTextField getPaisTextField() {
+		if (paisTextField == null) {
+			paisTextField = new JTextField();
+			paisTextField.setBounds(new Rectangle(89, 148, 75, 18));
+		}
+		return paisTextField;
+	}
+
+	/**
+	 * This method initializes provinciaTextField
+	 *
+	 * @return javax.swing.JTextField
+	 */
+	private JTextField getProvinciaTextField() {
+		if (provinciaTextField == null) {
+			provinciaTextField = new JTextField();
+			provinciaTextField.setBounds(new Rectangle(292, 123, 125, 18));
+		}
+		return provinciaTextField;
+	}
+
+	/**
+	 * This method initializes autorTextField
+	 *
+	 * @return javax.swing.JTextField
+	 */
+	private JTextField getAutorTextField() {
+		if (autorTextField == null) {
+			autorTextField = new JTextField();
+			autorTextField.setBounds(new Rectangle(292, 98, 125, 18));
+		}
+		return autorTextField;
+	}
+
+	/**
+	 * This method initializes fechaTextField
+	 *
+	 * @return javax.swing.JTextField
+	 */
+	private JTextField getFechaTextField() {
+		if (fechaTextField == null) {
+			fechaTextField = new JTextField();
+			fechaTextField.setBounds(new Rectangle(210, 148, 75, 18));
+		}
+		return fechaTextField;
+	}
+
+	/**
+	 * This method initializes vidaUtilTextField
+	 *
+	 * @return javax.swing.JTextField
+	 */
+	private JTextField getVidaUtilTextField() {
+		if (vidaUtilTextField == null) {
+			vidaUtilTextField = new JTextField();
+			vidaUtilTextField.setBounds(new Rectangle(343, 148, 29, 18));
+		}
+		return vidaUtilTextField;
 	}
 
 	/**
