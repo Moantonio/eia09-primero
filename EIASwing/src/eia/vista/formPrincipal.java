@@ -740,7 +740,7 @@ public class formPrincipal {
 		if (descripcionTextArea == null) {
 			descripcionTextArea = new JTextArea();
 			descripcionTextArea.setBounds(new Rectangle(88, 54, 327, 36));
-			//descripcionTextArea.
+			//descripcionTextArea.setBorder();
 		}
 		return descripcionTextArea;
 	}
