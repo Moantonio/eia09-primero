@@ -1,25 +1,21 @@
 package eia.vista;
 
-import java.awt.BorderLayout;
-import javax.swing.JPanel;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.GridBagLayout;
+
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.Point;
-import javax.swing.JTextField;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JTabbedPane;
-import javax.swing.JOptionPane;
-import javax.swing.JComboBox;
 
 public class formEfecto extends JFrame {
 
@@ -68,6 +64,7 @@ public class formEfecto extends JFrame {
 		this.setSize(500, 450);
 		this.setContentPane(getContenedorPrincipalPane());
 		this.setTitle("Valoración de efectos");
+		this.setResizable(false);
 	}
 
 	/**
