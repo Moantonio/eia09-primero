@@ -28,9 +28,10 @@ public class XMLProyecto extends XMLTools{
 	
 	Logger log;
 	
-	public XMLProyecto(){	
+	public XMLProyecto(String dtd){	
 		log = Logger.getLogger( this.getClass() );
 		PropertyConfigurator.configure(Constants.LOG4J_PROPERTIES);
+		this.setDtd(dtd);
 	}
 	
 	
@@ -247,6 +248,16 @@ public class XMLProyecto extends XMLTools{
             pais.setTextContent(proy.getInformacion().getPais());
             root.appendChild(pais);
             
+            //Creamos la lista de alternativas.
+            ArrayList<Alternativa> listaAlt = proy.getAlternativas();
+            
+            Element listaAlternativas = (Element)document.createElement("listaAlternativas");            
+            for(int i=0; i<listaAlt.size(); i++){
+            	Element elemAlternativa = (Element)document.createElement("nombreAlternativa");
+            	elemAlternativa.setTextContent(listaAlt.get(i).getId());
+            	listaAlternativas.appendChild(elemAlternativa);
+            }            
+            root.appendChild(listaAlternativas);
             
             //Creamos la lista de factores.
             Element listaFactores = (Element)document.createElement("listaFactores");
@@ -262,17 +273,7 @@ public class XMLProyecto extends XMLTools{
             		i = i + cont + 1;
             	listaFactores.appendChild(factor);
             }            
-            root.appendChild(listaFactores);
-            
-            ArrayList<Alternativa> listaAlt = proy.getAlternativas();
-            
-            Element listaAlternativas = (Element)document.createElement("listaAlternativas");            
-            for(int i=0; i<listaAlt.size(); i++){
-            	Element elemAlternativa = (Element)document.createElement("nombreAlternativa");
-            	elemAlternativa.setTextContent(listaAlt.get(i).getId());
-            	listaAlternativas.appendChild(elemAlternativa);
-            }            
-            root.appendChild(listaAlternativas);
+            root.appendChild(listaFactores);           
             
             //Finalizado el archivo XML se almacena físicamente            
             writeFile(document, archivo);

@@ -20,6 +20,9 @@ import org.w3c.dom.*;
  */
 public abstract class XMLTools {
 	
+	/**Atributo que especifica la dtd asociada al XML*/
+	private String dtd;
+	
 	 /**
 	  * Metodo que recibe un archivo de texto xml, y lo almacena en un Document
 	  * @param filename Ruta del fichero xml.
@@ -46,6 +49,7 @@ public abstract class XMLTools {
             File file = new File(filename);
             Result result = new StreamResult(file);
             Transformer xformer = TransformerFactory.newInstance().newTransformer();
+            xformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, dtd);
             xformer.transform(source, result);
         } 
         catch (java.lang.Exception e) {
@@ -64,4 +68,18 @@ public abstract class XMLTools {
      * @return Objeto con la informacion cargada.
      */
     public abstract Object leer(String filename);
+	
+    /**
+	 * @return the dtd
+	 */
+	public String getDtd() {
+		return dtd;
+	}
+	
+	/**
+	 * @param dtd the dtd to set
+	 */
+	public void setDtd(String dtd) {
+		this.dtd = dtd;
+	}
 }

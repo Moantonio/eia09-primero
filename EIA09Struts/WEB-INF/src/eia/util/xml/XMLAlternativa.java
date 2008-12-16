@@ -28,10 +28,11 @@ public class XMLAlternativa extends XMLTools{
 	Logger log;
 	Proyecto p;
 	
-	public XMLAlternativa(Proyecto p){	
+	public XMLAlternativa(Proyecto p, String dtd){	
 		log = Logger.getLogger( this.getClass() );
 		PropertyConfigurator.configure(Constants.LOG4J_PROPERTIES);
 		this.p = p;
+		this.setDtd(dtd);
 	}
 
 	 /**
@@ -164,7 +165,7 @@ public class XMLAlternativa extends XMLTools{
             DocumentBuilder builder = factory.newDocumentBuilder();
             document = builder.newDocument();
  
-            /*Creación del elemento ráiz*/
+            /*Creación del elemento ráiz*/            
             Element root = (Element) document.createElement("alternativaProyEIA");
             document.appendChild (root);
             
@@ -201,6 +202,10 @@ public class XMLAlternativa extends XMLTools{
 	            	Element descripcion = document.createElement("descripcion");
 	            	descripcion.setTextContent(ef.getDescripcion());
 	            	elemEfecto.appendChild(descripcion);
+	            	
+	            	Element caracter = document.createElement("caracter");
+	            	caracter.setTextContent(ef.getCaracter().toString());
+	            	elemEfecto.appendChild(caracter);
 	            	
 	            	Element idAccion = document.createElement("idAccion");
 	            	idAccion.setTextContent(ef.getAccion().getId());
