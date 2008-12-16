@@ -45,7 +45,7 @@ public class formCrearEfecto extends JFrame {
 
 	/**
 	 * This method initializes this
-	 * 
+	 *
 	 * @return void
 	 */
 	private void initialize() {
@@ -56,7 +56,7 @@ public class formCrearEfecto extends JFrame {
 
 	/**
 	 * This method initializes jContentPane
-	 * 
+	 *
 	 * @return javax.swing.JPanel
 	 */
 	private JPanel getJContentPane() {
@@ -81,9 +81,9 @@ public class formCrearEfecto extends JFrame {
 	}
 
 	/**
-	 * This method initializes accionTextField	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes accionTextField
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getAccionTextField() {
 		if (accionTextField == null) {
@@ -95,9 +95,9 @@ public class formCrearEfecto extends JFrame {
 	}
 
 	/**
-	 * This method initializes factorTextField	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes factorTextField
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getFactorTextField() {
 		if (factorTextField == null) {
@@ -109,9 +109,9 @@ public class formCrearEfecto extends JFrame {
 	}
 
 	/**
-	 * This method initializes crearEfectoPanel	
-	 * 	
-	 * @return javax.swing.JPanel	
+	 * This method initializes crearEfectoPanel
+	 *
+	 * @return javax.swing.JPanel
 	 */
 	private JPanel getCrearEfectoPanel() {
 		if (crearEfectoPanel == null) {
@@ -143,9 +143,9 @@ public class formCrearEfecto extends JFrame {
 	}
 
 	/**
-	 * This method initializes aceptarButton	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes aceptarButton
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getAceptarButton() {
 		if (aceptarButton == null) {
@@ -158,9 +158,9 @@ public class formCrearEfecto extends JFrame {
 	}
 
 	/**
-	 * This method initializes cancelarButton	
-	 * 	
-	 * @return javax.swing.JButton	
+	 * This method initializes cancelarButton
+	 *
+	 * @return javax.swing.JButton
 	 */
 	private JButton getCancelarButton() {
 		if (cancelarButton == null) {
@@ -173,39 +173,39 @@ public class formCrearEfecto extends JFrame {
 	}
 
 	/**
-	 * This method initializes nombreTextField	
-	 * 	
-	 * @return javax.swing.JTextField	
+	 * This method initializes nombreTextField
+	 *
+	 * @return javax.swing.JTextField
 	 */
 	private JTextField getNombreTextField() {
 		if (nombreTextField == null) {
 			nombreTextField = new JTextField();
 			nombreTextField.setLocation(new Point(135, 31));
 			nombreTextField.setFont(new Font("Dialog", Font.PLAIN, 14));
-			nombreTextField.setSize(new Dimension(270, 18));
+			nombreTextField.setSize(new Dimension(273, 18));
 		}
 		return nombreTextField;
 	}
 
 	/**
-	 * This method initializes descripcionTextArea	
-	 * 	
-	 * @return javax.swing.JTextArea	
+	 * This method initializes descripcionTextArea
+	 *
+	 * @return javax.swing.JTextArea
 	 */
 	private JTextArea getDescripcionTextArea() {
 		if (descripcionTextArea == null) {
 			descripcionTextArea = new JTextArea();
-			descripcionTextArea.setBounds(new Rectangle(135, 56, 270, 47));
-			descripcionTextArea.setFont(new Font("Dialog", Font.PLAIN, 10));
+			descripcionTextArea.setBounds(new Rectangle(135, 56, 272, 47));
+			descripcionTextArea.setFont(new Font("Dialog", Font.PLAIN, 12));
 			descripcionTextArea.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
 		}
 		return descripcionTextArea;
 	}
 
 	/**
-	 * This method initializes enjuiciamientoComboBox	
-	 * 	
-	 * @return javax.swing.JComboBox	
+	 * This method initializes enjuiciamientoComboBox
+	 *
+	 * @return javax.swing.JComboBox
 	 */
 	private JComboBox getEnjuiciamientoComboBox() {
 		if (enjuiciamientoComboBox == null) {
