@@ -389,7 +389,7 @@ public class formAlternativa extends JFrame {
 		if (valoracionTextField == null) {
 			valoracionTextField = new JTextField();
 			valoracionTextField.setFont(new Font("Dialog", Font.PLAIN, 16));
-			valoracionTextField.setBounds(new Rectangle(156, 4, 91, 25));
+			valoracionTextField.setBounds(new Rectangle(156, 4, 105, 25));
 		}
 		return valoracionTextField;
 	}
@@ -426,16 +426,16 @@ public class formAlternativa extends JFrame {
 	}
 
 	/**
-	 * This method initializes valoracionPanel	
-	 * 	
-	 * @return javax.swing.JPanel	
+	 * This method initializes valoracionPanel
+	 *
+	 * @return javax.swing.JPanel
 	 */
 	private JPanel getValoracionPanel() {
 		if (valoracionPanel == null) {
 			valoracionPanel = new JPanel();
 			valoracionPanel.setLayout(null);
 			valoracionPanel.setBounds(new Rectangle(90, 393, 267, 31));
-			valoracionPanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.black));
+			valoracionPanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.gray));
 			valoracionPanel.add(getValoracionTextField(), null);
 			valoracionPanel.add(valoracionLabel, null);
 		}
