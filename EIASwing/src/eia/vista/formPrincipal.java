@@ -22,6 +22,10 @@ import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
+import javax.swing.JButton;
+import java.awt.Font;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 
 public class formPrincipal {
 
@@ -84,6 +88,7 @@ public class formPrincipal {
 	private JTextField fechaTextField = null;
 	private JTextField vidaUtilTextField = null;
 	private JLabel mesesLabel = null;
+	private JButton modificarButton = null;
 	/**
 	 * This method initializes framePrincipal
 	 *
@@ -593,7 +598,8 @@ public class formPrincipal {
 	private JPanel getInfoProyectoPanel() {
 		if (infoProyectoPanel == null) {
 			mesesLabel = new JLabel();
-			mesesLabel.setBounds(new Rectangle(374, 148, 48, 16));
+			mesesLabel.setBounds(new Rectangle(374, 148, 42, 16));
+			mesesLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
 			mesesLabel.setText("meses");
 			vidaUtilLabel = new JLabel();
 			vidaUtilLabel.setBounds(new Rectangle(289, 148, 54, 16));
@@ -627,8 +633,8 @@ public class formPrincipal {
 			nombreLabel.setText("Nombre:");
 			infoProyectoPanel = new JPanel();
 			infoProyectoPanel.setLayout(null);
-			infoProyectoPanel.setBounds(new Rectangle(25, 11, 434, 183));
-			infoProyectoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Proyecto"));
+			infoProyectoPanel.setBounds(new Rectangle(25, 11, 434, 210));
+			infoProyectoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Descripción del proyecto", TitledBorder.LEADING, TitledBorder.TOP, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
 			infoProyectoPanel.add(getNombreTextField(), null);
 			infoProyectoPanel.add(nombreLabel, null);
 			infoProyectoPanel.add(descripcionLabel, null);
@@ -650,6 +656,7 @@ public class formPrincipal {
 			infoProyectoPanel.add(getFechaTextField(), null);
 			infoProyectoPanel.add(getVidaUtilTextField(), null);
 			infoProyectoPanel.add(mesesLabel, null);
+			infoProyectoPanel.add(getModificarButton(), null);
 		}
 		return infoProyectoPanel;
 	}
@@ -663,8 +670,8 @@ public class formPrincipal {
 		if (alternativasPanel == null) {
 			alternativasPanel = new JPanel();
 			alternativasPanel.setLayout(null);
-			alternativasPanel.setBounds(new Rectangle(28, 228, 434, 188));
-			alternativasPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Alternativas"));
+			alternativasPanel.setBounds(new Rectangle(25, 237, 434, 173));
+			alternativasPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Alternativas de realización"));
 			alternativasPanel.add(getAlternativasScrollPane(), null);
 		}
 		return alternativasPanel;
@@ -715,6 +722,7 @@ public class formPrincipal {
 		if (nombreTextField == null) {
 			nombreTextField = new JTextField();
 			nombreTextField.setBounds(new Rectangle(88, 29, 151, 18));
+			nombreTextField.setEnabled(false);
 		}
 		return nombreTextField;
 	}
@@ -728,6 +736,7 @@ public class formPrincipal {
 		if (tipoTextField == null) {
 			tipoTextField = new JTextField();
 			tipoTextField.setBounds(new Rectangle(329, 28, 87, 18));
+			tipoTextField.setEnabled(false);
 		}
 		return tipoTextField;
 	}
@@ -741,6 +750,7 @@ public class formPrincipal {
 		if (descripcionTextArea == null) {
 			descripcionTextArea = new JTextArea();
 			descripcionTextArea.setBounds(new Rectangle(88, 54, 327, 36));
+			descripcionTextArea.setEnabled(false);
 			descripcionTextArea.setBorder(BorderFactory.createLineBorder(new Color(192192192)));
 
 		}
@@ -756,6 +766,7 @@ public class formPrincipal {
 		if (companiaTextField == null) {
 			companiaTextField = new JTextField();
 			companiaTextField.setBounds(new Rectangle(88, 98, 125, 18));
+			companiaTextField.setEnabled(false);
 		}
 		return companiaTextField;
 	}
@@ -769,6 +780,7 @@ public class formPrincipal {
 		if (poblacionTextField == null) {
 			poblacionTextField = new JTextField();
 			poblacionTextField.setBounds(new Rectangle(88, 123, 125, 18));
+			poblacionTextField.setEnabled(false);
 		}
 		return poblacionTextField;
 	}
@@ -782,6 +794,7 @@ public class formPrincipal {
 		if (paisTextField == null) {
 			paisTextField = new JTextField();
 			paisTextField.setBounds(new Rectangle(89, 148, 75, 18));
+			paisTextField.setEnabled(false);
 		}
 		return paisTextField;
 	}
@@ -795,6 +808,7 @@ public class formPrincipal {
 		if (provinciaTextField == null) {
 			provinciaTextField = new JTextField();
 			provinciaTextField.setBounds(new Rectangle(292, 123, 125, 18));
+			provinciaTextField.setEnabled(false);
 		}
 		return provinciaTextField;
 	}
@@ -808,6 +822,7 @@ public class formPrincipal {
 		if (autorTextField == null) {
 			autorTextField = new JTextField();
 			autorTextField.setBounds(new Rectangle(292, 98, 125, 18));
+			autorTextField.setEnabled(false);
 		}
 		return autorTextField;
 	}
@@ -821,6 +836,7 @@ public class formPrincipal {
 		if (fechaTextField == null) {
 			fechaTextField = new JTextField();
 			fechaTextField.setBounds(new Rectangle(210, 148, 75, 18));
+			fechaTextField.setEnabled(false);
 		}
 		return fechaTextField;
 	}
@@ -834,8 +850,25 @@ public class formPrincipal {
 		if (vidaUtilTextField == null) {
 			vidaUtilTextField = new JTextField();
 			vidaUtilTextField.setBounds(new Rectangle(343, 148, 29, 18));
+			vidaUtilTextField.setEnabled(false);
 		}
 		return vidaUtilTextField;
+	}
+
+	/**
+	 * This method initializes modificarButton
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getModificarButton() {
+		if (modificarButton == null) {
+			modificarButton = new JButton();
+			modificarButton.setBounds(new Rectangle(322, 175, 94, 17));
+			modificarButton.setText("Modificar");
+			modificarButton.setBackground(Color.white);
+			modificarButton.setName("");
+		}
+		return modificarButton;
 	}
 
 	/**
