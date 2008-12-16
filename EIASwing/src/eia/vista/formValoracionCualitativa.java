@@ -72,7 +72,7 @@ public class formValoracionCualitativa extends JFrame {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(500, 500);
+		this.setSize(500, 450);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Valoración cualitativa");
 		this.setResizable(false);
@@ -211,7 +211,7 @@ public class formValoracionCualitativa extends JFrame {
 			cualitativaPanel.setLayout(null);
 			cualitativaPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Valoración Cualitativa", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
 			cualitativaPanel.setLocation(new Point(10, 99));
-			cualitativaPanel.setSize(new Dimension(459, 346));
+			cualitativaPanel.setSize(new Dimension(459, 297));
 			cualitativaPanel.add(getBotoneraPanel(), null);
 			cualitativaPanel.add(getSignoComboBox(), null);
 			cualitativaPanel.add(getAcumulacionComboBox(), null);
@@ -253,7 +253,7 @@ public class formValoracionCualitativa extends JFrame {
 			botoneraPanel = new JPanel();
 			botoneraPanel.setLayout(null);
 			botoneraPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
-			botoneraPanel.setLocation(new Point(124, 280));
+			botoneraPanel.setLocation(new Point(229, 220));
 			botoneraPanel.setSize(new Dimension(199, 50));
 			botoneraPanel.add(getAceptarButton(), null);
 			botoneraPanel.add(getCancelarButton(), null);
@@ -451,7 +451,7 @@ public class formValoracionCualitativa extends JFrame {
 			incidenciaPanel.setLayout(null);
 			incidenciaPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 			incidenciaPanel.setSize(new Dimension(179, 54));
-			incidenciaPanel.setLocation(new Point(133, 217));
+			incidenciaPanel.setLocation(new Point(27, 219));
 			incidenciaPanel.add(getIncidenciaTextField(), null);
 			incidenciaPanel.add(incidenciaLabel, null);
 		}
@@ -466,7 +466,7 @@ public class formValoracionCualitativa extends JFrame {
 	private JTextField getIncidenciaTextField() {
 		if (incidenciaTextField == null) {
 			incidenciaTextField = new JTextField();
-			incidenciaTextField.setLocation(new Point(56, 28));
+			incidenciaTextField.setLocation(new Point(53, 27));
 			incidenciaTextField.setEnabled(false);
 			incidenciaTextField.setSize(new Dimension(65, 18));
 		}
