@@ -5,6 +5,8 @@ import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+
 import java.awt.Dimension;
 import javax.swing.JLabel;
 import java.awt.Rectangle;
@@ -190,5 +192,15 @@ public class formAlternativa extends JFrame {
 		}
 		return eliminarButton;
 	}
-
+	/**
+	 * Launches this application
+	 */
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				formAlternativa application = new formAlternativa();
+				application.setVisible(true);
+			}
+		});
+	}
 }
