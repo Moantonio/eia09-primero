@@ -16,7 +16,10 @@ import eia.model.Alternativa;
 import eia.model.Efecto;
 import eia.model.Factor;
 import eia.model.Proyecto;
-import eia.model.ValorJuicio;
+import eia.model.ValoracionCualitativa;
+import eia.model.ValoracionCuantitativa;
+import eia.util.CaracterEfecto;
+import eia.util.ValorJuicio;
 import eia.util.Arbol;
 import eia.util.Constants;
 
@@ -73,19 +76,49 @@ public class XMLAlternativa extends XMLTools{
 	        	Efecto ef = new Efecto();
 	        	ef.setId(efectoElem.getElementsByTagName("idEfecto").item(0).getTextContent());
 	        	ef.setDescripcion(efectoElem.getElementsByTagName("descripcion").item(0).getTextContent());
-	        	ef.setAccion(alt.getAcciones().buscarElemento(efectoElem.getElementsByTagName("idAccion").item(0).getTextContent()));
+	        	String idAcc = efectoElem.getElementsByTagName("idAccion").item(0).getTextContent();
+	        	ef.setAccion(alt.getAcciones().buscarElemento(idAcc));
 	        	ef.setFactor(arbFact.buscarElemento(efectoElem.getElementsByTagName("idFactor").item(0).getTextContent()));
-	        	ef.setJuicio(ValorJuicio.valueOf(ValorJuicio.class, efectoElem.getElementsByTagName("valorSimpleEnjuiciamiento").item(0).getTextContent()));
-	        	ef.setImportancia(Double.valueOf(efectoElem.getElementsByTagName("valorCualitativo").item(0).getTextContent()));
-	        	ef.setValorCuantitativo(Double.valueOf(efectoElem.getElementsByTagName("valorCuantitativo").item(0).getTextContent()));
-	        	ef.setValorTotal(Double.valueOf(efectoElem.getElementsByTagName("valorTotal").item(0).getTextContent()));       	
+	        	ef.setJuicio(ValorJuicio.valueOf(efectoElem.getElementsByTagName("valorSimpleEnjuiciamiento").item(0).getTextContent()));
+	        	ef.setCaracter(CaracterEfecto.valueOf(efectoElem.getElementsByTagName("caracter").item(0).getTextContent()));
+	        	
+	        	Element valoracion = (Element)efectoElem.getElementsByTagName("valorCuantitativo").item(0);
+	        	if(valoracion != null){
+		        	ValoracionCuantitativa valCuant = new ValoracionCuantitativa(Double.valueOf(valoracion.getElementsByTagName("indicador").item(0).getTextContent()),
+							 													 Double.valueOf(valoracion.getElementsByTagName("maxVal").item(0).getTextContent()),
+							 													 Double.valueOf(valoracion.getElementsByTagName("minVal").item(0).getTextContent()));
+		        	ef.setValCuantitativa(valCuant);
+	        	}
+	        	
+	        	valoracion = (Element)efectoElem.getElementsByTagName("valorCualitativo").item(0);
+	        	if(valoracion != null){
+	        		ValoracionCualitativa valCual = new ValoracionCualitativa(Integer.valueOf(valoracion.getElementsByTagName("signo").item(0).getTextContent()),
+	        																  Integer.valueOf(valoracion.getElementsByTagName("acumulacion").item(0).getTextContent()), 
+	        																  Integer.valueOf(valoracion.getElementsByTagName("extension").item(0).getTextContent()), 
+	        																  Integer.valueOf(valoracion.getElementsByTagName("extensionCritica").item(0).getTextContent()),
+	        																  Integer.valueOf(valoracion.getElementsByTagName("intensidad").item(0).getTextContent()), 
+	        																  Integer.valueOf(valoracion.getElementsByTagName("persistencia").item(0).getTextContent()),
+	        																  Integer.valueOf(valoracion.getElementsByTagName("reversibilidad").item(0).getTextContent()), 
+	        																  Integer.valueOf(valoracion.getElementsByTagName("recuperabilidad").item(0).getTextContent()),
+	        																  Integer.valueOf(valoracion.getElementsByTagName("periodicidad").item(0).getTextContent()), 
+	        																  Integer.valueOf(valoracion.getElementsByTagName("momento").item(0).getTextContent()), 
+	        																  Integer.valueOf(valoracion.getElementsByTagName("momentoCritico").item(0).getTextContent()), 
+	        																  Integer.valueOf(valoracion.getElementsByTagName("efectoImp").item(0).getTextContent()));
+	        	
+	        		ef.setValCualitativa(valCual);
+	        	}
+	     	    
+	        	Element elemValorTotal = (Element)efectoElem.getElementsByTagName("valorTotal").item(0);
+	        	if(elemValorTotal != null)
+	        		ef.setValorTotal(Double.valueOf(elemValorTotal.getTextContent()));       	
 	        	listaEf.add(ef);
 	        }
         }
         alt.setEfectos(listaEf);
         if(elemento.getElementsByTagName("valorTotalAlternativa").item(0)!=null)
         	alt.setValorTotal(Double.valueOf(elemento.getElementsByTagName("valorTotalAlternativa").item(0).getTextContent()));
-		return alt;
+		
+        return alt;
 	}
 	
 	 /**
@@ -182,11 +215,76 @@ public class XMLAlternativa extends XMLTools{
 	            	elemEfecto.appendChild(valorSimpleEnjuiciamiento);
 	            	
 	            	Element valorCuantitativo = document.createElement("valorCuantitativo");
-	            	valorCuantitativo.setTextContent(String.valueOf(ef.getValorCuantitativo()));
+	            	
+	            	Element indicador = document.createElement("indicador");
+	            	indicador.setTextContent(Double.toString(ef.getValCuantitativa().getIndicador()));
+	            	valorCuantitativo.appendChild(indicador);
+	            	Element maxVal = document.createElement("maxVal");
+	            	maxVal.setTextContent(Double.toString(ef.getValCuantitativa().getMayorValorIndicador()));
+	            	valorCuantitativo.appendChild(maxVal);
+	            	Element minVal = document.createElement("minVal");
+	            	minVal.setTextContent(Double.toString(ef.getValCuantitativa().getMenorValorIndicador()));
+	            	valorCuantitativo.appendChild(minVal);
+	            	Element magnitud = document.createElement("magnitud");
+	            	magnitud.setTextContent(Double.toString(ef.getValCuantitativa().getMagnitudImpacto()));
+	            	valorCuantitativo.appendChild(magnitud);
+	            	
 	            	elemEfecto.appendChild(valorCuantitativo);
 	            	
 	            	Element valorCualitativo = document.createElement("valorCualitativo");
-	            	valorCualitativo.setTextContent(String.valueOf(ef.getImportancia()));
+	            	
+	            	Element signo = document.createElement("signo");
+	            	signo.setTextContent(Integer.toString(ef.getValCualitativa().getSigno()));
+	            	valorCualitativo.appendChild(signo);
+	            	
+	            	Element acumulacion = document.createElement("acumulacion");
+	            	acumulacion.setTextContent(Integer.toString(ef.getValCualitativa().getAcumulacion()));
+	            	valorCualitativo.appendChild(acumulacion);
+	            	
+	            	Element extension = document.createElement("extension");
+	            	extension.setTextContent(Integer.toString(ef.getValCualitativa().getExtension()));
+	            	valorCualitativo.appendChild(extension);
+	            	
+	            	Element extensionCritica = document.createElement("extensionCritica");
+	            	extensionCritica.setTextContent(Integer.toString(ef.getValCualitativa().getExtensionCritica()));
+	            	valorCualitativo.appendChild(extensionCritica);
+	            	
+	            	Element intensidad = document.createElement("intensidad");
+	            	intensidad.setTextContent(Integer.toString(ef.getValCualitativa().getIntensidad()));
+	            	valorCualitativo.appendChild(intensidad);
+	            	
+	            	Element persistencia = document.createElement("persistencia");
+	            	persistencia.setTextContent(Integer.toString(ef.getValCualitativa().getPersistencia()));
+	            	valorCualitativo.appendChild(persistencia);
+	            	
+	            	Element reversibilidad = document.createElement("reversibilidad");
+	            	reversibilidad.setTextContent(Integer.toString(ef.getValCualitativa().getReversibilidad()));
+	            	valorCualitativo.appendChild(reversibilidad);
+	            	
+	            	Element recuperabilidad = document.createElement("recuperabilidad");
+	            	recuperabilidad.setTextContent(Integer.toString(ef.getValCualitativa().getRecuperabilidad()));
+	            	valorCualitativo.appendChild(recuperabilidad);
+	            	
+	            	Element periodicidad = document.createElement("periodicidad");
+	            	periodicidad.setTextContent(Integer.toString(ef.getValCualitativa().getPeriodicidad()));
+	            	valorCualitativo.appendChild(periodicidad);
+	            	
+	            	Element momento = document.createElement("momento");
+	            	momento.setTextContent(Integer.toString(ef.getValCualitativa().getMomento()));
+	            	valorCualitativo.appendChild(momento);
+	            	
+	            	Element momentoCritico = document.createElement("momentoCritico");
+	            	momentoCritico.setTextContent(Integer.toString(ef.getValCualitativa().getMomentoCritico()));
+	            	valorCualitativo.appendChild(momentoCritico);
+	            	
+	            	Element efectoImp = document.createElement("efectoImp");
+	            	efectoImp.setTextContent(Integer.toString(ef.getValCualitativa().getEfecto()));
+	            	valorCualitativo.appendChild(efectoImp);
+	            	
+	            	Element incidencia = document.createElement("incidencia");
+	            	incidencia.setTextContent(Double.toString(ef.getValCualitativa().getIncidencia()));
+	            	valorCualitativo.appendChild(incidencia);
+	            	
 	            	elemEfecto.appendChild(valorCualitativo);
 	            	
 	            	Element valorTotal = document.createElement("valorTotal");
