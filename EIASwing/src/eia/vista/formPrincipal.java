@@ -1,6 +1,7 @@
 package eia.vista;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -740,7 +741,8 @@ public class formPrincipal {
 		if (descripcionTextArea == null) {
 			descripcionTextArea = new JTextArea();
 			descripcionTextArea.setBounds(new Rectangle(88, 54, 327, 36));
-			//descripcionTextArea.setBorder();
+			descripcionTextArea.setBorder(BorderFactory.createLineBorder(new Color(192192192)));
+
 		}
 		return descripcionTextArea;
 	}
