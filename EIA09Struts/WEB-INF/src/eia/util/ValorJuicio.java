@@ -14,6 +14,6 @@ package eia.util;
 public enum ValorJuicio { 
 	especial,
 	despreciable,
-	impredicible,
+	impredecible,
 	significativo
 }
