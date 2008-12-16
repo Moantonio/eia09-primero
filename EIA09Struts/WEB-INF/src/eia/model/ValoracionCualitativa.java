@@ -14,7 +14,7 @@ package eia.model;
 public class ValoracionCualitativa {
 	
 	// Constantes para los distintos valores de los atributos
-	public static final int SIG_POSITIVO = +1;
+	public static final int SIG_POSITIVO = 1;
 	public static final int SIG_NEGATIVO = -1;
 	public static final int ACU_SIMPLE = 1;
 	public static final int ACU_ACUMULATIVO = 3;
