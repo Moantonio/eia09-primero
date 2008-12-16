@@ -17,6 +17,7 @@ import java.awt.Point;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JTabbedPane;
 
 public class formEfecto extends JFrame {
 
@@ -47,7 +48,6 @@ public class formEfecto extends JFrame {
 	private JTextField cuantitativaTextField = null;
 	private JButton valorarCualButton = null;
 	private JButton valorarCuanButton = null;
-
 	/**
 	 * This is the default constructor
 	 */
@@ -62,7 +62,7 @@ public class formEfecto extends JFrame {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(500, 500);
+		this.setSize(500, 450);
 		this.setContentPane(getContenedorPrincipalPane());
 		this.setTitle("Valoración de efecto");
 	}
@@ -134,7 +134,7 @@ public class formEfecto extends JFrame {
 		if (cualitativaPanel == null) {
 			cualitativaPanel = new JPanel();
 			cualitativaPanel.setLayout(null);
-			cualitativaPanel.setLocation(new Point(27, 134));
+			cualitativaPanel.setLocation(new Point(40, 130));
 			cualitativaPanel.setSize(new Dimension(190, 60));
 			cualitativaPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Valoración cualitativa", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
 			cualitativaPanel.add(getCualitativaTextField(), null);
@@ -155,7 +155,7 @@ public class formEfecto extends JFrame {
 			cuantitativaPanel = new JPanel();
 			cuantitativaPanel.setLayout(null);
 			cuantitativaPanel.setSize(new Dimension(190, 60));
-			cuantitativaPanel.setLocation(new Point(243, 133));
+			cuantitativaPanel.setLocation(new Point(255, 130));
 			cuantitativaPanel.setBorder(titledBorder1);
 			cuantitativaPanel.add(getCuantitativaTextField(), null);
 			cuantitativaPanel.add(getValorarCuanButton(), null);
@@ -174,7 +174,7 @@ public class formEfecto extends JFrame {
 			valoracionPanel.setLayout(null);
 			valoracionPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 			valoracionPanel.setSize(new Dimension(200, 75));
-			valoracionPanel.setLocation(new Point(254, 260));
+			valoracionPanel.setLocation(new Point(36, 317));
 		}
 		return valoracionPanel;
 	}
@@ -190,7 +190,7 @@ public class formEfecto extends JFrame {
 			botoneraPanel.setLayout(null);
 			botoneraPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 			botoneraPanel.setSize(new Dimension(199, 59));
-			botoneraPanel.setLocation(new Point(255, 359));
+			botoneraPanel.setLocation(new Point(257, 326));
 			botoneraPanel.add(getAceptarButton(), null);
 			botoneraPanel.add(getCancelarButton(), null);
 		}
@@ -208,7 +208,7 @@ public class formEfecto extends JFrame {
 			caracterPanel.setLayout(null);
 			caracterPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Carácter", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
 			caracterPanel.setSize(new Dimension(218, 70));
-			caracterPanel.setLocation(new Point(18, 350));
+			caracterPanel.setLocation(new Point(250, 216));
 			caracterPanel.add(getCaracterTextField(), null);
 			caracterPanel.add(getEditarButton(), null);
 		}
@@ -225,7 +225,8 @@ public class formEfecto extends JFrame {
 			enjuiciamientoPanel = new JPanel();
 			enjuiciamientoPanel.setLayout(null);
 			enjuiciamientoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Simple enjuiciamiento", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.ABOVE_TOP, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-			enjuiciamientoPanel.setBounds(new Rectangle(30, 245, 196, 84));
+			enjuiciamientoPanel.setLocation(new Point(40, 209));
+			enjuiciamientoPanel.setSize(new Dimension(190, 85));
 			enjuiciamientoPanel.add(getEnjuiciamientoTextField(), null);
 			enjuiciamientoPanel.add(getModificarJuicioButton(), null);
 		}
@@ -397,7 +398,7 @@ public class formEfecto extends JFrame {
 			cualitativaTextField = new JTextField();
 			cualitativaTextField.setEnabled(false);
 			cualitativaTextField.setSize(new Dimension(30, 18));
-			cualitativaTextField.setLocation(new Point(40, 28));
+			cualitativaTextField.setLocation(new Point(40, 25));
 		}
 		return cualitativaTextField;
 	}
@@ -412,7 +413,7 @@ public class formEfecto extends JFrame {
 			cuantitativaTextField = new JTextField();
 			cuantitativaTextField.setEnabled(false);
 			cuantitativaTextField.setSize(new Dimension(30, 18));
-			cuantitativaTextField.setLocation(new Point(23, 30));
+			cuantitativaTextField.setLocation(new Point(40, 25));
 		}
 		return cuantitativaTextField;
 	}
@@ -427,7 +428,7 @@ public class formEfecto extends JFrame {
 			valorarCualButton = new JButton();
 			valorarCualButton.setName("");
 			valorarCualButton.setText("Valorar");
-			valorarCualButton.setLocation(new Point(82, 28));
+			valorarCualButton.setLocation(new Point(82, 25));
 			valorarCualButton.setSize(new Dimension(76, 18));
 			valorarCualButton.setBackground(Color.white);
 		}
@@ -444,7 +445,7 @@ public class formEfecto extends JFrame {
 			valorarCuanButton = new JButton();
 			valorarCuanButton.setName("");
 			valorarCuanButton.setText("Valorar");
-			valorarCuanButton.setLocation(new Point(79, 30));
+			valorarCuanButton.setLocation(new Point(82, 25));
 			valorarCuanButton.setSize(new Dimension(76, 18));
 			valorarCuanButton.setBackground(Color.white);
 		}
