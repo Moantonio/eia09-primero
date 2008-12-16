@@ -110,7 +110,7 @@ public class Arbol<Object> {
 	 */
 	private NodoBusqueda<Object> buscarInfoElemento(Arbol<Object> padre, int posicion, String id){
 		
-		if (elemento.toString() == id){
+		if (elemento!= null && elemento.toString().equals(id)){
 			NodoBusqueda<Object> elementoEncontrado = new NodoBusqueda<Object>(padre,elemento,posicion);
 			return elementoEncontrado;
 		}
