@@ -18,6 +18,8 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTabbedPane;
+import javax.swing.JOptionPane;
+import javax.swing.JComboBox;
 
 public class formEfecto extends JFrame {
 
@@ -40,14 +42,15 @@ public class formEfecto extends JFrame {
 	private JLabel descripcionLabel = null;
 	private JButton aceptarButton = null;
 	private JButton cancelarButton = null;
-	private JTextField caracterTextField = null;
-	private JButton editarButton = null;
-	private JTextField enjuiciamientoTextField = null;
 	private JButton modificarJuicioButton = null;
 	private JTextField cualitativaTextField = null;
 	private JTextField cuantitativaTextField = null;
 	private JButton valorarCualButton = null;
 	private JButton valorarCuanButton = null;
+	private JComboBox juicioComboBox = null;
+	private JComboBox caracterComboBox = null;
+	private JTextField valoracionTextField = null;
+	private JLabel valoracionLabel = null;
 	/**
 	 * This is the default constructor
 	 */
@@ -64,7 +67,7 @@ public class formEfecto extends JFrame {
 	private void initialize() {
 		this.setSize(500, 450);
 		this.setContentPane(getContenedorPrincipalPane());
-		this.setTitle("Valoración de efecto");
+		this.setTitle("Valoración de efectos");
 	}
 
 	/**
@@ -96,19 +99,19 @@ public class formEfecto extends JFrame {
 		if (efectoPanel == null) {
 			descripcionLabel = new JLabel();
 			descripcionLabel.setText("Descripción:");
-			descripcionLabel.setLocation(new Point(20, 71));
+			descripcionLabel.setLocation(new Point(29, 69));
 			descripcionLabel.setSize(new Dimension(75, 16));
 			factorLabel = new JLabel();
 			factorLabel.setText("Factor:");
-			factorLabel.setLocation(new Point(224, 46));
+			factorLabel.setLocation(new Point(224, 44));
 			factorLabel.setSize(new Dimension(47, 16));
 			accionLabel = new JLabel();
-			accionLabel.setBounds(new Rectangle(23, 46, 44, 16));
+			accionLabel.setBounds(new Rectangle(23, 44, 44, 16));
 			accionLabel.setText("Acción:");
 			efectoLabel = new JLabel();
 			efectoLabel.setText("Efecto:");
 			efectoLabel.setSize(new Dimension(43, 16));
-			efectoLabel.setLocation(new Point(54, 21));
+			efectoLabel.setLocation(new Point(63, 19));
 			efectoPanel = new JPanel();
 			efectoPanel.setLayout(null);
 			efectoPanel.setBounds(new Rectangle(24, 14, 440, 104));
@@ -170,11 +173,17 @@ public class formEfecto extends JFrame {
 	 */
 	private JPanel getValoracionPanel() {
 		if (valoracionPanel == null) {
+			valoracionLabel = new JLabel();
+			valoracionLabel.setBounds(new Rectangle(41, 12, 110, 21));
+			valoracionLabel.setFont(new Font("Dialog", Font.BOLD, 14));
+			valoracionLabel.setText("Valoración total");
 			valoracionPanel = new JPanel();
 			valoracionPanel.setLayout(null);
 			valoracionPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 			valoracionPanel.setSize(new Dimension(200, 75));
 			valoracionPanel.setLocation(new Point(36, 317));
+			valoracionPanel.add(getValoracionTextField(), null);
+			valoracionPanel.add(valoracionLabel, null);
 		}
 		return valoracionPanel;
 	}
@@ -190,7 +199,7 @@ public class formEfecto extends JFrame {
 			botoneraPanel.setLayout(null);
 			botoneraPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED));
 			botoneraPanel.setSize(new Dimension(199, 59));
-			botoneraPanel.setLocation(new Point(257, 326));
+			botoneraPanel.setLocation(new Point(250, 326));
 			botoneraPanel.add(getAceptarButton(), null);
 			botoneraPanel.add(getCancelarButton(), null);
 		}
@@ -207,10 +216,9 @@ public class formEfecto extends JFrame {
 			caracterPanel = new JPanel();
 			caracterPanel.setLayout(null);
 			caracterPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Carácter", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-			caracterPanel.setSize(new Dimension(218, 70));
-			caracterPanel.setLocation(new Point(250, 216));
-			caracterPanel.add(getCaracterTextField(), null);
-			caracterPanel.add(getEditarButton(), null);
+			caracterPanel.setSize(new Dimension(190, 85));
+			caracterPanel.setLocation(new Point(252, 209));
+			caracterPanel.add(getCaracterComboBox(), null);
 		}
 		return caracterPanel;
 	}
@@ -224,11 +232,11 @@ public class formEfecto extends JFrame {
 		if (enjuiciamientoPanel == null) {
 			enjuiciamientoPanel = new JPanel();
 			enjuiciamientoPanel.setLayout(null);
-			enjuiciamientoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Simple enjuiciamiento", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.ABOVE_TOP, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
+			enjuiciamientoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Simple enjuiciamiento", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
 			enjuiciamientoPanel.setLocation(new Point(40, 209));
 			enjuiciamientoPanel.setSize(new Dimension(190, 85));
-			enjuiciamientoPanel.add(getEnjuiciamientoTextField(), null);
 			enjuiciamientoPanel.add(getModificarJuicioButton(), null);
+			enjuiciamientoPanel.add(getJuicioComboBox(), null);
 		}
 		return enjuiciamientoPanel;
 	}
@@ -241,8 +249,10 @@ public class formEfecto extends JFrame {
 	private JTextField getEfectoTextField() {
 		if (efectoTextField == null) {
 			efectoTextField = new JTextField();
-			efectoTextField.setLocation(new Point(100, 21));
-			efectoTextField.setSize(new Dimension(300, 18));
+			efectoTextField.setLocation(new Point(109, 19));
+			efectoTextField.setEditable(true);
+			efectoTextField.setEnabled(false);
+			efectoTextField.setSize(new Dimension(308, 18));
 		}
 		return efectoTextField;
 	}
@@ -255,7 +265,9 @@ public class formEfecto extends JFrame {
 	private JTextField getAccionTextField() {
 		if (accionTextField == null) {
 			accionTextField = new JTextField();
-			accionTextField.setLocation(new Point(70, 46));
+			accionTextField.setLocation(new Point(70, 44));
+			accionTextField.setEditable(true);
+			accionTextField.setEnabled(false);
 			accionTextField.setSize(new Dimension(150, 18));
 		}
 		return accionTextField;
@@ -269,7 +281,9 @@ public class formEfecto extends JFrame {
 	private JTextField getFactorTextField() {
 		if (factorTextField == null) {
 			factorTextField = new JTextField();
-			factorTextField.setLocation(new Point(269, 46));
+			factorTextField.setLocation(new Point(267, 44));
+			factorTextField.setEditable(true);
+			factorTextField.setEnabled(false);
 			factorTextField.setSize(new Dimension(150, 18));
 		}
 		return factorTextField;
@@ -283,8 +297,10 @@ public class formEfecto extends JFrame {
 	private JTextField getDescripcionTextField() {
 		if (descripcionTextField == null) {
 			descripcionTextField = new JTextField();
-			descripcionTextField.setLocation(new Point(100, 71));
-			descripcionTextField.setSize(new Dimension(300, 18));
+			descripcionTextField.setLocation(new Point(109, 69));
+			descripcionTextField.setEditable(true);
+			descripcionTextField.setEnabled(false);
+			descripcionTextField.setSize(new Dimension(308, 18));
 		}
 		return descripcionTextField;
 	}
@@ -325,53 +341,6 @@ public class formEfecto extends JFrame {
 	}
 
 	/**
-	 * This method initializes caracterTextField
-	 *
-	 * @return javax.swing.JTextField
-	 */
-	private JTextField getCaracterTextField() {
-		if (caracterTextField == null) {
-			caracterTextField = new JTextField();
-			caracterTextField.setEnabled(false);
-			caracterTextField.setSize(new Dimension(110, 18));
-			caracterTextField.setLocation(new Point(10, 30));
-		}
-		return caracterTextField;
-	}
-
-	/**
-	 * This method initializes editarButton
-	 *
-	 * @return javax.swing.JButton
-	 */
-	private JButton getEditarButton() {
-		if (editarButton == null) {
-			editarButton = new JButton();
-			editarButton.setName("");
-			editarButton.setText("Editar");
-			editarButton.setLocation(new Point(133, 30));
-			editarButton.setSize(new Dimension(71, 17));
-			editarButton.setBackground(Color.white);
-		}
-		return editarButton;
-	}
-
-	/**
-	 * This method initializes enjuiciamientoTextField
-	 *
-	 * @return javax.swing.JTextField
-	 */
-	private JTextField getEnjuiciamientoTextField() {
-		if (enjuiciamientoTextField == null) {
-			enjuiciamientoTextField = new JTextField();
-			enjuiciamientoTextField.setEnabled(false);
-			enjuiciamientoTextField.setSize(new Dimension(135, 18));
-			enjuiciamientoTextField.setLocation(new Point(30, 28));
-		}
-		return enjuiciamientoTextField;
-	}
-
-	/**
 	 * This method initializes modificarJuicioButton
 	 *
 	 * @return javax.swing.JButton
@@ -397,7 +366,7 @@ public class formEfecto extends JFrame {
 		if (cualitativaTextField == null) {
 			cualitativaTextField = new JTextField();
 			cualitativaTextField.setEnabled(false);
-			cualitativaTextField.setSize(new Dimension(30, 18));
+			cualitativaTextField.setSize(new Dimension(35, 18));
 			cualitativaTextField.setLocation(new Point(40, 25));
 		}
 		return cualitativaTextField;
@@ -412,7 +381,7 @@ public class formEfecto extends JFrame {
 		if (cuantitativaTextField == null) {
 			cuantitativaTextField = new JTextField();
 			cuantitativaTextField.setEnabled(false);
-			cuantitativaTextField.setSize(new Dimension(30, 18));
+			cuantitativaTextField.setSize(new Dimension(35, 18));
 			cuantitativaTextField.setLocation(new Point(40, 25));
 		}
 		return cuantitativaTextField;
@@ -450,6 +419,50 @@ public class formEfecto extends JFrame {
 			valorarCuanButton.setBackground(Color.white);
 		}
 		return valorarCuanButton;
+	}
+
+	/**
+	 * This method initializes juicioComboBox
+	 *
+	 * @return javax.swing.JComboBox
+	 */
+	private JComboBox getJuicioComboBox() {
+		if (juicioComboBox == null) {
+			juicioComboBox = new JComboBox();
+			juicioComboBox.setLocation(new Point(30, 28));
+			juicioComboBox.setEnabled(false);
+			juicioComboBox.setSize(new Dimension(135, 18));
+		}
+		return juicioComboBox;
+	}
+
+	/**
+	 * This method initializes caracterComboBox
+	 *
+	 * @return javax.swing.JComboBox
+	 */
+	private JComboBox getCaracterComboBox() {
+		if (caracterComboBox == null) {
+			caracterComboBox = new JComboBox();
+			caracterComboBox.setLocation(new Point(30, 35));
+			caracterComboBox.setSize(new Dimension(135, 18));
+		}
+		return caracterComboBox;
+	}
+
+	/**
+	 * This method initializes valoracionTextField
+	 *
+	 * @return javax.swing.JTextField
+	 */
+	private JTextField getValoracionTextField() {
+		if (valoracionTextField == null) {
+			valoracionTextField = new JTextField();
+			valoracionTextField.setLocation(new Point(64, 38));
+			valoracionTextField.setEnabled(false);
+			valoracionTextField.setSize(new Dimension(65, 18));
+		}
+		return valoracionTextField;
 	}
 
 	public static void main(String[] args) {
