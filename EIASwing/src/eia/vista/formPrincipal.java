@@ -19,6 +19,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.TableColumnModel;
+import javax.swing.JTextField;
 
 public class formPrincipal {
 
@@ -30,7 +31,7 @@ public class formPrincipal {
 	private JMenu menuAlternativas = null;
 	private JMenuItem salirMenuItem = null;
 	private JMenuItem acercaDeMenuItem = null;
-	private JDialog dialogAcercaDe = null;  //  @jve:decl-index=0:visual-constraint="613,51"
+	private JDialog dialogAcercaDe = null;  //  @jve:decl-index=0:visual-constraint="558,51"
 	private JPanel panelContenidoAcercaDe = null;
 	private JLabel labelVersion = null;
 	private JMenu menuValoracion = null;
@@ -60,6 +61,12 @@ public class formPrincipal {
 	private JPanel alternativasPanel = null;
 	private JScrollPane alternativasScrollPane = null;
 	private JTable alternativasTable = null;
+	private JTextField nombreTextField = null;
+	private JLabel nombreLabel = null;
+	private JLabel descripcionLabel = null;
+	private JLabel tipoLabel = null;
+	private JLabel companiaLabel = null;
+	private JLabel autorLabel = null;
 
 	/**
 	 * This method initializes framePrincipal
@@ -569,10 +576,31 @@ public class formPrincipal {
 	 */
 	private JPanel getInfoProyectoPanel() {
 		if (infoProyectoPanel == null) {
+			autorLabel = new JLabel();
+			autorLabel.setBounds(new Rectangle(149, 128, 60, 16));
+			autorLabel.setText("Compañía:");
+			companiaLabel = new JLabel();
+			companiaLabel.setBounds(new Rectangle(202, 99, 97, 16));
+			companiaLabel.setText("Compañía:");
+			tipoLabel = new JLabel();
+			tipoLabel.setBounds(new Rectangle(55, 93, 102, 13));
+			tipoLabel.setText("Tipo proyecto:");
+			descripcionLabel = new JLabel();
+			descripcionLabel.setBounds(new Rectangle(17, 60, 80, 16));
+			descripcionLabel.setText("Descripción:");
+			nombreLabel = new JLabel();
+			nombreLabel.setBounds(new Rectangle(19, 29, 50, 19));
+			nombreLabel.setText("Nombre:");
 			infoProyectoPanel = new JPanel();
 			infoProyectoPanel.setLayout(null);
 			infoProyectoPanel.setBounds(new Rectangle(31, 24, 434, 172));
 			infoProyectoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Proyecto"));
+			infoProyectoPanel.add(getNombreTextField(), null);
+			infoProyectoPanel.add(nombreLabel, null);
+			infoProyectoPanel.add(descripcionLabel, null);
+			infoProyectoPanel.add(tipoLabel, null);
+			infoProyectoPanel.add(companiaLabel, null);
+			infoProyectoPanel.add(autorLabel, null);
 		}
 		return infoProyectoPanel;
 	}
@@ -627,6 +655,19 @@ public class formPrincipal {
 
 		}
 		return alternativasTable;
+	}
+
+	/**
+	 * This method initializes nombreTextField	
+	 * 	
+	 * @return javax.swing.JTextField	
+	 */
+	private JTextField getNombreTextField() {
+		if (nombreTextField == null) {
+			nombreTextField = new JTextField();
+			nombreTextField.setBounds(new Rectangle(77, 30, 151, 18));
+		}
+		return nombreTextField;
 	}
 
 	/**
