@@ -834,8 +834,9 @@ public class formEfecto2 extends JFrame {
 	private JPanel getCuantitativaPanel() {
 		if (cuantitativaPanel == null) {
 			fTransformacionLabel = new JLabel();
-			fTransformacionLabel.setBounds(new Rectangle(16, 176, 201, 16));
 			fTransformacionLabel.setText("Función de transformación:");
+			fTransformacionLabel.setLocation(new Point(18, 176));
+			fTransformacionLabel.setSize(new Dimension(201, 16));
 			cuantitativaPanel = new JPanel();
 			cuantitativaPanel.setLayout(null);
 			cuantitativaPanel.setLocation(new Point(17, 14));
@@ -875,6 +876,7 @@ public class formEfecto2 extends JFrame {
 		if (asistenteButton == null) {
 			asistenteButton = new JButton();
 			asistenteButton.setBounds(new Rectangle(253, 186, 151, 25));
+			asistenteButton.setBackground(Color.white);
 			asistenteButton.setText("Asistente");
 		}
 		return asistenteButton;
@@ -888,7 +890,8 @@ public class formEfecto2 extends JFrame {
 	private JPanel getMagnitudPanel() {
 		if (magnitudPanel == null) {
 			magnitudLabel = new JLabel();
-			magnitudLabel.setBounds(new Rectangle(46, 16, 76, 19));
+			magnitudLabel.setBounds(new Rectangle(39, 16, 76, 19));
+			magnitudLabel.setFont(new Font("Dialog", Font.BOLD, 14));
 			magnitudLabel.setText("Magnitud");
 			magnitudPanel = new JPanel();
 			magnitudPanel.setLayout(null);
@@ -908,7 +911,8 @@ public class formEfecto2 extends JFrame {
 	private JTextField getMagnitudTextField() {
 		if (magnitudTextField == null) {
 			magnitudTextField = new JTextField();
-			magnitudTextField.setBounds(new Rectangle(134, 16, 117, 20));
+			magnitudTextField.setLocation(new Point(124, 17));
+			magnitudTextField.setSize(new Dimension(117, 18));
 		}
 		return magnitudTextField;
 	}
@@ -922,6 +926,7 @@ public class formEfecto2 extends JFrame {
 		if (graficoButton == null) {
 			graficoButton = new JButton();
 			graficoButton.setBounds(new Rectangle(313, 241, 93, 49));
+			graficoButton.setBackground(Color.white);
 			graficoButton.setText("Gráfico");
 		}
 		return graficoButton;
@@ -935,14 +940,17 @@ public class formEfecto2 extends JFrame {
 	private JPanel getIndicadoresPanel() {
 		if (indicadoresPanel == null) {
 			valorMinLabel = new JLabel();
-			valorMinLabel.setBounds(new Rectangle(7, 55, 168, 16));
 			valorMinLabel.setText("Valor máximo indicador:");
+			valorMinLabel.setLocation(new Point(48, 60));
+			valorMinLabel.setSize(new Dimension(147, 16));
 			indicadorLabel = new JLabel();
-			indicadorLabel.setBounds(new Rectangle(105, 10, 74, 18));
 			indicadorLabel.setText("Indicador:");
+			indicadorLabel.setLocation(new Point(130, 10));
+			indicadorLabel.setSize(new Dimension(62, 18));
 			valorMaxLabel = new JLabel();
-			valorMaxLabel.setBounds(new Rectangle(8, 33, 169, 16));
 			valorMaxLabel.setText("Valor máximo indicador:");
+			valorMaxLabel.setLocation(new Point(48, 35));
+			valorMaxLabel.setSize(new Dimension(149, 16));
 			indicadoresPanel = new JPanel();
 			indicadoresPanel.setLayout(null);
 			indicadoresPanel.setBounds(new Rectangle(16, 30, 422, 123));
@@ -966,7 +974,7 @@ public class formEfecto2 extends JFrame {
 	private JTextField getValormaxTextField() {
 		if (valormaxTextField == null) {
 			valormaxTextField = new JTextField();
-			valormaxTextField.setLocation(new Point(190, 33));
+			valormaxTextField.setLocation(new Point(190, 35));
 			valormaxTextField.setSize(new Dimension(120, 18));
 		}
 		return valormaxTextField;
@@ -981,6 +989,7 @@ public class formEfecto2 extends JFrame {
 		if (calcularButton1 == null) {
 			calcularButton1 = new JButton();
 			calcularButton1.setBounds(new Rectangle(11, 85, 393, 28));
+			calcularButton1.setBackground(Color.white);
 			calcularButton1.setText("Calcular");
 		}
 		return calcularButton1;
@@ -1008,8 +1017,8 @@ public class formEfecto2 extends JFrame {
 	private JTextField getValorMinTextField() {
 		if (valorMinTextField == null) {
 			valorMinTextField = new JTextField();
-			valorMinTextField.setLocation(new Point(190, 55));
-			valorMinTextField.setSize(new Dimension(141, 17));
+			valorMinTextField.setLocation(new Point(190, 60));
+			valorMinTextField.setSize(new Dimension(120, 18));
 		}
 		return valorMinTextField;
 	}
