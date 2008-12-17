@@ -25,8 +25,8 @@ public class formEfecto2 extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel jContentPane = null;
 	private JTabbedPane efectoTabbedPane = null;
-	private JPanel contenedorPrincipalPane = null;
-	private JPanel efectoPanel = null;
+	private JPanel fichaPanel = null;
+	private JPanel infoEfectoPanel = null;
 	private JTextField efectoTextField = null;
 	private JTextField accionTextField = null;
 	private JTextField factorTextField = null;
@@ -35,20 +35,20 @@ public class formEfecto2 extends JFrame {
 	private JLabel accionLabel = null;
 	private JLabel factorLabel = null;
 	private JLabel descripcionLabel = null;
-	private JPanel cualitativaPanel = null;
+	private JPanel valEfectoPanel = null;
 	private JTextField cualitativaTextField = null;
 	private JPanel valoracionPanel = null;
 	private JTextField valoracionTextField = null;
 	private JLabel valoracionLabel = null;
-	private JButton aceptarButton = null;
-	private JButton cancelarButton = null;
+	private JButton aceptarFichaButton = null;
+	private JButton cancelarFichaButton = null;
 	private JComboBox caracterComboBox = null;
 	private JButton modificarJuicioButton = null;
 	private JComboBox juicioComboBox = null;
-	private JPanel jContentPane1 = null;
-	private JPanel cualitativaPanel1 = null;
-	private JButton aceptarButton1 = null;
-	private JButton cancelarButton1 = null;
+	private JPanel valCualitativaPanel = null;
+	private JPanel cualitativaPanel = null;
+	private JButton aceptarCualitativaButton = null;
+	private JButton cancelarCualitativaButton = null;
 	private JComboBox signoComboBox = null;
 	private JComboBox acumulacionComboBox = null;
 	private JComboBox extensionComboBox = null;
@@ -77,8 +77,8 @@ public class formEfecto2 extends JFrame {
 	private JLabel extensionCriticaLabel = null;
 	private JLabel momentoCriticoLabel = null;
 	private JButton calcularButton = null;
-	private JPanel jContentPane2 = null;
-	private JPanel valCuantitativaPanel = null;
+	private JPanel valCuantitativaPane = null;
+	private JPanel cuantitativaPanel = null;
 	private JLabel fTransformacionLabel = null;
 	private JComboBox fTransformacionComboBox = null;
 	private JButton asistenteButton = null;
@@ -86,7 +86,7 @@ public class formEfecto2 extends JFrame {
 	private JLabel magnitudLabel = null;
 	private JTextField magnitudTextField = null;
 	private JButton graficoButton = null;
-	private JPanel datosPanel = null;
+	private JPanel indicadoresPanel = null;
 	private JTextField valormaxTextField = null;
 	private JLabel valorMaxLabel = null;
 	private JLabel indicadorLabel = null;
@@ -94,14 +94,14 @@ public class formEfecto2 extends JFrame {
 	private JButton calcularButton1 = null;
 	private JTextField indicadorTextField = null;
 	private JTextField valorMinTextField = null;
-	private JButton aceptarButton2 = null;
-	private JButton cancelarButton2 = null;
 	private JLabel valoracionCualitativaLabel = null;
 	private JLabel valoracionCuantitativaLabel = null;
 	private JLabel caracterCuantitativaLabel = null;
 	private JLabel juicioCuantitativaLabel = null;
 	private JTextField cuantitativaTextField = null;
 	private JPanel caracterPanel = null;
+	private JButton aceptarCuantitativaButton = null;
+	private JButton cancelarCuantitativaButton = null;
 	/**
 	 * This is the default constructor
 	 */
@@ -146,35 +146,35 @@ public class formEfecto2 extends JFrame {
 			efectoTabbedPane = new JTabbedPane();
 			efectoTabbedPane.setLocation(new Point(0, 0));
 			efectoTabbedPane.setSize(new Dimension(493, 467));
-			efectoTabbedPane.addTab("Ficha general", null, getContenedorPrincipalPane(), null);
-			efectoTabbedPane.addTab("Valoración cualitativa", null, getJContentPane1(), null);
-			efectoTabbedPane.addTab("Valoración cuantitativa", null, getJContentPane2(), null);
+			efectoTabbedPane.addTab("Ficha general", null, getFichaPanel(), null);
+			efectoTabbedPane.addTab("Valoración cualitativa", null, getValCualitativaPanel(), null);
+			efectoTabbedPane.addTab("Valoración cuantitativa", null, getValCuantitativaPane(), null);
 		}
 		return efectoTabbedPane;
 	}
 
 	/**
-	 * This method initializes contenedorPrincipalPane
+	 * This method initializes fichaPanel
 	 *
 	 * @return javax.swing.JPanel
 	 */
-	private JPanel getContenedorPrincipalPane() {
-		if (contenedorPrincipalPane == null) {
-			contenedorPrincipalPane = new JPanel();
-			contenedorPrincipalPane.setLayout(null);
-			contenedorPrincipalPane.add(getEfectoPanel(), null);
-			contenedorPrincipalPane.add(getCualitativaPanel(), null);
+	private JPanel getFichaPanel() {
+		if (fichaPanel == null) {
+			fichaPanel = new JPanel();
+			fichaPanel.setLayout(null);
+			fichaPanel.add(getInfoEfectoPanel(), null);
+			fichaPanel.add(getValEfectoPanel(), null);
 		}
-		return contenedorPrincipalPane;
+		return fichaPanel;
 	}
 
 	/**
-	 * This method initializes efectoPanel
+	 * This method initializes infoEfectoPanel
 	 *
 	 * @return javax.swing.JPanel
 	 */
-	private JPanel getEfectoPanel() {
-		if (efectoPanel == null) {
+	private JPanel getInfoEfectoPanel() {
+		if (infoEfectoPanel == null) {
 			descripcionLabel = new JLabel();
 			descripcionLabel.setLocation(new Point(29, 69));
 			descripcionLabel.setText("Descripción:");
@@ -190,20 +190,20 @@ public class formEfecto2 extends JFrame {
 			efectoLabel.setLocation(new Point(63, 19));
 			efectoLabel.setText("Efecto:");
 			efectoLabel.setSize(new Dimension(43, 16));
-			efectoPanel = new JPanel();
-			efectoPanel.setLayout(null);
-			efectoPanel.setBounds(new Rectangle(24, 14, 440, 104));
-			efectoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Información", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-			efectoPanel.add(getEfectoTextField(), null);
-			efectoPanel.add(getAccionTextField(), null);
-			efectoPanel.add(getFactorTextField(), null);
-			efectoPanel.add(getDescripcionTextField(), null);
-			efectoPanel.add(efectoLabel, null);
-			efectoPanel.add(accionLabel, null);
-			efectoPanel.add(factorLabel, null);
-			efectoPanel.add(descripcionLabel, null);
+			infoEfectoPanel = new JPanel();
+			infoEfectoPanel.setLayout(null);
+			infoEfectoPanel.setBounds(new Rectangle(24, 14, 440, 104));
+			infoEfectoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Información", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
+			infoEfectoPanel.add(getEfectoTextField(), null);
+			infoEfectoPanel.add(getAccionTextField(), null);
+			infoEfectoPanel.add(getFactorTextField(), null);
+			infoEfectoPanel.add(getDescripcionTextField(), null);
+			infoEfectoPanel.add(efectoLabel, null);
+			infoEfectoPanel.add(accionLabel, null);
+			infoEfectoPanel.add(factorLabel, null);
+			infoEfectoPanel.add(descripcionLabel, null);
 		}
-		return efectoPanel;
+		return infoEfectoPanel;
 	}
 
 	/**
@@ -271,12 +271,12 @@ public class formEfecto2 extends JFrame {
 	}
 
 	/**
-	 * This method initializes cualitativaPanel
+	 * This method initializes valEfectoPanel
 	 *
 	 * @return javax.swing.JPanel
 	 */
-	private JPanel getCualitativaPanel() {
-		if (cualitativaPanel == null) {
+	private JPanel getValEfectoPanel() {
+		if (valEfectoPanel == null) {
 			juicioCuantitativaLabel = new JLabel();
 			juicioCuantitativaLabel.setText("Simple enjuiciamiento:");
 			juicioCuantitativaLabel.setLocation(new Point(38, 30));
@@ -294,24 +294,24 @@ public class formEfecto2 extends JFrame {
 			valoracionCualitativaLabel.setText("Valoración cualitativa:");
 			valoracionCualitativaLabel.setLocation(new Point(25, 60));
 			valoracionCualitativaLabel.setSize(new Dimension(128, 16));
-			cualitativaPanel = new JPanel();
-			cualitativaPanel.setLayout(null);
-			cualitativaPanel.setLocation(new Point(24, 130));
-			cualitativaPanel.setSize(new Dimension(440, 234));
-			cualitativaPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Valoración", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-			cualitativaPanel.add(getCualitativaTextField(), null);
-			cualitativaPanel.add(getValoracionPanel(), null);
-			cualitativaPanel.add(getJuicioComboBox(), null);
-			cualitativaPanel.add(getModificarJuicioButton(), null);
-			cualitativaPanel.add(valoracionCualitativaLabel, null);
-			cualitativaPanel.add(valoracionCuantitativaLabel, null);
-			cualitativaPanel.add(juicioCuantitativaLabel, null);
-			cualitativaPanel.add(getCuantitativaTextField(), null);
-			cualitativaPanel.add(getCaracterPanel(), null);
-			cualitativaPanel.add(getAceptarButton(), null);
-			cualitativaPanel.add(getCancelarButton(), null);
+			valEfectoPanel = new JPanel();
+			valEfectoPanel.setLayout(null);
+			valEfectoPanel.setLocation(new Point(24, 130));
+			valEfectoPanel.setSize(new Dimension(440, 234));
+			valEfectoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Valoración", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
+			valEfectoPanel.add(getCualitativaTextField(), null);
+			valEfectoPanel.add(getValoracionPanel(), null);
+			valEfectoPanel.add(getJuicioComboBox(), null);
+			valEfectoPanel.add(getModificarJuicioButton(), null);
+			valEfectoPanel.add(valoracionCualitativaLabel, null);
+			valEfectoPanel.add(valoracionCuantitativaLabel, null);
+			valEfectoPanel.add(juicioCuantitativaLabel, null);
+			valEfectoPanel.add(getCuantitativaTextField(), null);
+			valEfectoPanel.add(getCaracterPanel(), null);
+			valEfectoPanel.add(getAceptarFichaButton(), null);
+			valEfectoPanel.add(getCancelarFichaButton(), null);
 		}
-		return cualitativaPanel;
+		return valEfectoPanel;
 	}
 
 	/**
@@ -368,37 +368,37 @@ public class formEfecto2 extends JFrame {
 	}
 
 	/**
-	 * This method initializes aceptarButton
+	 * This method initializes aceptarFichaButton
 	 *
 	 * @return javax.swing.JButton
 	 */
-	private JButton getAceptarButton() {
-		if (aceptarButton == null) {
-			aceptarButton = new JButton();
-			aceptarButton.setBackground(Color.white);
-			aceptarButton.setName("");
-			aceptarButton.setSize(new Dimension(79, 17));
-			aceptarButton.setLocation(new Point(132, 195));
-			aceptarButton.setText("Aceptar");
+	private JButton getAceptarFichaButton() {
+		if (aceptarFichaButton == null) {
+			aceptarFichaButton = new JButton();
+			aceptarFichaButton.setBackground(Color.white);
+			aceptarFichaButton.setName("");
+			aceptarFichaButton.setSize(new Dimension(79, 17));
+			aceptarFichaButton.setLocation(new Point(132, 195));
+			aceptarFichaButton.setText("Aceptar");
 		}
-		return aceptarButton;
+		return aceptarFichaButton;
 	}
 
 	/**
-	 * This method initializes cancelarButton
+	 * This method initializes cancelarFichaButton
 	 *
 	 * @return javax.swing.JButton
 	 */
-	private JButton getCancelarButton() {
-		if (cancelarButton == null) {
-			cancelarButton = new JButton();
-			cancelarButton.setBackground(Color.white);
-			cancelarButton.setName("");
-			cancelarButton.setSelected(false);
-			cancelarButton.setBounds(new Rectangle(226, 195, 85, 17));
-			cancelarButton.setText("Cancelar");
+	private JButton getCancelarFichaButton() {
+		if (cancelarFichaButton == null) {
+			cancelarFichaButton = new JButton();
+			cancelarFichaButton.setBackground(Color.white);
+			cancelarFichaButton.setName("");
+			cancelarFichaButton.setSelected(false);
+			cancelarFichaButton.setBounds(new Rectangle(226, 195, 85, 17));
+			cancelarFichaButton.setText("Cancelar");
 		}
-		return cancelarButton;
+		return cancelarFichaButton;
 	}
 
 	/**
@@ -449,26 +449,26 @@ public class formEfecto2 extends JFrame {
 	}
 
 	/**
-	 * This method initializes jContentPane1
+	 * This method initializes valCualitativaPanel
 	 *
 	 * @return javax.swing.JPanel
 	 */
-	private JPanel getJContentPane1() {
-		if (jContentPane1 == null) {
-			jContentPane1 = new JPanel();
-			jContentPane1.setLayout(null);
-			jContentPane1.add(getCualitativaPanel1(), null);
+	private JPanel getValCualitativaPanel() {
+		if (valCualitativaPanel == null) {
+			valCualitativaPanel = new JPanel();
+			valCualitativaPanel.setLayout(null);
+			valCualitativaPanel.add(getCualitativaPanel(), null);
 		}
-		return jContentPane1;
+		return valCualitativaPanel;
 	}
 
 	/**
-	 * This method initializes cualitativaPanel1
+	 * This method initializes cualitativaPanel
 	 *
 	 * @return javax.swing.JPanel
 	 */
-	private JPanel getCualitativaPanel1() {
-		if (cualitativaPanel1 == null) {
+	private JPanel getCualitativaPanel() {
+		if (cualitativaPanel == null) {
 			momentoCriticoLabel = new JLabel();
 			momentoCriticoLabel.setBounds(new Rectangle(267, 183, 77, 16));
 			momentoCriticoLabel.setText("Crítico");
@@ -516,77 +516,77 @@ public class formEfecto2 extends JFrame {
 			signoLabel.setLocation(new Point(58, 30));
 			signoLabel.setText("Signo:");
 			signoLabel.setSize(new Dimension(40, 16));
-			cualitativaPanel1 = new JPanel();
-			cualitativaPanel1.setLayout(null);
-			cualitativaPanel1.setLocation(new Point(17, 14));
-			cualitativaPanel1.setSize(new Dimension(454, 350));
-			cualitativaPanel1.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Valoración Cualitativa", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-			cualitativaPanel1.add(getSignoComboBox(), null);
-			cualitativaPanel1.add(getAcumulacionComboBox(), null);
-			cualitativaPanel1.add(getExtensionComboBox(), null);
-			cualitativaPanel1.add(getIntensidadComboBox(), null);
-			cualitativaPanel1.add(getPersistenciaComboBox(), null);
-			cualitativaPanel1.add(getReversibilidadComboBox(), null);
-			cualitativaPanel1.add(getEfectoComboBox(), null);
-			cualitativaPanel1.add(getPeriodicidadComboBox(), null);
-			cualitativaPanel1.add(getRecuperabilidadComboBox(), null);
-			cualitativaPanel1.add(getMomentoComboBox(), null);
-			cualitativaPanel1.add(signoLabel, null);
-			cualitativaPanel1.add(extensionLabel, null);
-			cualitativaPanel1.add(intensidadLabel, null);
-			cualitativaPanel1.add(reversibilidadLabel, null);
-			cualitativaPanel1.add(periodicidadLabel, null);
-			cualitativaPanel1.add(momentoLabel, null);
-			cualitativaPanel1.add(acumulacionLabel, null);
-			cualitativaPanel1.add(persistenciaLabel, null);
-			cualitativaPanel1.add(efectoCuaLabel, null);
-			cualitativaPanel1.add(recuperabilidadLabel, null);
-			cualitativaPanel1.add(getIncidenciaPanel(), null);
-			cualitativaPanel1.add(getExtensionCriticaCheckBox(), null);
-			cualitativaPanel1.add(getMomentoCriticoCheckBox(), null);
-			cualitativaPanel1.add(extensionCriticaLabel, null);
-			cualitativaPanel1.add(momentoCriticoLabel, null);
-			cualitativaPanel1.add(getCalcularButton(), null);
-			cualitativaPanel1.add(getAceptarButton1(), null);
-			cualitativaPanel1.add(getCancelarButton1(), null);
+			cualitativaPanel = new JPanel();
+			cualitativaPanel.setLayout(null);
+			cualitativaPanel.setLocation(new Point(17, 14));
+			cualitativaPanel.setSize(new Dimension(454, 350));
+			cualitativaPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Valoración cualitativa", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
+			cualitativaPanel.add(getSignoComboBox(), null);
+			cualitativaPanel.add(getAcumulacionComboBox(), null);
+			cualitativaPanel.add(getExtensionComboBox(), null);
+			cualitativaPanel.add(getIntensidadComboBox(), null);
+			cualitativaPanel.add(getPersistenciaComboBox(), null);
+			cualitativaPanel.add(getReversibilidadComboBox(), null);
+			cualitativaPanel.add(getEfectoComboBox(), null);
+			cualitativaPanel.add(getPeriodicidadComboBox(), null);
+			cualitativaPanel.add(getRecuperabilidadComboBox(), null);
+			cualitativaPanel.add(getMomentoComboBox(), null);
+			cualitativaPanel.add(signoLabel, null);
+			cualitativaPanel.add(extensionLabel, null);
+			cualitativaPanel.add(intensidadLabel, null);
+			cualitativaPanel.add(reversibilidadLabel, null);
+			cualitativaPanel.add(periodicidadLabel, null);
+			cualitativaPanel.add(momentoLabel, null);
+			cualitativaPanel.add(acumulacionLabel, null);
+			cualitativaPanel.add(persistenciaLabel, null);
+			cualitativaPanel.add(efectoCuaLabel, null);
+			cualitativaPanel.add(recuperabilidadLabel, null);
+			cualitativaPanel.add(getIncidenciaPanel(), null);
+			cualitativaPanel.add(getExtensionCriticaCheckBox(), null);
+			cualitativaPanel.add(getMomentoCriticoCheckBox(), null);
+			cualitativaPanel.add(extensionCriticaLabel, null);
+			cualitativaPanel.add(momentoCriticoLabel, null);
+			cualitativaPanel.add(getCalcularButton(), null);
+			cualitativaPanel.add(getAceptarCualitativaButton(), null);
+			cualitativaPanel.add(getCancelarCualitativaButton(), null);
 		}
-		return cualitativaPanel1;
+		return cualitativaPanel;
 	}
 
 	/**
-	 * This method initializes aceptarButton1
+	 * This method initializes aceptarCualitativaButton
 	 *
 	 * @return javax.swing.JButton
 	 */
-	private JButton getAceptarButton1() {
-		if (aceptarButton1 == null) {
-			aceptarButton1 = new JButton();
-			aceptarButton1.setBackground(Color.white);
-			aceptarButton1.setName("");
-			aceptarButton1.setSize(new Dimension(79, 17));
-			aceptarButton1.setLocation(new Point(139, 311));
-			aceptarButton1.setText("Aceptar");
+	private JButton getAceptarCualitativaButton() {
+		if (aceptarCualitativaButton == null) {
+			aceptarCualitativaButton = new JButton();
+			aceptarCualitativaButton.setBackground(Color.white);
+			aceptarCualitativaButton.setName("");
+			aceptarCualitativaButton.setSize(new Dimension(79, 17));
+			aceptarCualitativaButton.setLocation(new Point(139, 311));
+			aceptarCualitativaButton.setText("Aceptar");
 		}
-		return aceptarButton1;
+		return aceptarCualitativaButton;
 	}
 
 	/**
-	 * This method initializes cancelarButton1
+	 * This method initializes cancelarCualitativaButton
 	 *
 	 * @return javax.swing.JButton
 	 */
-	private JButton getCancelarButton1() {
-		if (cancelarButton1 == null) {
-			cancelarButton1 = new JButton();
-			cancelarButton1.setBackground(Color.white);
-			cancelarButton1.setName("");
-			cancelarButton1.setSelected(false);
-			cancelarButton1.setSize(new Dimension(85, 17));
-			cancelarButton1.setLocation(new Point(233, 311));
-			cancelarButton1.setMnemonic(KeyEvent.VK_UNDEFINED);
-			cancelarButton1.setText("Cancelar");
+	private JButton getCancelarCualitativaButton() {
+		if (cancelarCualitativaButton == null) {
+			cancelarCualitativaButton = new JButton();
+			cancelarCualitativaButton.setBackground(Color.white);
+			cancelarCualitativaButton.setName("");
+			cancelarCualitativaButton.setSelected(false);
+			cancelarCualitativaButton.setSize(new Dimension(85, 17));
+			cancelarCualitativaButton.setLocation(new Point(233, 311));
+			cancelarCualitativaButton.setMnemonic(KeyEvent.VK_UNDEFINED);
+			cancelarCualitativaButton.setText("Cancelar");
 		}
-		return cancelarButton1;
+		return cancelarCualitativaButton;
 	}
 
 	/**
@@ -813,45 +813,45 @@ public class formEfecto2 extends JFrame {
 	}
 
 	/**
-	 * This method initializes jContentPane2
+	 * This method initializes valCuantitativaPane
 	 *
 	 * @return javax.swing.JPanel
 	 */
-	private JPanel getJContentPane2() {
-		if (jContentPane2 == null) {
-			jContentPane2 = new JPanel();
-			jContentPane2.setLayout(null);
+	private JPanel getValCuantitativaPane() {
+		if (valCuantitativaPane == null) {
+			valCuantitativaPane = new JPanel();
+			valCuantitativaPane.setLayout(null);
 			//jContentPane2.setBorder(BorderFactory.createLineBorder(Color.black, 1));
-			jContentPane2.add(getValCuantitativaPanel(), null);
-			jContentPane2.add(getAceptarButton2(), null);
-			jContentPane2.add(getCancelarButton2(), null);
+			valCuantitativaPane.add(getCuantitativaPanel(), null);
 		}
-		return jContentPane2;
+		return valCuantitativaPane;
 	}
 
 	/**
-	 * This method initializes valCuantitativaPanel
+	 * This method initializes cuantitativaPanel
 	 *
 	 * @return javax.swing.JPanel
 	 */
-	private JPanel getValCuantitativaPanel() {
-		if (valCuantitativaPanel == null) {
+	private JPanel getCuantitativaPanel() {
+		if (cuantitativaPanel == null) {
 			fTransformacionLabel = new JLabel();
 			fTransformacionLabel.setBounds(new Rectangle(16, 176, 201, 16));
 			fTransformacionLabel.setText("Función de transformación:");
-			valCuantitativaPanel = new JPanel();
-			valCuantitativaPanel.setLayout(null);
-			valCuantitativaPanel.setLocation(new Point(13, 15));
-			valCuantitativaPanel.setSize(new Dimension(460, 315));
-			valCuantitativaPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.gray, 1), "Valoración Cuantitativa", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 14), new Color(51, 51, 51)));
-			valCuantitativaPanel.add(fTransformacionLabel, null);
-			valCuantitativaPanel.add(getFTransformacionComboBox(), null);
-			valCuantitativaPanel.add(getAsistenteButton(), null);
-			valCuantitativaPanel.add(getMagnitudPanel(), null);
-			valCuantitativaPanel.add(getGraficoButton(), null);
-			valCuantitativaPanel.add(getDatosPanel(), null);
+			cuantitativaPanel = new JPanel();
+			cuantitativaPanel.setLayout(null);
+			cuantitativaPanel.setLocation(new Point(17, 14));
+			cuantitativaPanel.setSize(new Dimension(454, 350));
+			cuantitativaPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Valoración cuantitativa", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
+			cuantitativaPanel.add(fTransformacionLabel, null);
+			cuantitativaPanel.add(getFTransformacionComboBox(), null);
+			cuantitativaPanel.add(getAsistenteButton(), null);
+			cuantitativaPanel.add(getMagnitudPanel(), null);
+			cuantitativaPanel.add(getGraficoButton(), null);
+			cuantitativaPanel.add(getIndicadoresPanel(), null);
+			cuantitativaPanel.add(getAceptarCuantitativaButton(), null);
+			cuantitativaPanel.add(getCancelarCuantitativaButton(), null);
 		}
-		return valCuantitativaPanel;
+		return cuantitativaPanel;
 	}
 
 	/**
@@ -929,12 +929,12 @@ public class formEfecto2 extends JFrame {
 	}
 
 	/**
-	 * This method initializes datosPanel
+	 * This method initializes indicadoresPanel
 	 *
 	 * @return javax.swing.JPanel
 	 */
-	private JPanel getDatosPanel() {
-		if (datosPanel == null) {
+	private JPanel getIndicadoresPanel() {
+		if (indicadoresPanel == null) {
 			valorMinLabel = new JLabel();
 			valorMinLabel.setBounds(new Rectangle(7, 55, 168, 16));
 			valorMinLabel.setText("Valor máximo indicador:");
@@ -944,19 +944,19 @@ public class formEfecto2 extends JFrame {
 			valorMaxLabel = new JLabel();
 			valorMaxLabel.setBounds(new Rectangle(8, 33, 169, 16));
 			valorMaxLabel.setText("Valor máximo indicador:");
-			datosPanel = new JPanel();
-			datosPanel.setLayout(null);
-			datosPanel.setBounds(new Rectangle(16, 30, 422, 123));
-			datosPanel.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
-			datosPanel.add(getValormaxTextField(), null);
-			datosPanel.add(valorMaxLabel, null);
-			datosPanel.add(indicadorLabel, null);
-			datosPanel.add(valorMinLabel, null);
-			datosPanel.add(getCalcularButton1(), null);
-			datosPanel.add(getIndicadorTextField(), null);
-			datosPanel.add(getValorMinTextField(), null);
+			indicadoresPanel = new JPanel();
+			indicadoresPanel.setLayout(null);
+			indicadoresPanel.setBounds(new Rectangle(16, 30, 422, 123));
+			indicadoresPanel.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
+			indicadoresPanel.add(getValormaxTextField(), null);
+			indicadoresPanel.add(valorMaxLabel, null);
+			indicadoresPanel.add(indicadorLabel, null);
+			indicadoresPanel.add(valorMinLabel, null);
+			indicadoresPanel.add(getCalcularButton1(), null);
+			indicadoresPanel.add(getIndicadorTextField(), null);
+			indicadoresPanel.add(getValorMinTextField(), null);
 		}
-		return datosPanel;
+		return indicadoresPanel;
 	}
 
 	/**
@@ -1016,36 +1016,6 @@ public class formEfecto2 extends JFrame {
 	}
 
 	/**
-	 * This method initializes aceptarButton2
-	 *
-	 * @return javax.swing.JButton
-	 */
-	private JButton getAceptarButton2() {
-		if (aceptarButton2 == null) {
-			aceptarButton2 = new JButton();
-			aceptarButton2.setLocation(new Point(134, 350));
-			aceptarButton2.setText("Aceptar");
-			aceptarButton2.setSize(new Dimension(100, 32));
-		}
-		return aceptarButton2;
-	}
-
-	/**
-	 * This method initializes cancelarButton2
-	 *
-	 * @return javax.swing.JButton
-	 */
-	private JButton getCancelarButton2() {
-		if (cancelarButton2 == null) {
-			cancelarButton2 = new JButton();
-			cancelarButton2.setLocation(new Point(244, 353));
-			cancelarButton2.setText("Cancelar");
-			cancelarButton2.setSize(new Dimension(100, 32));
-		}
-		return cancelarButton2;
-	}
-
-	/**
 	 * This method initializes cuantitativaTextField
 	 *
 	 * @return javax.swing.JTextField
@@ -1076,6 +1046,42 @@ public class formEfecto2 extends JFrame {
 			caracterPanel.add(caracterCuantitativaLabel, null);
 		}
 		return caracterPanel;
+	}
+
+	/**
+	 * This method initializes aceptarCuantitativaButton
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getAceptarCuantitativaButton() {
+		if (aceptarCuantitativaButton == null) {
+			aceptarCuantitativaButton = new JButton();
+			aceptarCuantitativaButton.setName("");
+			aceptarCuantitativaButton.setText("Aceptar");
+			aceptarCuantitativaButton.setLocation(new Point(139, 311));
+			aceptarCuantitativaButton.setSize(new Dimension(79, 17));
+			aceptarCuantitativaButton.setBackground(Color.white);
+		}
+		return aceptarCuantitativaButton;
+	}
+
+	/**
+	 * This method initializes cancelarCuantitativaButton
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getCancelarCuantitativaButton() {
+		if (cancelarCuantitativaButton == null) {
+			cancelarCuantitativaButton = new JButton();
+			cancelarCuantitativaButton.setName("");
+			cancelarCuantitativaButton.setMnemonic(KeyEvent.VK_UNDEFINED);
+			cancelarCuantitativaButton.setSelected(false);
+			cancelarCuantitativaButton.setText("Cancelar");
+			cancelarCuantitativaButton.setLocation(new Point(233, 311));
+			cancelarCuantitativaButton.setSize(new Dimension(85, 17));
+			cancelarCuantitativaButton.setBackground(Color.white);
+		}
+		return cancelarCuantitativaButton;
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="14,15"
