@@ -75,7 +75,7 @@ public class formEfecto2 extends JFrame {
 	private JCheckBox momentoCriticoCheckBox = null;
 	private JLabel extensionCriticaLabel = null;
 	private JLabel momentoCriticoLabel = null;
-	private JButton calcularButton = null;
+	private JButton calcularCualitativaButton = null;
 	private JPanel valCuantitativaPane = null;
 	private JPanel cuantitativaPanel = null;
 	private JLabel fTransformacionLabel = null;
@@ -90,7 +90,7 @@ public class formEfecto2 extends JFrame {
 	private JLabel valorMaxLabel = null;
 	private JLabel indicadorLabel = null;
 	private JLabel valorMinLabel = null;
-	private JButton calcularButton1 = null;
+	private JButton calcularCuantitativaButton = null;
 	private JTextField indicadorTextField = null;
 	private JTextField valorMinTextField = null;
 	private JLabel valoracionCualitativaLabel = null;
@@ -545,7 +545,7 @@ public class formEfecto2 extends JFrame {
 			cualitativaPanel.add(getMomentoCriticoCheckBox(), null);
 			cualitativaPanel.add(extensionCriticaLabel, null);
 			cualitativaPanel.add(momentoCriticoLabel, null);
-			cualitativaPanel.add(getCalcularButton(), null);
+			cualitativaPanel.add(getCalcularCualitativaButton(), null);
 			cualitativaPanel.add(getAceptarCualitativaButton(), null);
 			cualitativaPanel.add(getCancelarCualitativaButton(), null);
 		}
@@ -795,20 +795,20 @@ public class formEfecto2 extends JFrame {
 	}
 
 	/**
-	 * This method initializes calcularButton
+	 * This method initializes calcularCualitativaButton
 	 *
 	 * @return javax.swing.JButton
 	 */
-	private JButton getCalcularButton() {
-		if (calcularButton == null) {
-			calcularButton = new JButton();
-			calcularButton.setLocation(new Point(340, 183));
-			calcularButton.setBackground(Color.white);
-			calcularButton.setName("");
-			calcularButton.setText("Calcular");
-			calcularButton.setSize(new Dimension(81, 16));
+	private JButton getCalcularCualitativaButton() {
+		if (calcularCualitativaButton == null) {
+			calcularCualitativaButton = new JButton();
+			calcularCualitativaButton.setLocation(new Point(340, 183));
+			calcularCualitativaButton.setBackground(Color.white);
+			calcularCualitativaButton.setName("");
+			calcularCualitativaButton.setText("Calcular");
+			calcularCualitativaButton.setSize(new Dimension(81, 16));
 		}
-		return calcularButton;
+		return calcularCualitativaButton;
 	}
 
 	/**
@@ -959,7 +959,7 @@ public class formEfecto2 extends JFrame {
 			indicadoresPanel.add(valorMaxLabel, null);
 			indicadoresPanel.add(indicadorLabel, null);
 			indicadoresPanel.add(valorMinLabel, null);
-			indicadoresPanel.add(getCalcularButton1(), null);
+			indicadoresPanel.add(getCalcularCuantitativaButton(), null);
 			indicadoresPanel.add(getIndicadorTextField(), null);
 			indicadoresPanel.add(getValorMinTextField(), null);
 		}
@@ -981,18 +981,18 @@ public class formEfecto2 extends JFrame {
 	}
 
 	/**
-	 * This method initializes calcularButton1
+	 * This method initializes calcularCuantitativaButton
 	 *
 	 * @return javax.swing.JButton
 	 */
-	private JButton getCalcularButton1() {
-		if (calcularButton1 == null) {
-			calcularButton1 = new JButton();
-			calcularButton1.setBounds(new Rectangle(11, 85, 393, 28));
-			calcularButton1.setBackground(Color.white);
-			calcularButton1.setText("Calcular");
+	private JButton getCalcularCuantitativaButton() {
+		if (calcularCuantitativaButton == null) {
+			calcularCuantitativaButton = new JButton();
+			calcularCuantitativaButton.setBounds(new Rectangle(11, 85, 393, 28));
+			calcularCuantitativaButton.setBackground(Color.white);
+			calcularCuantitativaButton.setText("Calcular");
 		}
-		return calcularButton1;
+		return calcularCuantitativaButton;
 	}
 
 	/**
