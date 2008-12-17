@@ -9,12 +9,12 @@
 	
 		<package name="eia" namespace="/eia" extends="struts-default">
 			<action name="showMenu">
-				<result>/pages/menu.jsp</result>
+				<result>/pages/mainMenu.jsp</result>
 			</action>			
 			<action name="doLoadProject" class="eia.load.LoadProject">
 				<result name="input">/pages/menu.jsp</result>
 				<result name="error">/pages/menu.jsp</result>
-				<result>/pages/projectMenu.jsp</result>
+				<result>/pages/mainMenu.jsp</result>
 			</action>					
 		</package>
 	<!-- Add packages here -->
