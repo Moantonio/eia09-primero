@@ -1,13 +1,15 @@
 package eia.vista;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,18 +17,14 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.TableColumnModel;
-import javax.swing.JTextField;
 import javax.swing.JTextArea;
-import javax.swing.JButton;
-import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
-import java.awt.Dimension;
+import javax.swing.table.TableColumnModel;
 
 public class formPrincipal {
 
@@ -38,9 +36,8 @@ public class formPrincipal {
 	private JMenu menuAlternativas = null;
 	private JMenuItem salirMenuItem = null;
 	private JMenuItem acercaDeMenuItem = null;
-	private JDialog dialogAcercaDe = null;  //  @jve:decl-index=0:visual-constraint="558,51"
+	private JDialog dialogAcercaDe = null;  //  @jve:decl-index=0:visual-constraint="544,1"
 	private JPanel panelContenidoAcercaDe = null;
-	private JLabel labelVersion = null;
 	private JMenu menuValoracion = null;
 	private JMenu menuInformes = null;
 	private JMenu menuAyuda = null;
@@ -247,8 +244,10 @@ public class formPrincipal {
 	private JDialog getDialogAcercaDe() {
 		if (dialogAcercaDe == null) {
 			dialogAcercaDe = new JDialog(getFramePrincipal(), true);
-			dialogAcercaDe.setTitle("About");
+			dialogAcercaDe.setTitle("Acerca de EIA09");
+			dialogAcercaDe.setSize(new Dimension(200,200));
 			dialogAcercaDe.setContentPane(getPanelContenidoAcercaDe());
+			dialogAcercaDe.setResizable(false);
 		}
 		return dialogAcercaDe;
 	}
@@ -261,24 +260,10 @@ public class formPrincipal {
 	private JPanel getPanelContenidoAcercaDe() {
 		if (panelContenidoAcercaDe == null) {
 			panelContenidoAcercaDe = new JPanel();
-			panelContenidoAcercaDe.setLayout(new BorderLayout());
-			panelContenidoAcercaDe.add(getlabelVersion(), BorderLayout.CENTER);
+			panelContenidoAcercaDe.setLayout(null);
+			panelContenidoAcercaDe.setPreferredSize(new Dimension(200, 200));
 		}
 		return panelContenidoAcercaDe;
-	}
-
-	/**
-	 * This method initializes aboutVersionLabel
-	 *
-	 * @return javax.swing.JLabel
-	 */
-	private JLabel getlabelVersion() {
-		if (labelVersion == null) {
-			labelVersion = new JLabel();
-			labelVersion.setText("EIA09 - Versión 0.1");
-			labelVersion.setHorizontalAlignment(SwingConstants.CENTER);
-		}
-		return labelVersion;
 	}
 
 	/**
