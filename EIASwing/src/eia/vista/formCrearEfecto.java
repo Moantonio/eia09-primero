@@ -11,6 +11,8 @@ import java.awt.Point;
 import java.awt.GridBagLayout;
 import javax.swing.BorderFactory;
 import java.awt.Color;
+
+import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -28,12 +30,12 @@ public class formCrearEfecto extends JFrame {
 	private JPanel crearEfectoPanel = null;
 	private JLabel nombreLabel = null;
 	private JLabel descripcionLabel = null;
-	private JButton aceptarButton = null;
-	private JButton cancelarButton = null;
 	private JLabel enjuiciamientoLabel = null;
 	private JTextField nombreTextField = null;
 	private JTextArea descripcionTextArea = null;
 	private JComboBox enjuiciamientoComboBox = null;
+	private JButton aceptarButton = null;
+	private JButton cancelarButton = null;
 
 	/**
 	 * This is the default constructor
@@ -49,9 +51,10 @@ public class formCrearEfecto extends JFrame {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(500, 300);
+		this.setSize(475, 280);
 		this.setContentPane(getJContentPane());
-		this.setTitle("EIA09");
+		this.setTitle("Nuevo efecto");
+		this.setResizable(false);
 	}
 
 	/**
@@ -88,7 +91,7 @@ public class formCrearEfecto extends JFrame {
 	private JTextField getAccionTextField() {
 		if (accionTextField == null) {
 			accionTextField = new JTextField();
-			accionTextField.setLocation(new Point(72, 15));
+			accionTextField.setLocation(new Point(78, 15));
 			accionTextField.setSize(new Dimension(150, 18));
 		}
 		return accionTextField;
@@ -116,22 +119,23 @@ public class formCrearEfecto extends JFrame {
 	private JPanel getCrearEfectoPanel() {
 		if (crearEfectoPanel == null) {
 			enjuiciamientoLabel = new JLabel();
-			enjuiciamientoLabel.setBounds(new Rectangle(30, 119, 164, 18));
-			enjuiciamientoLabel.setFont(new Font("Dialog", Font.BOLD, 14));
+			enjuiciamientoLabel.setBounds(new Rectangle(30, 119, 135, 18));
+			enjuiciamientoLabel.setFont(new Font("Dialog", Font.BOLD, 12));
 			enjuiciamientoLabel.setText("Simple enjuiciamiento:");
 			descripcionLabel = new JLabel();
-			descripcionLabel.setBounds(new Rectangle(31, 58, 92, 16));
-			descripcionLabel.setFont(new Font("Dialog", Font.BOLD, 14));
+			descripcionLabel.setBounds(new Rectangle(31, 58, 78, 16));
+			descripcionLabel.setFont(new Font("Dialog", Font.BOLD, 12));
 			descripcionLabel.setText("Descripción:");
 			nombreLabel = new JLabel();
 			nombreLabel.setText("Nombre:");
-			nombreLabel.setSize(new Dimension(61, 16));
-			nombreLabel.setFont(new Font("Dialog", Font.BOLD, 14));
+			nombreLabel.setSize(new Dimension(51, 16));
+			nombreLabel.setFont(new Font("Dialog", Font.BOLD, 12));
 			nombreLabel.setLocation(new Point(60, 30));
 			crearEfectoPanel = new JPanel();
 			crearEfectoPanel.setLayout(null);
-			crearEfectoPanel.setBounds(new Rectangle(30, 41, 441, 162));
-			crearEfectoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.gray, 1), "Crear Efecto", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 14), new Color(51, 51, 51)));
+			crearEfectoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Información del efecto", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
+			crearEfectoPanel.setSize(new Dimension(441, 162));
+			crearEfectoPanel.setLocation(new Point(13, 40));
 			crearEfectoPanel.add(nombreLabel, null);
 			crearEfectoPanel.add(descripcionLabel, null);
 			crearEfectoPanel.add(enjuiciamientoLabel, null);
@@ -140,36 +144,6 @@ public class formCrearEfecto extends JFrame {
 			crearEfectoPanel.add(getEnjuiciamientoComboBox(), null);
 		}
 		return crearEfectoPanel;
-	}
-
-	/**
-	 * This method initializes aceptarButton
-	 *
-	 * @return javax.swing.JButton
-	 */
-	private JButton getAceptarButton() {
-		if (aceptarButton == null) {
-			aceptarButton = new JButton();
-			aceptarButton.setLocation(new Point(120, 214));
-			aceptarButton.setText("Aceptar");
-			aceptarButton.setSize(new Dimension(100, 25));
-		}
-		return aceptarButton;
-	}
-
-	/**
-	 * This method initializes cancelarButton
-	 *
-	 * @return javax.swing.JButton
-	 */
-	private JButton getCancelarButton() {
-		if (cancelarButton == null) {
-			cancelarButton = new JButton();
-			cancelarButton.setLocation(new Point(243, 214));
-			cancelarButton.setText("Cancelar");
-			cancelarButton.setSize(new Dimension(100, 25));
-		}
-		return cancelarButton;
 	}
 
 	/**
@@ -214,6 +188,41 @@ public class formCrearEfecto extends JFrame {
 			enjuiciamientoComboBox.setFont(new Font("Dialog", Font.BOLD, 14));
 		}
 		return enjuiciamientoComboBox;
+	}
+
+	/**
+	 * This method initializes aceptarButton
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getAceptarButton() {
+		if (aceptarButton == null) {
+			aceptarButton = new JButton();
+			aceptarButton.setName("");
+			aceptarButton.setText("Aceptar");
+			aceptarButton.setLocation(new Point(139, 215));
+			aceptarButton.setSize(new Dimension(85, 20));
+			aceptarButton.setBackground(Color.white);
+		}
+		return aceptarButton;
+	}
+
+	/**
+	 * This method initializes cancelarButton
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getCancelarButton() {
+		if (cancelarButton == null) {
+			cancelarButton = new JButton();
+			cancelarButton.setName("");
+			cancelarButton.setSelected(false);
+			cancelarButton.setText("Cancelar");
+			cancelarButton.setLocation(new Point(244, 215));
+			cancelarButton.setSize(new Dimension(85, 20));
+			cancelarButton.setBackground(Color.white);
+		}
+		return cancelarButton;
 	}
 
 }
