@@ -82,5 +82,9 @@
 			</li>
 		</ul>
 	</div>
+	<div id="contenido">
+		<!-- Se incluye el jsp de la opcion seleccionada -->	
+		<jsp:include page="proyecto/menuProyecto.jsp"></jsp:include>	
+	</div>
 </body>
 </html>
