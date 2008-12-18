@@ -1,23 +1,21 @@
 package eia.vista;
 
-import java.awt.BorderLayout;
-import javax.swing.JPanel;
-import javax.swing.JFrame;
-import java.awt.Dimension;
-import javax.swing.JLabel;
-import java.awt.Rectangle;
-import javax.swing.JTextField;
-import java.awt.Point;
-import java.awt.GridBagLayout;
-import javax.swing.BorderFactory;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Point;
+import java.awt.Rectangle;
 
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
-import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.JTextArea;
-import javax.swing.JComboBox;
 
 public class formCrearEfecto extends JFrame {
 
