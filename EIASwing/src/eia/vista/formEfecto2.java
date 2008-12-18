@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
@@ -802,11 +803,11 @@ public class formEfecto2 extends JFrame {
 	private JButton getCalcularCualitativaButton() {
 		if (calcularCualitativaButton == null) {
 			calcularCualitativaButton = new JButton();
-			calcularCualitativaButton.setLocation(new Point(340, 183));
+			calcularCualitativaButton.setLocation(new Point(325, 180));
 			calcularCualitativaButton.setBackground(Color.white);
 			calcularCualitativaButton.setName("");
 			calcularCualitativaButton.setText("Calcular");
-			calcularCualitativaButton.setSize(new Dimension(81, 16));
+			calcularCualitativaButton.setSize(new Dimension(120, 20));
 		}
 		return calcularCualitativaButton;
 	}
@@ -835,8 +836,8 @@ public class formEfecto2 extends JFrame {
 		if (cuantitativaPanel == null) {
 			fTransformacionLabel = new JLabel();
 			fTransformacionLabel.setText("Función de transformación:");
-			fTransformacionLabel.setLocation(new Point(18, 176));
-			fTransformacionLabel.setSize(new Dimension(201, 16));
+			fTransformacionLabel.setLocation(new Point(49, 174));
+			fTransformacionLabel.setSize(new Dimension(163, 16));
 			cuantitativaPanel = new JPanel();
 			cuantitativaPanel.setLayout(null);
 			cuantitativaPanel.setLocation(new Point(17, 14));
@@ -862,7 +863,8 @@ public class formEfecto2 extends JFrame {
 	private JComboBox getFTransformacionComboBox() {
 		if (fTransformacionComboBox == null) {
 			fTransformacionComboBox = new JComboBox();
-			fTransformacionComboBox.setBounds(new Rectangle(18, 204, 196, 17));
+			fTransformacionComboBox.setSize(new Dimension(196, 17));
+			fTransformacionComboBox.setLocation(new Point(36, 203));
 		}
 		return fTransformacionComboBox;
 	}
@@ -875,7 +877,7 @@ public class formEfecto2 extends JFrame {
 	private JButton getAsistenteButton() {
 		if (asistenteButton == null) {
 			asistenteButton = new JButton();
-			asistenteButton.setBounds(new Rectangle(253, 186, 151, 25));
+			asistenteButton.setBounds(new Rectangle(261, 184, 151, 25));
 			asistenteButton.setBackground(Color.white);
 			asistenteButton.setText("Asistente");
 		}
@@ -890,12 +892,13 @@ public class formEfecto2 extends JFrame {
 	private JPanel getMagnitudPanel() {
 		if (magnitudPanel == null) {
 			magnitudLabel = new JLabel();
-			magnitudLabel.setBounds(new Rectangle(39, 16, 76, 19));
 			magnitudLabel.setFont(new Font("Dialog", Font.BOLD, 14));
+			magnitudLabel.setSize(new Dimension(76, 19));
+			magnitudLabel.setLocation(new Point(39, 17));
 			magnitudLabel.setText("Magnitud");
 			magnitudPanel = new JPanel();
 			magnitudPanel.setLayout(null);
-			magnitudPanel.setBounds(new Rectangle(15, 239, 276, 53));
+			magnitudPanel.setBounds(new Rectangle(29, 238, 276, 53));
 			magnitudPanel.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
 			magnitudPanel.add(magnitudLabel, null);
 			magnitudPanel.add(getMagnitudTextField(), null);
@@ -911,7 +914,7 @@ public class formEfecto2 extends JFrame {
 	private JTextField getMagnitudTextField() {
 		if (magnitudTextField == null) {
 			magnitudTextField = new JTextField();
-			magnitudTextField.setLocation(new Point(124, 17));
+			magnitudTextField.setLocation(new Point(124, 18));
 			magnitudTextField.setSize(new Dimension(117, 18));
 		}
 		return magnitudTextField;
@@ -925,8 +928,9 @@ public class formEfecto2 extends JFrame {
 	private JButton getGraficoButton() {
 		if (graficoButton == null) {
 			graficoButton = new JButton();
-			graficoButton.setBounds(new Rectangle(313, 241, 93, 49));
 			graficoButton.setBackground(Color.white);
+			graficoButton.setSize(new Dimension(93, 49));
+			graficoButton.setLocation(new Point(330, 239));
 			graficoButton.setText("Gráfico");
 		}
 		return graficoButton;
@@ -988,7 +992,7 @@ public class formEfecto2 extends JFrame {
 	private JButton getCalcularCuantitativaButton() {
 		if (calcularCuantitativaButton == null) {
 			calcularCuantitativaButton = new JButton();
-			calcularCuantitativaButton.setBounds(new Rectangle(11, 85, 393, 28));
+			calcularCuantitativaButton.setBounds(new Rectangle(14, 85, 393, 28));
 			calcularCuantitativaButton.setBackground(Color.white);
 			calcularCuantitativaButton.setText("Calcular");
 		}
