@@ -400,7 +400,7 @@ public class formEfecto extends JDialog {
 			cancelarFichaButton.setText("Cancelar");
 			cancelarFichaButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					System.exit(0);
+					dispose();
 				}
 			});
 		}
@@ -593,7 +593,7 @@ public class formEfecto extends JDialog {
 			cancelarCualitativaButton.setText("Cancelar");
 			cancelarCualitativaButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					System.exit(0);
+					dispose();
 				}
 			});
 		}
@@ -1105,7 +1105,7 @@ public class formEfecto extends JDialog {
 			cancelarCuantitativaButton.setBackground(Color.white);
 			cancelarCuantitativaButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					System.exit(0);
+					dispose();
 				}
 			});
 		}

@@ -422,7 +422,7 @@ public class formAlternativa extends JDialog{
 			cancelarButton.setLocation(new Point(375, 435));
 			cancelarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					System.exit(0);
+					 dispose();
 				}
 			});
 		}

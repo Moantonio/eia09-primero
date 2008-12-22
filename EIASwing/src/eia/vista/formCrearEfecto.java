@@ -222,7 +222,7 @@ public class formCrearEfecto extends JDialog {
 			cancelarButton.setBackground(Color.white);
 			cancelarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					System.exit(0);
+					dispose();
 				}
 			});
 		}

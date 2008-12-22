@@ -222,9 +222,9 @@ public class formPrincipal {
 			acercaDeMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					JDialog aboutDialog = getDialogAcercaDe();
-					aboutDialog.pack();
 					Point loc = getFramePrincipal().getLocation();
 					loc.translate(20, 20);
+					aboutDialog.setModal(true);
 					aboutDialog.setLocation(loc);
 					aboutDialog.setVisible(true);
 				}
@@ -337,8 +337,9 @@ public class formPrincipal {
 					Point loc = getFramePrincipal().getLocation();
 					loc.translate(20, 20);
 					lewis.setLocation(loc);
+					lewis.setModal(true);
 					lewis.setVisible(true);
-					lewis.setFocusable(false);
+
 				}
 			});
 		}
