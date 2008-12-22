@@ -25,6 +25,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
+import eia.model.*;
 
 public class formPrincipal {
 
@@ -90,9 +91,12 @@ public class formPrincipal {
 	private JButton anadirAltButton = null;
 	private JButton eliminarAltButton = null;
 	private JButton editarAltButton = null;
+
+	// Variables del modelo
+	private Proyecto proyecto = null;
+
 	/**
 	 * This method initializes framePrincipal
-	 *
 	 * @return javax.swing.JFrame
 	 */
 	private JFrame getFramePrincipal() {
@@ -110,7 +114,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes panelContenidoPrincipal
-	 *
 	 * @return javax.swing.JPanel
 	 */
 	private JPanel getPanelContenidoPrincipal() {
@@ -125,7 +128,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes menuPrincipal
-	 *
 	 * @return javax.swing.JMenuBar
 	 */
 	private JMenuBar getMenuPrincipal() {
@@ -144,7 +146,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes jMenu
-	 *
 	 * @return javax.swing.JMenu
 	 */
 	private JMenu getMenuProyecto() {
@@ -166,7 +167,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes jMenu
-	 *
 	 * @return javax.swing.JMenu
 	 */
 	private JMenu getMenuFactores() {
@@ -181,7 +181,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes jMenu
-	 *
 	 * @return javax.swing.JMenu
 	 */
 	private JMenu getMenuAlternativas() {
@@ -197,7 +196,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes jMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getSalirMenuItem() {
@@ -215,7 +213,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes jMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getAcercaDeMenuItem() {
@@ -238,7 +235,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes dialogAcercaDe
-	 *
 	 * @return javax.swing.JDialog
 	 */
 	private JDialog getDialogAcercaDe() {
@@ -254,7 +250,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes panelContenidoAcercaDe
-	 *
 	 * @return javax.swing.JPanel
 	 */
 	private JPanel getPanelContenidoAcercaDe() {
@@ -268,7 +263,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes menuValoracion
-	 *
 	 * @return javax.swing.JMenu
 	 */
 	private JMenu getMenuValoracion() {
@@ -283,7 +277,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes menuInformes
-	 *
 	 * @return javax.swing.JMenu
 	 */
 	private JMenu getMenuInformes() {
@@ -298,7 +291,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes menuAyuda
-	 *
 	 * @return javax.swing.JMenu
 	 */
 	private JMenu getMenuAyuda() {
@@ -315,7 +307,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes menuNuevo
-	 *
 	 * @return javax.swing.JMenu
 	 */
 	private JMenu getMenuNuevo() {
@@ -334,7 +325,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes AutoviaMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getAutoviaMenuItem() {
@@ -347,7 +337,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes PresaMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getPresaMenuItem() {
@@ -360,7 +349,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes puertoMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getPuertoMenuItem() {
@@ -373,7 +361,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes vertederoMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getVertederoMenuItem() {
@@ -386,7 +373,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes otroMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getOtroMenuItem() {
@@ -399,7 +385,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes abrirMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getAbrirMenuItem() {
@@ -412,7 +397,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes guardarMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getGuardarMenuItem() {
@@ -425,7 +409,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes guardarComoMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getGuardarComoMenuItem() {
@@ -438,7 +421,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes descripcionMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getDescripcionMenuItem() {
@@ -451,7 +433,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes verFactoresMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getVerFactoresMenuItem() {
@@ -464,7 +445,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes modificarPesosMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getModificarPesosMenuItem() {
@@ -477,7 +457,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes valorarMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getValorarMenuItem() {
@@ -490,7 +469,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes verResultadosMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getVerResultadosMenuItem() {
@@ -503,7 +481,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes verInformeMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getVerInformeMenuItem() {
@@ -516,7 +493,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes funcionamientoMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getFuncionamientoMenuItem() {
@@ -529,7 +505,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes legislacionMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getLegislacionMenuItem() {
@@ -542,7 +517,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes anadirAlternativaMenuItem
-	 *
 	 * @return javax.swing.JMenuItem
 	 */
 	private JMenuItem getAnadirAlternativaMenuItem() {
@@ -555,7 +529,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes eliminarAlternativaMenu
-	 *
 	 * @return javax.swing.JMenu
 	 */
 	private JMenu getEliminarAlternativaMenu() {
@@ -568,7 +541,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes modificarAlternativaMenu
-	 *
 	 * @return javax.swing.JMenu
 	 */
 	private JMenu getModificarAlternativaMenu() {
@@ -581,7 +553,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes infoProyectoPanel
-	 *
 	 * @return javax.swing.JPanel
 	 */
 	private JPanel getInfoProyectoPanel() {
@@ -653,7 +624,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes alternativasPanel
-	 *
 	 * @return javax.swing.JPanel
 	 */
 	private JPanel getAlternativasPanel() {
@@ -673,7 +643,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes alternativasScrollPane
-	 *
 	 * @return javax.swing.JScrollPane
 	 */
 	private JScrollPane getAlternativasScrollPane() {
@@ -687,7 +656,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes alternativasTable
-	 *
 	 * @return javax.swing.JTable
 	 */
 	private JTable getAlternativasTable() {
@@ -709,7 +677,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes nombreTextField
-	 *
 	 * @return javax.swing.JTextField
 	 */
 	private JTextField getNombreTextField() {
@@ -723,7 +690,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes tipoTextField
-	 *
 	 * @return javax.swing.JTextField
 	 */
 	private JTextField getTipoTextField() {
@@ -737,7 +703,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes descripcionTextArea
-	 *
 	 * @return javax.swing.JTextArea
 	 */
 	private JTextArea getDescripcionTextArea() {
@@ -753,7 +718,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes companiaTextField
-	 *
 	 * @return javax.swing.JTextField
 	 */
 	private JTextField getCompaniaTextField() {
@@ -767,7 +731,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes poblacionTextField
-	 *
 	 * @return javax.swing.JTextField
 	 */
 	private JTextField getPoblacionTextField() {
@@ -781,7 +744,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes paisTextField
-	 *
 	 * @return javax.swing.JTextField
 	 */
 	private JTextField getPaisTextField() {
@@ -795,7 +757,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes provinciaTextField
-	 *
 	 * @return javax.swing.JTextField
 	 */
 	private JTextField getProvinciaTextField() {
@@ -809,7 +770,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes autorTextField
-	 *
 	 * @return javax.swing.JTextField
 	 */
 	private JTextField getAutorTextField() {
@@ -823,7 +783,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes fechaTextField
-	 *
 	 * @return javax.swing.JTextField
 	 */
 	private JTextField getFechaTextField() {
@@ -837,7 +796,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes vidaUtilTextField
-	 *
 	 * @return javax.swing.JTextField
 	 */
 	private JTextField getVidaUtilTextField() {
@@ -851,7 +809,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes modificarButton
-	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getModificarButton() {
@@ -867,7 +824,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes anadirAltButton
-	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getAnadirAltButton() {
@@ -884,7 +840,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes eliminarAltButton
-	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getEliminarAltButton() {
@@ -901,7 +856,6 @@ public class formPrincipal {
 
 	/**
 	 * This method initializes editarAltButton
-	 *
 	 * @return javax.swing.JButton
 	 */
 	private JButton getEditarAltButton() {
@@ -916,9 +870,6 @@ public class formPrincipal {
 		return editarAltButton;
 	}
 
-	/**
-	 * Launches this application
-	 */
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
