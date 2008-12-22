@@ -1,7 +1,6 @@
 package eia.vista;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
@@ -9,7 +8,6 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -29,7 +27,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
-import eia.model.*;
+
+import eia.model.Proyecto;
 
 public class formPrincipal {
 
@@ -55,7 +54,6 @@ public class formPrincipal {
 	private JMenuItem abrirMenuItem = null;
 	private JMenuItem guardarMenuItem = null;
 	private JMenuItem guardarComoMenuItem = null;
-	private JMenuItem descripcionMenuItem = null;
 	private JMenuItem verFactoresMenuItem = null;
 	private JMenuItem modificarPesosMenuItem = null;
 	private JMenuItem valorarMenuItem = null;
@@ -95,9 +93,11 @@ public class formPrincipal {
 	private JButton anadirAltButton = null;
 	private JButton eliminarAltButton = null;
 	private JButton editarAltButton = null;
+	private JButton aceptarButton = null;
 
 	// Variables del modelo
 	private Proyecto proyecto = null;
+	private File ficheroProyecto = null;
 
 	/**
 	 * This method initializes framePrincipal
@@ -161,8 +161,6 @@ public class formPrincipal {
 			menuProyecto.addSeparator();
 			menuProyecto.add(getGuardarMenuItem());
 			menuProyecto.add(getGuardarComoMenuItem());
-			menuProyecto.addSeparator();
-			menuProyecto.add(getDescripcionMenuItem());
 			menuProyecto.addSeparator();
 			menuProyecto.add(getSalirMenuItem());
 		}
@@ -420,7 +418,7 @@ public class formPrincipal {
 					int seleccion = fileChooser.showOpenDialog(null);
 					// Controlamos la selección
 				    if (seleccion == JFileChooser.APPROVE_OPTION) {
-				    	File file = fileChooser.getSelectedFile();
+				    	//File file = fileChooser.getSelectedFile();
 				    }
 				}
 			});
@@ -460,24 +458,12 @@ public class formPrincipal {
 					int seleccion = fileChooser.showSaveDialog(null);
 					// Controlamos la selección
 				    if (seleccion == JFileChooser.APPROVE_OPTION) {
-				    	File file = fileChooser.getSelectedFile();
+				    	//File file = fileChooser.getSelectedFile();
 				    }
 				}
 			});
 		}
 		return guardarComoMenuItem;
-	}
-
-	/**
-	 * This method initializes descripcionMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
-	private JMenuItem getDescripcionMenuItem() {
-		if (descripcionMenuItem == null) {
-			descripcionMenuItem = new JMenuItem();
-			descripcionMenuItem.setText("Descripción");
-		}
-		return descripcionMenuItem;
 	}
 
 	/**
@@ -667,6 +653,7 @@ public class formPrincipal {
 			infoProyectoPanel.add(getVidaUtilTextField(), null);
 			infoProyectoPanel.add(mesesLabel, null);
 			infoProyectoPanel.add(getModificarButton(), null);
+			infoProyectoPanel.add(getAceptarButton(), null);
 		}
 		return infoProyectoPanel;
 	}
@@ -866,7 +853,20 @@ public class formPrincipal {
 			modificarButton.setBounds(new Rectangle(322, 175, 94, 17));
 			modificarButton.setText("Modificar");
 			modificarButton.setBackground(Color.white);
-			modificarButton.setName("");
+			modificarButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					nombreTextField.setEnabled(true);
+					descripcionTextArea.setEnabled(true);
+					companiaTextField.setEnabled(true);
+					autorTextField.setEnabled(true);
+					poblacionTextField.setEnabled(true);
+					provinciaTextField.setEnabled(true);
+					paisTextField.setEnabled(true);
+					fechaTextField.setEnabled(true);
+					vidaUtilTextField.setEnabled(true);
+					aceptarButton.setVisible(true);
+				}
+			});
 		}
 		return modificarButton;
 	}
@@ -917,6 +917,38 @@ public class formPrincipal {
 			editarAltButton.setBackground(Color.white);
 		}
 		return editarAltButton;
+	}
+
+	/**
+	 * This method initializes aceptarButton
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getAceptarButton() {
+		if (aceptarButton == null) {
+			aceptarButton = new JButton();
+			aceptarButton.setName("");
+			aceptarButton.setText("Aceptar");
+			aceptarButton.setLocation(new Point(232, 175));
+			aceptarButton.setSize(new Dimension(87, 17));
+			aceptarButton.setBackground(Color.white);
+			aceptarButton.setVisible(false);
+			aceptarButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					nombreTextField.setEnabled(false);
+					descripcionTextArea.setEnabled(false);
+					companiaTextField.setEnabled(false);
+					autorTextField.setEnabled(false);
+					poblacionTextField.setEnabled(false);
+					provinciaTextField.setEnabled(false);
+					paisTextField.setEnabled(false);
+					fechaTextField.setEnabled(false);
+					vidaUtilTextField.setEnabled(false);
+					aceptarButton.setVisible(false);
+				}
+			});
+		}
+		return aceptarButton;
 	}
 
 	public static void main(String[] args) {
