@@ -1,16 +1,20 @@
 package eia.vista;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -333,6 +337,8 @@ public class formPrincipal {
 			autoviaMenuItem.setText("Autovía");
 			autoviaMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+
+					//Pruebas
 					formAlternativa lewis = new formAlternativa();
 					Point loc = getFramePrincipal().getLocation();
 					loc.translate(20, 20);
@@ -402,6 +408,17 @@ public class formPrincipal {
 		if (abrirMenuItem == null) {
 			abrirMenuItem = new JMenuItem();
 			abrirMenuItem.setText("Abrir");
+			abrirMenuItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					// Ventana de abrir
+					JFileChooser fileChooser = new JFileChooser();
+					// Aplicamos filtro
+					//fileChooser.setCurrentDirectory(new File("/"));
+					//FileFilter doc
+		            //fileChooser.setFileFilter();
+					int seleccion = fileChooser.showOpenDialog(null);
+				}
+			});
 		}
 		return abrirMenuItem;
 	}
