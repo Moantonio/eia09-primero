@@ -1,30 +1,25 @@
 package eia.vista;
 
-import java.awt.BorderLayout;
-
-import javax.swing.BorderFactory;
-import javax.swing.JPanel;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-
+import java.awt.Color;
 import java.awt.Dimension;
-import javax.swing.JLabel;
-import java.awt.Rectangle;
+import java.awt.Font;
 import java.awt.Point;
-import javax.swing.JTextField;
-import java.awt.GridBagLayout;
+import java.awt.Rectangle;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JEditorPane;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.JTree;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
-
-import java.awt.Font;
-import java.awt.Color;
-import javax.swing.JButton;
-import javax.swing.JTree;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
 
 public class formAlternativa extends JFrame {
 
@@ -53,6 +48,7 @@ public class formAlternativa extends JFrame {
 	private JButton aceptarButton = null;
 	private JButton cancelarButton = null;
 	private JPanel valoracionPanel = null;
+
 	/**
 	 * This is the default constructor
 	 */
@@ -70,6 +66,7 @@ public class formAlternativa extends JFrame {
 		this.setSize(500, 500);
 		this.setContentPane(getJContentPane());
 		this.setTitle("EIA09");
+		this.setResizable(false);
 	}
 
 	/**
