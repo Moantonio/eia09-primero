@@ -7,6 +7,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -23,6 +24,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
@@ -163,6 +165,7 @@ public class formPrincipal {
 			menuProyecto.add(getGuardarComoMenuItem());
 			menuProyecto.addSeparator();
 			menuProyecto.add(getSalirMenuItem());
+			menuProyecto.setMnemonic(KeyEvent.VK_P);
 		}
 		return menuProyecto;
 	}
@@ -204,6 +207,8 @@ public class formPrincipal {
 		if (salirMenuItem == null) {
 			salirMenuItem = new JMenuItem();
 			salirMenuItem.setText("Salir");
+			//salirMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+			salirMenuItem.setMnemonic(KeyEvent.VK_S);
 			salirMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					System.exit(0);
@@ -321,6 +326,7 @@ public class formPrincipal {
 			menuNuevo.add(getVertederoMenuItem());
 			menuNuevo.addSeparator();
 			menuNuevo.add(getOtroMenuItem());
+			menuNuevo.setMnemonic(KeyEvent.VK_N);
 		}
 		return menuNuevo;
 	}
@@ -336,7 +342,7 @@ public class formPrincipal {
 			autoviaMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 
-					//Pruebas
+					//Prueba de abrir un formulario
 					formAlternativa lewis = new formAlternativa();
 					Point loc = getFramePrincipal().getLocation();
 					loc.translate(20, 20);
@@ -406,6 +412,7 @@ public class formPrincipal {
 		if (abrirMenuItem == null) {
 			abrirMenuItem = new JMenuItem();
 			abrirMenuItem.setText("Abrir");
+			abrirMenuItem.setMnemonic(KeyEvent.VK_A);
 			abrirMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					// Ventana de abrir
@@ -434,6 +441,7 @@ public class formPrincipal {
 		if (guardarMenuItem == null) {
 			guardarMenuItem = new JMenuItem();
 			guardarMenuItem.setText("Guardar");
+			guardarMenuItem.setMnemonic(KeyEvent.VK_G);
 		}
 		return guardarMenuItem;
 	}
@@ -446,6 +454,7 @@ public class formPrincipal {
 		if (guardarComoMenuItem == null) {
 			guardarComoMenuItem = new JMenuItem();
 			guardarComoMenuItem.setText("Guardar como...");
+			guardarComoMenuItem.setMnemonic(KeyEvent.VK_U);
 			guardarComoMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					// Ventana de guardar como
