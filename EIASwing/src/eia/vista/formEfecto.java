@@ -298,7 +298,7 @@ public class formEfecto extends JFrame {
 			valEfectoPanel = new JPanel();
 			valEfectoPanel.setLayout(null);
 			valEfectoPanel.setLocation(new Point(24, 130));
-			valEfectoPanel.setSize(new Dimension(440, 206));
+			valEfectoPanel.setSize(new Dimension(440, 204));
 			valEfectoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Valoración", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
 			valEfectoPanel.add(getCualitativaTextField(), null);
 			valEfectoPanel.add(getValoracionPanel(), null);
