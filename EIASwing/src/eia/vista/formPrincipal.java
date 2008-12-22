@@ -416,8 +416,12 @@ public class formPrincipal {
 					FiltreSimple filtro = new FiltreSimple("Ficheros XML",".xml");
 		            fileChooser.setFileFilter(filtro);
 					// Directorio por defecto
-					//fileChooser.setCurrentDirectory(new File("/"));
+					fileChooser.setCurrentDirectory(new File("./"));
 					int seleccion = fileChooser.showOpenDialog(null);
+					// Controlamos la selección
+				    if (seleccion == JFileChooser.APPROVE_OPTION) {
+				    	File file = fileChooser.getSelectedFile();
+				    }
 				}
 			});
 		}
@@ -444,6 +448,22 @@ public class formPrincipal {
 		if (guardarComoMenuItem == null) {
 			guardarComoMenuItem = new JMenuItem();
 			guardarComoMenuItem.setText("Guardar como...");
+			guardarComoMenuItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					// Ventana de guardar como
+					JFileChooser fileChooser = new JFileChooser();
+					// Aplicamos filtro
+					FiltreSimple filtro = new FiltreSimple("Ficheros XML",".xml");
+		            fileChooser.setFileFilter(filtro);
+					// Directorio por defecto
+					fileChooser.setCurrentDirectory(new File("./"));
+					int seleccion = fileChooser.showSaveDialog(null);
+					// Controlamos la selección
+				    if (seleccion == JFileChooser.APPROVE_OPTION) {
+				    	File file = fileChooser.getSelectedFile();
+				    }
+				}
+			});
 		}
 		return guardarComoMenuItem;
 	}
