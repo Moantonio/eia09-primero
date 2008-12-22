@@ -5,6 +5,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
@@ -418,6 +421,11 @@ public class formAlternativa extends JFrame {
 			cancelarButton.setText("Cancelar");
 			cancelarButton.setSize(new Dimension(90, 20));
 			cancelarButton.setLocation(new Point(375, 435));
+			cancelarButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					System.exit(0);
+				}
+			});
 		}
 		return cancelarButton;
 	}
