@@ -413,9 +413,10 @@ public class formPrincipal {
 					// Ventana de abrir
 					JFileChooser fileChooser = new JFileChooser();
 					// Aplicamos filtro
+					FiltreSimple filtro = new FiltreSimple("Ficheros XML",".xml");
+		            fileChooser.setFileFilter(filtro);
+					// Directorio por defecto
 					//fileChooser.setCurrentDirectory(new File("/"));
-					//FileFilter doc
-		            //fileChooser.setFileFilter();
 					int seleccion = fileChooser.showOpenDialog(null);
 				}
 			});
