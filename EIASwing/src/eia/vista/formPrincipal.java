@@ -331,6 +331,16 @@ public class formPrincipal {
 		if (autoviaMenuItem == null) {
 			autoviaMenuItem = new JMenuItem();
 			autoviaMenuItem.setText("Autovía");
+			autoviaMenuItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					formAlternativa lewis = new formAlternativa();
+					Point loc = getFramePrincipal().getLocation();
+					loc.translate(20, 20);
+					lewis.setLocation(loc);
+					lewis.setVisible(true);
+					lewis.setFocusable(false);
+				}
+			});
 		}
 		return autoviaMenuItem;
 	}

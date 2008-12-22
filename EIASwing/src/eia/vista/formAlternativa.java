@@ -7,11 +7,10 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JEditorPane;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -24,7 +23,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
 
-public class formAlternativa extends JFrame {
+public class formAlternativa extends JDialog{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel jContentPane = null;
@@ -68,7 +67,7 @@ public class formAlternativa extends JFrame {
 	private void initialize() {
 		this.setSize(500, 500);
 		this.setContentPane(getJContentPane());
-		this.setTitle("EIA09");
+		this.setTitle("Alternativas de realización");
 		this.setResizable(false);
 	}
 
