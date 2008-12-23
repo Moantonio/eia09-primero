@@ -40,6 +40,9 @@ public class formCrearProyecto extends JDialog {
 	private JButton aceptarButton = null;
 	private JButton cancelarButton = null;
 
+	//Variables del modelo
+	private boolean flagAceptar = false;
+
 	public formCrearProyecto() {
 		super();
 		initialize();
@@ -176,6 +179,12 @@ public class formCrearProyecto extends JDialog {
 			jContentPane.add(getCancelarButton(), null);
 		}
 		return jContentPane;
+	}
+	public boolean isFlagAceptar() {
+		return flagAceptar;
+	}
+	public void setFlagAceptar(boolean flagAceptar) {
+		this.flagAceptar = flagAceptar;
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="10,10"
