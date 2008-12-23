@@ -74,7 +74,7 @@ public class formPrincipal {
 	private JPanel infoProyectoPanel = null;
 	private JPanel alternativasPanel = null;
 	private JScrollPane alternativasScrollPane = null;
-	private TablaNoEditable modelo = new TablaNoEditable();
+	private TablaNoEditable modeloTabla = new TablaNoEditable();
 	private JTable alternativasTable = null;
 	private JTextField nombreTextField = null;
 	private JLabel nombreLabel = null;
@@ -720,15 +720,15 @@ public class formPrincipal {
 	 */
 	private JTable getAlternativasTable() {
 		if (alternativasTable == null) {
-			alternativasTable = new JTable(modelo);
-			modelo.addColumn("Alternativa");
-			modelo.addColumn("Valoración");
+			alternativasTable = new JTable(modeloTabla);
+			modeloTabla.addColumn("Alternativa");
+			modeloTabla.addColumn("Valoración");
 
 			//Código de pruebas
 			String[] fila1 = {"Alternativa 0", "0.45"};
-			modelo.addRow(fila1);
+			modeloTabla.addRow(fila1);
 			String[] fila2 = {"Alternativa 1", "0.23"};
-			modelo.addRow(fila2);
+			modeloTabla.addRow(fila2);
 
 
 
