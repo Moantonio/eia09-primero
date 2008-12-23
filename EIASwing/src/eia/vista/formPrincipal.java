@@ -733,6 +733,7 @@ public class formPrincipal {
 
 			alternativasTable.setRowSelectionAllowed(true);
 			alternativasTable.setShowVerticalLines(false);
+			alternativasTable.setEnabled(false);
 			alternativasTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			alternativasTable.setRowSelectionAllowed(true);
 			alternativasTable.getTableHeader().setReorderingAllowed(false);
@@ -919,6 +920,7 @@ public class formPrincipal {
 			anadirAltButton.setText("Añadir");
 			anadirAltButton.setLocation(new Point(135, 138));
 			anadirAltButton.setSize(new Dimension(88, 17));
+			anadirAltButton.setEnabled(false);
 			anadirAltButton.setBackground(Color.white);
 			anadirAltButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -950,6 +952,7 @@ public class formPrincipal {
 			eliminarAltButton.setText("Eliminar");
 			eliminarAltButton.setLocation(new Point(327, 138));
 			eliminarAltButton.setSize(new Dimension(88, 17));
+			eliminarAltButton.setEnabled(false);
 			eliminarAltButton.setBackground(Color.white);
 			eliminarAltButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -977,6 +980,7 @@ public class formPrincipal {
 			editarAltButton.setText("Editar");
 			editarAltButton.setLocation(new Point(231, 138));
 			editarAltButton.setSize(new Dimension(88, 17));
+			editarAltButton.setEnabled(false);
 			editarAltButton.setBackground(Color.white);
 			editarAltButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
