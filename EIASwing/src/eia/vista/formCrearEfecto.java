@@ -40,11 +40,11 @@ public class formCrearEfecto extends JDialog {
 	private JLabel enjuiciamientoLabel = null;
 	private JTextField nombreTextField = null;
 	private JTextArea descripcionTextArea = null;
-	private JComboBox enjuiciamientoComboBox = null;
 	private JButton aceptarButton = null;
 	private JButton cancelarButton = null;
 	// Variables del modelo
 	private boolean flagAceptar = false;
+	private JComboBox enjuiciamientoComboBox = null;
 
 	public formCrearEfecto() {
 		super();
@@ -156,17 +156,6 @@ public class formCrearEfecto extends JDialog {
 		return descripcionTextArea;
 	}
 
-	private JComboBox getEnjuiciamientoComboBox() {
-		if (enjuiciamientoComboBox == null) {
-			String[] opciones = {"Despreciable","Especial","Impredicible","Significativo"};
-			enjuiciamientoComboBox = new JComboBox(opciones);
-			enjuiciamientoComboBox.setFont(new Font("Dialog", Font.BOLD, 12));
-			enjuiciamientoComboBox.setLocation(new Point(164, 120));
-			enjuiciamientoComboBox.setSize(new Dimension(150, 17));
-		}
-		return enjuiciamientoComboBox;
-	}
-
 	private JButton getAceptarButton() {
 		if (aceptarButton == null) {
 			aceptarButton = new JButton();
@@ -217,6 +206,17 @@ public class formCrearEfecto extends JDialog {
 
 	public String getEnjuiciamiento(){
 		return (String)enjuiciamientoComboBox.getSelectedItem();
+	}
+
+	private JComboBox getEnjuiciamientoComboBox() {
+		if (enjuiciamientoComboBox == null) {
+			String[] opciones = {"Despreciable","Especial","Impredicible","Significativo"};
+			enjuiciamientoComboBox = new JComboBox(opciones);
+			enjuiciamientoComboBox.setFont(new Font("Dialog", Font.BOLD, 12));
+			enjuiciamientoComboBox.setLocation(new Point(164, 120));
+			enjuiciamientoComboBox.setSize(new Dimension(175, 17));
+		}
+		return enjuiciamientoComboBox;
 	}
 
 }
