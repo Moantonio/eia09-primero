@@ -156,8 +156,9 @@ public class formCrearEfecto extends JDialog {
 
 	private JComboBox getEnjuiciamientoComboBox() {
 		if (enjuiciamientoComboBox == null) {
-			enjuiciamientoComboBox = new JComboBox();
-			enjuiciamientoComboBox.setFont(new Font("Dialog", Font.BOLD, 14));
+			String[] opciones = {"Despreciable","Especial","Impredicible","Significativo"};
+			enjuiciamientoComboBox = new JComboBox(opciones);
+			enjuiciamientoComboBox.setFont(new Font("Dialog", Font.BOLD, 12));
 			enjuiciamientoComboBox.setLocation(new Point(171, 120));
 			enjuiciamientoComboBox.setSize(new Dimension(209, 17));
 		}
@@ -212,8 +213,8 @@ public class formCrearEfecto extends JDialog {
 		return descripcionTextArea.getText();
 	}
 
-	public Object getEnjuiciamiento(){
-		return enjuiciamientoComboBox.getSelectedItem();
+	public String getEnjuiciamiento(){
+		return (String)enjuiciamientoComboBox.getSelectedItem();
 	}
 
 }
