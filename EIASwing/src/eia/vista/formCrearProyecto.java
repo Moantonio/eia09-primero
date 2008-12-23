@@ -103,9 +103,10 @@ public class formCrearProyecto extends JDialog {
 	private JButton getAceptarButton() {
 		if (aceptarButton == null) {
 			aceptarButton = new JButton();
-			aceptarButton.setBounds(new Rectangle(126, 144, 79, 26));
 			aceptarButton.setName("");
 			aceptarButton.setText("Aceptar");
+			aceptarButton.setSize(new Dimension(79, 20));
+			aceptarButton.setLocation(new Point(139, 145));
 			aceptarButton.setBackground(Color.white);
 		}
 		return aceptarButton;
@@ -119,10 +120,11 @@ public class formCrearProyecto extends JDialog {
 	private JButton getCancelarButton() {
 		if (cancelarButton == null) {
 			cancelarButton = new JButton();
-			cancelarButton.setBounds(new Rectangle(211, 143, 85, 26));
 			cancelarButton.setName("");
 			cancelarButton.setSelected(false);
 			cancelarButton.setText("Cancelar");
+			cancelarButton.setSize(new Dimension(85, 20));
+			cancelarButton.setLocation(new Point(244, 145));
 			cancelarButton.setBackground(Color.white);
 		}
 		return cancelarButton;
@@ -150,7 +152,7 @@ public class formCrearProyecto extends JDialog {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(475, 222);
+		this.setSize(475, 210);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Nuevo proyecto");
 	}
