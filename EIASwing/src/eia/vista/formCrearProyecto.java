@@ -36,6 +36,11 @@ public class formCrearProyecto extends JDialog {
 	private JTextArea descripcionTextArea = null;
 	private JButton aceptarButton = null;
 	private JButton cancelarButton = null;
+
+	public formCrearProyecto() {
+		super();
+		initialize();
+	}
 	/**
 	 * This method initializes crearProyectoPanel
 	 *

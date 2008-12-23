@@ -347,15 +347,13 @@ public class formPrincipal {
 			autoviaMenuItem.setText("Autovía");
 			autoviaMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-
-					//Prueba de abrir un formulario
-					formAlternativa lewis = new formAlternativa();
+					// Creamos un formulario de creaccion de proyecto
+					formCrearProyecto ventanaCrear = new formCrearProyecto();
 					Point loc = getFramePrincipal().getLocation();
 					loc.translate(20, 20);
-					lewis.setLocation(loc);
-					lewis.setModal(true);
-					lewis.setVisible(true);
-
+					ventanaCrear.setLocation(loc);
+					ventanaCrear.setModal(true);
+					ventanaCrear.setVisible(true);
 				}
 			});
 		}
