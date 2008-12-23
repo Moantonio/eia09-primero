@@ -56,7 +56,7 @@ public class formCrearProyecto extends JDialog {
 			crearProyectoPanel.setLayout(null);
 			crearProyectoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Información del proyecto", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
 			crearProyectoPanel.setSize(new Dimension(441, 120));
-			crearProyectoPanel.setLocation(new Point(13, 20));
+			crearProyectoPanel.setLocation(new Point(13, 13));
 			crearProyectoPanel.add(nombreLabel, null);
 			crearProyectoPanel.add(descripcionLabel, null);
 			crearProyectoPanel.add(getNombreTextField(), null);
