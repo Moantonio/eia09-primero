@@ -14,5 +14,6 @@ public enum TipoProyecto {
 	AUTOVÍA,
 	VERTEDERO,
 	PUERTODEPORTIVO,
-	PRESA
+	PRESA,
+	PERSONAL
 }
