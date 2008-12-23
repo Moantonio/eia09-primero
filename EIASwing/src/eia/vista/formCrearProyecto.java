@@ -16,6 +16,9 @@ import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.BorderFactory;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JComboBox;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
@@ -131,16 +134,13 @@ public class formCrearProyecto extends JDialog {
 			cancelarButton.setSize(new Dimension(85, 20));
 			cancelarButton.setLocation(new Point(244, 145));
 			cancelarButton.setBackground(Color.white);
+			cancelarButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					dispose();
+				}
+			});
 		}
 		return cancelarButton;
-	}
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 	}
 
 	/**
