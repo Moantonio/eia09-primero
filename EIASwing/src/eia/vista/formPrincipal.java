@@ -354,6 +354,11 @@ public class formPrincipal {
 					ventanaCrear.setLocation(loc);
 					ventanaCrear.setModal(true);
 					ventanaCrear.setVisible(true);
+					if(ventanaCrear.isFlagAceptar()){
+						String nombre = ventanaCrear.getNombre();
+						String descripcion = ventanaCrear.getDescripcion();
+					}
+					ventanaCrear.dispose();
 				}
 			});
 		}
