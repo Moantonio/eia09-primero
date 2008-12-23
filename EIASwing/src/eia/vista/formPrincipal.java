@@ -32,8 +32,10 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
 import eia.model.Alternativa;
+import eia.model.InfoProyecto;
 import eia.model.Proyecto;
 import eia.util.TablaNoEditable;
+import eia.util.TipoProyecto;
 
 public class formPrincipal {
 
@@ -359,9 +361,17 @@ public class formPrincipal {
 					ventanaCrear.setModal(true);
 					ventanaCrear.setVisible(true);
 					if(ventanaCrear.isFlagAceptar()){
+						//Tomamos los datos
 						String nombre = ventanaCrear.getNombre();
 						String descripcion = ventanaCrear.getDescripcion();
-						//TODO Crear proyecto
+						//Creamos el proyecto
+						InfoProyecto info = new InfoProyecto();
+						info.setNombre(nombre);
+						info.setDescripcion(descripcion);
+						proyecto = new Proyecto(info,TipoProyecto.autovia);
+						//Actualizamos la vista
+						actualizarDescripcion();
+						actualizarAlternativas();
 					}
 					ventanaCrear.dispose();
 				}
@@ -1029,6 +1039,26 @@ public class formPrincipal {
 			});
 		}
 		return aceptarButton;
+	}
+
+	private void actualizarDescripcion(){
+		nombreTextField.setText(proyecto.getInformacion().getNombre());
+		tipoTextField.setText(proyecto.getTipo().toString());
+		descripcionTextArea.setText(proyecto.getInformacion().getDescripcion());
+		companiaTextField.setText(proyecto.getInformacion().getCompania());
+		autorTextField.setText(proyecto.getInformacion().getAutor());
+		poblacionTextField.setText(proyecto.getInformacion().getPoblacion());
+		provinciaTextField.setText(proyecto.getInformacion().getProvincia());
+		paisTextField.setText(proyecto.getInformacion().getPais());
+		fechaTextField.setText(""+proyecto.getInformacion().getFecha().getTime());
+		vidaUtilTextField.setText(""+proyecto.getInformacion().getVidaUtil());
+	}
+
+	private void actualizarAlternativas(){
+		alternativasTable.setEnabled(true);
+		anadirAltButton.setEnabled(true);
+		editarAltButton.setEnabled(true);
+		eliminarAltButton.setEnabled(true);
 	}
 
 	public static void main(String[] args) {
