@@ -98,7 +98,7 @@ public class formCrearAlternativa extends JDialog {
 		if (nombreProyTextField == null) {
 			nombreProyTextField = new JTextField();
 			nombreProyTextField.setLocation(new Point(139, 30));
-			nombreProyTextField.setFont(new Font("Dialog", Font.PLAIN, 14));
+			nombreProyTextField.setFont(new Font("Dialog", Font.BOLD, 12));
 			nombreProyTextField.setEditable(true);
 			nombreProyTextField.setEnabled(false);
 			nombreProyTextField.setSize(new Dimension(273, 18));
@@ -110,7 +110,7 @@ public class formCrearAlternativa extends JDialog {
 	private JTextField getNombreAltTextField() {
 		if (nombreAltTextField == null) {
 			nombreAltTextField = new JTextField();
-			nombreAltTextField.setFont(new Font("Dialog", Font.PLAIN, 14));
+			nombreAltTextField.setFont(new Font("Dialog", Font.BOLD, 12));
 			nombreAltTextField.setSize(new Dimension(273, 18));
 			nombreAltTextField.setLocation(new Point(139, 60));
 		}
