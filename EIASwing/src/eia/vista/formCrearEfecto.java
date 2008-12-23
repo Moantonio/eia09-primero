@@ -42,17 +42,23 @@ public class formCrearEfecto extends JDialog {
 	private JTextArea descripcionTextArea = null;
 	private JButton aceptarButton = null;
 	private JButton cancelarButton = null;
+	private JComboBox enjuiciamientoComboBox = null;
 	// Variables del modelo
 	private boolean flagAceptar = false;
-	private JComboBox enjuiciamientoComboBox = null;
+	private String nombreAccion;
+	private String nombreFactor;
 
-	public formCrearEfecto() {
+	public formCrearEfecto(String nAccion, String nFactor) {
 		super();
+		nombreAccion = nAccion;
+		nombreFactor = nFactor;
 		initialize();
 	}
 
-	public formCrearEfecto(Frame owner) {
+	public formCrearEfecto(Frame owner, String nAccion, String nFactor) {
 		super(owner);
+		nombreAccion = nAccion;
+		nombreFactor = nFactor;
 		initialize();
 	}
 
@@ -90,6 +96,7 @@ public class formCrearEfecto extends JDialog {
 			accionTextField.setFont(new Font("Dialog", Font.BOLD, 12));
 			accionTextField.setEnabled(false);
 			accionTextField.setSize(new Dimension(150, 18));
+			accionTextField.setText(nombreAccion);
 		}
 		return accionTextField;
 	}
@@ -101,6 +108,7 @@ public class formCrearEfecto extends JDialog {
 			factorTextField.setFont(new Font("Dialog", Font.BOLD, 12));
 			factorTextField.setEnabled(false);
 			factorTextField.setSize(new Dimension(150, 18));
+			factorTextField.setText(nombreFactor);
 		}
 		return factorTextField;
 	}

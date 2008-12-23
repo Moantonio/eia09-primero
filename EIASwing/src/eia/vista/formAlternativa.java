@@ -270,7 +270,7 @@ public class formAlternativa extends JDialog{
 			crearEfectoButton.setLocation(new Point(12, 217));
 			crearEfectoButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					formCrearEfecto formNuevoEfecto = new formCrearEfecto();
+					formCrearEfecto formNuevoEfecto = new formCrearEfecto("Accion", "Factor");
 					Point posActual = getDialog().getLocation();
 					posActual.translate(20, 20);
 					formNuevoEfecto.setLocation(posActual);
