@@ -31,6 +31,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
 
 import eia.model.Proyecto;
+import javax.swing.ListSelectionModel;
 
 public class formPrincipal {
 
@@ -715,15 +716,16 @@ public class formPrincipal {
 	private JTable getAlternativasTable() {
 		if (alternativasTable == null) {
 			String[] columnas = {"Alternativa", "Valoración"};
-			Object[][] datos = {{"Alternativa 0", "0.578"}};
+			Object[][] datos = {{1,1},{2,2}};
 			alternativasTable = new JTable(datos,columnas);
-			//alternativasTable.setEnabled(false);
+			alternativasTable.setRowSelectionAllowed(true);
+			alternativasTable.setShowVerticalLines(false);
+			alternativasTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			alternativasTable.getTableHeader().setReorderingAllowed(false);
 			TableColumnModel col = alternativasTable.getColumnModel();
 			col.getColumn(0).setResizable(false);
 			col.getColumn(1).setResizable(false);
 			col.getColumn(0).setPreferredWidth(350);
-
 
 		}
 		return alternativasTable;
