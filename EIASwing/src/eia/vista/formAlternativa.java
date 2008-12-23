@@ -61,6 +61,7 @@ public class formAlternativa extends JDialog{
 
 	//Variables del modelo
 	private Alternativa alternativa;
+	private boolean flagAceptar = false;
 
 	public formAlternativa(Alternativa alt) {
 		super();
@@ -114,6 +115,7 @@ public class formAlternativa extends JDialog{
 			altDeRealizcionTextField = new JTextField();
 			altDeRealizcionTextField.setSize(new Dimension(307, 20));
 			altDeRealizcionTextField.setLocation(new Point(163, 4));
+			altDeRealizcionTextField.setText(alternativa.getId());
 		}
 		return altDeRealizcionTextField;
 	}
@@ -341,7 +343,7 @@ public class formAlternativa extends JDialog{
 			cancelarButton.setLocation(new Point(375, 435));
 			cancelarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					 dispose();
+					setVisible(false);
 				}
 			});
 		}

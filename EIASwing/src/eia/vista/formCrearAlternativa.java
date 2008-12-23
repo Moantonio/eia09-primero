@@ -37,8 +37,8 @@ public class formCrearAlternativa extends JDialog {
 	private JButton cancelarButton = null;
 
 	//Variables del modelo
-	String nombreProyecto;
-	boolean flagAceptar = false;
+	private String nombreProyecto;
+	private boolean flagAceptar = false;
 
 	public formCrearAlternativa(Frame owner, String nameProyecto) {
 		super(owner);
