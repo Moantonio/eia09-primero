@@ -334,13 +334,15 @@ public class formAlternativa extends JDialog{
 			eliminarEfectosButton.setLocation(new Point(227, 126));
 			eliminarEfectosButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					//TODO Ventana de confirmar eliminar
-					JOptionPane.showConfirmDialog (null,
+					int seleccion = JOptionPane.showConfirmDialog (null,
 							"¿Está seguro que desea eliminar esta alternativa?",
 							"Eliminar alternativa",
-                            JOptionPane.ERROR_MESSAGE);}
+							JOptionPane.YES_NO_OPTION);
+					if (seleccion==JOptionPane.YES_OPTION){
+						//TODO eliminar de la alternativa el efecto seleccionado
+					}
 				}
-			);
+			});
 		}
 		return eliminarEfectosButton;
 	}
