@@ -19,6 +19,13 @@ import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
+/**
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
+
 public class formCrearEfecto extends JDialog {
 
 	private static final long serialVersionUID = 1L;
