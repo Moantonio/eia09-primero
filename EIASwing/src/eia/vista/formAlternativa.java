@@ -23,6 +23,8 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
 
+import eia.model.Alternativa;
+
 /**
  * @author SI: EIA'09
  * 		   Vicente Cruz Mínguez.
@@ -57,13 +59,18 @@ public class formAlternativa extends JDialog{
 	private JButton cancelarButton = null;
 	private JPanel valoracionPanel = null;
 
-	public formAlternativa() {
+	//Variables del modelo
+	private Alternativa alternativa;
+
+	public formAlternativa(Alternativa alt) {
 		super();
+		alternativa = alt;
 		initialize();
 	}
 
-	public formAlternativa(Frame owner) {
+	public formAlternativa(Frame owner, Alternativa alt) {
 		super(owner);
+		alternativa = alt;
 		initialize();
 	}
 
