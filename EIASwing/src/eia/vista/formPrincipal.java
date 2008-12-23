@@ -180,6 +180,7 @@ public class formPrincipal {
 			menuFactores.setText("Factores");
 			menuFactores.add(getVerFactoresMenuItem());
 			menuFactores.add(getModificarPesosMenuItem());
+			menuFactores.setMnemonic(KeyEvent.VK_F);
 		}
 		return menuFactores;
 	}
@@ -195,6 +196,7 @@ public class formPrincipal {
 			menuAlternativas.add(getAnadirAlternativaMenuItem());
 			menuAlternativas.add(getModificarAlternativaMenu());
 			menuAlternativas.add(getEliminarAlternativaMenu());
+			menuAlternativas.setMnemonic(KeyEvent.VK_A);
 		}
 		return menuAlternativas;
 	}
@@ -226,6 +228,7 @@ public class formPrincipal {
 		if (acercaDeMenuItem == null) {
 			acercaDeMenuItem = new JMenuItem();
 			acercaDeMenuItem.setText("Acerca de EIA09");
+			acercaDeMenuItem.setMnemonic(KeyEvent.VK_A);
 			acercaDeMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					JDialog aboutDialog = getDialogAcercaDe();
@@ -278,6 +281,7 @@ public class formPrincipal {
 			menuValoracion.setText("Valoracion");
 			menuValoracion.add(getValorarMenuItem());
 			menuValoracion.add(getVerResultadosMenuItem());
+			menuValoracion.setMnemonic(KeyEvent.VK_V);
 		}
 		return menuValoracion;
 	}
@@ -291,6 +295,7 @@ public class formPrincipal {
 			menuInformes = new JMenu();
 			menuInformes.setText("Informes");
 			menuInformes.add(getVerInformeMenuItem());
+			menuInformes.setMnemonic(KeyEvent.VK_I);
 		}
 		return menuInformes;
 	}
@@ -308,6 +313,7 @@ public class formPrincipal {
 			menuAyuda.add(getLegislacionMenuItem());
 			menuAyuda.addSeparator();
 			menuAyuda.add(getAcercaDeMenuItem());
+			menuAyuda.setMnemonic(KeyEvent.VK_U);
 		}
 		return menuAyuda;
 	}
