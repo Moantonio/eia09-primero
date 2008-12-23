@@ -315,6 +315,10 @@ public class formAlternativa extends JDialog{
 		return eliminarEfectosButton;
 	}
 
+	public boolean isFlagAceptar() {
+		return flagAceptar;
+	}
+
 	private JTextField getValoracionTextField() {
 		if (valoracionTextField == null) {
 			valoracionTextField = new JTextField();
@@ -331,6 +335,12 @@ public class formAlternativa extends JDialog{
 			aceptarButton.setSize(new Dimension(90, 20));
 			aceptarButton.setPreferredSize(new Dimension(80, 26));
 			aceptarButton.setLocation(new Point(278, 435));
+			aceptarButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					flagAceptar = true;
+					setVisible(false);
+				}
+			});
 		}
 		return aceptarButton;
 	}
@@ -360,5 +370,9 @@ public class formAlternativa extends JDialog{
 			valoracionPanel.add(valoracionLabel, null);
 		}
 		return valoracionPanel;
+	}
+
+	public Alternativa getAlternativa() {
+		return alternativa;
 	}
 }
