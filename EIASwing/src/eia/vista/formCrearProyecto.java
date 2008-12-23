@@ -54,8 +54,9 @@ public class formCrearProyecto extends JDialog {
 			nombreLabel.setSize(new Dimension(51, 16));
 			crearProyectoPanel = new JPanel();
 			crearProyectoPanel.setLayout(null);
-			crearProyectoPanel.setBounds(new Rectangle(11, 17, 430, 120));
 			crearProyectoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Información del proyecto", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
+			crearProyectoPanel.setSize(new Dimension(441, 120));
+			crearProyectoPanel.setLocation(new Point(13, 20));
 			crearProyectoPanel.add(nombreLabel, null);
 			crearProyectoPanel.add(descripcionLabel, null);
 			crearProyectoPanel.add(getNombreTextField(), null);
@@ -149,7 +150,7 @@ public class formCrearProyecto extends JDialog {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(492, 220);
+		this.setSize(475, 222);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Nuevo proyecto");
 	}
