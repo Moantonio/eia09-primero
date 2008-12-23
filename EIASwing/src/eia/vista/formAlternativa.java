@@ -13,12 +13,14 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
@@ -333,8 +335,12 @@ public class formAlternativa extends JDialog{
 			eliminarEfectosButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					//TODO Ventana de confirmar eliminar
+					JOptionPane.showConfirmDialog (null,
+							"¿Está seguro que desea eliminar esta alternativa?",
+							"Eliminar alternativa",
+                            JOptionPane.ERROR_MESSAGE);}
 				}
-			});
+			);
 		}
 		return eliminarEfectosButton;
 	}
@@ -400,4 +406,5 @@ public class formAlternativa extends JDialog{
 	public Alternativa getAlternativa() {
 		return alternativa;
 	}
+
 }
