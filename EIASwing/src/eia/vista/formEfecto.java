@@ -20,6 +20,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
+import eia.model.Efecto;
+
 public class formEfecto extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -102,11 +104,20 @@ public class formEfecto extends JDialog {
 	private JPanel caracterPanel = null;
 	private JButton aceptarCuantitativaButton = null;
 	private JButton cancelarCuantitativaButton = null;
+	// Variables de modelo
+	private Efecto efecto;
+	private boolean flagAceptar = false;
+
+	public boolean isFlagAceptar() {
+		return flagAceptar;
+	}
+
 	/**
 	 * This is the default constructor
 	 */
-	public formEfecto() {
+	public formEfecto(Efecto efect) {
 		super();
+		efecto = efect;
 		initialize();
 	}
 
@@ -1110,6 +1121,10 @@ public class formEfecto extends JDialog {
 			});
 		}
 		return cancelarCuantitativaButton;
+	}
+
+	public Efecto getEfecto() {
+		return efecto;
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="14,15"

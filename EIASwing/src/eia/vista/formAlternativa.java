@@ -23,7 +23,10 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
 
+import eia.model.Accion;
 import eia.model.Alternativa;
+import eia.model.Efecto;
+import eia.model.Factor;
 
 /**
  * @author SI: EIA'09
@@ -221,7 +224,11 @@ public class formAlternativa extends JDialog{
 			crearEfectoButton.setLocation(new Point(12, 217));
 			crearEfectoButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					formCrearEfecto formNuevoEfecto = new formCrearEfecto("Accion", "Factor");
+					//TODO accion tiene que ser la seleccionada
+					Accion accion = null;
+					//TODO factor tiene que ser la seleccionada
+					Factor factor = null;
+					formCrearEfecto formNuevoEfecto = new formCrearEfecto(accion.getId(), factor.getId());
 					Point posActual = getDialog().getLocation();
 					posActual.translate(20, 20);
 					formNuevoEfecto.setLocation(posActual);
@@ -301,6 +308,18 @@ public class formAlternativa extends JDialog{
 			editarEfectosButton.setText("Editar");
 			editarEfectosButton.setSize(new Dimension(217, 20));
 			editarEfectosButton.setLocation(new Point(11, 126));
+			editarEfectosButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					//TODO efecto, tiene que ser el seleccionado
+					Efecto efecto = null;
+					formEfecto editarEfecto = new formEfecto(efecto);
+					Point posActual = getDialog().getLocation();
+					posActual.translate(20, 20);
+					editarEfecto.setLocation(posActual);
+					editarEfecto.setModal(true);
+					editarEfecto.setVisible(true);
+				}
+			});
 		}
 		return editarEfectosButton;
 	}
@@ -311,6 +330,11 @@ public class formAlternativa extends JDialog{
 			eliminarEfectosButton.setText("Eliminar");
 			eliminarEfectosButton.setSize(new Dimension(217, 20));
 			eliminarEfectosButton.setLocation(new Point(227, 126));
+			eliminarEfectosButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					//TODO Ventana de confirmar eliminar
+				}
+			});
 		}
 		return eliminarEfectosButton;
 	}
@@ -323,6 +347,7 @@ public class formAlternativa extends JDialog{
 		if (valoracionTextField == null) {
 			valoracionTextField = new JTextField();
 			valoracionTextField.setFont(new Font("Dialog", Font.PLAIN, 16));
+			valoracionTextField.setEnabled(false);
 			valoracionTextField.setBounds(new Rectangle(156, 4, 105, 25));
 		}
 		return valoracionTextField;
