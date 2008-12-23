@@ -348,7 +348,7 @@ public class formPrincipal {
 			autoviaMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					// Creamos un formulario de creaccion de proyecto
-					formCrearProyecto ventanaCrear = new formCrearProyecto();
+					formCrearProyecto ventanaCrear = new formCrearProyecto("Autovía");
 					Point loc = getFramePrincipal().getLocation();
 					loc.translate(20, 20);
 					ventanaCrear.setLocation(loc);

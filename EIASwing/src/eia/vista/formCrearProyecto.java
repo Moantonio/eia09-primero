@@ -36,12 +36,16 @@ public class formCrearProyecto extends JDialog {
 	private JTextArea descripcionTextArea = null;
 	private JButton aceptarButton = null;
 	private JButton cancelarButton = null;
+	private JLabel tipoLabel = null;
+	private JTextField tipoTextField = null;
 
 	//Variables del modelo
 	private boolean flagAceptar = false;
+	private String tipoProyecto;
 
-	public formCrearProyecto() {
+	public formCrearProyecto(String tipo) {
 		super();
+		tipoProyecto = tipo;
 		initialize();
 	}
 	/**
@@ -51,9 +55,15 @@ public class formCrearProyecto extends JDialog {
 	 */
 	private JPanel getCrearProyectoPanel() {
 		if (crearProyectoPanel == null) {
+			tipoLabel = new JLabel();
+			tipoLabel.setText("Tipo:");
+			tipoLabel.setSize(new Dimension(27, 16));
+			tipoLabel.setLocation(new Point(80, 111));
+			tipoLabel.setFont(new Font("Dialog", Font.BOLD, 12));
 			descripcionLabel = new JLabel();
-			descripcionLabel.setBounds(new Rectangle(31, 58, 78, 16));
 			descripcionLabel.setText("Descripción:");
+			descripcionLabel.setSize(new Dimension(78, 16));
+			descripcionLabel.setLocation(new Point(39, 58));
 			descripcionLabel.setFont(new Font("Dialog", Font.BOLD, 12));
 			nombreLabel = new JLabel();
 			nombreLabel.setLocation(new Point(60, 30));
@@ -63,12 +73,14 @@ public class formCrearProyecto extends JDialog {
 			crearProyectoPanel = new JPanel();
 			crearProyectoPanel.setLayout(null);
 			crearProyectoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Información del proyecto", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-			crearProyectoPanel.setSize(new Dimension(441, 120));
+			crearProyectoPanel.setSize(new Dimension(441, 143));
 			crearProyectoPanel.setLocation(new Point(13, 13));
 			crearProyectoPanel.add(nombreLabel, null);
 			crearProyectoPanel.add(descripcionLabel, null);
 			crearProyectoPanel.add(getNombreTextField(), null);
 			crearProyectoPanel.add(getDescripcionTextArea(), null);
+			crearProyectoPanel.add(tipoLabel, null);
+			crearProyectoPanel.add(getTipoTextField(), null);
 		}
 		return crearProyectoPanel;
 	}
@@ -114,7 +126,7 @@ public class formCrearProyecto extends JDialog {
 			aceptarButton.setName("");
 			aceptarButton.setText("Aceptar");
 			aceptarButton.setSize(new Dimension(79, 20));
-			aceptarButton.setLocation(new Point(139, 145));
+			aceptarButton.setLocation(new Point(138, 167));
 			aceptarButton.setBackground(Color.white);
 			aceptarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -138,7 +150,7 @@ public class formCrearProyecto extends JDialog {
 			cancelarButton.setSelected(false);
 			cancelarButton.setText("Cancelar");
 			cancelarButton.setSize(new Dimension(85, 20));
-			cancelarButton.setLocation(new Point(244, 145));
+			cancelarButton.setLocation(new Point(243, 167));
 			cancelarButton.setBackground(Color.white);
 			cancelarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -152,8 +164,9 @@ public class formCrearProyecto extends JDialog {
 	/**
 	 * @param owner
 	 */
-	public formCrearProyecto(Frame owner) {
+	public formCrearProyecto(Frame owner, String tipo) {
 		super(owner);
+		tipoProyecto = tipo;
 		initialize();
 	}
 
@@ -163,7 +176,7 @@ public class formCrearProyecto extends JDialog {
 	 * @return void
 	 */
 	private void initialize() {
-		this.setSize(475, 210);
+		this.setSize(475, 234);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Nuevo proyecto");
 	}
@@ -193,6 +206,22 @@ public class formCrearProyecto extends JDialog {
 
 	public String getDescripcion(){
 		return descripcionTextArea.getText();
+	}
+	/**
+	 * This method initializes tipoTextField
+	 *
+	 * @return javax.swing.JTextField
+	 */
+	private JTextField getTipoTextField() {
+		if (tipoTextField == null) {
+			tipoTextField = new JTextField();
+			tipoTextField.setFont(new Font("Dialog", Font.PLAIN, 14));
+			tipoTextField.setSize(new Dimension(134, 18));
+			tipoTextField.setEnabled(false);
+			tipoTextField.setLocation(new Point(136, 111));
+			tipoTextField.setText(tipoProyecto);
+		}
+		return tipoTextField;
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="10,10"
