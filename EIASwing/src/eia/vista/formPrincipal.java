@@ -353,27 +353,7 @@ public class formPrincipal {
 			autoviaMenuItem.setText("Autovía");
 			autoviaMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					// Creamos un formulario de creaccion de proyecto
-					formCrearProyecto ventanaCrear = new formCrearProyecto("Autovía");
-					Point loc = getFramePrincipal().getLocation();
-					loc.translate(20, 20);
-					ventanaCrear.setLocation(loc);
-					ventanaCrear.setModal(true);
-					ventanaCrear.setVisible(true);
-					if(ventanaCrear.isFlagAceptar()){
-						//Tomamos los datos
-						String nombre = ventanaCrear.getNombre();
-						String descripcion = ventanaCrear.getDescripcion();
-						//Creamos el proyecto
-						InfoProyecto info = new InfoProyecto();
-						info.setNombre(nombre);
-						info.setDescripcion(descripcion);
-						proyecto = new Proyecto(info,TipoProyecto.autovia);
-						//Actualizamos la vista
-						actualizarDescripcion();
-						actualizarAlternativas();
-					}
-					ventanaCrear.dispose();
+					crearProyecto(TipoProyecto.AUTOVÍA;
 				}
 			});
 		}
@@ -1059,6 +1039,30 @@ public class formPrincipal {
 		anadirAltButton.setEnabled(true);
 		editarAltButton.setEnabled(true);
 		eliminarAltButton.setEnabled(true);
+	}
+
+	private void crearProyecto(TipoProyecto tipo){
+		// Creamos un formulario de creaccion de proyecto
+		formCrearProyecto ventanaCrear = new formCrearProyecto(tipo.toString());
+		Point loc = getFramePrincipal().getLocation();
+		loc.translate(20, 20);
+		ventanaCrear.setLocation(loc);
+		ventanaCrear.setModal(true);
+		ventanaCrear.setVisible(true);
+		if(ventanaCrear.isFlagAceptar()){
+			//Tomamos los datos
+			String nombre = ventanaCrear.getNombre();
+			String descripcion = ventanaCrear.getDescripcion();
+			//Creamos el proyecto
+			InfoProyecto info = new InfoProyecto();
+			info.setNombre(nombre);
+			info.setDescripcion(descripcion);
+			proyecto = new Proyecto(info,TipoProyecto.autovia);
+			//Actualizamos la vista
+			actualizarDescripcion();
+			actualizarAlternativas();
+		}
+		ventanaCrear.dispose();
 	}
 
 	public static void main(String[] args) {

@@ -10,7 +10,7 @@ import java.util.Date;
  */
 
 /**
- * Clase que implementa la ficha con la información 
+ * Clase que implementa la ficha con la información
  * de un proyecto de estudio de impacto ambiental.
  */
 public class InfoProyecto {
@@ -19,52 +19,52 @@ public class InfoProyecto {
 	 * Nombre del proyecto de estudio de impacto ambiental.
 	 */
 	private String nombre;
-	
+
 	/**
 	 * Descripción del proyecto de estudio de impacto ambiental.
 	 */
 	private String descripcion;
-	
+
 	/**
 	 * Compañía propietaria del proyecto de estudio de impacto ambiental.
 	 */
 	private String compania;
-	
+
 	/**
 	 * Autor propietario del proyecto de estudio de impacto ambiental.
 	 */
 	private String autor;
-	
+
 	/**
 	 * Población de realización del proyecto de estudio de impacto ambiental.
 	 */
 	private String poblacion;
-	
+
 	/**
 	 * Provincia de realización del proyecto de estudio de impacto ambiental.
 	 */
 	private String provincia;
-	
+
 	/**
 	 * Región de realización del proyecto de estudio de impacto ambiental.
 	 */
 	private String region;
-	
+
 	/**
 	 * Pais de realización del proyecto de estudio de impacto ambiental.
 	 */
 	private String pais;
-	
+
 	/**
 	 * Fecha de realización del proyecto de estudio de impacto ambiental.
 	 */
 	private Date fecha;
-	
+
 	/**
 	 * Vida útil del proyecto de estudio de impacto ambiental.
 	 */
 	private int vidaUtil;
-	
+
 	/**
 	 * Constructor por defecto.
 	 */
@@ -77,10 +77,10 @@ public class InfoProyecto {
 		this.provincia = "";
 		this.region = "";
 		this.pais = "";
-		this.fecha = null;
+		this.fecha = new Date();
 		this.vidaUtil = 0;
 	}
-	
+
 	/**
 	 * Constructor por parámetros.
 	 * @param nombre Nombre del proyecto de estudio.
@@ -124,7 +124,7 @@ public class InfoProyecto {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
+
 	/**
 	 * Accesor para el atributo 'descripcion'.
 	 * @return Descripción del proyecto de estudio.
@@ -260,7 +260,7 @@ public class InfoProyecto {
 	public void setRegion(String region) {
 		this.region = region;
 	}
-	
+
 	/**
 	 * Accesor para el atributo 'region'.
 	 * @return Región de realización del proyecto de estudio.
