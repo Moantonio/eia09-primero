@@ -5,6 +5,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -13,6 +16,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+
+/**
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
 
 public class formCrearAlternativa extends JDialog {
 
@@ -28,6 +38,7 @@ public class formCrearAlternativa extends JDialog {
 
 	//Variables del modelo
 	String nombreProyecto;
+	boolean flagAceptar = false;
 
 	public formCrearAlternativa(Frame owner, String nameProyecto) {
 		super(owner);
@@ -91,6 +102,7 @@ public class formCrearAlternativa extends JDialog {
 			nombreProyTextField.setEditable(true);
 			nombreProyTextField.setEnabled(false);
 			nombreProyTextField.setSize(new Dimension(273, 18));
+			nombreProyTextField.setText(nombreProyecto);
 		}
 		return nombreProyTextField;
 	}
@@ -113,6 +125,12 @@ public class formCrearAlternativa extends JDialog {
 			aceptarButton.setLocation(new Point(138, 130));
 			aceptarButton.setSize(new Dimension(79, 20));
 			aceptarButton.setBackground(Color.white);
+			aceptarButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					flagAceptar = true;
+					setVisible(false);
+				}
+			});
 		}
 		return aceptarButton;
 	}
@@ -126,8 +144,21 @@ public class formCrearAlternativa extends JDialog {
 			cancelarButton.setLocation(new Point(243, 130));
 			cancelarButton.setSize(new Dimension(85, 20));
 			cancelarButton.setBackground(Color.white);
+			cancelarButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+				}
+			});
 		}
 		return cancelarButton;
+	}
+
+	public boolean isFlagAceptar() {
+		return flagAceptar;
+	}
+
+	public String getNombreAlternativa(){
+		return nombreAltTextField.getText();
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="10,10"
