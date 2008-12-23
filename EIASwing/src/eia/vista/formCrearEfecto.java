@@ -3,6 +3,7 @@ package eia.vista;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -35,32 +36,25 @@ public class formCrearEfecto extends JDialog {
 	private JComboBox enjuiciamientoComboBox = null;
 	private JButton aceptarButton = null;
 	private JButton cancelarButton = null;
+	// Variables del modelo
+	private boolean flagAceptar = false;
 
-	/**
-	 * This is the default constructor
-	 */
 	public formCrearEfecto() {
 		super();
 		initialize();
 	}
 
-	/**
-	 * This method initializes this
-	 *
-	 * @return void
-	 */
+	public formCrearEfecto(Frame owner) {
+		super(owner);
+		initialize();
+	}
+
 	private void initialize() {
 		this.setSize(475, 280);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Nuevo efecto");
-		this.setResizable(false);
 	}
 
-	/**
-	 * This method initializes jContentPane
-	 *
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getJContentPane() {
 		if (jContentPane == null) {
 			factorLabel = new JLabel();
@@ -82,39 +76,26 @@ public class formCrearEfecto extends JDialog {
 		return jContentPane;
 	}
 
-	/**
-	 * This method initializes accionTextField
-	 *
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getAccionTextField() {
 		if (accionTextField == null) {
 			accionTextField = new JTextField();
 			accionTextField.setLocation(new Point(78, 15));
+			accionTextField.setEnabled(false);
 			accionTextField.setSize(new Dimension(150, 18));
 		}
 		return accionTextField;
 	}
 
-	/**
-	 * This method initializes factorTextField
-	 *
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getFactorTextField() {
 		if (factorTextField == null) {
 			factorTextField = new JTextField();
 			factorTextField.setLocation(new Point(287, 15));
+			factorTextField.setEnabled(false);
 			factorTextField.setSize(new Dimension(150, 18));
 		}
 		return factorTextField;
 	}
 
-	/**
-	 * This method initializes crearEfectoPanel
-	 *
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getCrearEfectoPanel() {
 		if (crearEfectoPanel == null) {
 			enjuiciamientoLabel = new JLabel();
@@ -122,8 +103,9 @@ public class formCrearEfecto extends JDialog {
 			enjuiciamientoLabel.setFont(new Font("Dialog", Font.BOLD, 12));
 			enjuiciamientoLabel.setText("Simple enjuiciamiento:");
 			descripcionLabel = new JLabel();
-			descripcionLabel.setBounds(new Rectangle(31, 58, 78, 16));
 			descripcionLabel.setFont(new Font("Dialog", Font.BOLD, 12));
+			descripcionLabel.setLocation(new Point(38, 57));
+			descripcionLabel.setSize(new Dimension(80, 16));
 			descripcionLabel.setText("Descripción:");
 			nombreLabel = new JLabel();
 			nombreLabel.setText("Nombre:");
@@ -145,11 +127,6 @@ public class formCrearEfecto extends JDialog {
 		return crearEfectoPanel;
 	}
 
-	/**
-	 * This method initializes nombreTextField
-	 *
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getNombreTextField() {
 		if (nombreTextField == null) {
 			nombreTextField = new JTextField();
@@ -160,11 +137,6 @@ public class formCrearEfecto extends JDialog {
 		return nombreTextField;
 	}
 
-	/**
-	 * This method initializes descripcionTextArea
-	 *
-	 * @return javax.swing.JTextArea
-	 */
 	private JTextArea getDescripcionTextArea() {
 		if (descripcionTextArea == null) {
 			descripcionTextArea = new JTextArea();
@@ -175,25 +147,16 @@ public class formCrearEfecto extends JDialog {
 		return descripcionTextArea;
 	}
 
-	/**
-	 * This method initializes enjuiciamientoComboBox
-	 *
-	 * @return javax.swing.JComboBox
-	 */
 	private JComboBox getEnjuiciamientoComboBox() {
 		if (enjuiciamientoComboBox == null) {
 			enjuiciamientoComboBox = new JComboBox();
-			enjuiciamientoComboBox.setBounds(new Rectangle(198, 122, 209, 17));
 			enjuiciamientoComboBox.setFont(new Font("Dialog", Font.BOLD, 14));
+			enjuiciamientoComboBox.setLocation(new Point(171, 120));
+			enjuiciamientoComboBox.setSize(new Dimension(209, 17));
 		}
 		return enjuiciamientoComboBox;
 	}
 
-	/**
-	 * This method initializes aceptarButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getAceptarButton() {
 		if (aceptarButton == null) {
 			aceptarButton = new JButton();
@@ -202,15 +165,16 @@ public class formCrearEfecto extends JDialog {
 			aceptarButton.setLocation(new Point(139, 215));
 			aceptarButton.setSize(new Dimension(85, 20));
 			aceptarButton.setBackground(Color.white);
+			aceptarButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					flagAceptar = true;
+					setVisible(false);
+				}
+			});
 		}
 		return aceptarButton;
 	}
 
-	/**
-	 * This method initializes cancelarButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getCancelarButton() {
 		if (cancelarButton == null) {
 			cancelarButton = new JButton();
@@ -222,11 +186,27 @@ public class formCrearEfecto extends JDialog {
 			cancelarButton.setBackground(Color.white);
 			cancelarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					dispose();
+					setVisible(false);
 				}
 			});
 		}
 		return cancelarButton;
+	}
+
+	public boolean isFlagAceptar() {
+		return flagAceptar;
+	}
+
+	public String getNombre(){
+		return nombreTextField.getText();
+	}
+
+	public String getDescripcion(){
+		return descripcionTextArea.getText();
+	}
+
+	public Object getEnjuiciamiento(){
+		return enjuiciamientoComboBox.getSelectedItem();
 	}
 
 }
