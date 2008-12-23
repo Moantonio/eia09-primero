@@ -8,6 +8,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -20,11 +21,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.ListSelectionModel;
-import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
-
 import eia.model.Accion;
 import eia.model.Alternativa;
 import eia.model.Efecto;
@@ -198,6 +197,17 @@ public class formAlternativa extends JDialog{
 			eliminarButton.setText("Eliminar");
 			eliminarButton.setFont(new Font("Dialog", Font.BOLD, 10));
 			eliminarButton.setBounds(new Rectangle(161, 160, 77, 20));
+			eliminarButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					int seleccion = JOptionPane.showConfirmDialog (null,
+							"¿Está seguro que desea eliminar esta acción?",
+							"Eliminar acción",
+							JOptionPane.YES_NO_OPTION);
+					if (seleccion==JOptionPane.YES_OPTION){
+						//TODO eliminar de la alternativa la acción seleccionada
+					}
+				}
+			});
 		}
 		return eliminarButton;
 	}
