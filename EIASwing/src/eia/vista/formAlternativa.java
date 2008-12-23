@@ -3,6 +3,7 @@ package eia.vista;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -11,7 +12,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JEditorPane;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -19,11 +19,16 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.ListSelectionModel;
-import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
 
+/**
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
 public class formAlternativa extends JDialog{
 
 	private static final long serialVersionUID = 1L;
@@ -52,35 +57,26 @@ public class formAlternativa extends JDialog{
 	private JButton cancelarButton = null;
 	private JPanel valoracionPanel = null;
 
-	/**
-	 * This is the default constructor
-	 */
 	public formAlternativa() {
 		super();
 		initialize();
 	}
 
-	/**
-	 * This method initializes this
-	 *
-	 * @return void
-	 */
+	public formAlternativa(Frame owner) {
+		super(owner);
+		initialize();
+	}
+
 	private void initialize() {
 		this.setSize(500, 500);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Alternativas de realización");
-		this.setResizable(false);
 	}
 
 	private JDialog getDialog() {
 		return this;
 	}
 
-	/**
-	 * This method initializes jContentPane
-	 *
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getJContentPane() {
 		if (jContentPane == null) {
 			valoracionLabel = new JLabel();
@@ -106,11 +102,6 @@ public class formAlternativa extends JDialog{
 		return jContentPane;
 	}
 
-	/**
-	 * This method initializes altDeRealizcionTextField
-	 *
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getAltDeRealizcionTextField() {
 		if (altDeRealizcionTextField == null) {
 			altDeRealizcionTextField = new JTextField();
@@ -120,11 +111,6 @@ public class formAlternativa extends JDialog{
 		return altDeRealizcionTextField;
 	}
 
-	/**
-	 * This method initializes AccionesPanel
-	 *
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getAccionesPanel() {
 		if (AccionesPanel == null) {
 			AccionesPanel = new JPanel();
@@ -142,11 +128,6 @@ public class formAlternativa extends JDialog{
 		return AccionesPanel;
 	}
 
-	/**
-	 * This method initializes jEditorPane
-	 *
-	 * @return javax.swing.JEditorPane
-	 */
 	private JEditorPane getJEditorPane() {
 		if (jEditorPane == null) {
 			jEditorPane = new JEditorPane();
@@ -155,11 +136,6 @@ public class formAlternativa extends JDialog{
 		return jEditorPane;
 	}
 
-	/**
-	 * This method initializes factoresPanel
-	 *
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getFactoresPanel() {
 		if (factoresPanel == null) {
 			factoresPanel = new JPanel();
@@ -173,11 +149,6 @@ public class formAlternativa extends JDialog{
 		return factoresPanel;
 	}
 
-	/**
-	 * This method initializes factoresjEditorPane
-	 *
-	 * @return javax.swing.JEditorPane
-	 */
 	private JEditorPane getFactoresjEditorPane() {
 		if (factoresjEditorPane == null) {
 			factoresjEditorPane = new JEditorPane();
@@ -186,11 +157,6 @@ public class formAlternativa extends JDialog{
 		return factoresjEditorPane;
 	}
 
-	/**
-	 * This method initializes AnadirButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getAnadirButton() {
 		if (AnadirButton == null) {
 			AnadirButton = new JButton();
@@ -202,11 +168,6 @@ public class formAlternativa extends JDialog{
 		return AnadirButton;
 	}
 
-	/**
-	 * This method initializes modificarButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getModificarButton() {
 		if (modificarButton == null) {
 			modificarButton = new JButton();
@@ -217,11 +178,6 @@ public class formAlternativa extends JDialog{
 		return modificarButton;
 	}
 
-	/**
-	 * This method initializes eliminarButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getEliminarButton() {
 		if (eliminarButton == null) {
 			eliminarButton = new JButton();
@@ -231,11 +187,7 @@ public class formAlternativa extends JDialog{
 		}
 		return eliminarButton;
 	}
-	/**
-	 * This method initializes accionesTree
-	 *
-	 * @return javax.swing.JTree
-	 */
+
 	private JTree getAccionesTree() {
 		if (accionesTree == null) {
 			accionesTree = new JTree();
@@ -244,11 +196,6 @@ public class formAlternativa extends JDialog{
 		return accionesTree;
 	}
 
-	/**
-	 * This method initializes factoresTree
-	 *
-	 * @return javax.swing.JTree
-	 */
 	private JTree getFactoresTree() {
 		if (factoresTree == null) {
 			factoresTree = new JTree();
@@ -257,11 +204,6 @@ public class formAlternativa extends JDialog{
 		return factoresTree;
 	}
 
-	/**
-	 * This method initializes crearEfectoButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getCrearEfectoButton() {
 		if (crearEfectoButton == null) {
 			crearEfectoButton = new JButton();
@@ -282,11 +224,6 @@ public class formAlternativa extends JDialog{
 		return crearEfectoButton;
 	}
 
-	/**
-	 * This method initializes efectossPanel
-	 *
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getEfectossPanel() {
 		if (efectossPanel == null) {
 			efectossPanel = new JPanel();
@@ -301,11 +238,6 @@ public class formAlternativa extends JDialog{
 		return efectossPanel;
 	}
 
-	/**
-	 * This method initializes efectosjEditorPane
-	 *
-	 * @return javax.swing.JEditorPane
-	 */
 	private JEditorPane getEfectosjEditorPane() {
 		if (efectosjEditorPane == null) {
 			efectosjEditorPane = new JEditorPane();
@@ -314,11 +246,6 @@ public class formAlternativa extends JDialog{
 		return efectosjEditorPane;
 	}
 
-	/**
-	 * This method initializes efectosScrollPane
-	 *
-	 * @return javax.swing.JScrollPane
-	 */
 	private JScrollPane getEfectosScrollPane() {
 		if (efectosScrollPane == null) {
 			efectosScrollPane = new JScrollPane();
@@ -328,11 +255,6 @@ public class formAlternativa extends JDialog{
 		return efectosScrollPane;
 	}
 
-	/**
-	 * This method initializes efectosTable
-	 *
-	 * @return javax.swing.JTable
-	 */
 	private JTable getEfectosTable() {
 		if (efectosTable == null) {
 			String[] columnas = {"Nombre","Juicio","Cualitativa","Cuantitativa","Total","Caracter"};
@@ -364,11 +286,6 @@ public class formAlternativa extends JDialog{
 		return efectosTable;
 	}
 
-	/**
-	 * This method initializes editarEfectosButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getEditarEfectosButton() {
 		if (editarEfectosButton == null) {
 			editarEfectosButton = new JButton();
@@ -379,11 +296,6 @@ public class formAlternativa extends JDialog{
 		return editarEfectosButton;
 	}
 
-	/**
-	 * This method initializes eliminarEfectosButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getEliminarEfectosButton() {
 		if (eliminarEfectosButton == null) {
 			eliminarEfectosButton = new JButton();
@@ -394,11 +306,6 @@ public class formAlternativa extends JDialog{
 		return eliminarEfectosButton;
 	}
 
-	/**
-	 * This method initializes valoracionTextField
-	 *
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getValoracionTextField() {
 		if (valoracionTextField == null) {
 			valoracionTextField = new JTextField();
@@ -408,11 +315,6 @@ public class formAlternativa extends JDialog{
 		return valoracionTextField;
 	}
 
-	/**
-	 * This method initializes aceptarButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getAceptarButton() {
 		if (aceptarButton == null) {
 			aceptarButton = new JButton();
@@ -424,11 +326,6 @@ public class formAlternativa extends JDialog{
 		return aceptarButton;
 	}
 
-	/**
-	 * This method initializes cancelarButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getCancelarButton() {
 		if (cancelarButton == null) {
 			cancelarButton = new JButton();
@@ -444,11 +341,6 @@ public class formAlternativa extends JDialog{
 		return cancelarButton;
 	}
 
-	/**
-	 * This method initializes valoracionPanel
-	 *
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getValoracionPanel() {
 		if (valoracionPanel == null) {
 			valoracionPanel = new JPanel();
@@ -459,17 +351,5 @@ public class formAlternativa extends JDialog{
 			valoracionPanel.add(valoracionLabel, null);
 		}
 		return valoracionPanel;
-	}
-
-	/**
-	 * Launches this application
-	 */
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				formAlternativa application = new formAlternativa();
-				application.setVisible(true);
-			}
-		});
 	}
 }
