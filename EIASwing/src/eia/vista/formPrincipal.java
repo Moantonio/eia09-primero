@@ -28,7 +28,9 @@ import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumnModel;
+
 
 import eia.model.Proyecto;
 import javax.swing.ListSelectionModel;
@@ -721,11 +723,14 @@ public class formPrincipal {
 			alternativasTable.setRowSelectionAllowed(true);
 			alternativasTable.setShowVerticalLines(false);
 			alternativasTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+			alternativasTable.setRowSelectionAllowed(true);
 			alternativasTable.getTableHeader().setReorderingAllowed(false);
 			TableColumnModel col = alternativasTable.getColumnModel();
 			col.getColumn(0).setResizable(false);
 			col.getColumn(1).setResizable(false);
 			col.getColumn(0).setPreferredWidth(350);
+			//TableCellEditor tab = alternativasTable.getCellEditor();
+			
 
 		}
 		return alternativasTable;
