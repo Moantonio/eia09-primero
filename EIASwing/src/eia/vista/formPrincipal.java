@@ -33,6 +33,8 @@ import javax.swing.table.TableColumnModel;
 
 
 import eia.model.Proyecto;
+import eia.util.TablaNoEditable;
+
 import javax.swing.ListSelectionModel;
 
 public class formPrincipal {
@@ -72,6 +74,7 @@ public class formPrincipal {
 	private JPanel infoProyectoPanel = null;
 	private JPanel alternativasPanel = null;
 	private JScrollPane alternativasScrollPane = null;
+	private TablaNoEditable modelo = new TablaNoEditable();
 	private JTable alternativasTable = null;
 	private JTextField nombreTextField = null;
 	private JLabel nombreLabel = null;
@@ -717,20 +720,29 @@ public class formPrincipal {
 	 */
 	private JTable getAlternativasTable() {
 		if (alternativasTable == null) {
-			String[] columnas = {"Alternativa", "Valoración"};
-			Object[][] datos = {{1,1},{2,2}};
-			alternativasTable = new JTable(datos,columnas);
+			alternativasTable = new JTable(modelo);
+			modelo.addColumn("Alternativa");
+			modelo.addColumn("Valoración");
+
+			//Código de pruebas
+			String[] fila1 = {"Alternativa 0", "0.45"};
+			modelo.addRow(fila1);
+			String[] fila2 = {"Alternativa 1", "0.23"};
+			modelo.addRow(fila2);
+
+
+
 			alternativasTable.setRowSelectionAllowed(true);
 			alternativasTable.setShowVerticalLines(false);
 			alternativasTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			alternativasTable.setRowSelectionAllowed(true);
 			alternativasTable.getTableHeader().setReorderingAllowed(false);
+
 			TableColumnModel col = alternativasTable.getColumnModel();
 			col.getColumn(0).setResizable(false);
 			col.getColumn(1).setResizable(false);
 			col.getColumn(0).setPreferredWidth(350);
-			//TableCellEditor tab = alternativasTable.getCellEditor();
-			
+
 
 		}
 		return alternativasTable;
