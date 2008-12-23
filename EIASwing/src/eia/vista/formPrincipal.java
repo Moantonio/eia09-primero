@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -19,23 +20,20 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.KeyStroke;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumnModel;
-
-
+import eia.model.Alternativa;
 import eia.model.Proyecto;
 import eia.util.TablaNoEditable;
-
-import javax.swing.ListSelectionModel;
 
 public class formPrincipal {
 
@@ -363,6 +361,7 @@ public class formPrincipal {
 					if(ventanaCrear.isFlagAceptar()){
 						String nombre = ventanaCrear.getNombre();
 						String descripcion = ventanaCrear.getDescripcion();
+						//TODO Crear proyecto
 					}
 					ventanaCrear.dispose();
 				}
@@ -902,6 +901,7 @@ public class formPrincipal {
 					fechaTextField.setEnabled(true);
 					vidaUtilTextField.setEnabled(true);
 					aceptarButton.setVisible(true);
+					modificarButton.setEnabled(false);
 				}
 			});
 		}
@@ -920,6 +920,21 @@ public class formPrincipal {
 			anadirAltButton.setLocation(new Point(135, 138));
 			anadirAltButton.setSize(new Dimension(88, 17));
 			anadirAltButton.setBackground(Color.white);
+			anadirAltButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					formCrearAlternativa crearAlternativa = new formCrearAlternativa(getFramePrincipal(),proyecto.getInformacion().getNombre());
+					Point posActual = getFramePrincipal().getLocation();
+					posActual.translate(20, 20);
+					crearAlternativa.setLocation(posActual);
+					crearAlternativa.setModal(true);
+					crearAlternativa.setVisible(true);
+					if(crearAlternativa.isFlagAceptar()){
+						String nombre = crearAlternativa.getNombreAlternativa();
+						//Crear alternativa con ese nombre y añadir al proyecto
+					}
+					crearAlternativa.dispose();
+				}
+			});
 		}
 		return anadirAltButton;
 	}
@@ -936,6 +951,17 @@ public class formPrincipal {
 			eliminarAltButton.setLocation(new Point(327, 138));
 			eliminarAltButton.setSize(new Dimension(88, 17));
 			eliminarAltButton.setBackground(Color.white);
+			eliminarAltButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					int seleccion = JOptionPane.showConfirmDialog (null,
+							"¿Está seguro que desea eliminar esta alternativa?",
+							"Eliminar alternativa de realización",
+							JOptionPane.YES_NO_OPTION);
+					if (seleccion==JOptionPane.YES_OPTION){
+						//TODO eliminar del proyecto la alternativa
+					}
+				}
+			});
 		}
 		return eliminarAltButton;
 	}
@@ -952,6 +978,18 @@ public class formPrincipal {
 			editarAltButton.setLocation(new Point(231, 138));
 			editarAltButton.setSize(new Dimension(88, 17));
 			editarAltButton.setBackground(Color.white);
+			editarAltButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					//TODO alternativa, tiene que ser la seleccionada
+					Alternativa alternativa = null;
+					formAlternativa editarAlternativa = new formAlternativa(getFramePrincipal(), alternativa);
+					Point posActual = getFramePrincipal().getLocation();
+					posActual.translate(20, 20);
+					editarAlternativa.setLocation(posActual);
+					editarAlternativa.setModal(true);
+					editarAlternativa.setVisible(true);
+				}
+			});
 		}
 		return editarAltButton;
 	}
@@ -982,6 +1020,7 @@ public class formPrincipal {
 					fechaTextField.setEnabled(false);
 					vidaUtilTextField.setEnabled(false);
 					aceptarButton.setVisible(false);
+					modificarButton.setEnabled(true);
 				}
 			});
 		}
