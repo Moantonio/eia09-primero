@@ -139,4 +139,14 @@ public class Proyecto {
 		}
 		return mejorAlternativa;
 	}
+	
+	/**
+	 * 
+	 * @param alt
+	 */
+	public void anadirAlternativa(Alternativa alt){
+		if (!alternativas.equals(null)){
+			alternativas.add(alt);
+		}
+	}
 }
