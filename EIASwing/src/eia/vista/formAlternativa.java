@@ -11,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JEditorPane;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -69,6 +70,10 @@ public class formAlternativa extends JDialog{
 		this.setContentPane(getJContentPane());
 		this.setTitle("Alternativas de realización");
 		this.setResizable(false);
+	}
+
+	private JDialog getDialog() {
+		return this;
 	}
 
 	/**
@@ -263,6 +268,16 @@ public class formAlternativa extends JDialog{
 			crearEfectoButton.setText("Crear Efecto");
 			crearEfectoButton.setSize(new Dimension(458, 20));
 			crearEfectoButton.setLocation(new Point(12, 217));
+			crearEfectoButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					formCrearEfecto formNuevoEfecto = new formCrearEfecto();
+					Point posActual = getDialog().getLocation();
+					posActual.translate(20, 20);
+					formNuevoEfecto.setLocation(posActual);
+					formNuevoEfecto.setModal(true);
+					formNuevoEfecto.setVisible(true);
+				}
+			});
 		}
 		return crearEfectoButton;
 	}
