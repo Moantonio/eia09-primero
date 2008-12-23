@@ -1,6 +1,3 @@
-/**
- *
- */
 package eia.vista;
 
 import java.awt.Color;
@@ -22,9 +19,12 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
 /**
- * @author Luis
- *
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
  */
+
 public class formCrearProyecto extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -38,8 +38,7 @@ public class formCrearProyecto extends JDialog {
 	private JButton cancelarButton = null;
 	private JLabel tipoLabel = null;
 	private JTextField tipoTextField = null;
-
-	//Variables del modelo
+	// Variables del modelo
 	private boolean flagAceptar = false;
 	private String tipoProyecto;
 
@@ -48,11 +47,7 @@ public class formCrearProyecto extends JDialog {
 		tipoProyecto = tipo;
 		initialize();
 	}
-	/**
-	 * This method initializes crearProyectoPanel
-	 *
-	 * @return javax.swing.JPanel
-	 */
+
 	private JPanel getCrearProyectoPanel() {
 		if (crearProyectoPanel == null) {
 			tipoLabel = new JLabel();
@@ -85,11 +80,6 @@ public class formCrearProyecto extends JDialog {
 		return crearProyectoPanel;
 	}
 
-	/**
-	 * This method initializes nombreTextField
-	 *
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getNombreTextField() {
 		if (nombreTextField == null) {
 			nombreTextField = new JTextField();
@@ -100,11 +90,6 @@ public class formCrearProyecto extends JDialog {
 		return nombreTextField;
 	}
 
-	/**
-	 * This method initializes descripcionTextArea
-	 *
-	 * @return javax.swing.JTextArea
-	 */
 	private JTextArea getDescripcionTextArea() {
 		if (descripcionTextArea == null) {
 			descripcionTextArea = new JTextArea();
@@ -115,11 +100,6 @@ public class formCrearProyecto extends JDialog {
 		return descripcionTextArea;
 	}
 
-	/**
-	 * This method initializes aceptarButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getAceptarButton() {
 		if (aceptarButton == null) {
 			aceptarButton = new JButton();
@@ -138,11 +118,6 @@ public class formCrearProyecto extends JDialog {
 		return aceptarButton;
 	}
 
-	/**
-	 * This method initializes cancelarButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getCancelarButton() {
 		if (cancelarButton == null) {
 			cancelarButton = new JButton();
@@ -161,31 +136,18 @@ public class formCrearProyecto extends JDialog {
 		return cancelarButton;
 	}
 
-	/**
-	 * @param owner
-	 */
 	public formCrearProyecto(Frame owner, String tipo) {
 		super(owner);
 		tipoProyecto = tipo;
 		initialize();
 	}
 
-	/**
-	 * This method initializes this
-	 *
-	 * @return void
-	 */
 	private void initialize() {
 		this.setSize(475, 234);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Nuevo proyecto");
 	}
 
-	/**
-	 * This method initializes jContentPane
-	 *
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getJContentPane() {
 		if (jContentPane == null) {
 			jContentPane = new JPanel();
@@ -196,6 +158,7 @@ public class formCrearProyecto extends JDialog {
 		}
 		return jContentPane;
 	}
+
 	public boolean isFlagAceptar() {
 		return flagAceptar;
 	}
@@ -207,11 +170,7 @@ public class formCrearProyecto extends JDialog {
 	public String getDescripcion(){
 		return descripcionTextArea.getText();
 	}
-	/**
-	 * This method initializes tipoTextField
-	 *
-	 * @return javax.swing.JTextField
-	 */
+
 	private JTextField getTipoTextField() {
 		if (tipoTextField == null) {
 			tipoTextField = new JTextField();
