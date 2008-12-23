@@ -87,6 +87,7 @@ public class formCrearEfecto extends JDialog {
 		if (accionTextField == null) {
 			accionTextField = new JTextField();
 			accionTextField.setLocation(new Point(78, 15));
+			accionTextField.setFont(new Font("Dialog", Font.BOLD, 12));
 			accionTextField.setEnabled(false);
 			accionTextField.setSize(new Dimension(150, 18));
 		}
@@ -97,6 +98,7 @@ public class formCrearEfecto extends JDialog {
 		if (factorTextField == null) {
 			factorTextField = new JTextField();
 			factorTextField.setLocation(new Point(287, 15));
+			factorTextField.setFont(new Font("Dialog", Font.BOLD, 12));
 			factorTextField.setEnabled(false);
 			factorTextField.setSize(new Dimension(150, 18));
 		}
