@@ -353,7 +353,7 @@ public class formPrincipal {
 			autoviaMenuItem.setText("Autovía");
 			autoviaMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					crearProyecto(TipoProyecto.AUTOVÍA;
+					crearProyecto(TipoProyecto.AUTOVÍA);
 				}
 			});
 		}
@@ -1057,7 +1057,7 @@ public class formPrincipal {
 			InfoProyecto info = new InfoProyecto();
 			info.setNombre(nombre);
 			info.setDescripcion(descripcion);
-			proyecto = new Proyecto(info,TipoProyecto.autovia);
+			proyecto = new Proyecto(info,tipo);
 			//Actualizamos la vista
 			actualizarDescripcion();
 			actualizarAlternativas();
