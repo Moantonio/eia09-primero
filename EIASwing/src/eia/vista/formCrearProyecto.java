@@ -3,26 +3,23 @@
  */
 package eia.vista;
 
-import javax.swing.JPanel;
-import java.awt.Frame;
-import java.awt.BorderLayout;
-import javax.swing.JDialog;
-import java.awt.Rectangle;
-import javax.swing.JLabel;
-import java.awt.Point;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import javax.swing.BorderFactory;
-import java.awt.Color;
+import java.awt.Frame;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JComboBox;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.JButton;
 
 /**
  * @author Luis
@@ -119,6 +116,12 @@ public class formCrearProyecto extends JDialog {
 			aceptarButton.setSize(new Dimension(79, 20));
 			aceptarButton.setLocation(new Point(139, 145));
 			aceptarButton.setBackground(Color.white);
+			aceptarButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					flagAceptar = true;
+					setVisible(false);
+				}
+			});
 		}
 		return aceptarButton;
 	}
@@ -139,7 +142,7 @@ public class formCrearProyecto extends JDialog {
 			cancelarButton.setBackground(Color.white);
 			cancelarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					dispose();
+					setVisible(false);
 				}
 			});
 		}
@@ -183,8 +186,13 @@ public class formCrearProyecto extends JDialog {
 	public boolean isFlagAceptar() {
 		return flagAceptar;
 	}
-	public void setFlagAceptar(boolean flagAceptar) {
-		this.flagAceptar = flagAceptar;
+
+	public String getNombre(){
+		return nombreTextField.getText();
+	}
+
+	public String getDescripcion(){
+		return descripcionTextArea.getText();
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="10,10"
