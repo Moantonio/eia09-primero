@@ -138,7 +138,7 @@ public class formCrearEfecto extends JDialog {
 		if (nombreTextField == null) {
 			nombreTextField = new JTextField();
 			nombreTextField.setLocation(new Point(135, 31));
-			nombreTextField.setFont(new Font("Dialog", Font.PLAIN, 14));
+			nombreTextField.setFont(new Font("Dialog", Font.BOLD, 12));
 			nombreTextField.setSize(new Dimension(273, 18));
 		}
 		return nombreTextField;
@@ -148,7 +148,7 @@ public class formCrearEfecto extends JDialog {
 		if (descripcionTextArea == null) {
 			descripcionTextArea = new JTextArea();
 			descripcionTextArea.setBounds(new Rectangle(135, 56, 272, 47));
-			descripcionTextArea.setFont(new Font("Dialog", Font.PLAIN, 12));
+			descripcionTextArea.setFont(new Font("Dialog", Font.BOLD, 12));
 			descripcionTextArea.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
 		}
 		return descripcionTextArea;
@@ -159,8 +159,8 @@ public class formCrearEfecto extends JDialog {
 			String[] opciones = {"Despreciable","Especial","Impredicible","Significativo"};
 			enjuiciamientoComboBox = new JComboBox(opciones);
 			enjuiciamientoComboBox.setFont(new Font("Dialog", Font.BOLD, 12));
-			enjuiciamientoComboBox.setLocation(new Point(171, 120));
-			enjuiciamientoComboBox.setSize(new Dimension(209, 17));
+			enjuiciamientoComboBox.setLocation(new Point(164, 120));
+			enjuiciamientoComboBox.setSize(new Dimension(150, 17));
 		}
 		return enjuiciamientoComboBox;
 	}

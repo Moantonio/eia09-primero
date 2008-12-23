@@ -84,7 +84,7 @@ public class formCrearProyecto extends JDialog {
 		if (nombreTextField == null) {
 			nombreTextField = new JTextField();
 			nombreTextField.setLocation(new Point(135, 31));
-			nombreTextField.setFont(new Font("Dialog", Font.PLAIN, 14));
+			nombreTextField.setFont(new Font("Dialog", Font.BOLD, 12));
 			nombreTextField.setSize(new Dimension(273, 18));
 		}
 		return nombreTextField;
@@ -95,7 +95,7 @@ public class formCrearProyecto extends JDialog {
 			descripcionTextArea = new JTextArea();
 			descripcionTextArea.setBounds(new Rectangle(135, 56, 272, 47));
 			descripcionTextArea.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
-			descripcionTextArea.setFont(new Font("Dialog", Font.PLAIN, 12));
+			descripcionTextArea.setFont(new Font("Dialog", Font.BOLD, 12));
 		}
 		return descripcionTextArea;
 	}
@@ -174,7 +174,7 @@ public class formCrearProyecto extends JDialog {
 	private JTextField getTipoTextField() {
 		if (tipoTextField == null) {
 			tipoTextField = new JTextField();
-			tipoTextField.setFont(new Font("Dialog", Font.PLAIN, 14));
+			tipoTextField.setFont(new Font("Dialog", Font.BOLD, 12));
 			tipoTextField.setSize(new Dimension(134, 18));
 			tipoTextField.setEnabled(false);
 			tipoTextField.setLocation(new Point(136, 111));
