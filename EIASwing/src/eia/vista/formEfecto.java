@@ -327,6 +327,7 @@ public class formEfecto extends JDialog {
 			aceptarFichaButton.setText("Aceptar");
 			aceptarFichaButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					actualizarEfecto();
 					flagAceptar = true;
 					setVisible(false);
 				}
@@ -358,6 +359,7 @@ public class formEfecto extends JDialog {
 			String[] opciones = {CaracterEfecto.compatible.toString(), CaracterEfecto.critico.toString(),
 					CaracterEfecto.moderado.toString(), CaracterEfecto.severo.toString()};
 			caracterComboBox = new JComboBox(opciones);
+			caracterComboBox.setEditable(false);
 			caracterComboBox.setSize(new Dimension(135, 18));
 			caracterComboBox.setPreferredSize(new Dimension(31, 38));
 			caracterComboBox.setLocation(new Point(35, 38));
@@ -376,6 +378,7 @@ public class formEfecto extends JDialog {
 			modificarJuicioButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					juicioComboBox.setEnabled(true);
+					modificarJuicioButton.setVisible(false);
 				}
 			});
 		}
@@ -1059,28 +1062,44 @@ public class formEfecto extends JDialog {
 	}
 
 	private void actualizarValoraciones(){
+
+		// Valoración cualitativa
 		if (efecto.getValCualitativa()!=null){
 			cualitativaTextField.setText(String.valueOf(efecto.getValCualitativa().getIncidencia()));
 		}else{
 			cualitativaTextField.setText("---");
 		}
 
+		// Valoración cuantitativa
 		if (efecto.getValCuantitativa()!=null){
 			cuantitativaTextField.setText(String.valueOf(efecto.getValCuantitativa().getMagnitudImpacto()));
 		}else{
 			cuantitativaTextField.setText("---");
 		}
 
+		// Si tenemos la valoración total
 		if (efecto.getValCuantitativa()!=null && efecto.getValCualitativa()!=null){
 			valoracionTextField.setText(String.valueOf(efecto.getValorTotal()));
+			// El caracter se puede editar
+			caracterComboBox.setEditable(true);
 		}else{
 			valoracionTextField.setText("---");
+			// El caracter no se puede editar
+			caracterComboBox.setEditable(false);
 		}
-
 	}
 
 	public Efecto getEfecto() {
 		return efecto;
+	}
+
+	private void actualizarEfecto(){
+		// Actualizamos el caracter del efecto
+		efecto.setCaracter((CaracterEfecto)caracterComboBox.getSelectedItem());
+		// Actualizamos el enjuiciamiento del efecto si se ha modificado
+		if(!modificarJuicioButton.isVisible()){
+			efecto.setJuicio((ValorJuicio)juicioComboBox.getSelectedItem());
+		}
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="14,15"
