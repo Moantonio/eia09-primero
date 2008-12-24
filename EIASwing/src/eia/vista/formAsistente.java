@@ -557,17 +557,4 @@ public class formAsistente extends JDialog {
 		}
 		return noRadioButton;
 	}
-
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				formAsistente application = new formAsistente(null);
-				application.getDialog().setVisible(true);
-			}
-		});
-	}
-
-	private JDialog getDialog() {
-		return this;
-	}
 }
