@@ -1281,7 +1281,12 @@ public class formEfecto extends JDialog {
 	}
 
 	private void mostrarAsistente(){
-		//TODO Hacer asisente
+		formAsistente asistente = new formAsistente(null);
+		if (asistente.isFlagAceptar()){
+			int indiceFuncion = asistente.getFuncionRecomendada();
+			fTransformacionComboBox.setSelectedIndex(indiceFuncion);
+		}
+		asistente.dispose();
 	}
 
 	private void mostrarGrafica(){
