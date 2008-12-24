@@ -15,5 +15,5 @@ public enum TipoProyecto {
 	VERTEDERO,
 	PUERTODEPORTIVO,
 	PRESA,
-	PERSONAL
+	PERSONALIZADO
 }

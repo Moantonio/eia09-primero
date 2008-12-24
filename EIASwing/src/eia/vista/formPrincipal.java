@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -104,13 +103,9 @@ public class formPrincipal {
 	private JButton aceptarButton = null;
 
 	// Variables del modelo
-	private Proyecto proyecto = null;
-	private File ficheroProyecto = null;
+	private Proyecto proyecto = null;  //  @jve:decl-index=0:
+	//private File ficheroProyecto = null;
 
-	/**
-	 * This method initializes framePrincipal
-	 * @return javax.swing.JFrame
-	 */
 	private JFrame getFramePrincipal() {
 		if (framePrincipal == null) {
 			framePrincipal = new JFrame();
@@ -121,6 +116,7 @@ public class formPrincipal {
 			framePrincipal.setTitle("EIA09");
 			framePrincipal.setResizable(false);
 
+			//TODO Recordar eliminar esto
 			//Proyecto de ejemplo prueba
 			//Creamos el proyecto
 			InfoProyecto info = new InfoProyecto();
@@ -134,10 +130,6 @@ public class formPrincipal {
 		return framePrincipal;
 	}
 
-	/**
-	 * This method initializes panelContenidoPrincipal
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getPanelContenidoPrincipal() {
 		if (panelContenidoPrincipal == null) {
 			panelContenidoPrincipal = new JPanel();
@@ -148,10 +140,6 @@ public class formPrincipal {
 		return panelContenidoPrincipal;
 	}
 
-	/**
-	 * This method initializes menuPrincipal
-	 * @return javax.swing.JMenuBar
-	 */
 	private JMenuBar getMenuPrincipal() {
 		if (menuPrincipal == null) {
 			menuPrincipal = new JMenuBar();
@@ -166,10 +154,6 @@ public class formPrincipal {
 		return menuPrincipal;
 	}
 
-	/**
-	 * This method initializes jMenu
-	 * @return javax.swing.JMenu
-	 */
 	private JMenu getMenuProyecto() {
 		if (menuProyecto == null) {
 			menuProyecto = new JMenu();
@@ -186,10 +170,6 @@ public class formPrincipal {
 		return menuProyecto;
 	}
 
-	/**
-	 * This method initializes jMenu
-	 * @return javax.swing.JMenu
-	 */
 	private JMenu getMenuFactores() {
 		if (menuFactores == null) {
 			menuFactores = new JMenu();
@@ -201,10 +181,6 @@ public class formPrincipal {
 		return menuFactores;
 	}
 
-	/**
-	 * This method initializes jMenu
-	 * @return javax.swing.JMenu
-	 */
 	private JMenu getMenuAlternativas() {
 		if (menuAlternativas == null) {
 			menuAlternativas = new JMenu();
@@ -217,15 +193,10 @@ public class formPrincipal {
 		return menuAlternativas;
 	}
 
-	/**
-	 * This method initializes jMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
 	private JMenuItem getSalirMenuItem() {
 		if (salirMenuItem == null) {
 			salirMenuItem = new JMenuItem();
 			salirMenuItem.setText("Salir");
-			//salirMenuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
 			salirMenuItem.setMnemonic(KeyEvent.VK_S);
 			salirMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -236,10 +207,6 @@ public class formPrincipal {
 		return salirMenuItem;
 	}
 
-	/**
-	 * This method initializes jMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
 	private JMenuItem getAcercaDeMenuItem() {
 		if (acercaDeMenuItem == null) {
 			acercaDeMenuItem = new JMenuItem();
@@ -247,22 +214,13 @@ public class formPrincipal {
 			acercaDeMenuItem.setMnemonic(KeyEvent.VK_A);
 			acercaDeMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					JDialog aboutDialog = getDialogAcercaDe();
-					Point loc = getFramePrincipal().getLocation();
-					loc.translate(20, 20);
-					aboutDialog.setModal(true);
-					aboutDialog.setLocation(loc);
-					aboutDialog.setVisible(true);
+					mostrarAcercaDe();
 				}
 			});
 		}
 		return acercaDeMenuItem;
 	}
 
-	/**
-	 * This method initializes dialogAcercaDe
-	 * @return javax.swing.JDialog
-	 */
 	private JDialog getDialogAcercaDe() {
 		if (dialogAcercaDe == null) {
 			dialogAcercaDe = new JDialog(getFramePrincipal(), true);
@@ -274,10 +232,6 @@ public class formPrincipal {
 		return dialogAcercaDe;
 	}
 
-	/**
-	 * This method initializes panelContenidoAcercaDe
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getPanelContenidoAcercaDe() {
 		if (panelContenidoAcercaDe == null) {
 			panelContenidoAcercaDe = new JPanel();
@@ -287,10 +241,6 @@ public class formPrincipal {
 		return panelContenidoAcercaDe;
 	}
 
-	/**
-	 * This method initializes menuValoracion
-	 * @return javax.swing.JMenu
-	 */
 	private JMenu getMenuValoracion() {
 		if (menuValoracion == null) {
 			menuValoracion = new JMenu();
@@ -302,10 +252,6 @@ public class formPrincipal {
 		return menuValoracion;
 	}
 
-	/**
-	 * This method initializes menuInformes
-	 * @return javax.swing.JMenu
-	 */
 	private JMenu getMenuInformes() {
 		if (menuInformes == null) {
 			menuInformes = new JMenu();
@@ -316,11 +262,6 @@ public class formPrincipal {
 		return menuInformes;
 	}
 
-
-	/**
-	 * This method initializes menuAyuda
-	 * @return javax.swing.JMenu
-	 */
 	private JMenu getMenuAyuda() {
 		if (menuAyuda == null) {
 			menuAyuda = new JMenu();
@@ -334,10 +275,6 @@ public class formPrincipal {
 		return menuAyuda;
 	}
 
-	/**
-	 * This method initializes menuNuevo
-	 * @return javax.swing.JMenu
-	 */
 	private JMenu getMenuNuevo() {
 		if (menuNuevo == null) {
 			menuNuevo = new JMenu();
@@ -353,10 +290,6 @@ public class formPrincipal {
 		return menuNuevo;
 	}
 
-	/**
-	 * This method initializes AutoviaMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
 	private JMenuItem getAutoviaMenuItem() {
 		if (autoviaMenuItem == null) {
 			autoviaMenuItem = new JMenuItem();
@@ -370,58 +303,58 @@ public class formPrincipal {
 		return autoviaMenuItem;
 	}
 
-	/**
-	 * This method initializes PresaMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
 	private JMenuItem getPresaMenuItem() {
 		if (presaMenuItem == null) {
 			presaMenuItem = new JMenuItem();
 			presaMenuItem.setText("Presa");
+			presaMenuItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					crearProyecto(TipoProyecto.PRESA);
+				}
+			});
 		}
 		return presaMenuItem;
 	}
 
-	/**
-	 * This method initializes puertoMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
 	private JMenuItem getPuertoMenuItem() {
 		if (puertoMenuItem == null) {
 			puertoMenuItem = new JMenuItem();
 			puertoMenuItem.setText("Puerto deportivo");
+			puertoMenuItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					crearProyecto(TipoProyecto.PUERTODEPORTIVO);
+				}
+			});
 		}
 		return puertoMenuItem;
 	}
 
-	/**
-	 * This method initializes vertederoMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
 	private JMenuItem getVertederoMenuItem() {
 		if (vertederoMenuItem == null) {
 			vertederoMenuItem = new JMenuItem();
 			vertederoMenuItem.setText("Vertedero");
+			vertederoMenuItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					crearProyecto(TipoProyecto.VERTEDERO);
+				}
+			});
 		}
 		return vertederoMenuItem;
 	}
 
-	/**
-	 * This method initializes otroMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
 	private JMenuItem getOtroMenuItem() {
 		if (otroMenuItem == null) {
 			otroMenuItem = new JMenuItem();
-			otroMenuItem.setText("Otro");
+			otroMenuItem.setText("Personalizado");
+			otroMenuItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					crearProyecto(TipoProyecto.PERSONALIZADO);
+				}
+			});
 		}
 		return otroMenuItem;
 	}
 
-	/**
-	 * This method initializes abrirMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
 	private JMenuItem getAbrirMenuItem() {
 		if (abrirMenuItem == null) {
 			abrirMenuItem = new JMenuItem();
@@ -429,28 +362,13 @@ public class formPrincipal {
 			abrirMenuItem.setMnemonic(KeyEvent.VK_A);
 			abrirMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					// Ventana de abrir
-					JFileChooser fileChooser = new JFileChooser();
-					// Aplicamos filtro
-					FiltreSimple filtro = new FiltreSimple("Ficheros XML",".xml");
-		            fileChooser.setFileFilter(filtro);
-					// Directorio por defecto
-					fileChooser.setCurrentDirectory(new File("./"));
-					int seleccion = fileChooser.showOpenDialog(null);
-					// Controlamos la selección
-				    if (seleccion == JFileChooser.APPROVE_OPTION) {
-				    	//File file = fileChooser.getSelectedFile();
-				    }
+					abrirProyecto();
 				}
 			});
 		}
 		return abrirMenuItem;
 	}
 
-	/**
-	 * This method initializes guardarMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
 	private JMenuItem getGuardarMenuItem() {
 		if (guardarMenuItem == null) {
 			guardarMenuItem = new JMenuItem();
@@ -460,10 +378,6 @@ public class formPrincipal {
 		return guardarMenuItem;
 	}
 
-	/**
-	 * This method initializes guardarComoMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
 	private JMenuItem getGuardarComoMenuItem() {
 		if (guardarComoMenuItem == null) {
 			guardarComoMenuItem = new JMenuItem();
@@ -471,28 +385,13 @@ public class formPrincipal {
 			guardarComoMenuItem.setMnemonic(KeyEvent.VK_U);
 			guardarComoMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					// Ventana de guardar como
-					JFileChooser fileChooser = new JFileChooser();
-					// Aplicamos filtro
-					FiltreSimple filtro = new FiltreSimple("Ficheros XML",".xml");
-		            fileChooser.setFileFilter(filtro);
-					// Directorio por defecto
-					fileChooser.setCurrentDirectory(new File("./"));
-					int seleccion = fileChooser.showSaveDialog(null);
-					// Controlamos la selección
-				    if (seleccion == JFileChooser.APPROVE_OPTION) {
-				    	//File file = fileChooser.getSelectedFile();
-				    }
+					guardarComoProyecto();
 				}
 			});
 		}
 		return guardarComoMenuItem;
 	}
 
-	/**
-	 * This method initializes verFactoresMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
 	private JMenuItem getVerFactoresMenuItem() {
 		if (verFactoresMenuItem == null) {
 			verFactoresMenuItem = new JMenuItem();
@@ -501,10 +400,6 @@ public class formPrincipal {
 		return verFactoresMenuItem;
 	}
 
-	/**
-	 * This method initializes modificarPesosMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
 	private JMenuItem getModificarPesosMenuItem() {
 		if (modificarPesosMenuItem == null) {
 			modificarPesosMenuItem = new JMenuItem();
@@ -513,10 +408,6 @@ public class formPrincipal {
 		return modificarPesosMenuItem;
 	}
 
-	/**
-	 * This method initializes valorarMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
 	private JMenuItem getValorarMenuItem() {
 		if (valorarMenuItem == null) {
 			valorarMenuItem = new JMenuItem();
@@ -525,10 +416,6 @@ public class formPrincipal {
 		return valorarMenuItem;
 	}
 
-	/**
-	 * This method initializes verResultadosMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
 	private JMenuItem getVerResultadosMenuItem() {
 		if (verResultadosMenuItem == null) {
 			verResultadosMenuItem = new JMenuItem();
@@ -537,10 +424,6 @@ public class formPrincipal {
 		return verResultadosMenuItem;
 	}
 
-	/**
-	 * This method initializes verInformeMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
 	private JMenuItem getVerInformeMenuItem() {
 		if (verInformeMenuItem == null) {
 			verInformeMenuItem = new JMenuItem();
@@ -549,10 +432,6 @@ public class formPrincipal {
 		return verInformeMenuItem;
 	}
 
-	/**
-	 * This method initializes funcionamientoMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
 	private JMenuItem getFuncionamientoMenuItem() {
 		if (funcionamientoMenuItem == null) {
 			funcionamientoMenuItem = new JMenuItem();
@@ -561,10 +440,6 @@ public class formPrincipal {
 		return funcionamientoMenuItem;
 	}
 
-	/**
-	 * This method initializes legislacionMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
 	private JMenuItem getLegislacionMenuItem() {
 		if (legislacionMenuItem == null) {
 			legislacionMenuItem = new JMenuItem();
@@ -573,10 +448,6 @@ public class formPrincipal {
 		return legislacionMenuItem;
 	}
 
-	/**
-	 * This method initializes anadirAlternativaMenuItem
-	 * @return javax.swing.JMenuItem
-	 */
 	private JMenuItem getAnadirAlternativaMenuItem() {
 		if (anadirAlternativaMenuItem == null) {
 			anadirAlternativaMenuItem = new JMenuItem();
@@ -585,10 +456,6 @@ public class formPrincipal {
 		return anadirAlternativaMenuItem;
 	}
 
-	/**
-	 * This method initializes eliminarAlternativaMenu
-	 * @return javax.swing.JMenu
-	 */
 	private JMenu getEliminarAlternativaMenu() {
 		if (eliminarAlternativaMenu == null) {
 			eliminarAlternativaMenu = new JMenu();
@@ -597,10 +464,6 @@ public class formPrincipal {
 		return eliminarAlternativaMenu;
 	}
 
-	/**
-	 * This method initializes modificarAlternativaMenu
-	 * @return javax.swing.JMenu
-	 */
 	private JMenu getModificarAlternativaMenu() {
 		if (modificarAlternativaMenu == null) {
 			modificarAlternativaMenu = new JMenu();
@@ -609,10 +472,6 @@ public class formPrincipal {
 		return modificarAlternativaMenu;
 	}
 
-	/**
-	 * This method initializes infoProyectoPanel
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getInfoProyectoPanel() {
 		if (infoProyectoPanel == null) {
 			mesesLabel = new JLabel();
@@ -681,10 +540,6 @@ public class formPrincipal {
 		return infoProyectoPanel;
 	}
 
-	/**
-	 * This method initializes alternativasPanel
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getAlternativasPanel() {
 		if (alternativasPanel == null) {
 			alternativasPanel = new JPanel();
@@ -700,10 +555,6 @@ public class formPrincipal {
 		return alternativasPanel;
 	}
 
-	/**
-	 * This method initializes alternativasScrollPane
-	 * @return javax.swing.JScrollPane
-	 */
 	private JScrollPane getAlternativasScrollPane() {
 		if (alternativasScrollPane == null) {
 			alternativasScrollPane = new JScrollPane();
@@ -713,10 +564,6 @@ public class formPrincipal {
 		return alternativasScrollPane;
 	}
 
-	/**
-	 * This method initializes alternativasTable
-	 * @return javax.swing.JTable
-	 */
 	private JTable getAlternativasTable() {
 		if (alternativasTable == null) {
 			alternativasTable = new JTable(modeloTabla);
@@ -748,10 +595,6 @@ public class formPrincipal {
 		return alternativasTable;
 	}
 
-	/**
-	 * This method initializes nombreTextField
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getNombreTextField() {
 		if (nombreTextField == null) {
 			nombreTextField = new JTextField();
@@ -761,10 +604,6 @@ public class formPrincipal {
 		return nombreTextField;
 	}
 
-	/**
-	 * This method initializes tipoTextField
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getTipoTextField() {
 		if (tipoTextField == null) {
 			tipoTextField = new JTextField();
@@ -774,25 +613,16 @@ public class formPrincipal {
 		return tipoTextField;
 	}
 
-	/**
-	 * This method initializes descripcionTextArea
-	 * @return javax.swing.JTextArea
-	 */
 	private JTextArea getDescripcionTextArea() {
 		if (descripcionTextArea == null) {
 			descripcionTextArea = new JTextArea();
 			descripcionTextArea.setBounds(new Rectangle(88, 54, 327, 36));
 			descripcionTextArea.setEnabled(false);
 			descripcionTextArea.setBorder(BorderFactory.createLineBorder(new Color(192192192)));
-
 		}
 		return descripcionTextArea;
 	}
 
-	/**
-	 * This method initializes companiaTextField
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getCompaniaTextField() {
 		if (companiaTextField == null) {
 			companiaTextField = new JTextField();
@@ -802,10 +632,6 @@ public class formPrincipal {
 		return companiaTextField;
 	}
 
-	/**
-	 * This method initializes poblacionTextField
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getPoblacionTextField() {
 		if (poblacionTextField == null) {
 			poblacionTextField = new JTextField();
@@ -815,10 +641,6 @@ public class formPrincipal {
 		return poblacionTextField;
 	}
 
-	/**
-	 * This method initializes paisTextField
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getPaisTextField() {
 		if (paisTextField == null) {
 			paisTextField = new JTextField();
@@ -828,10 +650,6 @@ public class formPrincipal {
 		return paisTextField;
 	}
 
-	/**
-	 * This method initializes provinciaTextField
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getProvinciaTextField() {
 		if (provinciaTextField == null) {
 			provinciaTextField = new JTextField();
@@ -841,10 +659,6 @@ public class formPrincipal {
 		return provinciaTextField;
 	}
 
-	/**
-	 * This method initializes autorTextField
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getAutorTextField() {
 		if (autorTextField == null) {
 			autorTextField = new JTextField();
@@ -854,10 +668,6 @@ public class formPrincipal {
 		return autorTextField;
 	}
 
-	/**
-	 * This method initializes fechaTextField
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getFechaTextField() {
 		if (fechaTextField == null) {
 			fechaTextField = new JTextField();
@@ -867,10 +677,6 @@ public class formPrincipal {
 		return fechaTextField;
 	}
 
-	/**
-	 * This method initializes vidaUtilTextField
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getVidaUtilTextField() {
 		if (vidaUtilTextField == null) {
 			vidaUtilTextField = new JTextField();
@@ -880,10 +686,6 @@ public class formPrincipal {
 		return vidaUtilTextField;
 	}
 
-	/**
-	 * This method initializes modificarButton
-	 * @return javax.swing.JButton
-	 */
 	private JButton getModificarButton() {
 		if (modificarButton == null) {
 			modificarButton = new JButton();
@@ -892,27 +694,13 @@ public class formPrincipal {
 			modificarButton.setBackground(Color.white);
 			modificarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					nombreTextField.setEnabled(true);
-					descripcionTextArea.setEnabled(true);
-					companiaTextField.setEnabled(true);
-					autorTextField.setEnabled(true);
-					poblacionTextField.setEnabled(true);
-					provinciaTextField.setEnabled(true);
-					paisTextField.setEnabled(true);
-					fechaTextField.setEnabled(true);
-					vidaUtilTextField.setEnabled(true);
-					aceptarButton.setVisible(true);
-					modificarButton.setEnabled(false);
+					permitirModificarDescripcion();
 				}
 			});
 		}
 		return modificarButton;
 	}
 
-	/**
-	 * This method initializes anadirAltButton
-	 * @return javax.swing.JButton
-	 */
 	private JButton getAnadirAltButton() {
 		if (anadirAltButton == null) {
 			anadirAltButton = new JButton();
@@ -924,31 +712,13 @@ public class formPrincipal {
 			anadirAltButton.setBackground(Color.white);
 			anadirAltButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					formCrearAlternativa crearAlternativa = new formCrearAlternativa(getFramePrincipal(),proyecto.getInformacion().getNombre());
-					Point posActual = getFramePrincipal().getLocation();
-					posActual.translate(20, 20);
-					crearAlternativa.setLocation(posActual);
-					crearAlternativa.setModal(true);
-					crearAlternativa.setVisible(true);
-					if(crearAlternativa.isFlagAceptar()){
-						String nombre = crearAlternativa.getNombreAlternativa();
-						String[] fila = {nombre,""};
-						modeloTabla.addRow(fila);
-						//Alternativa alt = new Alternativa(nombre);
-						//Crear alternativa con ese nombre y añadir al proyecto
-
-					}
-					crearAlternativa.dispose();
+					crearAlternativa();
 				}
 			});
 		}
 		return anadirAltButton;
 	}
 
-	/**
-	 * This method initializes eliminarAltButton
-	 * @return javax.swing.JButton
-	 */
 	private JButton getEliminarAltButton() {
 		if (eliminarAltButton == null) {
 			eliminarAltButton = new JButton();
@@ -960,24 +730,13 @@ public class formPrincipal {
 			eliminarAltButton.setBackground(Color.white);
 			eliminarAltButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					int seleccion = JOptionPane.showConfirmDialog (null,
-							"¿Está seguro que desea eliminar esta alternativa?",
-							"Eliminar alternativa de realización",
-							JOptionPane.YES_NO_OPTION);
-					if (seleccion==JOptionPane.YES_OPTION){
-						modeloTabla.removeRow(alternativasTable.getSelectedRow());
-						//TODO eliminar del proyecto la alternativa
-					}
+					eliminarAlternativa();
 				}
 			});
 		}
 		return eliminarAltButton;
 	}
 
-	/**
-	 * This method initializes editarAltButton
-	 * @return javax.swing.JButton
-	 */
 	private JButton getEditarAltButton() {
 		if (editarAltButton == null) {
 			editarAltButton = new JButton();
@@ -989,14 +748,7 @@ public class formPrincipal {
 			editarAltButton.setBackground(Color.white);
 			editarAltButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					String nombre = modeloTabla.getValueAt(alternativasTable.getSelectedRow(),0).toString();
-					Alternativa alternativa = new Alternativa(nombre);
-					formAlternativa editarAlternativa = new formAlternativa(getFramePrincipal(), alternativa);
-					Point posActual = getFramePrincipal().getLocation();
-					posActual.translate(20, 20);
-					editarAlternativa.setLocation(posActual);
-					editarAlternativa.setModal(true);
-					editarAlternativa.setVisible(true);
+					editarAlternativa();
 				}
 			});
 		}
@@ -1011,7 +763,6 @@ public class formPrincipal {
 	private JButton getAceptarButton() {
 		if (aceptarButton == null) {
 			aceptarButton = new JButton();
-			aceptarButton.setName("");
 			aceptarButton.setText("Aceptar");
 			aceptarButton.setLocation(new Point(232, 175));
 			aceptarButton.setSize(new Dimension(87, 17));
@@ -1019,17 +770,7 @@ public class formPrincipal {
 			aceptarButton.setVisible(false);
 			aceptarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					nombreTextField.setEnabled(false);
-					descripcionTextArea.setEnabled(false);
-					companiaTextField.setEnabled(false);
-					autorTextField.setEnabled(false);
-					poblacionTextField.setEnabled(false);
-					provinciaTextField.setEnabled(false);
-					paisTextField.setEnabled(false);
-					fechaTextField.setEnabled(false);
-					vidaUtilTextField.setEnabled(false);
-					aceptarButton.setVisible(false);
-					modificarButton.setEnabled(true);
+					modificarDescripcion();
 				}
 			});
 		}
@@ -1045,8 +786,8 @@ public class formPrincipal {
 		poblacionTextField.setText(proyecto.getInformacion().getPoblacion());
 		provinciaTextField.setText(proyecto.getInformacion().getProvincia());
 		paisTextField.setText(proyecto.getInformacion().getPais());
-		fechaTextField.setText(""+proyecto.getInformacion().getFecha().getTime());
-		vidaUtilTextField.setText(""+proyecto.getInformacion().getVidaUtil());
+		fechaTextField.setText(String.valueOf(proyecto.getInformacion().getFecha().getTime()));
+		vidaUtilTextField.setText(String.valueOf(proyecto.getInformacion().getVidaUtil()));
 	}
 
 	private void actualizarAlternativas(){
@@ -1080,6 +821,119 @@ public class formPrincipal {
 		ventanaCrear.dispose();
 	}
 
+	private void modificarDescripcion() {
+		nombreTextField.setEnabled(false);
+		proyecto.getInformacion().setNombre(nombreTextField.getText());
+		descripcionTextArea.setEnabled(false);
+		proyecto.getInformacion().setDescripcion(descripcionTextArea.getText());
+		companiaTextField.setEnabled(false);
+		proyecto.getInformacion().setCompania(companiaTextField.getText());
+		autorTextField.setEnabled(false);
+		proyecto.getInformacion().setAutor(autorTextField.getText());
+		poblacionTextField.setEnabled(false);
+		proyecto.getInformacion().setPoblacion(poblacionTextField.getText());
+		provinciaTextField.setEnabled(false);
+		proyecto.getInformacion().setProvincia(provinciaTextField.getText());
+		paisTextField.setEnabled(false);
+		proyecto.getInformacion().setPais(paisTextField.getText());
+		vidaUtilTextField.setEnabled(false);
+		proyecto.getInformacion().setVidaUtil(Integer.parseInt(vidaUtilTextField.getText()));
+		aceptarButton.setVisible(false);
+		modificarButton.setEnabled(true);
+	}
+
+	private void mostrarAcercaDe() {
+		JDialog aboutDialog = getDialogAcercaDe();
+		Point loc = getFramePrincipal().getLocation();
+		loc.translate(20, 20);
+		aboutDialog.setModal(true);
+		aboutDialog.setLocation(loc);
+		aboutDialog.setVisible(true);
+	}
+
+	private void abrirProyecto() {
+		// Ventana de abrir
+		JFileChooser fileChooser = new JFileChooser();
+		// Aplicamos filtro
+		FiltreSimple filtro = new FiltreSimple("Ficheros XML",".xml");
+        fileChooser.setFileFilter(filtro);
+		// Directorio por defecto
+		fileChooser.setCurrentDirectory(new File("./"));
+		int seleccion = fileChooser.showOpenDialog(null);
+		// Controlamos la selección
+	    if (seleccion == JFileChooser.APPROVE_OPTION) {
+	    	//File file = fileChooser.getSelectedFile();
+	    }
+	}
+
+	private void guardarComoProyecto() {
+		// Ventana de guardar como
+		JFileChooser fileChooser = new JFileChooser();
+		// Aplicamos filtro
+		FiltreSimple filtro = new FiltreSimple("Ficheros XML",".xml");
+        fileChooser.setFileFilter(filtro);
+		// Directorio por defecto
+		fileChooser.setCurrentDirectory(new File("./"));
+		int seleccion = fileChooser.showSaveDialog(null);
+		// Controlamos la selección
+	    if (seleccion == JFileChooser.APPROVE_OPTION) {
+	    	//File file = fileChooser.getSelectedFile();
+	    }
+	}
+
+	private void permitirModificarDescripcion() {
+		nombreTextField.setEnabled(true);
+		descripcionTextArea.setEnabled(true);
+		companiaTextField.setEnabled(true);
+		autorTextField.setEnabled(true);
+		poblacionTextField.setEnabled(true);
+		provinciaTextField.setEnabled(true);
+		paisTextField.setEnabled(true);
+		vidaUtilTextField.setEnabled(true);
+		aceptarButton.setVisible(true);
+		modificarButton.setEnabled(false);
+	}
+
+	private void crearAlternativa() {
+		formCrearAlternativa crearAlternativa = new formCrearAlternativa(getFramePrincipal(),proyecto.getInformacion().getNombre());
+		Point posActual = getFramePrincipal().getLocation();
+		posActual.translate(20, 20);
+		crearAlternativa.setLocation(posActual);
+		crearAlternativa.setModal(true);
+		crearAlternativa.setVisible(true);
+		if(crearAlternativa.isFlagAceptar()){
+			String nombre = crearAlternativa.getNombreAlternativa();
+			String[] fila = {nombre,""};
+			modeloTabla.addRow(fila);
+			//TODO Crear alternativa con ese nombre y añadir al proyecto
+			//Alternativa alt = new Alternativa(nombre);
+		}
+		crearAlternativa.dispose();
+	}
+
+	private void eliminarAlternativa() {
+		int seleccion = JOptionPane.showConfirmDialog (null,
+				"¿Está seguro que desea eliminar esta alternativa?",
+				"Eliminar alternativa de realización",
+				JOptionPane.YES_NO_OPTION);
+		if (seleccion==JOptionPane.YES_OPTION){
+			modeloTabla.removeRow(alternativasTable.getSelectedRow());
+			//TODO eliminar del proyecto la alternativa
+		}
+	}
+
+	private void editarAlternativa() {
+		String nombre = modeloTabla.getValueAt(alternativasTable.getSelectedRow(),0).toString();
+		//TODO alternativa tiene que ser la alternativa seleccionada en la tabla
+		Alternativa alternativa = new Alternativa(nombre);
+		formAlternativa editarAlternativa = new formAlternativa(getFramePrincipal(), alternativa);
+		Point posActual = getFramePrincipal().getLocation();
+		posActual.translate(20, 20);
+		editarAlternativa.setLocation(posActual);
+		editarAlternativa.setModal(true);
+		editarAlternativa.setVisible(true);
+	}
+
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -1088,5 +942,4 @@ public class formPrincipal {
 			}
 		});
 	}
-
 }
