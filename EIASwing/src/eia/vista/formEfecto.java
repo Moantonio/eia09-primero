@@ -1097,15 +1097,81 @@ public class formEfecto extends JDialog {
 	}
 
 	private void calcularCualitativa(){
-		//TODO calcular valoracion cualitativa
+		//TODO calcular valoracion cualitativa (Estoy en ello!)
+
+		// Creamos la valoración y se la asignamos al proyecto
+		ValoracionCualitativa valoracion = new ValoracionCualitativa();
+		efecto.setValCualitativa(valoracion);
+
+		// Fijamos el signo
 		String signo = signoComboBox.getSelectedItem().toString();
-		if (signo.compareTo("positivo")==0){
-			efecto.getValCualitativa().setSigno(ValoracionCualitativa.SIG_POSITIVO);
+		if (signo.compareTo("positivo") == 0){
+			valoracion.setSigno(ValoracionCualitativa.SIG_POSITIVO);
 		}else{
-			efecto.getValCualitativa().setSigno(ValoracionCualitativa.SIG_NEGATIVO);
+			valoracion.setSigno(ValoracionCualitativa.SIG_NEGATIVO);
 		}
 
-		//efecto.getValCualitativa().setAcumulacion(acumulacion)
+		// Fijamos la acumulación
+		String acumulacion = acumulacionComboBox.getSelectedItem().toString();
+	    if (acumulacion.compareTo("simple") == 0) {
+	    	valoracion.setAcumulacion(ValoracionCualitativa.ACU_SIMPLE);
+	    } else if (acumulacion.compareTo("acumulativo") == 0) {
+	    	valoracion.setAcumulacion(ValoracionCualitativa.ACU_ACUMULATIVO);
+	    } else if (acumulacion.compareTo("sinérgico") == 0) {
+	    	valoracion.setAcumulacion(ValoracionCualitativa.ACU_SINERGICO);
+	    }
+
+		// Fijamos la extensión
+		String extension = extensionComboBox.getSelectedItem().toString();
+	    if (extension.compareTo("puntual") == 0) {
+	    	valoracion.setExtension(ValoracionCualitativa.EXT_PUNTUAL);
+	    } else if (extension.compareTo("parcial") == 0) {
+	    	valoracion.setExtension(ValoracionCualitativa.EXT_PARCIAL);
+	    } else if (extension.compareTo("extenso") == 0) {
+	    	valoracion.setExtension(ValoracionCualitativa.EXT_EXTENSO);
+	    } else if (extension.compareTo("total") == 0) {
+	    	valoracion.setExtension(ValoracionCualitativa.EXT_TOTAL);
+	    }
+
+		// Fijamos la intensidad
+		String intensidad = intensidadComboBox.getSelectedItem().toString();
+	    if (intensidad.compareTo("baja") == 0) {
+	    	valoracion.setIntensidad(ValoracionCualitativa.INT_BAJA);
+	    } else if (intensidad.compareTo("media") == 0) {
+	    	valoracion.setIntensidad(ValoracionCualitativa.INT_MEDIA);
+	    } else if (intensidad.compareTo("alta") == 0) {
+	    	valoracion.setIntensidad(ValoracionCualitativa.INT_ALTA);
+	    } else if (intensidad.compareTo("muy alta") == 0) {
+	    	valoracion.setIntensidad(ValoracionCualitativa.INT_MUYALTA);
+	    } else if (intensidad.compareTo("total") == 0) {
+	    	valoracion.setIntensidad(ValoracionCualitativa.INT_TOTAL);
+	    }
+
+	    // Fijamos la persistencia
+	    String persistencia = persistenciaComboBox.getSelectedItem().toString();
+		if (persistencia.compareTo("fugaz") == 0) {
+		    valoracion.setPersistencia(ValoracionCualitativa.PERS_FUGAZ);
+		} else if (persistencia.compareTo("temporal") == 0) {
+		    valoracion.setPersistencia(ValoracionCualitativa.PERS_TEMPORAL);
+		} else if (persistencia.compareTo("permanente") == 0) {
+		    valoracion.setPersistencia(ValoracionCualitativa.PERS_PERMANENTE);
+		}
+
+	    // Fijamos la reversibilidad
+	    String reversibilidad = reversibilidadComboBox.getSelectedItem().toString();
+		if (reversibilidad.compareTo("corto plazo") == 0) {
+		    valoracion.setReversibilidad(ValoracionCualitativa.REV_CORTO_PLAZO);
+		} else if (reversibilidad.compareTo("medio plazo") == 0) {
+		    valoracion.setReversibilidad(ValoracionCualitativa.REV_MEDIO_PLAZO);
+		} else if (reversibilidad.compareTo("largo plazo") == 0) {
+		    valoracion.setReversibilidad(ValoracionCualitativa.REV_LARGO_PLAZO);
+		} else if (reversibilidad.compareTo("irreversible") == 0) {
+		    valoracion.setReversibilidad(ValoracionCualitativa.REV_IRREVERSIBLE);
+		}
+		// Fijamos la recuperabilidad
+		// * inmediata, medio plazo, mitigable, largo plazo o irrecuperable.
+
+
 		actualizarValoraciones();
 	}
 
