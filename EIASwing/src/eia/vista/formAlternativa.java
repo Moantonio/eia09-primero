@@ -71,6 +71,8 @@ public class formAlternativa extends JDialog{
 	//Variables del modelo
 	private Alternativa alternativa;
 	private boolean flagAceptar = false;
+	private JScrollPane factoresScrollPane = null;
+	private JScrollPane accionesScrollPane = null;
 	public formAlternativa(Alternativa alt) {
 		super();
 		alternativa = alt;
@@ -139,7 +141,7 @@ public class formAlternativa extends JDialog{
 			AccionesPanel.add(getAnadirButton(), null);
 			AccionesPanel.add(getModificarButton(), null);
 			AccionesPanel.add(getEliminarButton(), null);
-			AccionesPanel.add(getAccionesTree(), null);
+			AccionesPanel.add(getAccionesScrollPane(), null);
 		}
 		return AccionesPanel;
 	}
@@ -149,9 +151,9 @@ public class formAlternativa extends JDialog{
 			factoresPanel = new JPanel();
 			factoresPanel.setLayout(null);
 			factoresPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Factores", TitledBorder.LEADING, TitledBorder.TOP, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-			factoresPanel.setLocation(new Point(270, 30));
-			factoresPanel.setSize(new Dimension(200, 185));
-			factoresPanel.add(getFactoresTree(), null);
+			factoresPanel.setLocation(new Point(263, 29));
+			factoresPanel.setSize(new Dimension(207, 186));
+			factoresPanel.add(getFactoresScrollPane(), null);
 		}
 		return factoresPanel;
 	}
@@ -200,8 +202,32 @@ public class formAlternativa extends JDialog{
 
 	private JTree getAccionesTree() {
 		if (accionesTree == null) {
-			accionesTree = new JTree();
-			accionesTree.setBounds(new Rectangle(13, 21, 222, 136));
+			DefaultTreeSelectionModel defaultTreeSelectionModel = new DefaultTreeSelectionModel();
+			defaultTreeSelectionModel.setSelectionMode(4);
+			DefaultTreeCellRenderer defaultTreeCellRenderer = new DefaultTreeCellRenderer();
+			defaultTreeCellRenderer.setAutoscrolls(true);
+
+			DefaultMutableTreeNode abuelo = new DefaultMutableTreeNode("Sistema físico natural");
+			DefaultMutableTreeNode padre = new DefaultMutableTreeNode("Medio Abiótico");
+			DefaultMutableTreeNode tio = new DefaultMutableTreeNode("Medio Biótico");
+			DefaultMutableTreeNode hijo1=new DefaultMutableTreeNode("Aire");
+			DefaultMutableTreeNode nieto11=new DefaultMutableTreeNode("Calidad del aire");
+			DefaultMutableTreeNode nieto12=new DefaultMutableTreeNode("Nivel sonoro");
+			DefaultMutableTreeNode hijo2=new DefaultMutableTreeNode("Geológia, Geomorfía");
+			DefaultMutableTreeNode nieto21=new DefaultMutableTreeNode("Relieve");
+			DefaultMutableTreeNode nieto22=new DefaultMutableTreeNode("Recursos culturales");
+
+			DefaultTreeModel modeloArbol = new DefaultTreeModel(abuelo);
+			modeloArbol.insertNodeInto(padre,abuelo,0);
+			modeloArbol.insertNodeInto(tio, abuelo, 1);
+			modeloArbol.insertNodeInto(hijo1, padre, 0);
+			modeloArbol.insertNodeInto(nieto11, hijo1, 0);
+			modeloArbol.insertNodeInto(nieto12, hijo1, 0);
+			modeloArbol.insertNodeInto(hijo2, padre, 1);
+			modeloArbol.insertNodeInto(nieto21, hijo2, 0);
+			modeloArbol.insertNodeInto(nieto22, hijo2, 0);
+
+			accionesTree = new JTree(modeloArbol);
 		}
 		return accionesTree;
 	}
@@ -212,7 +238,7 @@ public class formAlternativa extends JDialog{
 			defaultTreeSelectionModel.setSelectionMode(4);
 			DefaultTreeCellRenderer defaultTreeCellRenderer = new DefaultTreeCellRenderer();
 			defaultTreeCellRenderer.setAutoscrolls(true);
-			
+
 			DefaultMutableTreeNode abuelo = new DefaultMutableTreeNode("Sistema físico natural");
 			DefaultMutableTreeNode padre = new DefaultMutableTreeNode("Medio Abiótico");
 			DefaultMutableTreeNode tio = new DefaultMutableTreeNode("Medio Biótico");
@@ -222,8 +248,8 @@ public class formAlternativa extends JDialog{
 			DefaultMutableTreeNode hijo2=new DefaultMutableTreeNode("Geológia, Geomorfía");
 			DefaultMutableTreeNode nieto21=new DefaultMutableTreeNode("Relieve");
 			DefaultMutableTreeNode nieto22=new DefaultMutableTreeNode("Recursos culturales");
-			
-			DefaultTreeModel modeloArbol = new DefaultTreeModel(abuelo);		
+
+			DefaultTreeModel modeloArbol = new DefaultTreeModel(abuelo);
 			modeloArbol.insertNodeInto(padre,abuelo,0);
 			modeloArbol.insertNodeInto(tio, abuelo, 1);
 			modeloArbol.insertNodeInto(hijo1, padre, 0);
@@ -232,9 +258,8 @@ public class formAlternativa extends JDialog{
 			modeloArbol.insertNodeInto(hijo2, padre, 1);
 			modeloArbol.insertNodeInto(nieto21, hijo2, 0);
 			modeloArbol.insertNodeInto(nieto22, hijo2, 0);
-			
+
 			factoresTree = new JTree(modeloArbol);
-			factoresTree.setBounds(new Rectangle(9, 23, 183, 157));
 			factoresTree.setRootVisible(true);
 			factoresTree.setShowsRootHandles(false);
 			factoresTree.setToggleClickCount(2);
@@ -323,10 +348,16 @@ public class formAlternativa extends JDialog{
 			String[] datos2 = {"Paco2","","","","",""};
 			String[] datos3 = {"Paco3","","","","",""};
 			String[] datos4 = {"Paco4","","","","",""};
+			String[] datos5 = {"Paco5","","","","",""};
+			String[] datos6 = {"Paco6","","","","",""};
+			String[] datos7 = {"Paco7","","","","",""};
 			modeloTabla.addRow(datos1);
 			modeloTabla.addRow(datos2);
 			modeloTabla.addRow(datos3);
 			modeloTabla.addRow(datos4);
+			modeloTabla.addRow(datos5);
+			modeloTabla.addRow(datos6);
+			modeloTabla.addRow(datos7);
 		}
 		return efectosTable;
 	}
@@ -367,6 +398,10 @@ public class formAlternativa extends JDialog{
 							JOptionPane.YES_NO_OPTION);
 					if (seleccion==JOptionPane.YES_OPTION){
 						//TODO eliminar de la alternativa el efecto seleccionado
+						int indice = efectosTable.getSelectedRow();
+						if (indice != -1){
+							modeloTabla.removeRow(indice);
+						}
 					}
 				}
 			});
@@ -437,15 +472,43 @@ public class formAlternativa extends JDialog{
 	}
 
 
+	/**
+	 * This method initializes factoresScrollPane
+	 *
+	 * @return javax.swing.JScrollPane
+	 */
+	private JScrollPane getFactoresScrollPane() {
+		if (factoresScrollPane == null) {
+			factoresScrollPane = new JScrollPane();
+			factoresScrollPane.setBounds(new Rectangle(7, 18, 191, 163));
+			factoresScrollPane.setViewportView(getFactoresTree());
+		}
+		return factoresScrollPane;
+	}
+
+	/**
+	 * This method initializes accionesScrollPane
+	 *
+	 * @return javax.swing.JScrollPane
+	 */
+	private JScrollPane getAccionesScrollPane() {
+		if (accionesScrollPane == null) {
+			accionesScrollPane = new JScrollPane();
+			accionesScrollPane.setBounds(new Rectangle(7, 17, 233, 141));
+			accionesScrollPane.setViewportView(getAccionesTree());
+		}
+		return accionesScrollPane;
+	}
+
 	//A eliminar en un futuro
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				Alternativa alt = new Alternativa("AlternativaPrueva");
+				Alternativa alt = new Alternativa("AlternativaPrueba");
 				formAlternativa application = new formAlternativa(alt);
 				application.getDialog().setVisible(true);
 			}
 		});
 	}
 
-}
+}  //  @jve:decl-index=0:visual-constraint="4,11"
