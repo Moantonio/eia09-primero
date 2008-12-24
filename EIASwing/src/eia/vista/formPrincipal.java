@@ -452,6 +452,11 @@ public class formPrincipal {
 		if (anadirAlternativaMenuItem == null) {
 			anadirAlternativaMenuItem = new JMenuItem();
 			anadirAlternativaMenuItem.setText("Añadir");
+			anadirAlternativaMenuItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					crearAlternativa();
+				}
+			});
 		}
 		return anadirAlternativaMenuItem;
 	}
@@ -467,7 +472,7 @@ public class formPrincipal {
 	private JMenu getModificarAlternativaMenu() {
 		if (modificarAlternativaMenu == null) {
 			modificarAlternativaMenu = new JMenu();
-			modificarAlternativaMenu.setText("Modificar");
+			modificarAlternativaMenu.setText("Editar");
 		}
 		return modificarAlternativaMenu;
 	}
@@ -719,7 +724,11 @@ public class formPrincipal {
 			eliminarAltButton.setBackground(Color.white);
 			eliminarAltButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					eliminarAlternativa();
+					int indice = alternativasTable.getSelectedRow();
+					if (indice != -1){
+						Alternativa alternativa = proyecto.getAlternativas().get(indice);
+						eliminarAlternativa(alternativa);
+					}
 				}
 			});
 		}
@@ -737,7 +746,11 @@ public class formPrincipal {
 			editarAltButton.setBackground(Color.white);
 			editarAltButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					editarAlternativa();
+					int indice = alternativasTable.getSelectedRow();
+					if (indice != -1){
+						Alternativa alternativa = proyecto.getAlternativas().get(indice);
+						editarAlternativa(alternativa);
+					}
 				}
 			});
 		}
@@ -893,38 +906,64 @@ public class formPrincipal {
 		if(crearAlternativa.isFlagAceptar()){
 			String nombre = crearAlternativa.getNombreAlternativa();
 			//Crear alternativa con ese nombre y añadir al proyecto
-			Alternativa alternativa = new Alternativa(nombre);
+			final Alternativa alternativa = new Alternativa(nombre);
 			proyecto.getAlternativas().add(alternativa);
 			//Refrescar la lista
 			String[] fila = {nombre,""};
 			modeloTabla.addRow(fila);
+			//Lo ponemos en el menú modificar
+			JMenuItem alternativaModItem = new JMenuItem();
+			alternativaModItem.setText(nombre);
+			getModificarAlternativaMenu().add(alternativaModItem);
+			alternativaModItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					editarAlternativa(alternativa);
+				}
+			});
+			//Lo ponemos en el menú eliminar
+			JMenuItem alternativaElimItem = new JMenuItem();
+			alternativaElimItem.setText(nombre);
+			getEliminarAlternativaMenu().add(alternativaElimItem);
+			alternativaElimItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					eliminarAlternativa(alternativa);
+				}
+			});
 		}
 		crearAlternativa.dispose();
 	}
 
-	private void eliminarAlternativa() {
+	private void eliminarAlternativa(Alternativa alternativa) {
 		int seleccion = JOptionPane.showConfirmDialog (null,
 				"¿Está seguro que desea eliminar esta alternativa?",
 				"Eliminar alternativa de realización",
 				JOptionPane.YES_NO_OPTION);
 		if (seleccion==JOptionPane.YES_OPTION){
+			//Obtenemos el indice de la alternativa
+			int indice = proyecto.getAlternativas().indexOf(alternativa);
 			//Borramos la alternativa del proyecto
-			int indice = alternativasTable.getSelectedRow();
-			proyecto.getAlternativas().remove(indice);
+			proyecto.getAlternativas().remove(alternativa);
 			//Eliminamos el proyecto de la lista
 			modeloTabla.removeRow(indice);
+			//Lo eliminamos del menú modificar
+			getModificarAlternativaMenu().remove(indice);
+			//Lo eliminamos del menú eliminar
+			getEliminarAlternativaMenu().remove(indice);
 		}
 	}
 
-	private void editarAlternativa() {
-		int indice = alternativasTable.getSelectedRow();
-		Alternativa alternativa = proyecto.getAlternativas().get(indice);
+	private void editarAlternativa(Alternativa alternativa) {
 		formAlternativa editarAlternativa = new formAlternativa(getFramePrincipal(), alternativa);
 		Point posActual = getFramePrincipal().getLocation();
 		posActual.translate(20, 20);
 		editarAlternativa.setLocation(posActual);
 		editarAlternativa.setModal(true);
 		editarAlternativa.setVisible(true);
+
+		//TODO si le ha dado a aceptar actualizamos info en la tabla
+		if(editarAlternativa.isFlagAceptar()){
+
+		}
 	}
 
 	public static void main(String[] args) {
