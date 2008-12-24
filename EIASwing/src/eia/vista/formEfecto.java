@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import eia.model.Efecto;
+import eia.model.ValoracionCualitativa;
 import eia.util.CaracterEfecto;
 import eia.util.ValorJuicio;
 
@@ -1097,6 +1098,12 @@ public class formEfecto extends JDialog {
 
 	private void calcularCualitativa(){
 		//TODO calcular valoracion cualitativa
+		String signo = signoComboBox.getSelectedItem().toString();
+		if (signo.compareTo("positivo")==0){
+			efecto.getValCualitativa().setSigno(ValoracionCualitativa.SIG_POSITIVO);
+		}else{
+			efecto.getValCualitativa().setSigno(ValoracionCualitativa.SIG_NEGATIVO);
+		}
 
 		//efecto.getValCualitativa().setAcumulacion(acumulacion)
 		actualizarValoraciones();
