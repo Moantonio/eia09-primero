@@ -21,6 +21,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
@@ -28,6 +29,7 @@ import eia.model.Accion;
 import eia.model.Alternativa;
 import eia.model.Efecto;
 import eia.model.Factor;
+import eia.util.TablaNoEditable;
 
 /**
  * @author SI: EIA'09
@@ -54,6 +56,7 @@ public class formAlternativa extends JDialog{
 	private JPanel efectossPanel = null;
 	private JEditorPane efectosjEditorPane = null;
 	private JScrollPane efectosScrollPane = null;
+	private TablaNoEditable modeloTabla = new TablaNoEditable();
 	private JTable efectosTable = null;
 	private JButton editarEfectosButton = null;
 	private JButton eliminarEfectosButton = null;
@@ -285,15 +288,14 @@ public class formAlternativa extends JDialog{
 
 	private JTable getEfectosTable() {
 		if (efectosTable == null) {
-			String[] columnas = {"Nombre","Juicio","Cualitativa","Cuantitativa","Total","Caracter"};
-			Object[][] datos = {{"Paco1","","","","",""},
-								{"Paco2","","","","",""},
-								{"Paco3","","","","",""},
-								{"Paco4","","","","",""},
-								{"Paco5","","","","",""},
-								{"Paco6","","","","",""}};
-			efectosTable = new JTable(datos,columnas);
-			//efectosTable = new JTable();
+			efectosTable = new JTable(modeloTabla);
+			modeloTabla.addColumn("Nombre");
+			modeloTabla.addColumn("Juicio");
+			modeloTabla.addColumn("Cualitativa");
+			modeloTabla.addColumn("Cuantitativa");
+			modeloTabla.addColumn("Total");
+			modeloTabla.addColumn("Caracter");
+
 			efectosTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			efectosTable.setLocation(new Point(2, 20));
 			efectosTable.setSize(new Dimension(434, 80));
@@ -310,6 +312,16 @@ public class formAlternativa extends JDialog{
 			col.getColumn(2).setPreferredWidth(80);
 			col.getColumn(3).setPreferredWidth(90);
 			col.getColumn(4).setPreferredWidth(50);
+
+			//ejemplo
+			String[] datos1 = {"Paco1","","","","",""};
+			String[] datos2 = {"Paco2","","","","",""};
+			String[] datos3 = {"Paco3","","","","",""};
+			String[] datos4 = {"Paco4","","","","",""};
+			modeloTabla.addRow(datos1);
+			modeloTabla.addRow(datos2);
+			modeloTabla.addRow(datos3);
+			modeloTabla.addRow(datos4);
 		}
 		return efectosTable;
 	}
@@ -417,6 +429,18 @@ public class formAlternativa extends JDialog{
 
 	public Alternativa getAlternativa() {
 		return alternativa;
+	}
+
+
+	//A eliminar en un futuro
+	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				Alternativa alt = new Alternativa("AlternativaPrueva");
+				formAlternativa application = new formAlternativa(alt);
+				application.getDialog().setVisible(true);
+			}
+		});
 	}
 
 }
