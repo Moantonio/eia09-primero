@@ -6,9 +6,14 @@ import javax.swing.table.DefaultTableModel;
 public class TablaNoEditable extends DefaultTableModel
 
 {
-   
+
 /**
-    * Todas las columnas son no editables 
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
+/**
+    * Todas las columnas son no editables
     * @param row
     * @param column
     * @return
