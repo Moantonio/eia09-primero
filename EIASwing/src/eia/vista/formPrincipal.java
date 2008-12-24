@@ -569,15 +569,6 @@ public class formPrincipal {
 			alternativasTable = new JTable(modeloTabla);
 			modeloTabla.addColumn("Alternativa");
 			modeloTabla.addColumn("Valoración");
-
-			//Código de pruebas
-			String[] fila1 = {"Alternativa 0", "0.45"};
-			modeloTabla.addRow(fila1);
-			String[] fila2 = {"Alternativa 1", "0.23"};
-			modeloTabla.addRow(fila2);
-
-
-
 			alternativasTable.setRowSelectionAllowed(true);
 			alternativasTable.setShowVerticalLines(false);
 			//alternativasTable.setEnabled(false);
@@ -589,8 +580,6 @@ public class formPrincipal {
 			col.getColumn(0).setResizable(false);
 			col.getColumn(1).setResizable(false);
 			col.getColumn(0).setPreferredWidth(350);
-
-
 		}
 		return alternativasTable;
 	}
@@ -903,10 +892,12 @@ public class formPrincipal {
 		crearAlternativa.setVisible(true);
 		if(crearAlternativa.isFlagAceptar()){
 			String nombre = crearAlternativa.getNombreAlternativa();
+			//Crear alternativa con ese nombre y añadir al proyecto
+			Alternativa alternativa = new Alternativa(nombre);
+			proyecto.getAlternativas().add(alternativa);
+			//Refrescar la lista
 			String[] fila = {nombre,""};
 			modeloTabla.addRow(fila);
-			//TODO Crear alternativa con ese nombre y añadir al proyecto
-			//Alternativa alt = new Alternativa(nombre);
 		}
 		crearAlternativa.dispose();
 	}
@@ -917,15 +908,17 @@ public class formPrincipal {
 				"Eliminar alternativa de realización",
 				JOptionPane.YES_NO_OPTION);
 		if (seleccion==JOptionPane.YES_OPTION){
-			modeloTabla.removeRow(alternativasTable.getSelectedRow());
-			//TODO eliminar del proyecto la alternativa
+			//Borramos la alternativa del proyecto
+			int indice = alternativasTable.getSelectedRow();
+			proyecto.getAlternativas().remove(indice);
+			//Eliminamos el proyecto de la lista
+			modeloTabla.removeRow(indice);
 		}
 	}
 
 	private void editarAlternativa() {
-		String nombre = modeloTabla.getValueAt(alternativasTable.getSelectedRow(),0).toString();
-		//TODO alternativa tiene que ser la alternativa seleccionada en la tabla
-		Alternativa alternativa = new Alternativa(nombre);
+		int indice = alternativasTable.getSelectedRow();
+		Alternativa alternativa = proyecto.getAlternativas().get(indice);
 		formAlternativa editarAlternativa = new formAlternativa(getFramePrincipal(), alternativa);
 		Point posActual = getFramePrincipal().getLocation();
 		posActual.translate(20, 20);
