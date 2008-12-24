@@ -21,6 +21,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import eia.model.Efecto;
 import eia.model.ValoracionCualitativa;
+import eia.model.ValoracionCuantitativa;
 import eia.util.CaracterEfecto;
 import eia.util.ValorJuicio;
 
@@ -109,6 +110,8 @@ public class formEfecto extends JDialog {
 	// Variables de modelo
 	private Efecto efecto;
 	private boolean flagAceptar = false;
+	private JLabel opcionLabel = null;
+	private JTextField opcionTextField = null;
 
 	public boolean isFlagAceptar() {
 		return flagAceptar;
@@ -844,7 +847,12 @@ public class formEfecto extends JDialog {
 	 */
 	private JComboBox getFTransformacionComboBox() {
 		if (fTransformacionComboBox == null) {
-			fTransformacionComboBox = new JComboBox();
+			String[] opciones = {"Lineal creciente", "Lineal decreciente", "Parabólica creciente I",
+					"Parabólica decreciente I", "Parabólica creciente II", "Parabólica decreciente II",
+					"Parabólica doble creciente I", "Parabólica doble decreciente I",
+					"Parabólica doble creciente II", "Parabólica doble decreciente II", "Máximo intermedio",
+					"Mínimo intermedio", "Umbral creciente", "Umbral decreciente"};
+			fTransformacionComboBox = new JComboBox(opciones);
 			fTransformacionComboBox.setSize(new Dimension(196, 17));
 			fTransformacionComboBox.setLocation(new Point(36, 203));
 		}
@@ -862,6 +870,11 @@ public class formEfecto extends JDialog {
 			asistenteButton.setBounds(new Rectangle(261, 184, 151, 25));
 			asistenteButton.setBackground(Color.white);
 			asistenteButton.setText("Asistente");
+			asistenteButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mostrarAsistente();
+				}
+			});
 		}
 		return asistenteButton;
 	}
@@ -914,7 +927,13 @@ public class formEfecto extends JDialog {
 			graficoButton.setBackground(Color.white);
 			graficoButton.setSize(new Dimension(93, 49));
 			graficoButton.setLocation(new Point(330, 239));
+			graficoButton.setEnabled(false);
 			graficoButton.setText("Gráfico");
+			calcularCuantitativaButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mostrarGrafica();
+				}
+			});
 		}
 		return graficoButton;
 	}
@@ -926,8 +945,11 @@ public class formEfecto extends JDialog {
 	 */
 	private JPanel getIndicadoresPanel() {
 		if (indicadoresPanel == null) {
+			opcionLabel = new JLabel();
+			opcionLabel.setBounds(new Rectangle(336, 23, 64, 16));
+			opcionLabel.setText("Umbral / a:");
 			valorMinLabel = new JLabel();
-			valorMinLabel.setText("Valor máximo indicador:");
+			valorMinLabel.setText("Valor mínimo indicador:");
 			valorMinLabel.setLocation(new Point(48, 60));
 			valorMinLabel.setSize(new Dimension(147, 16));
 			indicadorLabel = new JLabel();
@@ -949,6 +971,8 @@ public class formEfecto extends JDialog {
 			indicadoresPanel.add(getCalcularCuantitativaButton(), null);
 			indicadoresPanel.add(getIndicadorTextField(), null);
 			indicadoresPanel.add(getValorMinTextField(), null);
+			indicadoresPanel.add(opcionLabel, null);
+			indicadoresPanel.add(getOpcionTextField(), null);
 		}
 		return indicadoresPanel;
 	}
@@ -1097,7 +1121,6 @@ public class formEfecto extends JDialog {
 	}
 
 	private void calcularCualitativa(){
-		//TODO calcular valoracion cualitativa (Estoy en ello!)
 
 		// Creamos la valoración y se la asignamos al proyecto
 		ValoracionCualitativa valoracion = new ValoracionCualitativa();
@@ -1235,8 +1258,34 @@ public class formEfecto extends JDialog {
 	}
 
 	private void calcularCuantitativa(){
-		//TODO calcular valoracion cuantitativa
+
+		// Obtenemos el indicador
+		double indicador = Double.parseDouble(indicadorTextField.getText());
+		// Obtenemos el valor max
+		double indicadorMax = Double.parseDouble(valormaxTextField.getText());
+		// Obtenemos el valor mínimo
+		double indicadorMin = Double.parseDouble(valorMinTextField.getText());
+		// Obtenemos el umbral/a
+		double opc = Double.parseDouble(opcionTextField.getText());
+		// Creamos la valoración cuantitativa y se la asignamos al proyecto
+		ValoracionCuantitativa valoracion = new ValoracionCuantitativa(indicador, indicadorMax, indicadorMin);
+		efecto.setValCuantitativa(valoracion);
+		// Tomamos el número de función de transformación a aplicar
+		 int funcion = fTransformacionComboBox.getSelectedIndex();
+		// Calculamos
+		 valoracion.calcularValoracion(funcion, opc);
+		// Generamos la gráfica
+		// TODO generar gráfica
+		// Actualizamos la vista
 		actualizarValoraciones();
+	}
+
+	private void mostrarAsistente(){
+		//TODO Hacer asisente
+	}
+
+	private void mostrarGrafica(){
+		//TODO Hacer gráfica
 	}
 
 	private void actualizarValoraciones(){
@@ -1256,6 +1305,7 @@ public class formEfecto extends JDialog {
 			String magnitud = String.valueOf(efecto.getValCuantitativa().getMagnitudImpacto());
 			cuantitativaTextField.setText(magnitud);
 			magnitudTextField.setText(magnitud);
+			graficoButton.setEnabled(true);
 		}else{
 			cuantitativaTextField.setText("---");
 			magnitudTextField.setText("---");
@@ -1284,6 +1334,19 @@ public class formEfecto extends JDialog {
 		if(!modificarJuicioButton.isVisible()){
 			efecto.setJuicio((ValorJuicio)juicioComboBox.getSelectedItem());
 		}
+	}
+
+	/**
+	 * This method initializes opcionTextField
+	 *
+	 * @return javax.swing.JTextField
+	 */
+	private JTextField getOpcionTextField() {
+		if (opcionTextField == null) {
+			opcionTextField = new JTextField();
+			opcionTextField.setBounds(new Rectangle(345, 43, 40, 18));
+		}
+		return opcionTextField;
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="14,15"
