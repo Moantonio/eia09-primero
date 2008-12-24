@@ -108,7 +108,7 @@ public class formAsistente extends JDialog {
 				}else{
 					if (noRadioButton.isSelected()){
 						estado = 4;
-						cuestionLabel.setText("Para valores pequeños de la magnitud, ¿crece rapidamente" +"\n" +" el impacto?, "
+						cuestionLabel.setText("Para valores pequeños de la magnitud, ¿crece rápidamente" +"\n" +" el impacto?, "
 								+"y para valores grandes ¿crece lentamente?");
 						noRadioButton.setSelected(false);
 						cuestionLabel.setLocation(new Point(60, 25));
@@ -158,7 +158,7 @@ public class formAsistente extends JDialog {
 					if (noRadioButton.isSelected()){
 						estado = 6;
 						cuestionLabel.setText("Para valores pequeños de la magnitud, ¿crece lentamente" +"\n" +" el impacto?, "
-								+"y para valores grandes ¿crece rapidamente?");
+								+"y para valores grandes ¿crece rápidamente?");
 						noRadioButton.setSelected(false);
 						cuestionLabel.setLocation(new Point(60, 25));
 						cuestionLabel.setSize(new Dimension(350, 40));
@@ -188,7 +188,7 @@ public class formAsistente extends JDialog {
 					if (noRadioButton.isSelected()){
 						estado = 8;
 						cuestionLabel.setText("Para valores pequeños y grandes de la magnitud, ¿crece lentamente" +"\n"
-								+"el impacto?, y para valores intermedios ¿crece rapidamente?");
+								+"el impacto?, y para valores intermedios ¿crece rápidamente?");
 						noRadioButton.setSelected(false);
 						cuestionLabel.setLocation(new Point(25, 25));
 						cuestionLabel.setSize(new Dimension(400, 40));
@@ -217,8 +217,8 @@ public class formAsistente extends JDialog {
 				}else{
 					if (noRadioButton.isSelected()){
 						estado = 10;
-						cuestionLabel.setText("Para valores pequeños y grandes de la magnitud, ¿crece rapidamente" +"\n"
-								+"el impacto?, y para valores intermedios ¿crece rapidamente?");
+						cuestionLabel.setText("Para valores pequeños y grandes de la magnitud, ¿crece rápidamente" +"\n"
+								+"el impacto?, y para valores intermedios ¿crece rápidamente?");
 						noRadioButton.setSelected(false);
 						cuestionLabel.setLocation(new Point(25, 25));
 						cuestionLabel.setSize(new Dimension(400, 40));
@@ -278,7 +278,7 @@ public class formAsistente extends JDialog {
 				}else{
 					if (noRadioButton.isSelected()){
 						estado = 15;
-						cuestionLabel.setText("Para valores pequeños de la magnitud, ¿decrece rapidamente" +"\n" +" el impacto?, "
+						cuestionLabel.setText("Para valores pequeños de la magnitud, ¿decrece rápidamente" +"\n" +" el impacto?, "
 								+"y para valores grandes ¿decrece lentamente?");
 						noRadioButton.setSelected(false);
 						cuestionLabel.setLocation(new Point(45, 25));
@@ -319,11 +319,34 @@ public class formAsistente extends JDialog {
 			}
 
 			case 15:{
+				if (siRadioButton.isSelected()){
+					estado = 16;
+					cuestionLabel.setText("Parábola decreciente I");
+					noRadioButton.setVisible(false);
+					siRadioButton.setVisible(false);
+					siguienteButton.setText("Aceptar");
+					cuestionLabel.setLocation(new Point(160, 33));
+					cuestionLabel.setSize(new Dimension(200, 20));
+				}else{
+					if (noRadioButton.isSelected()){
+						estado = 17;
+						cuestionLabel.setText("Para valores pequeños de la magnitud, ¿decrece lentamente" +"\n" +" el impacto?, "
+								+"y para valores grandes ¿decrece rápidamente?");
+						noRadioButton.setSelected(false);
+						cuestionLabel.setLocation(new Point(45, 25));
+						cuestionLabel.setSize(new Dimension(375, 40));
+					}
+				}
+				break;
 
 			}
 
 			case 16:{
-
+				// Parábola decreciente I
+				funcionRecomendada = 3;
+				flagAceptar = true;
+				setVisible(false);
+				break;
 			}
 
 			case 17:{
