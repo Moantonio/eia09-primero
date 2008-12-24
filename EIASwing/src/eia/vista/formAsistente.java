@@ -128,10 +128,10 @@ public class formAsistente extends JDialog {
 				}else{
 					if (noRadioButton.isSelected()){
 						estado = 13;
-						cuestionLabel.setText("El impacto, ¿primero aumenta, alcanza un máximo," +"\n"
-								+"y luego disminuye?");
+						cuestionLabel.setText("El impacto, ¿primero aumenta, alcanza" +"\n"
+								+"un máximo, y luego disminuye?");
 						noRadioButton.setSelected(false);
-						cuestionLabel.setLocation(new Point(60, 25));
+						cuestionLabel.setLocation(new Point(120, 25));
 						cuestionLabel.setSize(new Dimension(350, 40));
 					}
 				}
@@ -267,15 +267,39 @@ public class formAsistente extends JDialog {
 			}
 
 			case 12:{
+				if (siRadioButton.isSelected()){
+					estado = 14;
+					cuestionLabel.setText("Recta decreciente");
+					noRadioButton.setVisible(false);
+					siRadioButton.setVisible(false);
+					siguienteButton.setText("Aceptar");
+					cuestionLabel.setLocation(new Point(171, 33));
+					cuestionLabel.setSize(new Dimension(200, 20));
+				}else{
+					if (noRadioButton.isSelected()){
+						estado = 15;
+						//TODO voy por aki
+						cuestionLabel.setText("Para valores pequeños y grandes de la magnitud, ¿crece rapidamente" +"\n"
+								+"el impacto?, y para valores intermedios ¿crece rapidamente?");
+						noRadioButton.setSelected(false);
+						cuestionLabel.setLocation(new Point(25, 25));
+						cuestionLabel.setSize(new Dimension(400, 40));
+					}
+				}
+				break;
 
 			}
 
 			case 13:{
-
 			}
 
-			case 14:{
 
+			case 14:{
+				// Recta decreciente
+				funcionRecomendada = 1;
+				flagAceptar = true;
+				setVisible(false);
+				break;
 			}
 
 			case 15:{
