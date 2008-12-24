@@ -31,7 +31,7 @@ public class formCrearAccion extends JDialog {
 
 	//Variables del modelo
 	private boolean flagAceptar = false;
-	private String categoria ="";
+	private String categoria;
 
 	public formCrearAccion(Frame owner, String cat) {
 		super(owner);
