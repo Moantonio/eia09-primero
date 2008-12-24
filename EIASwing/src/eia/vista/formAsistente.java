@@ -216,6 +216,42 @@ public class formAsistente extends JDialog {
 				setVisible(false);
 				break;
 			}
+
+			case 10:{
+				if (siRadioButton.isSelected()){
+					estado = 11;
+					cuestionLabel.setText("Parábola Doble Creciente I");
+					noRadioButton.setVisible(false);
+					siRadioButton.setVisible(false);
+					siguienteButton.setText("Aceptar");
+					cuestionLabel.setLocation(new Point(160, 33));
+					cuestionLabel.setSize(new Dimension(200, 20));
+				}else{
+					if (noRadioButton.isSelected()){
+						estado = 26;
+						cuestionLabel.setText("Lo siento, función no disponible en el repertorio");
+						noRadioButton.setVisible(false);
+						siRadioButton.setVisible(false);
+						siguienteButton.setText("Aceptar");
+						cuestionLabel.setLocation(new Point(80, 33));
+						cuestionLabel.setSize(new Dimension(350, 20));
+					}
+				}
+				break;
+			}
+
+			case 11:{
+				// Parábola Doble Creciente I
+				funcionRecomendada = 6;
+				flagAceptar = true;
+				setVisible(false);
+				break;
+			}
+
+			case 26:{
+				setVisible(false);
+				break;
+			}
 		}
 	}
 
