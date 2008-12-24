@@ -99,7 +99,7 @@ public class formEfecto extends JDialog {
 	private JTextField valorMinTextField = null;
 	private JLabel valoracionCualitativaLabel = null;
 	private JLabel valoracionCuantitativaLabel = null;
-	private JLabel caracterCuantitativaLabel = null;
+	private JLabel caracterLabel = null;
 	private JLabel juicioCuantitativaLabel = null;
 	private JTextField cuantitativaTextField = null;
 	private JPanel caracterPanel = null;
@@ -248,11 +248,11 @@ public class formEfecto extends JDialog {
 			juicioCuantitativaLabel.setText("Simple enjuiciamiento:");
 			juicioCuantitativaLabel.setLocation(new Point(38, 30));
 			juicioCuantitativaLabel.setSize(new Dimension(132, 16));
-			caracterCuantitativaLabel = new JLabel();
-			caracterCuantitativaLabel.setText("Caracter");
-			caracterCuantitativaLabel.setSize(new Dimension(60, 16));
-			caracterCuantitativaLabel.setLocation(new Point(70, 12));
-			caracterCuantitativaLabel.setFont(new Font("Dialog", Font.BOLD, 14));
+			caracterLabel = new JLabel();
+			caracterLabel.setText("Caracter");
+			caracterLabel.setSize(new Dimension(60, 16));
+			caracterLabel.setLocation(new Point(70, 12));
+			caracterLabel.setFont(new Font("Dialog", Font.BOLD, 14));
 			valoracionCuantitativaLabel = new JLabel();
 			valoracionCuantitativaLabel.setText("Valoración cuantitativa:");
 			valoracionCuantitativaLabel.setLocation(new Point(223, 60));
@@ -1015,7 +1015,7 @@ public class formEfecto extends JDialog {
 			caracterPanel.setLocation(new Point(225, 100));
 			caracterPanel.setSize(new Dimension(200, 75));
 			caracterPanel.add(getCaracterComboBox(), null);
-			caracterPanel.add(caracterCuantitativaLabel, null);
+			caracterPanel.add(caracterLabel, null);
 		}
 		return caracterPanel;
 	}
