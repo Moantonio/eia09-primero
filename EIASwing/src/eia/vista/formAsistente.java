@@ -186,6 +186,36 @@ public class formAsistente extends JDialog {
 				setVisible(false);
 				break;
 			}
+
+			case 8:{
+				if (siRadioButton.isSelected()){
+					estado = 9;
+					cuestionLabel.setText("Parábola Doble Creciente II");
+					noRadioButton.setVisible(false);
+					siRadioButton.setVisible(false);
+					siguienteButton.setText("Aceptar");
+					cuestionLabel.setLocation(new Point(160, 33));
+					cuestionLabel.setSize(new Dimension(200, 20));
+				}else{
+					if (noRadioButton.isSelected()){
+						estado = 10;
+						cuestionLabel.setText("Para valores pequeños y grandes de la magnitud, ¿crece rapidamente" +"\n"
+								+"el impacto?, y para valores intermedios ¿crece rapidamente?");
+						noRadioButton.setSelected(false);
+						cuestionLabel.setLocation(new Point(25, 25));
+						cuestionLabel.setSize(new Dimension(400, 40));
+					}
+				}
+				break;
+			}
+
+			case 9:{
+				// Parábola Doble Creciente II
+				funcionRecomendada = 8;
+				flagAceptar = true;
+				setVisible(false);
+				break;
+			}
 		}
 	}
 
