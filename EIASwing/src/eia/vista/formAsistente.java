@@ -118,7 +118,25 @@ public class formAsistente extends JDialog {
 				break;
 			}
 
-			case 2:{}
+			case 2:{
+				if (siRadioButton.isSelected()){
+					estado = 12;
+					cuestionLabel.setText("¿Es proporcional?");
+					noRadioButton.setSelected(false);
+					cuestionLabel.setLocation(new Point(171, 33));
+					cuestionLabel.setSize(new Dimension(200, 20));
+				}else{
+					if (noRadioButton.isSelected()){
+						estado = 13;
+						cuestionLabel.setText("El impacto, ¿primero aumenta, alcanza un máximo," +"\n"
+								+"y luego disminuye?");
+						noRadioButton.setSelected(false);
+						cuestionLabel.setLocation(new Point(60, 25));
+						cuestionLabel.setSize(new Dimension(350, 40));
+					}
+				}
+				break;
+			}
 
 			case 3:{
 				// Recta creciente
@@ -246,6 +264,62 @@ public class formAsistente extends JDialog {
 				flagAceptar = true;
 				setVisible(false);
 				break;
+			}
+
+			case 12:{
+
+			}
+
+			case 13:{
+
+			}
+
+			case 14:{
+
+			}
+
+			case 15:{
+
+			}
+
+			case 16:{
+
+			}
+
+			case 17:{
+
+			}
+
+			case 18:{
+
+			}
+
+			case 19:{
+
+			}
+
+			case 20:{
+
+			}
+
+			case 21:{
+
+			}
+
+			case 22:{
+
+			}
+
+			case 23:{
+
+			}
+
+			case 24:{
+
+			}
+
+			case 25:{
+
 			}
 
 			case 26:{
