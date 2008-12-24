@@ -58,9 +58,9 @@ public class formEfecto extends JDialog {
 	private JComboBox intensidadComboBox = null;
 	private JComboBox persistenciaComboBox = null;
 	private JComboBox reversibilidadComboBox = null;
-	private JComboBox efectoComboBox = null;
-	private JComboBox periodicidadComboBox = null;
 	private JComboBox recuperabilidadComboBox = null;
+	private JComboBox periodicidadComboBox = null;
+	private JComboBox efectoComboBox = null;
 	private JComboBox momentoComboBox = null;
 	private JLabel signoLabel = null;
 	private JLabel extensionLabel = null;
@@ -484,9 +484,9 @@ public class formEfecto extends JDialog {
 			cualitativaPanel.add(getIntensidadComboBox(), null);
 			cualitativaPanel.add(getPersistenciaComboBox(), null);
 			cualitativaPanel.add(getReversibilidadComboBox(), null);
-			cualitativaPanel.add(getEfectoComboBox(), null);
-			cualitativaPanel.add(getPeriodicidadComboBox(), null);
 			cualitativaPanel.add(getRecuperabilidadComboBox(), null);
+			cualitativaPanel.add(getPeriodicidadComboBox(), null);
+			cualitativaPanel.add(getEfectoComboBox(), null);
 			cualitativaPanel.add(getMomentoComboBox(), null);
 			cualitativaPanel.add(signoLabel, null);
 			cualitativaPanel.add(extensionLabel, null);
@@ -521,6 +521,13 @@ public class formEfecto extends JDialog {
 			aceptarCualitativaButton.setSize(new Dimension(79, 17));
 			aceptarCualitativaButton.setLocation(new Point(155, 355));
 			aceptarCualitativaButton.setText("Aceptar");
+			aceptarCualitativaButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					actualizarEfecto();
+					flagAceptar = true;
+					setVisible(false);
+				}
+			});
 		}
 		return aceptarCualitativaButton;
 	}
@@ -556,7 +563,8 @@ public class formEfecto extends JDialog {
 	 */
 	private JComboBox getSignoComboBox() {
 		if (signoComboBox == null) {
-			signoComboBox = new JComboBox();
+			String[] opciones = {"positivo", "negativo"};
+			signoComboBox = new JComboBox(opciones);
 			signoComboBox.setLocation(new Point(97, 30));
 			signoComboBox.setSize(new Dimension(120, 18));
 		}
@@ -570,7 +578,8 @@ public class formEfecto extends JDialog {
 	 */
 	private JComboBox getAcumulacionComboBox() {
 		if (acumulacionComboBox == null) {
-			acumulacionComboBox = new JComboBox();
+			String[] opciones = {"no asignar","simple", "acumulativo", "sinérgico"};
+			acumulacionComboBox = new JComboBox(opciones);
 			acumulacionComboBox.setLocation(new Point(324, 30));
 			acumulacionComboBox.setSize(new Dimension(120, 18));
 		}
@@ -584,7 +593,8 @@ public class formEfecto extends JDialog {
 	 */
 	private JComboBox getExtensionComboBox() {
 		if (extensionComboBox == null) {
-			extensionComboBox = new JComboBox();
+			String[] opciones = {"no asignar","puntual", "parcial", "extenso", "total"};
+			extensionComboBox = new JComboBox(opciones);
 			extensionComboBox.setLocation(new Point(97, 60));
 			extensionComboBox.setSize(new Dimension(120, 18));
 		}
@@ -598,7 +608,8 @@ public class formEfecto extends JDialog {
 	 */
 	private JComboBox getIntensidadComboBox() {
 		if (intensidadComboBox == null) {
-			intensidadComboBox = new JComboBox();
+			String[] opciones = {"no asignar","baja", "media", "alta", "muy alta", "total"};
+			intensidadComboBox = new JComboBox(opciones);
 			intensidadComboBox.setLocation(new Point(97, 90));
 			intensidadComboBox.setSize(new Dimension(120, 18));
 		}
@@ -612,7 +623,8 @@ public class formEfecto extends JDialog {
 	 */
 	private JComboBox getPersistenciaComboBox() {
 		if (persistenciaComboBox == null) {
-			persistenciaComboBox = new JComboBox();
+			String[] opciones = {"no asignar","fugaz", "temporal", "permanente"};
+			persistenciaComboBox = new JComboBox(opciones);
 			persistenciaComboBox.setLocation(new Point(324, 90));
 			persistenciaComboBox.setSize(new Dimension(120, 18));
 		}
@@ -626,39 +638,12 @@ public class formEfecto extends JDialog {
 	 */
 	private JComboBox getReversibilidadComboBox() {
 		if (reversibilidadComboBox == null) {
-			reversibilidadComboBox = new JComboBox();
+			String[] opciones = {"no asignar","corto plazo", "medio plazo", "largo plazo", "irreversible"};
+			reversibilidadComboBox = new JComboBox(opciones);
 			reversibilidadComboBox.setLocation(new Point(97, 120));
 			reversibilidadComboBox.setSize(new Dimension(120, 18));
 		}
 		return reversibilidadComboBox;
-	}
-
-	/**
-	 * This method initializes efectoComboBox
-	 *
-	 * @return javax.swing.JComboBox
-	 */
-	private JComboBox getEfectoComboBox() {
-		if (efectoComboBox == null) {
-			efectoComboBox = new JComboBox();
-			efectoComboBox.setLocation(new Point(324, 150));
-			efectoComboBox.setSize(new Dimension(120, 18));
-		}
-		return efectoComboBox;
-	}
-
-	/**
-	 * This method initializes periodicidadComboBox
-	 *
-	 * @return javax.swing.JComboBox
-	 */
-	private JComboBox getPeriodicidadComboBox() {
-		if (periodicidadComboBox == null) {
-			periodicidadComboBox = new JComboBox();
-			periodicidadComboBox.setLocation(new Point(97, 150));
-			periodicidadComboBox.setSize(new Dimension(120, 18));
-		}
-		return periodicidadComboBox;
 	}
 
 	/**
@@ -668,11 +653,42 @@ public class formEfecto extends JDialog {
 	 */
 	private JComboBox getRecuperabilidadComboBox() {
 		if (recuperabilidadComboBox == null) {
-			recuperabilidadComboBox = new JComboBox();
-			recuperabilidadComboBox.setLocation(new Point(324, 120));
+			String[] opciones = {"no asignar","inmediata", "medio plazo", "mitigable", "largo plazo", "irrecuperable"};
+			recuperabilidadComboBox = new JComboBox(opciones);
+			recuperabilidadComboBox.setLocation(new Point(324, 150));
 			recuperabilidadComboBox.setSize(new Dimension(120, 18));
 		}
 		return recuperabilidadComboBox;
+	}
+
+	/**
+	 * This method initializes periodicidadComboBox
+	 *
+	 * @return javax.swing.JComboBox
+	 */
+	private JComboBox getPeriodicidadComboBox() {
+		if (periodicidadComboBox == null) {
+			String[] opciones = {"no asignar","discontinuo", "periódico", "continuo"};
+			periodicidadComboBox = new JComboBox(opciones);
+			periodicidadComboBox.setLocation(new Point(97, 150));
+			periodicidadComboBox.setSize(new Dimension(120, 18));
+		}
+		return periodicidadComboBox;
+	}
+
+	/**
+	 * This method initializes efectoComboBox
+	 *
+	 * @return javax.swing.JComboBox
+	 */
+	private JComboBox getEfectoComboBox() {
+		if (efectoComboBox == null) {
+			String[] opciones = {"directo", "indirecto secundario", "indirecto terciario"};
+			efectoComboBox = new JComboBox(opciones);
+			efectoComboBox.setLocation(new Point(324, 120));
+			efectoComboBox.setSize(new Dimension(120, 18));
+		}
+		return efectoComboBox;
 	}
 
 	/**
@@ -682,7 +698,8 @@ public class formEfecto extends JDialog {
 	 */
 	private JComboBox getMomentoComboBox() {
 		if (momentoComboBox == null) {
-			momentoComboBox = new JComboBox();
+			String[] opciones = {"no asignar","inmediato", "medio plazo", "largo plazo"};
+			momentoComboBox = new JComboBox(opciones);
 			momentoComboBox.setLocation(new Point(97, 180));
 			momentoComboBox.setSize(new Dimension(120, 18));
 		}
@@ -765,9 +782,13 @@ public class formEfecto extends JDialog {
 			calcularCualitativaButton = new JButton();
 			calcularCualitativaButton.setLocation(new Point(325, 180));
 			calcularCualitativaButton.setBackground(Color.white);
-			calcularCualitativaButton.setName("");
 			calcularCualitativaButton.setText("Calcular");
 			calcularCualitativaButton.setSize(new Dimension(120, 20));
+			calcularCualitativaButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					calcularCualitativa();
+				}
+			});
 		}
 		return calcularCualitativaButton;
 	}
@@ -875,6 +896,7 @@ public class formEfecto extends JDialog {
 		if (magnitudTextField == null) {
 			magnitudTextField = new JTextField();
 			magnitudTextField.setLocation(new Point(124, 18));
+			magnitudTextField.setEnabled(false);
 			magnitudTextField.setSize(new Dimension(117, 18));
 		}
 		return magnitudTextField;
@@ -955,6 +977,11 @@ public class formEfecto extends JDialog {
 			calcularCuantitativaButton.setBounds(new Rectangle(14, 85, 393, 28));
 			calcularCuantitativaButton.setBackground(Color.white);
 			calcularCuantitativaButton.setText("Calcular");
+			calcularCuantitativaButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					calcularCuantitativa();
+				}
+			});
 		}
 		return calcularCuantitativaButton;
 	}
@@ -1033,6 +1060,13 @@ public class formEfecto extends JDialog {
 			aceptarCuantitativaButton.setSize(new Dimension(79, 17));
 			aceptarCuantitativaButton.setLocation(new Point(155, 355));
 			aceptarCuantitativaButton.setBackground(Color.white);
+			aceptarCuantitativaButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					actualizarEfecto();
+					flagAceptar = true;
+					setVisible(false);
+				}
+			});
 		}
 		return aceptarCuantitativaButton;
 	}
@@ -1061,20 +1095,38 @@ public class formEfecto extends JDialog {
 		return cancelarCuantitativaButton;
 	}
 
+	private void calcularCualitativa(){
+		//TODO calcular valoracion cualitativa
+
+		//efecto.getValCualitativa().setAcumulacion(acumulacion)
+		actualizarValoraciones();
+	}
+
+	private void calcularCuantitativa(){
+		//TODO calcular valoracion cuantitativa
+		actualizarValoraciones();
+	}
+
 	private void actualizarValoraciones(){
 
 		// Valoración cualitativa
 		if (efecto.getValCualitativa()!=null){
-			cualitativaTextField.setText(String.valueOf(efecto.getValCualitativa().getIncidencia()));
+			String incidencia = String.valueOf(efecto.getValCualitativa().getIncidencia());
+			cualitativaTextField.setText(incidencia);
+			incidenciaTextField.setText(incidencia);
 		}else{
 			cualitativaTextField.setText("---");
+			incidenciaTextField.setText("---");
 		}
 
 		// Valoración cuantitativa
 		if (efecto.getValCuantitativa()!=null){
-			cuantitativaTextField.setText(String.valueOf(efecto.getValCuantitativa().getMagnitudImpacto()));
+			String magnitud = String.valueOf(efecto.getValCuantitativa().getMagnitudImpacto());
+			cuantitativaTextField.setText(magnitud);
+			magnitudTextField.setText(magnitud);
 		}else{
 			cuantitativaTextField.setText("---");
+			magnitudTextField.setText("---");
 		}
 
 		// Si tenemos la valoración total
