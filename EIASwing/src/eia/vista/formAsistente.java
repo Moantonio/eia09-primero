@@ -82,9 +82,11 @@ public class formAsistente extends JDialog {
 					cuestionLabel.setText("¿Es proporcional?");
 					siRadioButton.setSelected(false);
 				}else{
-					estado = 2;
-					cuestionLabel.setText("Al aumentar el valor del indicador, ¿disminuye el impacto?");
-					noRadioButton.setSelected(false);
+					if (noRadioButton.isSelected()){
+						estado = 2;
+						cuestionLabel.setText("Al aumentar el valor del indicador, ¿disminuye el impacto?");
+						noRadioButton.setSelected(false);
+					}
 				}
 				break;
 			}
@@ -96,7 +98,9 @@ public class formAsistente extends JDialog {
 					siRadioButton.setVisible(false);
 					siguienteButton.setText("Aceptar");
 				}else{
-					estado = 4;
+					if (noRadioButton.isSelected()){
+						estado = 4;
+					}
 				}
 				break;
 			}
