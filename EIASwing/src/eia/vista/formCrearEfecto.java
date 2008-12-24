@@ -19,6 +19,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
+import eia.util.ValorJuicio;
+
 /**
  * @author SI: EIA'09
  * 		   Vicente Cruz Mínguez.
@@ -218,7 +220,8 @@ public class formCrearEfecto extends JDialog {
 
 	private JComboBox getEnjuiciamientoComboBox() {
 		if (enjuiciamientoComboBox == null) {
-			String[] opciones = {"Despreciable","Especial","Impredicible","Significativo"};
+			String[] opciones = {ValorJuicio.despreciable.toString(),ValorJuicio.especial.toString(),
+					ValorJuicio.impredecible.toString(), ValorJuicio.significativo.toString()};
 			enjuiciamientoComboBox = new JComboBox(opciones);
 			enjuiciamientoComboBox.setFont(new Font("Dialog", Font.BOLD, 12));
 			enjuiciamientoComboBox.setLocation(new Point(164, 120));
