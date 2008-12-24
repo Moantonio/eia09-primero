@@ -132,7 +132,7 @@ public class formAsistente extends JDialog {
 								+"un máximo, y luego disminuye?");
 						noRadioButton.setSelected(false);
 						cuestionLabel.setLocation(new Point(120, 25));
-						cuestionLabel.setSize(new Dimension(350, 40));
+						cuestionLabel.setSize(new Dimension(280, 40));
 					}
 				}
 				break;
@@ -278,21 +278,37 @@ public class formAsistente extends JDialog {
 				}else{
 					if (noRadioButton.isSelected()){
 						estado = 15;
-						//TODO voy por aki
-						cuestionLabel.setText("Para valores pequeños y grandes de la magnitud, ¿crece rapidamente" +"\n"
-								+"el impacto?, y para valores intermedios ¿crece rapidamente?");
+						cuestionLabel.setText("Para valores pequeños de la magnitud, ¿decrece rapidamente" +"\n" +" el impacto?, "
+								+"y para valores grandes ¿decrece lentamente?");
 						noRadioButton.setSelected(false);
-						cuestionLabel.setLocation(new Point(25, 25));
-						cuestionLabel.setSize(new Dimension(400, 40));
+						cuestionLabel.setLocation(new Point(45, 25));
+						cuestionLabel.setSize(new Dimension(375, 40));
 					}
 				}
 				break;
-
 			}
 
 			case 13:{
+				if (siRadioButton.isSelected()){
+					estado = 23;
+					cuestionLabel.setText("Máximo intermedio");
+					noRadioButton.setVisible(false);
+					siRadioButton.setVisible(false);
+					siguienteButton.setText("Aceptar");
+					cuestionLabel.setLocation(new Point(170, 33));
+					cuestionLabel.setSize(new Dimension(200, 20));
+				}else{
+					if (noRadioButton.isSelected()){
+						estado = 24;
+						cuestionLabel.setText("El impacto, ¿primero disminuye, alcanza" +"\n"
+								+"un mínimo, y luego aumenta?");
+						noRadioButton.setSelected(false);
+						cuestionLabel.setLocation(new Point(120, 25));
+						cuestionLabel.setSize(new Dimension(280, 40));
+					}
+				}
+				break;
 			}
-
 
 			case 14:{
 				// Recta decreciente
@@ -335,14 +351,42 @@ public class formAsistente extends JDialog {
 			}
 
 			case 23:{
-
+				// Máximo intermedio
+				funcionRecomendada = 10;
+				flagAceptar = true;
+				setVisible(false);
+				break;
 			}
 
 			case 24:{
-
+				if (siRadioButton.isSelected()){
+					estado = 25;
+					cuestionLabel.setText("Mínimo intermedio");
+					noRadioButton.setVisible(false);
+					siRadioButton.setVisible(false);
+					siguienteButton.setText("Aceptar");
+					cuestionLabel.setLocation(new Point(170, 33));
+					cuestionLabel.setSize(new Dimension(200, 20));
+				}else{
+					if (noRadioButton.isSelected()){
+						estado = 26;
+						cuestionLabel.setText("Lo siento, función no disponible en el repertorio");
+						noRadioButton.setVisible(false);
+						siRadioButton.setVisible(false);
+						siguienteButton.setText("Aceptar");
+						cuestionLabel.setLocation(new Point(80, 33));
+						cuestionLabel.setSize(new Dimension(350, 20));
+					}
+				}
+				break;
 			}
 
 			case 25:{
+				// Mínimo intermedio
+				funcionRecomendada = 11;
+				flagAceptar = true;
+				setVisible(false);
+				break;
 
 			}
 
