@@ -1168,8 +1168,55 @@ public class formEfecto extends JDialog {
 		} else if (reversibilidad.compareTo("irreversible") == 0) {
 		    valoracion.setReversibilidad(ValoracionCualitativa.REV_IRREVERSIBLE);
 		}
+
 		// Fijamos la recuperabilidad
-		// * inmediata, medio plazo, mitigable, largo plazo o irrecuperable.
+		String recuperabilidad = recuperabilidadComboBox.getSelectedItem().toString();
+		if (recuperabilidad.compareTo("inmediata") == 0) {
+		    valoracion.setRecuperabilidad(ValoracionCualitativa.REC_INMEDIATA);
+		} else if (recuperabilidad.compareTo("medio plazo") == 0) {
+		    valoracion.setRecuperabilidad(ValoracionCualitativa.REC_MEDIO_PLAZO);
+		} else if (recuperabilidad.compareTo("mitigable") == 0) {
+		    valoracion.setRecuperabilidad(ValoracionCualitativa.REC_MITIGABLE);
+		} else if (recuperabilidad.compareTo("largo plazo") == 0) {
+		    valoracion.setRecuperabilidad(ValoracionCualitativa.REC_LARGO_PLAZO);
+		} else if (recuperabilidad.compareTo("irrecuperable") == 0) {
+		    valoracion.setRecuperabilidad(ValoracionCualitativa.REC_IRRECUPERABLE);
+		}
+
+		// Fijamos la periodicidad
+		String periodicidad = periodicidadComboBox.getSelectedItem().toString();
+		if (periodicidad.compareTo("discontinuo") == 0) {
+			valoracion.setPeriodicidad(ValoracionCualitativa.PER_DISCONTINUO);
+		} else if (periodicidad.compareTo("periódico") == 0) {
+			valoracion.setPeriodicidad(ValoracionCualitativa.PER_PERIODICO);
+		} else if (periodicidad.compareTo("continuo") == 0) {
+			valoracion.setPeriodicidad(ValoracionCualitativa.PER_CONTINUO);
+		}
+
+		// Fijamos el efecto
+		String efecto = efectoComboBox.getSelectedItem().toString();
+		if (efecto.compareTo("directo") == 0) {
+			valoracion.setEfecto(ValoracionCualitativa.EFE_DIRECTO);
+		} else if (efecto.compareTo("indirecto secundario") == 0) {
+			valoracion.setEfecto(ValoracionCualitativa.EFE_INDIRECTO_SEC);
+		} else if (efecto.compareTo("indirecto terciario") == 0) {
+			valoracion.setEfecto(ValoracionCualitativa.EFE_INDIRECTO_TER);
+		}
+
+		// Fijamos el momento
+		String momento = momentoComboBox.getSelectedItem().toString();
+		 if (momento.compareTo("inmediato") == 0) {
+			valoracion.setMomento(ValoracionCualitativa.MOM_INMEDIATO);
+		} else if (momento.compareTo("medio plazo") == 0) {
+			valoracion.setMomento(ValoracionCualitativa.MOM_MEDIO_PLAZO);
+		} else if (momento.compareTo("largo plazo") == 0) {
+			valoracion.setMomento(ValoracionCualitativa.MOM_LARGO_PLAZO);
+		}
+
+		 // Fijamos el momento crítico
+
+		 // Fijamos la extension crítica
+
 
 
 		actualizarValoraciones();
