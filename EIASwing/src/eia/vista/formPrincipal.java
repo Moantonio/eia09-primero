@@ -960,9 +960,10 @@ public class formPrincipal {
 		editarAlternativa.setModal(true);
 		editarAlternativa.setVisible(true);
 
-		//TODO si le ha dado a aceptar actualizamos info en la tabla
 		if(editarAlternativa.isFlagAceptar()){
-
+			// TODO si le ha dado a aceptar actualizamos info en la tabla
+			// y actualizamos información de la alternativa a partir de la
+			// alternativa del formulario.
 		}
 	}
 
