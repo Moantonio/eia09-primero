@@ -208,7 +208,7 @@ public class formAsistente extends JDialog {
 			case 8:{
 				if (siRadioButton.isSelected()){
 					estado = 9;
-					cuestionLabel.setText("Parábola Doble Creciente II");
+					cuestionLabel.setText("Parábola doble creciente II");
 					noRadioButton.setVisible(false);
 					siRadioButton.setVisible(false);
 					siguienteButton.setText("Aceptar");
@@ -238,7 +238,7 @@ public class formAsistente extends JDialog {
 			case 10:{
 				if (siRadioButton.isSelected()){
 					estado = 11;
-					cuestionLabel.setText("Parábola Doble Creciente I");
+					cuestionLabel.setText("Parábola doble creciente I");
 					noRadioButton.setVisible(false);
 					siRadioButton.setVisible(false);
 					siguienteButton.setText("Aceptar");
@@ -338,7 +338,6 @@ public class formAsistente extends JDialog {
 					}
 				}
 				break;
-
 			}
 
 			case 16:{
@@ -350,11 +349,32 @@ public class formAsistente extends JDialog {
 			}
 
 			case 17:{
-
+				if (siRadioButton.isSelected()){
+					estado = 18;
+					cuestionLabel.setText("Parábola decreciente II");
+					noRadioButton.setVisible(false);
+					siRadioButton.setVisible(false);
+					siguienteButton.setText("Aceptar");
+					cuestionLabel.setLocation(new Point(160, 33));
+					cuestionLabel.setSize(new Dimension(200, 20));
+				}else{
+					if (noRadioButton.isSelected()){
+						estado = 19;
+						cuestionLabel.setText("Para valores pequeños y grandes de la magnitud, ¿crece rápidamente" +"\n"
+								+"el impacto?, y para valores intermedios ¿crece rápidamente?");
+						noRadioButton.setSelected(false);
+						cuestionLabel.setLocation(new Point(25, 25));
+						cuestionLabel.setSize(new Dimension(400, 40));
+					}
+				}
 			}
 
 			case 18:{
-
+				// Parábola decreciente II
+				funcionRecomendada = 5;
+				flagAceptar = true;
+				setVisible(false);
+				break;
 			}
 
 			case 19:{
