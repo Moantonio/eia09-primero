@@ -14,9 +14,11 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+import java.awt.SystemColor;
 
 public class formAsistente extends JDialog {
 
@@ -25,7 +27,7 @@ public class formAsistente extends JDialog {
 	private JButton siguienteButton = null;
 	private JButton cancelarButton = null;
 	private JPanel asistentePanel = null;
-	private JLabel cuestionLabel = null;
+	private JTextArea cuestionLabel = null;
 	private JRadioButton siRadioButton = null;
 	private JRadioButton noRadioButton = null;
 
@@ -76,20 +78,26 @@ public class formAsistente extends JDialog {
 
 	private void siguienteEstado(){
 		switch(estado){
+
 			case 0:{
 				if (siRadioButton.isSelected()){
 					estado = 1;
 					cuestionLabel.setText("¿Es proporcional?");
 					siRadioButton.setSelected(false);
+					cuestionLabel.setLocation(new Point(171, 33));
+					cuestionLabel.setSize(new Dimension(200, 20));
 				}else{
 					if (noRadioButton.isSelected()){
 						estado = 2;
 						cuestionLabel.setText("Al aumentar el valor del indicador, ¿disminuye el impacto?");
 						noRadioButton.setSelected(false);
+						cuestionLabel.setLocation(new Point(60, 33));
+						cuestionLabel.setSize(new Dimension(350, 20));
 					}
 				}
 				break;
 			}
+
 			case 1:{
 				if (siRadioButton.isSelected()){
 					estado = 3;
@@ -100,13 +108,80 @@ public class formAsistente extends JDialog {
 				}else{
 					if (noRadioButton.isSelected()){
 						estado = 4;
+						cuestionLabel.setText("Para valores pequeños de la magnitud, ¿crece rapidamente" +"\n" +" el impacto?, "
+								+"y para valores grandes ¿crece lentamente?");
+						noRadioButton.setSelected(false);
+						cuestionLabel.setLocation(new Point(60, 25));
+						cuestionLabel.setSize(new Dimension(350, 40));
 					}
 				}
 				break;
 			}
+
+			case 2:{}
+
 			case 3:{
 				// Recta creciente
 				funcionRecomendada = 0;
+				flagAceptar = true;
+				setVisible(false);
+				break;
+			}
+			case 4:{
+				if (siRadioButton.isSelected()){
+					estado = 5;
+					cuestionLabel.setText("Parábola creciente I");
+					noRadioButton.setVisible(false);
+					siRadioButton.setVisible(false);
+					siguienteButton.setText("Aceptar");
+					cuestionLabel.setLocation(new Point(160, 33));
+					cuestionLabel.setSize(new Dimension(200, 20));
+				}else{
+					if (noRadioButton.isSelected()){
+						estado = 6;
+						cuestionLabel.setText("Para valores pequeños de la magnitud, ¿crece lentamente" +"\n" +" el impacto?, "
+								+"y para valores grandes ¿crece rapidamente?");
+						noRadioButton.setSelected(false);
+						cuestionLabel.setLocation(new Point(60, 25));
+						cuestionLabel.setSize(new Dimension(350, 40));
+					}
+				}
+				break;
+			}
+
+			case 5:{
+				// Parábola creciente I
+				funcionRecomendada = 2;
+				flagAceptar = true;
+				setVisible(false);
+				break;
+			}
+
+			case 6:{
+				if (siRadioButton.isSelected()){
+					estado = 7;
+					cuestionLabel.setText("Parábola creciente II");
+					noRadioButton.setVisible(false);
+					siRadioButton.setVisible(false);
+					siguienteButton.setText("Aceptar");
+					cuestionLabel.setLocation(new Point(160, 33));
+					cuestionLabel.setSize(new Dimension(200, 20));
+				}else{
+					if (noRadioButton.isSelected()){
+						estado = 8;
+						cuestionLabel.setText("Para valores pequeños y grandes de la magnitud, ¿crece lentamente" +"\n"
+								+"el impacto?, y para valores intermedios ¿crece rapidamente?");
+						noRadioButton.setSelected(false);
+						cuestionLabel.setLocation(new Point(25, 25));
+						cuestionLabel.setSize(new Dimension(400, 40));
+					}
+				}
+				break;
+			}
+
+			case 7:{
+				// Parábola creciente II
+				funcionRecomendada = 4;
 				flagAceptar = true;
 				setVisible(false);
 				break;
@@ -140,11 +215,13 @@ public class formAsistente extends JDialog {
 
 	private JPanel getAsistentePanel() {
 		if (asistentePanel == null) {
-			cuestionLabel = new JLabel();
+			cuestionLabel = new JTextArea();
 			cuestionLabel.setLocation(new Point(52, 33));
+			cuestionLabel.setSize(new Dimension(350, 20));
 			cuestionLabel.setFont(new Font("Dialog", Font.BOLD, 12));
 			cuestionLabel.setText("¿Al aumentar el valor del indicador, ¿aumenta el impacto?");
-			cuestionLabel.setSize(new Dimension(341, 16));
+			cuestionLabel.setBackground(SystemColor.control);
+			cuestionLabel.setEditable(false);
 			asistentePanel = new JPanel();
 			asistentePanel.setLayout(null);
 			asistentePanel.setBounds(new Rectangle(13, 13, 441, 102));
