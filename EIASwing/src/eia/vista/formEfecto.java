@@ -1214,12 +1214,24 @@ public class formEfecto extends JDialog {
 		}
 
 		 // Fijamos el momento crítico
+		 if (momentoCriticoCheckBox.isSelected()){
+			 valoracion.setMomentoCritico(ValoracionCualitativa.MOM_CRITICO);
+		 }else{
+			 valoracion.setMomentoCritico(ValoracionCualitativa.MOM_NO_CRITICO);
+		 }
 
 		 // Fijamos la extension crítica
+		 if (extensionCriticaCheckBox.isSelected()){
+			 valoracion.setExtensionCritica(ValoracionCualitativa.EXT_CRITICA);
+		 }else{
+			 valoracion.setExtensionCritica(ValoracionCualitativa.EXT_NO_CRITICA);
+		 }
 
+		 // Procedemos a realizar el cálculo de la valoración
+		 valoracion.calcularValoracion();
 
-
-		actualizarValoraciones();
+		 // Actualizamos la vista
+		 actualizarValoraciones();
 	}
 
 	private void calcularCuantitativa(){
