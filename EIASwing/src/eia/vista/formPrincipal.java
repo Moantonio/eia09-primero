@@ -965,6 +965,8 @@ public class formPrincipal {
 			// y actualizamos información de la alternativa a partir de la
 			// alternativa del formulario.
 		}
+		editarAlternativa.dispose();
+
 	}
 
 	public static void main(String[] args) {
