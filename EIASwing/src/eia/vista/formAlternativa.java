@@ -35,6 +35,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultTreeSelectionModel;
+import javax.swing.tree.VariableHeightLayoutCache;
 
 /**
  * @author SI: EIA'09
@@ -67,12 +68,13 @@ public class formAlternativa extends JDialog{
 	private JButton aceptarButton = null;
 	private JButton cancelarButton = null;
 	private JPanel valoracionPanel = null;
+	private JScrollPane factoresScrollPane = null;
+	private JScrollPane accionesScrollPane = null;
+	private boolean flagAceptar = false;
 
 	//Variables del modelo
 	private Alternativa alternativa;
-	private boolean flagAceptar = false;
-	private JScrollPane factoresScrollPane = null;
-	private JScrollPane accionesScrollPane = null;
+
 	public formAlternativa(Alternativa alt) {
 		super();
 		alternativa = alt;
@@ -175,6 +177,15 @@ public class formAlternativa extends JDialog{
 			modificarButton.setBounds(new Rectangle(77, 160, 85, 20));
 			modificarButton.setFont(new Font("Dialog", Font.BOLD, 10));
 			modificarButton.setText("Modificar");
+			modificarButton.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					if (!accionesTree.isSelectionEmpty()){
+						
+					}			 
+					// TODO Auto-generated Event stub actionPerformed()
+				}
+			});
+				
 		}
 		return modificarButton;
 	}
@@ -187,13 +198,16 @@ public class formAlternativa extends JDialog{
 			eliminarButton.setBounds(new Rectangle(161, 160, 77, 20));
 			eliminarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					int seleccion = JOptionPane.showConfirmDialog (null,
-							"¿Está seguro que desea eliminar esta acción?",
-							"Eliminar acción",
-							JOptionPane.YES_NO_OPTION);
-					if (seleccion==JOptionPane.YES_OPTION){
+					if (!accionesTree.isSelectionEmpty()){
+						int seleccion = JOptionPane.showConfirmDialog (null,
+								"¿Está seguro que desea eliminar esta acción?",
+								"Eliminar acción",
+								JOptionPane.YES_NO_OPTION);
+						if (seleccion==JOptionPane.YES_OPTION){
 						//TODO eliminar de la alternativa la acción seleccionada
-					}
+							
+						}
+					}	
 				}
 			});
 		}
@@ -216,6 +230,7 @@ public class formAlternativa extends JDialog{
 			DefaultMutableTreeNode hijo2=new DefaultMutableTreeNode("Geológia, Geomorfía");
 			DefaultMutableTreeNode nieto21=new DefaultMutableTreeNode("Relieve");
 			DefaultMutableTreeNode nieto22=new DefaultMutableTreeNode("Recursos culturales");
+			//hijo2.isLeaf()
 
 			DefaultTreeModel modeloArbol = new DefaultTreeModel(abuelo);
 			modeloArbol.insertNodeInto(padre,abuelo,0);
@@ -227,7 +242,7 @@ public class formAlternativa extends JDialog{
 			modeloArbol.insertNodeInto(nieto21, hijo2, 0);
 			modeloArbol.insertNodeInto(nieto22, hijo2, 0);
 
-			accionesTree = new JTree(modeloArbol);
+			accionesTree = new JTree(modeloArbol);								
 		}
 		return accionesTree;
 	}
@@ -275,19 +290,24 @@ public class formAlternativa extends JDialog{
 			crearEfectoButton = new JButton();
 			crearEfectoButton.setText("Crear Efecto");
 			crearEfectoButton.setSize(new Dimension(458, 20));
-			crearEfectoButton.setLocation(new Point(12, 217));
+			crearEfectoButton.setLocation(new Point(2, 207));
 			crearEfectoButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					//TODO accion tiene que ser la seleccionada
-					Accion accion = null;
+					
+					if ((!accionesTree.isSelectionEmpty())&&(!factoresTree.isSelectionEmpty())){
+						
+						Accion accion = new Accion(accionesTree.getLastSelectedPathComponent().toString());
 					//TODO factor tiene que ser la seleccionada
-					Factor factor = null;
-					formCrearEfecto formNuevoEfecto = new formCrearEfecto(accion.getId(), factor.getId());
-					Point posActual = getDialog().getLocation();
-					posActual.translate(20, 20);
-					formNuevoEfecto.setLocation(posActual);
-					formNuevoEfecto.setModal(true);
-					formNuevoEfecto.setVisible(true);
+						Factor factor = new Factor(factoresTree.getLastSelectedPathComponent().toString(),1);
+
+						formCrearEfecto formNuevoEfecto = new formCrearEfecto(accion.getId(), factor.getId());
+						Point posActual = getDialog().getLocation();
+						posActual.translate(20, 20);
+						formNuevoEfecto.setLocation(posActual);
+						formNuevoEfecto.setModal(true);
+						formNuevoEfecto.setVisible(true);
+					}	
 				}
 			});
 		}
@@ -347,17 +367,10 @@ public class formAlternativa extends JDialog{
 			String[] datos1 = {"Paco1","","","","",""};
 			String[] datos2 = {"Paco2","","","","",""};
 			String[] datos3 = {"Paco3","","","","",""};
-			String[] datos4 = {"Paco4","","","","",""};
-			String[] datos5 = {"Paco5","","","","",""};
-			String[] datos6 = {"Paco6","","","","",""};
-			String[] datos7 = {"Paco7","","","","",""};
 			modeloTabla.addRow(datos1);
 			modeloTabla.addRow(datos2);
 			modeloTabla.addRow(datos3);
-			modeloTabla.addRow(datos4);
-			modeloTabla.addRow(datos5);
-			modeloTabla.addRow(datos6);
-			modeloTabla.addRow(datos7);
+
 		}
 		return efectosTable;
 	}
@@ -392,15 +405,23 @@ public class formAlternativa extends JDialog{
 			eliminarEfectosButton.setLocation(new Point(227, 126));
 			eliminarEfectosButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					int seleccion = JOptionPane.showConfirmDialog (null,
-							"¿Está seguro que desea eliminar esta alternativa?",
-							"Eliminar alternativa",
-							JOptionPane.YES_NO_OPTION);
-					if (seleccion==JOptionPane.YES_OPTION){
-						//TODO eliminar de la alternativa el efecto seleccionado
-						int indice = efectosTable.getSelectedRow();
-						if (indice != -1){
+					int indice = efectosTable.getSelectedRow();
+					if (indice != -1){
+						int seleccion = JOptionPane.showConfirmDialog (null,
+								"¿Está seguro que desea eliminar esta alternativa?",
+								"Eliminar alternativa",
+								JOptionPane.YES_NO_OPTION);
+						if (seleccion==JOptionPane.YES_OPTION){
+						    // elimina el efecto de la tabla
 							modeloTabla.removeRow(indice);
+							//TODO eliminar de la alternativa el efecto seleccionado
+
+
+							//Obtenemos el indice del efecto
+							Efecto efecto = new Efecto();
+							alternativa.getEfectos().indexOf(efecto);
+
+
 						}
 					}
 				}
