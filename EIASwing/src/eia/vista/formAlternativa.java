@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -30,6 +29,12 @@ import eia.model.Alternativa;
 import eia.model.Efecto;
 import eia.model.Factor;
 import eia.util.TablaNoEditable;
+import java.awt.ComponentOrientation;
+
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.DefaultTreeSelectionModel;
 
 /**
  * @author SI: EIA'09
@@ -44,9 +49,7 @@ public class formAlternativa extends JDialog{
 	private JLabel altDeRealizacionLabel = null;
 	private JTextField altDeRealizcionTextField = null;
 	private JPanel AccionesPanel = null;
-	private JEditorPane jEditorPane = null;
 	private JPanel factoresPanel = null;
-	private JEditorPane factoresjEditorPane = null;
 	private JButton AnadirButton = null;
 	private JButton modificarButton = null;
 	private JButton eliminarButton = null;
@@ -54,7 +57,6 @@ public class formAlternativa extends JDialog{
 	private JTree factoresTree = null;
 	private JButton crearEfectoButton = null;
 	private JPanel efectossPanel = null;
-	private JEditorPane efectosjEditorPane = null;
 	private JScrollPane efectosScrollPane = null;
 	private TablaNoEditable modeloTabla = new TablaNoEditable();
 	private JTable efectosTable = null;
@@ -69,7 +71,6 @@ public class formAlternativa extends JDialog{
 	//Variables del modelo
 	private Alternativa alternativa;
 	private boolean flagAceptar = false;
-
 	public formAlternativa(Alternativa alt) {
 		super();
 		alternativa = alt;
@@ -133,7 +134,6 @@ public class formAlternativa extends JDialog{
 			AccionesPanel.setLayout(null);
 			AccionesPanel.setLocation(new Point(13, 29));
 			AccionesPanel.setSize(new Dimension(249, 186));
-			AccionesPanel.add(getJEditorPane(), null);
 			AccionesPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Acciones" +
 					""));
 			AccionesPanel.add(getAnadirButton(), null);
@@ -144,14 +144,6 @@ public class formAlternativa extends JDialog{
 		return AccionesPanel;
 	}
 
-	private JEditorPane getJEditorPane() {
-		if (jEditorPane == null) {
-			jEditorPane = new JEditorPane();
-			jEditorPane.setBounds(new Rectangle(13, 40, 24, 1));
-		}
-		return jEditorPane;
-	}
-
 	private JPanel getFactoresPanel() {
 		if (factoresPanel == null) {
 			factoresPanel = new JPanel();
@@ -159,18 +151,9 @@ public class formAlternativa extends JDialog{
 			factoresPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Factores", TitledBorder.LEADING, TitledBorder.TOP, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
 			factoresPanel.setLocation(new Point(270, 30));
 			factoresPanel.setSize(new Dimension(200, 185));
-			factoresPanel.add(getFactoresjEditorPane(), null);
 			factoresPanel.add(getFactoresTree(), null);
 		}
 		return factoresPanel;
-	}
-
-	private JEditorPane getFactoresjEditorPane() {
-		if (factoresjEditorPane == null) {
-			factoresjEditorPane = new JEditorPane();
-			factoresjEditorPane.setBounds(new Rectangle(13, 40, 24, 1));
-		}
-		return factoresjEditorPane;
 	}
 
 	private JButton getAnadirButton() {
@@ -225,8 +208,39 @@ public class formAlternativa extends JDialog{
 
 	private JTree getFactoresTree() {
 		if (factoresTree == null) {
-			factoresTree = new JTree();
+			DefaultTreeSelectionModel defaultTreeSelectionModel = new DefaultTreeSelectionModel();
+			defaultTreeSelectionModel.setSelectionMode(4);
+			DefaultTreeCellRenderer defaultTreeCellRenderer = new DefaultTreeCellRenderer();
+			defaultTreeCellRenderer.setAutoscrolls(true);
+			
+			DefaultMutableTreeNode abuelo = new DefaultMutableTreeNode("Sistema físico natural");
+			DefaultMutableTreeNode padre = new DefaultMutableTreeNode("Medio Abiótico");
+			DefaultMutableTreeNode tio = new DefaultMutableTreeNode("Medio Biótico");
+			DefaultMutableTreeNode hijo1=new DefaultMutableTreeNode("Aire");
+			DefaultMutableTreeNode nieto11=new DefaultMutableTreeNode("Calidad del aire");
+			DefaultMutableTreeNode nieto12=new DefaultMutableTreeNode("Nivel sonoro");
+			DefaultMutableTreeNode hijo2=new DefaultMutableTreeNode("Geológia, Geomorfía");
+			DefaultMutableTreeNode nieto21=new DefaultMutableTreeNode("Relieve");
+			DefaultMutableTreeNode nieto22=new DefaultMutableTreeNode("Recursos culturales");
+			
+			DefaultTreeModel modeloArbol = new DefaultTreeModel(abuelo);		
+			modeloArbol.insertNodeInto(padre,abuelo,0);
+			modeloArbol.insertNodeInto(tio, abuelo, 1);
+			modeloArbol.insertNodeInto(hijo1, padre, 0);
+			modeloArbol.insertNodeInto(nieto11, hijo1, 0);
+			modeloArbol.insertNodeInto(nieto12, hijo1, 0);
+			modeloArbol.insertNodeInto(hijo2, padre, 1);
+			modeloArbol.insertNodeInto(nieto21, hijo2, 0);
+			modeloArbol.insertNodeInto(nieto22, hijo2, 0);
+			
+			factoresTree = new JTree(modeloArbol);
 			factoresTree.setBounds(new Rectangle(9, 23, 183, 157));
+			factoresTree.setRootVisible(true);
+			factoresTree.setShowsRootHandles(false);
+			factoresTree.setToggleClickCount(2);
+			factoresTree.setCellRenderer(defaultTreeCellRenderer);
+			factoresTree.setSelectionModel(defaultTreeSelectionModel);
+			factoresTree.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		}
 		return factoresTree;
 	}
@@ -261,20 +275,11 @@ public class formAlternativa extends JDialog{
 			efectossPanel.setLayout(null);
 			efectossPanel.setBounds(new Rectangle(13, 239, 457, 150));
 			efectossPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Efectos", TitledBorder.LEADING, TitledBorder.TOP, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-			efectossPanel.add(getEfectosjEditorPane(), null);
 			efectossPanel.add(getEfectosScrollPane(), null);
 			efectossPanel.add(getEditarEfectosButton(), null);
 			efectossPanel.add(getEliminarEfectosButton(), null);
 		}
 		return efectossPanel;
-	}
-
-	private JEditorPane getEfectosjEditorPane() {
-		if (efectosjEditorPane == null) {
-			efectosjEditorPane = new JEditorPane();
-			efectosjEditorPane.setBounds(new Rectangle(13, 40, 24, 1));
-		}
-		return efectosjEditorPane;
 	}
 
 	private JScrollPane getEfectosScrollPane() {
