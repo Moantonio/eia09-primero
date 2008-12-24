@@ -35,6 +35,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultTreeSelectionModel;
+import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.VariableHeightLayoutCache;
 
 /**
@@ -71,8 +72,10 @@ public class formAlternativa extends JDialog{
 	private JScrollPane factoresScrollPane = null;
 	private JScrollPane accionesScrollPane = null;
 	private boolean flagAceptar = false;
+
+	//TODO Esto deberian ser el arbol de acciones y el de Factores de alternativa
 	private DefaultTreeModel modeloArbol1 = null;
-	private DefaultTreeModel modeloArbol2 = null;  
+	private DefaultTreeModel modeloArbol2 = null;
 
 	//Variables del modelo
 	private Alternativa alternativa;
@@ -169,6 +172,22 @@ public class formAlternativa extends JDialog{
 			AnadirButton.setPreferredSize(new Dimension(71, 26));
 			AnadirButton.setFont(new Font("Dialog", Font.BOLD, 10));
 			AnadirButton.setText("Añadir");
+			AnadirButton.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent e) {
+					if (!accionesTree.isSelectionEmpty()){
+						// TODO Formulario que meta el nombre de la accion
+						// añadir la accion real al arbol de acciones
+						//creo q deberia ser un arbol del tipo DefaultMutableTreeNode
+						String nombreAccion = "Paco";
+						DefaultMutableTreeNode nuevo=new DefaultMutableTreeNode(nombreAccion);
+						DefaultMutableTreeNode padre = (DefaultMutableTreeNode)accionesTree.getLastSelectedPathComponent();
+
+						modeloArbol1.insertNodeInto(nuevo,padre, 0);
+
+					}
+
+				}
+			});
 		}
 		return AnadirButton;
 	}
@@ -182,12 +201,13 @@ public class formAlternativa extends JDialog{
 			modificarButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					if (!accionesTree.isSelectionEmpty()){
-						
-					}			 
-					// TODO Auto-generated Event stub actionPerformed()
+						// TODO Auto-generated Event stub actionPerformed()
+
+					}
+
 				}
 			});
-				
+
 		}
 		return modificarButton;
 	}
@@ -207,9 +227,10 @@ public class formAlternativa extends JDialog{
 								JOptionPane.YES_NO_OPTION);
 						if (seleccion==JOptionPane.YES_OPTION){
 						//TODO eliminar de la alternativa la acción seleccionada
-							
+							DefaultMutableTreeNode nodo = (DefaultMutableTreeNode)accionesTree.getLastSelectedPathComponent();
+							modeloArbol1.removeNodeFromParent(nodo);
 						}
-					}	
+					}
 				}
 			});
 		}
@@ -232,7 +253,7 @@ public class formAlternativa extends JDialog{
 			DefaultMutableTreeNode hijo2=new DefaultMutableTreeNode("Caminos");
 			DefaultMutableTreeNode nieto21=new DefaultMutableTreeNode("Relieve");
 			DefaultMutableTreeNode nieto22=new DefaultMutableTreeNode("Recursos culturales");
-						
+
 
 			modeloArbol1 = new DefaultTreeModel(abuelo);
 			modeloArbol1.insertNodeInto(padre,abuelo,0);
@@ -243,8 +264,8 @@ public class formAlternativa extends JDialog{
 			modeloArbol1.insertNodeInto(hijo2, padre, 1);
 			modeloArbol1.insertNodeInto(nieto21, hijo2, 0);
 			modeloArbol1.insertNodeInto(nieto22, hijo2, 0);
-			
-			accionesTree = new JTree(modeloArbol1);								
+
+			accionesTree = new JTree(modeloArbol1);
 		}
 		return accionesTree;
 	}
@@ -295,14 +316,14 @@ public class formAlternativa extends JDialog{
 			crearEfectoButton.setLocation(new Point(13, 219));
 			crearEfectoButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+
 					if (!accionesTree.isSelectionEmpty()&&
 						!factoresTree.isSelectionEmpty()&&
 						modeloArbol1.isLeaf(accionesTree.getLastSelectedPathComponent())&&
 						modeloArbol2.isLeaf(factoresTree.getLastSelectedPathComponent())){
 						//si hay alguna acción y algun factor seleccionados
 						//y la acción y el factor son hojas de sus árboles
-						
+
 						//TODO supongo que esto que he hecho estara bien
 						Accion accion = new Accion(accionesTree.getLastSelectedPathComponent().toString());
 						Factor factor = new Factor(factoresTree.getLastSelectedPathComponent().toString(),1);
@@ -312,7 +333,7 @@ public class formAlternativa extends JDialog{
 						formNuevoEfecto.setLocation(posActual);
 						formNuevoEfecto.setModal(true);
 						formNuevoEfecto.setVisible(true);
-					}	
+					}
 				}
 			});
 		}
