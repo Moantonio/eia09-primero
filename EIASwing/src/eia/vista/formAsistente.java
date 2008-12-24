@@ -90,7 +90,7 @@ public class formAsistente extends JDialog {
 						estado = 2;
 						cuestionLabel.setText("Al aumentar el valor del indicador, ¿disminuye el impacto?");
 						noRadioButton.setSelected(false);
-						cuestionLabel.setLocation(new Point(60, 33));
+						cuestionLabel.setLocation(new Point(58, 33));
 						cuestionLabel.setSize(new Dimension(350, 20));
 					}
 				}
@@ -151,7 +151,7 @@ public class formAsistente extends JDialog {
 					noRadioButton.setVisible(false);
 					siRadioButton.setVisible(false);
 					siguienteButton.setText("Aceptar");
-					cuestionLabel.setLocation(new Point(160, 33));
+					cuestionLabel.setLocation(new Point(155, 33));
 					cuestionLabel.setSize(new Dimension(200, 20));
 				}else{
 					if (noRadioButton.isSelected()){
@@ -181,7 +181,7 @@ public class formAsistente extends JDialog {
 					noRadioButton.setVisible(false);
 					siRadioButton.setVisible(false);
 					siguienteButton.setText("Aceptar");
-					cuestionLabel.setLocation(new Point(160, 33));
+					cuestionLabel.setLocation(new Point(155, 33));
 					cuestionLabel.setSize(new Dimension(200, 20));
 				}else{
 					if (noRadioButton.isSelected()){
@@ -211,7 +211,7 @@ public class formAsistente extends JDialog {
 					noRadioButton.setVisible(false);
 					siRadioButton.setVisible(false);
 					siguienteButton.setText("Aceptar");
-					cuestionLabel.setLocation(new Point(160, 33));
+					cuestionLabel.setLocation(new Point(150, 33));
 					cuestionLabel.setSize(new Dimension(200, 20));
 				}else{
 					if (noRadioButton.isSelected()){
@@ -241,7 +241,7 @@ public class formAsistente extends JDialog {
 					noRadioButton.setVisible(false);
 					siRadioButton.setVisible(false);
 					siguienteButton.setText("Aceptar");
-					cuestionLabel.setLocation(new Point(160, 33));
+					cuestionLabel.setLocation(new Point(150, 33));
 					cuestionLabel.setSize(new Dimension(200, 20));
 				}else{
 					if (noRadioButton.isSelected()){
@@ -324,7 +324,7 @@ public class formAsistente extends JDialog {
 					noRadioButton.setVisible(false);
 					siRadioButton.setVisible(false);
 					siguienteButton.setText("Aceptar");
-					cuestionLabel.setLocation(new Point(160, 33));
+					cuestionLabel.setLocation(new Point(155, 33));
 					cuestionLabel.setSize(new Dimension(200, 20));
 				}else{
 					if (noRadioButton.isSelected()){
@@ -354,7 +354,7 @@ public class formAsistente extends JDialog {
 					noRadioButton.setVisible(false);
 					siRadioButton.setVisible(false);
 					siguienteButton.setText("Aceptar");
-					cuestionLabel.setLocation(new Point(160, 33));
+					cuestionLabel.setLocation(new Point(155, 33));
 					cuestionLabel.setSize(new Dimension(200, 20));
 				}else{
 					if (noRadioButton.isSelected()){
@@ -362,10 +362,11 @@ public class formAsistente extends JDialog {
 						cuestionLabel.setText("Para valores pequeños y grandes de la magnitud, ¿decrece lentamente" +"\n"
 								+"el impacto?, y para valores intermedios ¿decrece rápidamente?");
 						noRadioButton.setSelected(false);
-						cuestionLabel.setLocation(new Point(25, 25));
-						cuestionLabel.setSize(new Dimension(400, 40));
+						cuestionLabel.setLocation(new Point(17, 25));
+						cuestionLabel.setSize(new Dimension(420, 40));
 					}
 				}
+				break;
 			}
 
 			case 18:{
@@ -383,7 +384,7 @@ public class formAsistente extends JDialog {
 					noRadioButton.setVisible(false);
 					siRadioButton.setVisible(false);
 					siguienteButton.setText("Aceptar");
-					cuestionLabel.setLocation(new Point(160, 33));
+					cuestionLabel.setLocation(new Point(150, 33));
 					cuestionLabel.setSize(new Dimension(200, 20));
 				}else{
 					if (noRadioButton.isSelected()){
@@ -391,11 +392,11 @@ public class formAsistente extends JDialog {
 						cuestionLabel.setText("Para valores pequeños y grandes de la magnitud, ¿decrece rápidamente" +"\n"
 								+"el impacto?, y para valores intermedios ¿decrece lentamente?");
 						noRadioButton.setSelected(false);
-						cuestionLabel.setLocation(new Point(25, 25));
-						cuestionLabel.setSize(new Dimension(400, 40));
+						cuestionLabel.setLocation(new Point(15, 25));
+						cuestionLabel.setSize(new Dimension(420, 40));
 					}
 				}
-
+				break;
 			}
 
 			case 20:{
@@ -413,7 +414,7 @@ public class formAsistente extends JDialog {
 					noRadioButton.setVisible(false);
 					siRadioButton.setVisible(false);
 					siguienteButton.setText("Aceptar");
-					cuestionLabel.setLocation(new Point(160, 33));
+					cuestionLabel.setLocation(new Point(150, 33));
 					cuestionLabel.setSize(new Dimension(200, 20));
 				}else{
 					if (noRadioButton.isSelected()){
@@ -426,6 +427,7 @@ public class formAsistente extends JDialog {
 						cuestionLabel.setSize(new Dimension(350, 20));
 					}
 				}
+				break;
 			}
 
 			case 22:{
