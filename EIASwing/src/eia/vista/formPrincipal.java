@@ -396,6 +396,11 @@ public class formPrincipal {
 		if (verFactoresMenuItem == null) {
 			verFactoresMenuItem = new JMenuItem();
 			verFactoresMenuItem.setText("Ver listado");
+			verFactoresMenuItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mostrarFactores();
+				}
+			});
 		}
 		return verFactoresMenuItem;
 	}
@@ -967,6 +972,15 @@ public class formPrincipal {
 		}
 		editarAlternativa.dispose();
 
+	}
+
+	private void mostrarFactores(){
+		formFactores visualizarFactores = new formFactores(getFramePrincipal(), proyecto.getFactores());
+		Point posActual = getFramePrincipal().getLocation();
+		posActual.translate(20, 20);
+		visualizarFactores.setLocation(posActual);
+		visualizarFactores.setModal(true);
+		visualizarFactores.setVisible(true);
 	}
 
 	public static void main(String[] args) {
