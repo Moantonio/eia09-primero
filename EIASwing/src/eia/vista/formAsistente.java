@@ -45,6 +45,7 @@ public class formAsistente extends JDialog {
 		this.setSize(475, 197);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Asistente de elección de función de transformación");
+		
 	}
 
 	private JPanel getJContentPane() {
