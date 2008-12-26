@@ -1187,11 +1187,30 @@ public class formEfecto extends JDialog {
 	}
 
 	private void actualizarEfecto(){
+		String seleccionCaracter = caracterComboBox.getSelectedItem().toString();
 		// Actualizamos el caracter del efecto
-		efecto.setCaracter((CaracterEfecto)caracterComboBox.getSelectedItem());
+		if (seleccionCaracter.compareTo("compatible") == 0){
+			efecto.setCaracter(CaracterEfecto.compatible);
+		} else if (seleccionCaracter.compareTo("critico") == 0){
+			efecto.setCaracter(CaracterEfecto.critico);
+		} else if (seleccionCaracter.compareTo("moderado") == 0){
+			efecto.setCaracter(CaracterEfecto.moderado);
+		} else if (seleccionCaracter.compareTo("severo") == 0){
+			efecto.setCaracter(CaracterEfecto.severo);
+		}
+
 		// Actualizamos el enjuiciamiento del efecto si se ha modificado
 		if(!modificarJuicioButton.isVisible()){
-			efecto.setJuicio((ValorJuicio)juicioComboBox.getSelectedItem());
+			String seleccion = juicioComboBox.getSelectedItem().toString();
+			if (seleccion.compareTo("despreciable") == 0){
+				efecto.setJuicio(ValorJuicio.despreciable);
+			} else if (seleccion.compareTo("especial") == 0){
+				efecto.setJuicio(ValorJuicio.especial);
+			} else if (seleccion.compareTo("impredecible") == 0){
+				efecto.setJuicio(ValorJuicio.impredecible);
+			} else if (seleccion.compareTo("significativo") == 0){
+				efecto.setJuicio(ValorJuicio.significativo);
+			}
 		}
 	}
 
