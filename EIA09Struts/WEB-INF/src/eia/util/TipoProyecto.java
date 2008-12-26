@@ -11,8 +11,9 @@ package eia.util;
  * Tipo enumerado correspondiente a tipos genéricos de proyectos.
  */
 public enum TipoProyecto {
-	autovia,
-	vertedero,
-	puertoDeportivo,
-	presa
+	AUTOVÍA,
+	VERTEDERO,
+	PUERTODEPORTIVO,
+	PRESA,
+	PERSONALIZADO
 }
