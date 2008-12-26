@@ -32,7 +32,6 @@ import eia.model.Accion;
 import eia.model.Alternativa;
 import eia.model.Efecto;
 import eia.model.Factor;
-import eia.util.Arbol;
 import eia.util.TablaNoEditable;
 import eia.util.ValorJuicio;
 
@@ -70,10 +69,6 @@ public class formAlternativa extends JDialog{
 	private JScrollPane factoresScrollPane = null;
 	private JScrollPane accionesScrollPane = null;
 	private boolean flagAceptar = false;
-
-	//TODO Esto deberian ser el arbol de acciones y el de Factores de alternativa
-	private DefaultTreeModel modeloArbol1 = null;
-	private DefaultTreeModel modeloArbol2 = null;
 
 	//Variables del modelo
 	private Alternativa alternativa;
@@ -209,7 +204,7 @@ public class formAlternativa extends JDialog{
 			DefaultTreeCellRenderer defaultTreeCellRenderer = new DefaultTreeCellRenderer();
 			defaultTreeCellRenderer.setAutoscrolls(true);
 
-			DefaultMutableTreeNode abuelo = new DefaultMutableTreeNode("Acciones");
+			/*DefaultMutableTreeNode abuelo = new DefaultMutableTreeNode("Acciones");
 			DefaultMutableTreeNode padre = new DefaultMutableTreeNode("Fase Construcción");
 			DefaultMutableTreeNode tio = new DefaultMutableTreeNode("Fase Matenimiento");
 			DefaultMutableTreeNode hijo1=new DefaultMutableTreeNode("Limpieza");
@@ -228,9 +223,9 @@ public class formAlternativa extends JDialog{
 			modeloArbol1.insertNodeInto(nieto12, hijo1, 0);
 			modeloArbol1.insertNodeInto(hijo2, padre, 1);
 			modeloArbol1.insertNodeInto(nieto21, hijo2, 0);
-			modeloArbol1.insertNodeInto(nieto22, hijo2, 0);
+			modeloArbol1.insertNodeInto(nieto22, hijo2, 0);*/
 
-			accionesTree = new JTree(modeloArbol1);
+			accionesTree = new JTree(alternativa.getAcciones());
 		}
 		return accionesTree;
 	}
@@ -242,27 +237,8 @@ public class formAlternativa extends JDialog{
 			DefaultTreeCellRenderer defaultTreeCellRenderer = new DefaultTreeCellRenderer();
 			defaultTreeCellRenderer.setAutoscrolls(true);
 
-			DefaultMutableTreeNode abuelo = new DefaultMutableTreeNode("Sistema físico natural");
-			DefaultMutableTreeNode padre = new DefaultMutableTreeNode("Medio Abiótico");
-			DefaultMutableTreeNode tio = new DefaultMutableTreeNode("Medio Biótico");
-			DefaultMutableTreeNode hijo1=new DefaultMutableTreeNode("Aire");
-			DefaultMutableTreeNode nieto11=new DefaultMutableTreeNode("Calidad del aire");
-			DefaultMutableTreeNode nieto12=new DefaultMutableTreeNode("Nivel sonoro");
-			DefaultMutableTreeNode hijo2=new DefaultMutableTreeNode("Geológia, Geomorfía");
-			DefaultMutableTreeNode nieto21=new DefaultMutableTreeNode("Relieve");
-			DefaultMutableTreeNode nieto22=new DefaultMutableTreeNode("Recursos culturales");
 
-			modeloArbol2 = new DefaultTreeModel(abuelo);
-			modeloArbol2.insertNodeInto(padre,abuelo,0);
-			modeloArbol2.insertNodeInto(tio, abuelo, 1);
-			modeloArbol2.insertNodeInto(hijo1, padre, 0);
-			modeloArbol2.insertNodeInto(nieto11, hijo1, 0);
-			modeloArbol2.insertNodeInto(nieto12, hijo1, 0);
-			modeloArbol2.insertNodeInto(hijo2, padre, 1);
-			modeloArbol2.insertNodeInto(nieto21, hijo2, 0);
-			modeloArbol2.insertNodeInto(nieto22, hijo2, 0);
-
-			factoresTree = new JTree(modeloArbol2);
+			factoresTree = new JTree(factores);
 			factoresTree.setRootVisible(true);
 			factoresTree.setShowsRootHandles(false);
 			factoresTree.setToggleClickCount(2);
@@ -466,8 +442,8 @@ public class formAlternativa extends JDialog{
 	private void crearEfecto(){
 		if (!accionesTree.isSelectionEmpty()&&
 				!factoresTree.isSelectionEmpty()&&
-				modeloArbol1.isLeaf(accionesTree.getLastSelectedPathComponent())&&
-				modeloArbol2.isLeaf(factoresTree.getLastSelectedPathComponent())){
+				alternativa.getAcciones().isLeaf(accionesTree.getLastSelectedPathComponent())&&
+				factores.isLeaf(factoresTree.getLastSelectedPathComponent())){
 				//si hay alguna acción y algun factor seleccionados
 				//y la acción y el factor son hojas de sus árboles
 				//TODO accion y factor... elegir los que corresponden a los seleccionados
@@ -537,7 +513,7 @@ public class formAlternativa extends JDialog{
 
 			// Eliminamos de la tabla
 			DefaultMutableTreeNode nodo = (DefaultMutableTreeNode)accionesTree.getLastSelectedPathComponent();
-			modeloArbol1.removeNodeFromParent(nodo);
+			alternativa.getAcciones().removeNodeFromParent(nodo);
 		}
 	}
 
@@ -555,7 +531,7 @@ public class formAlternativa extends JDialog{
 			String nombreAccion = formNuevaAccion.getNombreAccion();
 			// Insertamos en la tabla
 			DefaultMutableTreeNode nuevo = new DefaultMutableTreeNode(nombreAccion);
-			modeloArbol1.insertNodeInto(nuevo,padre,0);
+			alternativa.getAcciones().insertNodeInto(nuevo,padre,0);
 		}
 		formNuevaAccion.dispose();
 	}
@@ -565,7 +541,28 @@ public class formAlternativa extends JDialog{
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				Alternativa alt = new Alternativa("AlternativaPrueba");
-				formAlternativa application = new formAlternativa(alt,null);
+
+				DefaultMutableTreeNode abuelo = new DefaultMutableTreeNode("Sistema físico natural");
+				DefaultMutableTreeNode padre = new DefaultMutableTreeNode("Medio Abiótico");
+				DefaultMutableTreeNode tio = new DefaultMutableTreeNode("Medio Biótico");
+				DefaultMutableTreeNode hijo1=new DefaultMutableTreeNode("Aire");
+				DefaultMutableTreeNode nieto11=new DefaultMutableTreeNode("Calidad del aire");
+				DefaultMutableTreeNode nieto12=new DefaultMutableTreeNode("Nivel sonoro");
+				DefaultMutableTreeNode hijo2=new DefaultMutableTreeNode("Geológia, Geomorfía");
+				DefaultMutableTreeNode nieto21=new DefaultMutableTreeNode("Relieve");
+				DefaultMutableTreeNode nieto22=new DefaultMutableTreeNode("Recursos culturales");
+
+				DefaultTreeModel arbolFactoresPrueba = new DefaultTreeModel(abuelo);
+				arbolFactoresPrueba.insertNodeInto(padre,abuelo,0);
+				arbolFactoresPrueba.insertNodeInto(tio, abuelo, 1);
+				arbolFactoresPrueba.insertNodeInto(hijo1, padre, 0);
+				arbolFactoresPrueba.insertNodeInto(nieto11, hijo1, 0);
+				arbolFactoresPrueba.insertNodeInto(nieto12, hijo1, 0);
+				arbolFactoresPrueba.insertNodeInto(hijo2, padre, 1);
+				arbolFactoresPrueba.insertNodeInto(nieto21, hijo2, 0);
+				arbolFactoresPrueba.insertNodeInto(nieto22, hijo2, 0);
+
+				formAlternativa application = new formAlternativa(alt,arbolFactoresPrueba);
 				application.getDialog().setVisible(true);
 			}
 		});
