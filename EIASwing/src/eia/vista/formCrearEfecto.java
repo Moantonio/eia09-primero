@@ -215,7 +215,18 @@ public class formCrearEfecto extends JDialog {
 	}
 
 	public ValorJuicio getEnjuiciamiento(){
-		return (ValorJuicio) enjuiciamientoComboBox.getSelectedItem();
+		String seleccion = enjuiciamientoComboBox.getSelectedItem().toString();
+		ValorJuicio juicio = null;
+		if (seleccion.compareTo("despreciable") == 0){
+			juicio = ValorJuicio.despreciable;
+		} else if (seleccion.compareTo("especial") == 0){
+			juicio = ValorJuicio.especial;
+		} else if (seleccion.compareTo("impredecible") == 0){
+			juicio = ValorJuicio.impredecible;
+		} else if (seleccion.compareTo("significativo") == 0){
+			juicio = ValorJuicio.significativo;
+		}
+		return juicio;
 	}
 
 	private JComboBox getEnjuiciamientoComboBox() {

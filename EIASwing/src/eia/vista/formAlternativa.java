@@ -455,8 +455,8 @@ public class formAlternativa extends JDialog{
 					String descripcion = formNuevoEfecto.getDescripcion();
 					Efecto efecto = new Efecto(accion, factor, id, descripcion);
 					// Seteamos el simple enjuiciamiento
-					//ValorJuicio juicio = formNuevoEfecto.getEnjuiciamiento();
-					//efecto.setJuicio(juicio);
+					ValorJuicio juicio = formNuevoEfecto.getEnjuiciamiento();
+					efecto.setJuicio(juicio);
 					// Lo añadimos a la alternativa
 					alternativa.getEfectos().add(efecto);
 				    // Lo añadimos a la tabla
@@ -523,7 +523,7 @@ public class formAlternativa extends JDialog{
 		formNuevaAccion.setModal(true);
 		formNuevaAccion.setVisible(true);
 		if(formNuevaAccion.isFlagAceptar()){
-			
+
 			// Insertamos en la tabla y en el arbol
 			Accion accion = new Accion(formNuevaAccion.getNombreAccion());
 			DefaultMutableTreeNode nuevo = new DefaultMutableTreeNode(accion);
