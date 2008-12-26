@@ -26,7 +26,6 @@ public class formFactores extends JDialog {
 	private JPanel factoresPanel = null;
 	private JScrollPane factoresScrollPane = null;
 	private JTree factoresTree = null;
-	private DefaultTreeModel modeloArbol = null;
 	private DefaultMutableTreeNode abuelo = null;
 	private DefaultTreeCellRenderer defaultTreeCellRenderer = null;
 	// Arbol de factores
@@ -84,10 +83,10 @@ public class formFactores extends JDialog {
 	}
 
 	private DefaultTreeModel getModeloArbol() {
-		if (modeloArbol == null) {
-			modeloArbol = new DefaultTreeModel(getAbuelo());
+		if (factores == null) {
+			factores = new DefaultTreeModel(getAbuelo());
 		}
-		return modeloArbol;
+		return factores;
 	}
 
 	private JTree getFactoresTree() {
