@@ -406,7 +406,7 @@ public class formEfecto extends JDialog {
 			String[] opciones = {ValorJuicio.despreciable.toString(),ValorJuicio.especial.toString(),
 					ValorJuicio.impredecible.toString(), ValorJuicio.significativo.toString()};
 			juicioComboBox = new JComboBox(opciones);
-			juicioComboBox.setSelectedItem(efecto.getJuicio().toString());
+			//juicioComboBox.setSelectedItem(efecto.getJuicio().toString());
 			juicioComboBox.setEnabled(false);
 			juicioComboBox.setLocation(new Point(178, 30));
 			juicioComboBox.setSize(new Dimension(135, 18));
@@ -806,7 +806,7 @@ public class formEfecto extends JDialog {
 			graficoButton.setLocation(new Point(330, 239));
 			graficoButton.setEnabled(false);
 			graficoButton.setText("Gráfico");
-			calcularCuantitativaButton.addActionListener(new ActionListener() {
+			graficoButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mostrarGrafica();
 				}
