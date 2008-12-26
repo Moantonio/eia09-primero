@@ -26,7 +26,7 @@ public class ValoracionCualitativa {
 	public static final int EXT_NO_CRITICA = 0;
 	public static final int EXT_CRITICA = 4;
 	public static final int INT_BAJA = 1;
-	public static final int INT_MEDIA = 4;
+	public static final int INT_MEDIA = 2;
 	public static final int INT_ALTA = 4;
 	public static final int INT_MUYALTA = 6;
 	public static final int INT_TOTAL = 10;
