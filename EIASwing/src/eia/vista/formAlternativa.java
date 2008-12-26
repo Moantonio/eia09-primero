@@ -414,25 +414,7 @@ public class formAlternativa extends JDialog{
 			eliminarEfectosButton.setLocation(new Point(227, 126));
 			eliminarEfectosButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					int indice = efectosTable.getSelectedRow();
-					if (indice != -1){
-						int seleccion = JOptionPane.showConfirmDialog (null,
-								"¿Está seguro que desea eliminar esta alternativa?",
-								"Eliminar alternativa",
-								JOptionPane.YES_NO_OPTION);
-						if (seleccion==JOptionPane.YES_OPTION){
-						    // elimina el efecto de la tabla
-							modeloTabla.removeRow(indice);
-							//TODO eliminar de la alternativa el efecto seleccionado
-
-
-							//Obtenemos el indice del efecto
-							Efecto efecto = new Efecto();
-							alternativa.getEfectos().indexOf(efecto);
-
-
-						}
-					}
+					eliminarEfecto();
 				}
 			});
 		}
@@ -549,7 +531,23 @@ public class formAlternativa extends JDialog{
 			}
 	}
 
-	//A eliminar en un futuro
+	private void eliminarEfecto(){
+		int indice = efectosTable.getSelectedRow();
+		if (indice != -1){
+			int seleccion = JOptionPane.showConfirmDialog (null,
+					"¿Está seguro que desea eliminar esta alternativa?",
+					"Eliminar alternativa",
+					JOptionPane.YES_NO_OPTION);
+			if (seleccion==JOptionPane.YES_OPTION){
+			    // elimina el efecto de la tabla
+				modeloTabla.removeRow(indice);
+				// eliminamos el efecto de la alternativa
+				alternativa.getEfectos().remove(indice);
+			}
+		}
+	}
+
+	//TODO A eliminar en un futuro
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
