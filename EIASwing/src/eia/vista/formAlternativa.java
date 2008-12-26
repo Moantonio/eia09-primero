@@ -179,17 +179,8 @@ public class formAlternativa extends JDialog{
 			AnadirButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					if (!accionesTree.isSelectionEmpty()){
-						// TODO Formulario que meta el nombre de la accion
-						// añadir la accion real al arbol de acciones
-						//creo q deberia ser un arbol del tipo DefaultMutableTreeNode
-						String nombreAccion = "Paco";
-						DefaultMutableTreeNode nuevo=new DefaultMutableTreeNode(nombreAccion);
-						DefaultMutableTreeNode padre = (DefaultMutableTreeNode)accionesTree.getLastSelectedPathComponent();
-
-						modeloArbol1.insertNodeInto(nuevo,padre, 0);
-
+						anadirAccion();
 					}
-
 				}
 			});
 		}
@@ -206,7 +197,6 @@ public class formAlternativa extends JDialog{
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					if (!accionesTree.isSelectionEmpty()){
 						// TODO Auto-generated Event stub actionPerformed()
-
 					}
 
 				}
@@ -225,15 +215,7 @@ public class formAlternativa extends JDialog{
 			eliminarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (!accionesTree.isSelectionEmpty()){
-						int seleccion = JOptionPane.showConfirmDialog (null,
-								"¿Está seguro que desea eliminar esta acción?",
-								"Eliminar acción",
-								JOptionPane.YES_NO_OPTION);
-						if (seleccion==JOptionPane.YES_OPTION){
-						//TODO eliminar de la alternativa la acción seleccionada
-							DefaultMutableTreeNode nodo = (DefaultMutableTreeNode)accionesTree.getLastSelectedPathComponent();
-							modeloArbol1.removeNodeFromParent(nodo);
-						}
+						eliminarAccion();
 					}
 				}
 			});
@@ -563,6 +545,39 @@ public class formAlternativa extends JDialog{
 			// efecto = editarEfecto.getEfecto();
 		}
 		editarEfecto.dispose();
+	}
+
+	private void eliminarAccion(){
+		int seleccion = JOptionPane.showConfirmDialog (null,
+				"¿Está seguro que desea eliminar esta acción?",
+				"Eliminar acción",
+				JOptionPane.YES_NO_OPTION);
+		if (seleccion==JOptionPane.YES_OPTION){
+			//TODO eliminar la acción del arbol de alternativas
+
+			// Eliminamos de la tabla
+			DefaultMutableTreeNode nodo = (DefaultMutableTreeNode)accionesTree.getLastSelectedPathComponent();
+			modeloArbol1.removeNodeFromParent(nodo);
+		}
+	}
+
+	private void anadirAccion(){
+		// TODO añadir la accion real al arbol de acciones
+		// creo q deberia ser un arbol del tipo DefaultMutableTreeNode
+
+		DefaultMutableTreeNode padre = (DefaultMutableTreeNode)accionesTree.getLastSelectedPathComponent();
+		formCrearAccion formNuevaAccion = new formCrearAccion(null, padre.toString());
+		Point posActual = getDialog().getLocation();
+		posActual.translate(20, 20);
+		formNuevaAccion.setLocation(posActual);
+		formNuevaAccion.setModal(true);
+		formNuevaAccion.setVisible(true);
+		if(formNuevaAccion.isFlagAceptar()){
+			String nombreAccion = formNuevaAccion.getNombreAccion();
+			DefaultMutableTreeNode nuevo = new DefaultMutableTreeNode(nombreAccion);
+			modeloArbol1.insertNodeInto(nuevo,padre,0);
+		}
+		formNuevaAccion.dispose();
 	}
 
 	//TODO A eliminar en un futuro
