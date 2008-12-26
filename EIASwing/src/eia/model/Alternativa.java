@@ -1,7 +1,8 @@
 package eia.model;
 
 import java.util.ArrayList;
-import eia.util.Arbol;
+import javax.swing.tree.DefaultTreeModel;
+
 
 /**
  * @author SI: EIA'09
@@ -14,34 +15,34 @@ import eia.util.Arbol;
  * Clase que implementa una alternativa de realización de un proyecto.
  */
 public class Alternativa {
-	
+
 	/**
 	 * Nombre de la alternativa de realización.
 	 */
 	private String id;
-	 
+
 	/**
 	 * Arbol de acciones de la alternativa de realización.
 	 */
-	private Arbol<Accion> acciones;
-	
+	private DefaultTreeModel acciones;  //  @jve:decl-index=0:
+
 	/**
 	 * Lista de efectos (impactos) asociados a la alternativa de realización.
 	 */
 	private ArrayList<Efecto> efectos;
-	
+
 	/**
 	 * Valor total del impacto de la alternativa de realización.
 	 */
 	private double valorTotal;
-	
+
 	/**
 	 * Constructor por defecto.
 	 */
 	public Alternativa(){
-		
+
 		id ="";
-		acciones = new Arbol<Accion>();
+		acciones = null;
 		efectos = new ArrayList<Efecto>();
 		valorTotal = 0;
 	}
@@ -51,13 +52,13 @@ public class Alternativa {
 	 * @param id Nombre de la alternativa de realización.
 	 */
 	public Alternativa(String id){
-		
+
 		this.id = id;
-		acciones = new Arbol<Accion>();
+		acciones = null;
 		efectos = new ArrayList<Efecto>();
 		valorTotal = 0;
 	}
-	
+
 	/**
 	 * Accesor para el atributo 'id'.
 	 * @return Nombre de la alternativa de realización.
@@ -110,7 +111,7 @@ public class Alternativa {
 	 * Accesor para el atributo 'acciones'.
 	 * @return Arbol de acciones asociadas a la alternativa de realización.
 	 */
-	public Arbol<Accion> getAcciones() {
+	public DefaultTreeModel  getAcciones() {
 		return acciones;
 	}
 
@@ -118,10 +119,10 @@ public class Alternativa {
 	 * Mutador para el atributo 'acciones'.
 	 * @param acciones Lista de acciones a asociar a la alternativa de realización.
 	 */
-	public void setAcciones(Arbol<Accion> acciones) {
+	public void setAcciones(DefaultTreeModel acciones) {
 		this.acciones = acciones;
 	}
-	
+
 	/**
 	 * Función para calcular el valor total de impacto de la alternativa,
 	 * estableciendo dicho valor en el atributo 'valorTotal'.
@@ -137,5 +138,5 @@ public class Alternativa {
 			valorTotal = valor;
 		}
 	}
-	
+
 }
