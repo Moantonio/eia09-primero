@@ -559,7 +559,7 @@ public class formEfecto extends JDialog {
 
 	private JComboBox getAcumulacionComboBox() {
 		if (acumulacionComboBox == null) {
-			String[] opciones = {"no asignar","simple", "acumulativo", "sinérgico"};
+			String[] opciones = {"no asignar","simple","acumulativo","sinérgico"};
 			acumulacionComboBox = new JComboBox(opciones);
 			acumulacionComboBox.setLocation(new Point(324, 30));
 			acumulacionComboBox.setSize(new Dimension(120, 18));
