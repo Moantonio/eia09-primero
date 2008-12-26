@@ -523,9 +523,10 @@ public class formAlternativa extends JDialog{
 		formNuevaAccion.setModal(true);
 		formNuevaAccion.setVisible(true);
 		if(formNuevaAccion.isFlagAceptar()){
-			String nombreAccion = formNuevaAccion.getNombreAccion();
-			// Insertamos en la tabla
-			DefaultMutableTreeNode nuevo = new DefaultMutableTreeNode(nombreAccion);
+			
+			// Insertamos en la tabla y en el arbol
+			Accion accion = new Accion(formNuevaAccion.getNombreAccion());
+			DefaultMutableTreeNode nuevo = new DefaultMutableTreeNode(accion);
 			alternativa.getAcciones().insertNodeInto(nuevo,padre,0);
 		}
 		formNuevaAccion.dispose();
