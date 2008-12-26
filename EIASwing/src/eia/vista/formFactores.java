@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Point;
+
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -18,9 +19,6 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultTreeSelectionModel;
 
-import eia.model.Factor;
-import eia.util.Arbol;
-
 public class formFactores extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -32,9 +30,9 @@ public class formFactores extends JDialog {
 	private DefaultMutableTreeNode abuelo = null;
 	private DefaultTreeCellRenderer defaultTreeCellRenderer = null;
 	// Arbol de factores
-	private Arbol<Factor> factores;
+	private DefaultTreeModel factores;
 
-	public formFactores(Frame owner, Arbol<Factor> factores) {
+	public formFactores(Frame owner, DefaultTreeModel factores) {
 		super(owner);
 		this.factores = factores;
 		initialize();
