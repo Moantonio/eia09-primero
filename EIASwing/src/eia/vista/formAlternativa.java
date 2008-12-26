@@ -313,13 +313,6 @@ public class formAlternativa extends JDialog{
 			col.getColumn(3).setPreferredWidth(90);
 			col.getColumn(4).setPreferredWidth(50);
 
-			//ejemplo
-			String[] datos1 = {"Paco1","","","","",""};
-			String[] datos2 = {"Paco2","","","","",""};
-			String[] datos3 = {"Paco3","","","","",""};
-			modeloTabla.addRow(datos1);
-			modeloTabla.addRow(datos2);
-			modeloTabla.addRow(datos3);
 
 		}
 		return efectosTable;
@@ -462,13 +455,14 @@ public class formAlternativa extends JDialog{
 					String descripcion = formNuevoEfecto.getDescripcion();
 					Efecto efecto = new Efecto(accion, factor, id, descripcion);
 					// Seteamos el simple enjuiciamiento
-					ValorJuicio juicio = formNuevoEfecto.getEnjuiciamiento();
-					efecto.setJuicio(juicio);
+					//ValorJuicio juicio = formNuevoEfecto.getEnjuiciamiento();
+					//efecto.setJuicio(juicio);
 					// Lo añadimos a la alternativa
 					alternativa.getEfectos().add(efecto);
 				    // Lo añadimos a la tabla
 					String[] datos = {id,"","","","",""};
 					modeloTabla.addRow(datos);
+
 				}
 				formNuevoEfecto.dispose();
 			}
