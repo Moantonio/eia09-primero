@@ -32,6 +32,7 @@ import eia.model.Accion;
 import eia.model.Alternativa;
 import eia.model.Efecto;
 import eia.model.Factor;
+import eia.util.TablaColores;
 import eia.util.TablaNoEditable;
 import eia.util.ValorJuicio;
 
@@ -288,7 +289,7 @@ public class formAlternativa extends JDialog{
 
 	private JTable getEfectosTable() {
 		if (efectosTable == null) {
-			efectosTable = new JTable(modeloTabla);
+			efectosTable = new TablaColores(modeloTabla);
 			modeloTabla.addColumn("Nombre");
 			modeloTabla.addColumn("Juicio");
 			modeloTabla.addColumn("Cualitativa");

@@ -39,6 +39,7 @@ import eia.model.Factor;
 import eia.model.InfoProyecto;
 import eia.model.Proyecto;
 import eia.util.FiltreSimple;
+import eia.util.TablaColores;
 import eia.util.TablaNoEditable;
 import eia.util.TipoProyecto;
 
@@ -571,15 +572,18 @@ public class formPrincipal {
 
 	private JTable getAlternativasTable() {
 		if (alternativasTable == null) {
-			alternativasTable = new JTable(modeloTabla);
+
+			alternativasTable = new TablaColores(modeloTabla);
 			modeloTabla.addColumn("Alternativa");
 			modeloTabla.addColumn("Valoración");
+
 			alternativasTable.setRowSelectionAllowed(true);
 			alternativasTable.setShowVerticalLines(false);
 			alternativasTable.setEnabled(false);
 			alternativasTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			alternativasTable.setRowSelectionAllowed(true);
 			alternativasTable.getTableHeader().setReorderingAllowed(false);
+
 
 			TableColumnModel col = alternativasTable.getColumnModel();
 			col.getColumn(0).setResizable(false);
