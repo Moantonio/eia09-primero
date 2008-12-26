@@ -1,0 +1,62 @@
+#contenedorAcciones, 
+#contenedorFactores{width: 400px; 
+								height:200px;
+								position: absolute;}
+
+#gridacciones, #gridfactores{width:400px;
+										  height:200px;
+										  position:absolute;
+										  left:0;}
+ 
+ #contenedorAcciones {left:30;}
+ #contenedorFactores {right:0;top:0;}
+
+#contenedorBoton{width:100px;
+						   height:50px;
+						   margin:0 410px;
+						   text-align:center;
+						   }
+
+#gridefectos		{     width:925px;
+							  height:150px;
+							  top:300px;
+							  position:absolute;
+							  left:0;}
+#headEfectos	{	width:925px;
+							height:50;
+							top:260px;
+							position:absolute;
+							left:0;}
+
+#botonesAccion{  width:400px;
+						  height:30px;
+						  top:210px;
+						  position:absolute;
+						  left:0;}
+
+#botonesEfectos{ width:130px;
+						  height:30px;
+						  top:460px;
+						  position:absolute;
+						  right:0;}
+
+#boxValTotal{ width:480;
+					 height:30px;
+					 top:500px;
+					 position:absolute;
+					 left:0px;}
+
+#boxAceptar {width:200px;
+				    height:30px;
+					top:500px;
+					position:absolute;
+					right:0;}
+
+#top		{text-align:center;
+			margin-left:auto; 
+			margin-right:auto;
+			width:100%; height:30px;}
+
+body {text-align:center;}
+
+h3 {text-align:left;}
