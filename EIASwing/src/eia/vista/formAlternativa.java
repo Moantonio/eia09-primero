@@ -77,9 +77,9 @@ public class formAlternativa extends JDialog{
 
 	//Variables del modelo
 	private Alternativa alternativa;
-	private Arbol<Factor> factores;
+	private DefaultTreeModel factores;
 
-	public formAlternativa(Alternativa alt, Arbol<Factor> fact) {
+	public formAlternativa(Alternativa alt, DefaultTreeModel fact) {
 		super();
 		// TODO alternativa será clon de alt
 		alternativa = alt;
@@ -87,7 +87,7 @@ public class formAlternativa extends JDialog{
 		initialize();
 	}
 
-	public formAlternativa(Frame owner, Alternativa alt, Arbol<Factor> fact) {
+	public formAlternativa(Frame owner, Alternativa alt,DefaultTreeModel fact) {
 		super(owner);
 		// TODO alternativa será clon de alt
 		alternativa = alt;
@@ -470,8 +470,9 @@ public class formAlternativa extends JDialog{
 				modeloArbol2.isLeaf(factoresTree.getLastSelectedPathComponent())){
 				//si hay alguna acción y algun factor seleccionados
 				//y la acción y el factor son hojas de sus árboles
-				Accion accion = alternativa.getAcciones().buscarElemento(accionesTree.getLastSelectedPathComponent().toString());
-				Factor factor = factores.buscarElemento(factoresTree.getLastSelectedPathComponent().toString());
+				//TODO accion y factor... elegir los que corresponden a los seleccionados
+				Accion accion = null;
+				Factor factor = null;
 				formCrearEfecto formNuevoEfecto = new formCrearEfecto(accion.getId(), factor.getId());
 				Point posActual = getDialog().getLocation();
 				posActual.translate(20, 20);
