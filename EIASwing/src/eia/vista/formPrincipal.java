@@ -33,6 +33,7 @@ import javax.swing.table.TableColumnModel;
 import eia.model.Alternativa;
 import eia.model.InfoProyecto;
 import eia.model.Proyecto;
+import eia.util.FiltreSimple;
 import eia.util.TablaNoEditable;
 import eia.util.TipoProyecto;
 
