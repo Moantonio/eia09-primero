@@ -80,15 +80,17 @@ public class formAlternativa extends JDialog{
 	private Alternativa alternativa;
 	private Arbol<Factor> factores;
 
-	public formAlternativa(Alternativa alt) {
+	public formAlternativa(Alternativa alt, Arbol<Factor> fact) {
 		super();
 		alternativa = alt;
+		factores = fact;
 		initialize();
 	}
 
-	public formAlternativa(Frame owner, Alternativa alt) {
+	public formAlternativa(Frame owner, Alternativa alt, Arbol<Factor> fact) {
 		super(owner);
 		alternativa = alt;
+		factores = fact;
 		initialize();
 	}
 
@@ -526,6 +528,9 @@ public class formAlternativa extends JDialog{
 					efecto.setJuicio(juicio);
 					// Lo añadimos a la alternativa
 					alternativa.getEfectos().add(efecto);
+				    // Lo añadimos a la tabla
+					String[] datos = {id,"","","","",""};
+					modeloTabla.addRow(datos);
 				}
 				formNuevoEfecto.dispose();
 			}
@@ -535,13 +540,13 @@ public class formAlternativa extends JDialog{
 		int indice = efectosTable.getSelectedRow();
 		if (indice != -1){
 			int seleccion = JOptionPane.showConfirmDialog (null,
-					"¿Está seguro que desea eliminar esta alternativa?",
-					"Eliminar alternativa",
+					"¿Está seguro que desea eliminar este efecto?",
+					"Eliminar efecto",
 					JOptionPane.YES_NO_OPTION);
 			if (seleccion==JOptionPane.YES_OPTION){
-			    // elimina el efecto de la tabla
+			    // Elimina el efecto de la tabla
 				modeloTabla.removeRow(indice);
-				// eliminamos el efecto de la alternativa
+				// Eliminamos el efecto de la alternativa
 				alternativa.getEfectos().remove(indice);
 			}
 		}
@@ -552,7 +557,7 @@ public class formAlternativa extends JDialog{
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				Alternativa alt = new Alternativa("AlternativaPrueba");
-				formAlternativa application = new formAlternativa(alt);
+				formAlternativa application = new formAlternativa(alt,null);
 				application.getDialog().setVisible(true);
 			}
 		});

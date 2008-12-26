@@ -959,7 +959,7 @@ public class formPrincipal {
 	}
 
 	private void editarAlternativa(Alternativa alternativa) {
-		formAlternativa editarAlternativa = new formAlternativa(getFramePrincipal(), alternativa);
+		formAlternativa editarAlternativa = new formAlternativa(getFramePrincipal(), alternativa, proyecto.getFactores());
 		Point posActual = getFramePrincipal().getLocation();
 		posActual.translate(20, 20);
 		editarAlternativa.setLocation(posActual);
