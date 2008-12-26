@@ -214,8 +214,8 @@ public class formCrearEfecto extends JDialog {
 		return descripcionTextArea.getText();
 	}
 
-	public String getEnjuiciamiento(){
-		return (String)enjuiciamientoComboBox.getSelectedItem();
+	public ValorJuicio getEnjuiciamiento(){
+		return (ValorJuicio) enjuiciamientoComboBox.getSelectedItem();
 	}
 
 	private JComboBox getEnjuiciamientoComboBox() {

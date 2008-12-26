@@ -1,6 +1,7 @@
 package eia.vista;
 
 import java.awt.Color;
+import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
@@ -8,7 +9,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -24,19 +24,17 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
-import eia.model.Accion;
-import eia.model.Alternativa;
-import eia.model.Efecto;
-import eia.model.Factor;
-import eia.util.TablaNoEditable;
-import java.awt.ComponentOrientation;
-
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultTreeSelectionModel;
-import javax.swing.tree.MutableTreeNode;
-import javax.swing.tree.VariableHeightLayoutCache;
+import eia.model.Accion;
+import eia.model.Alternativa;
+import eia.model.Efecto;
+import eia.model.Factor;
+import eia.util.Arbol;
+import eia.util.TablaNoEditable;
+import eia.util.ValorJuicio;
 
 /**
  * @author SI: EIA'09
@@ -44,6 +42,7 @@ import javax.swing.tree.VariableHeightLayoutCache;
  *         Enrique Gallego Martín.
  *         Luis González de Paula.
  */
+
 public class formAlternativa extends JDialog{
 
 	private static final long serialVersionUID = 1L;
@@ -79,6 +78,7 @@ public class formAlternativa extends JDialog{
 
 	//Variables del modelo
 	private Alternativa alternativa;
+	private Arbol<Factor> factores;
 
 	public formAlternativa(Alternativa alt) {
 		super();
@@ -316,24 +316,7 @@ public class formAlternativa extends JDialog{
 			crearEfectoButton.setLocation(new Point(13, 219));
 			crearEfectoButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-
-					if (!accionesTree.isSelectionEmpty()&&
-						!factoresTree.isSelectionEmpty()&&
-						modeloArbol1.isLeaf(accionesTree.getLastSelectedPathComponent())&&
-						modeloArbol2.isLeaf(factoresTree.getLastSelectedPathComponent())){
-						//si hay alguna acción y algun factor seleccionados
-						//y la acción y el factor son hojas de sus árboles
-
-						//TODO supongo que esto que he hecho estara bien
-						Accion accion = new Accion(accionesTree.getLastSelectedPathComponent().toString());
-						Factor factor = new Factor(factoresTree.getLastSelectedPathComponent().toString(),1);
-						formCrearEfecto formNuevoEfecto = new formCrearEfecto(accion.getId(), factor.getId());
-						Point posActual = getDialog().getLocation();
-						posActual.translate(20, 20);
-						formNuevoEfecto.setLocation(posActual);
-						formNuevoEfecto.setModal(true);
-						formNuevoEfecto.setVisible(true);
-					}
+					crearEfecto();
 				}
 			});
 		}
@@ -518,12 +501,6 @@ public class formAlternativa extends JDialog{
 		return alternativa;
 	}
 
-
-	/**
-	 * This method initializes factoresScrollPane
-	 *
-	 * @return javax.swing.JScrollPane
-	 */
 	private JScrollPane getFactoresScrollPane() {
 		if (factoresScrollPane == null) {
 			factoresScrollPane = new JScrollPane();
@@ -533,11 +510,6 @@ public class formAlternativa extends JDialog{
 		return factoresScrollPane;
 	}
 
-	/**
-	 * This method initializes accionesScrollPane
-	 *
-	 * @return javax.swing.JScrollPane
-	 */
 	private JScrollPane getAccionesScrollPane() {
 		if (accionesScrollPane == null) {
 			accionesScrollPane = new JScrollPane();
@@ -545,6 +517,36 @@ public class formAlternativa extends JDialog{
 			accionesScrollPane.setViewportView(getAccionesTree());
 		}
 		return accionesScrollPane;
+	}
+
+	private void crearEfecto(){
+		if (!accionesTree.isSelectionEmpty()&&
+				!factoresTree.isSelectionEmpty()&&
+				modeloArbol1.isLeaf(accionesTree.getLastSelectedPathComponent())&&
+				modeloArbol2.isLeaf(factoresTree.getLastSelectedPathComponent())){
+				//si hay alguna acción y algun factor seleccionados
+				//y la acción y el factor son hojas de sus árboles
+				Accion accion = alternativa.getAcciones().buscarElemento(accionesTree.getLastSelectedPathComponent().toString());
+				Factor factor = factores.buscarElemento(factoresTree.getLastSelectedPathComponent().toString());
+				formCrearEfecto formNuevoEfecto = new formCrearEfecto(accion.getId(), factor.getId());
+				Point posActual = getDialog().getLocation();
+				posActual.translate(20, 20);
+				formNuevoEfecto.setLocation(posActual);
+				formNuevoEfecto.setModal(true);
+				formNuevoEfecto.setVisible(true);
+				if (formNuevoEfecto.isFlagAceptar()){
+					// Creamos un nuevo efecto
+					String id = formNuevoEfecto.getNombre();
+					String descripcion = formNuevoEfecto.getDescripcion();
+					Efecto efecto = new Efecto(accion, factor, id, descripcion);
+					// Seteamos el simple enjuiciamiento
+					ValorJuicio juicio = formNuevoEfecto.getEnjuiciamiento();
+					efecto.setJuicio(juicio);
+					// Lo añadimos a la alternativa
+					alternativa.getEfectos().add(efecto);
+				}
+				formNuevoEfecto.dispose();
+			}
 	}
 
 	//A eliminar en un futuro
