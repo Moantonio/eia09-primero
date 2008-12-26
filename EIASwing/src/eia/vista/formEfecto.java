@@ -1171,6 +1171,7 @@ public class formEfecto extends JDialog {
 
 		// Si tenemos la valoración total
 		if (efecto.getValCuantitativa()!=null && efecto.getValCualitativa()!=null){
+			efecto.calcularValorTotal();
 			valoracionTextField.setText(String.valueOf(efecto.getValorTotal()));
 			// El caracter se puede editar
 			caracterComboBox.setEditable(true);
