@@ -117,7 +117,7 @@ public class ValoracionCuantitativa {
 	 * @param min Valor mínimo que podrá tomar la variable 'x'.
 	 * @return Resultado de la operación.
 	 */
-	public double linealCreciente(double x, double max, double min){
+	private double linealCreciente(double x, double max, double min){
 		double y = (x - min)/(max-min);
 		return y;
 	}
@@ -129,7 +129,7 @@ public class ValoracionCuantitativa {
 	 * @param min Valor mínimo que podrá tomar la variable 'x'.
 	 * @return Resultado de la operación.
 	 */
-	public double linealDecreciente(double x, double max, double min){
+	private double linealDecreciente(double x, double max, double min){
 		double y = (max - x)/(max-min);
 		return y;
 	}
@@ -141,7 +141,7 @@ public class ValoracionCuantitativa {
 	 * @param min Valor mínimo que podrá tomar la variable 'x'.
 	 * @return Resultado de la operación.
 	 */
-	public double parabolica1Creciente(double x, double max, double min){
+	private double parabolica1Creciente(double x, double max, double min){
 		double num = - (double)Math.pow(x,2)+ 2*max*x + (double)Math.pow(min, 2)- 2* max * min;
 		double den = (double)Math.pow(max-min, 2);
 		return num/den;
@@ -154,7 +154,7 @@ public class ValoracionCuantitativa {
 	 * @param min Valor mínimo que podrá tomar la variable 'x'.
 	 * @return Resultado de la operación.
 	 */
-	public double parabolica1Decreciente(double x, double max, double min){
+	private double parabolica1Decreciente(double x, double max, double min){
 		double num = (double)Math.pow(x,2)- 2*max*x + (double)Math.pow(max, 2);
 		double den = (double)Math.pow(max-min, 2);
 		return num/den;
@@ -167,7 +167,7 @@ public class ValoracionCuantitativa {
 	 * @param min Valor mínimo que podrá tomar la variable 'x'.
 	 * @return Resultado de la operación.
 	 */
-	public double parabolica2Creciente(double x, double max, double min){
+	private double parabolica2Creciente(double x, double max, double min){
 		double num = (double)Math.pow(x,2)+ 2*min*x + (double)Math.pow(min, 2);
 		double den = (double)Math.pow(max-min, 2);
 		return num/den;
@@ -180,7 +180,7 @@ public class ValoracionCuantitativa {
 	 * @param min Valor mínimo que podrá tomar la variable 'x'.
 	 * @return Resultado de la operación.
 	 */
-	public double parabolica2Decreciente(double x, double max, double min){
+	private double parabolica2Decreciente(double x, double max, double min){
 		double num = -(double)Math.pow(x, 2)+ 2*min*x + (double)Math.pow(max, 2)-2*min*max;
 		double den = (double)Math.pow(max-min, 2);
 		return num/den;
@@ -193,7 +193,7 @@ public class ValoracionCuantitativa {
 	 * @param min Valor mínimo que podrá tomar la variable 'x'.
 	 * @return Resultado de la operación.
 	 */
-	public double parabolicaDoble1Creciente(double x, double max, double min){
+	private double parabolicaDoble1Creciente(double x, double max, double min){
 		double num,den;
 		if((x>=min)&&(x<= (max+min)/2)){
 			num = -2*(double)Math.pow(x, 2)+ 2*(max+min)*x - 2*max*min;
@@ -212,7 +212,7 @@ public class ValoracionCuantitativa {
 	 * @param min Valor mínimo que podrá tomar la variable 'x'.
 	 * @return Resultado de la operación.
 	 */
-	public double parabolicaDoble1DeCreciente(double x, double max, double min){
+	private double parabolicaDoble1DeCreciente(double x, double max, double min){
 		double num,den,y;
 		den = (double)Math.pow(max-min,2);
 		if((x>=min)&&(x<= (max+min)/2)){
@@ -233,7 +233,7 @@ public class ValoracionCuantitativa {
 	 * @param min Valor mínimo que podrá tomar la variable 'x'.
 	 * @return Resultado de la operación.
 	 */
-	public double parabolicaDoble2Creciente(double x, double max, double min){
+	private double parabolicaDoble2Creciente(double x, double max, double min){
 		double num,den,y;
 		den = (double)Math.pow(max-min,2);
 		if((x>=min)&&(x<= (max+min)/2)){
@@ -254,7 +254,7 @@ public class ValoracionCuantitativa {
 	 * @param min Valor mínimo que podrá tomar la variable 'x'.
 	 * @return Resultado de la operación.
 	 */
-	public double parabolicaDoble2DeCreciente(double x, double max, double min){
+	private double parabolicaDoble2DeCreciente(double x, double max, double min){
 		double num,den,y;
 		den = (double)Math.pow(max-min,2);
 		if((x>=min)&&(x<= (max+min)/2)){
@@ -276,7 +276,7 @@ public class ValoracionCuantitativa {
 	 * @param min Valor mínimo que podrá tomar la variable 'x'.
 	 * @return Resultado de la operación.
 	 */
-	public double maximoIntermedio(double x, double a, double max, double min){
+	private double maximoIntermedio(double x, double a, double max, double min){
 		double num = -(double)Math.pow(x, 2) + 2*a*x + (double)Math.pow(min, 2) - 2*a*min;
 		double den = (double)Math.pow(a-min, 2);
 		return num/den;
@@ -290,7 +290,7 @@ public class ValoracionCuantitativa {
 	 * @param min Valor mínimo que podrá tomar la variable 'x'.
 	 * @return Resultado de la operación.
 	 */
-	public double minimoIntermedio(double x, double a, double max, double min){
+	private double minimoIntermedio(double x, double a, double max, double min){
 		double num = (double)Math.pow(x, 2)- 2*a*x + (double)Math.pow(a, 2);
 		double den = (double)Math.pow(a-min, 2);
 		return num/den;
@@ -304,7 +304,7 @@ public class ValoracionCuantitativa {
 	 * @param min Valor mínimo que podrá tomar la variable 'x'.
 	 * @return Resultado de la operación.
 	 */
-	public double umbralCreciente(double x, double umbral, double max, double min){
+	private double umbralCreciente(double x, double umbral, double max, double min){
 		double y;
 		if ((x>=min)&&(x<umbral)){
 			y=0;
@@ -323,7 +323,7 @@ public class ValoracionCuantitativa {
 	 * @param min Valor mínimo que podrá tomar la variable 'x'.
 	 * @return Resultado de la operación.
 	 */
-	public double umbralDecreciente(double x, double umbral, double max, double min){
+	private double umbralDecreciente(double x, double umbral, double max, double min){
 		double y;
 		if ((x>=min)&&(x<umbral)){
 			y=1;
@@ -334,7 +334,6 @@ public class ValoracionCuantitativa {
 		return y;
 	}
 
-
 	/**
 	 * Función para calcular el valor de impacto del efecto según análisis
 	 * cuantitativo, estableciendo dicho valor en el atributo 'magnitudImpacto'.
@@ -342,22 +341,51 @@ public class ValoracionCuantitativa {
 	 * @param opc Parámetro opcional ('a', 'umbral') para las funciones que lo demanden.
 	 */
 	public void calcularValoracion(int numFuncion, double opc){
+		magnitudImpacto = calcularFuncion(numFuncion,indicador,mayorValorIndicador,menorValorIndicador,opc);
+	}
+
+	/**
+	 * Función para el cálculo aplicado de la función indicada por parámetro.
+	 * @param numFuncion Número de función a aplicar.
+	 * @param x Valor de 'x' para el cálculo de la función.
+	 * @param max Valor de 'max' para el cálculo de la función.
+	 * @param min Valor de 'min' para el cálculo de la función.
+	 * @param opc arámetro opcional ('a', 'umbral') para las funciones que lo demanden.
+	 * @return Resultado 'y' al aplicar la función.
+	 */
+	public double calcularFuncion(int numFuncion, double x, double max, double min, double opc){
+		double resultado = 0;
 		switch (numFuncion){
-			case 0: magnitudImpacto = linealCreciente(indicador,mayorValorIndicador,menorValorIndicador);
-			case 1: magnitudImpacto = linealDecreciente(indicador,mayorValorIndicador,menorValorIndicador);
-			case 2: magnitudImpacto = parabolica1Creciente(indicador,mayorValorIndicador,menorValorIndicador);
-			case 3: magnitudImpacto = parabolica1Decreciente(indicador,mayorValorIndicador,menorValorIndicador);
-			case 4: magnitudImpacto = parabolica2Creciente(indicador,mayorValorIndicador,menorValorIndicador);
-			case 5: magnitudImpacto = parabolica2Decreciente(indicador,mayorValorIndicador,menorValorIndicador);
-			case 6: magnitudImpacto = parabolicaDoble1Creciente(indicador,mayorValorIndicador,menorValorIndicador);
-			case 7: magnitudImpacto = parabolicaDoble1DeCreciente(indicador,mayorValorIndicador,menorValorIndicador);
-			case 8: magnitudImpacto = parabolicaDoble2Creciente(indicador,mayorValorIndicador,menorValorIndicador);
-			case 9: magnitudImpacto = parabolicaDoble2DeCreciente(indicador,mayorValorIndicador,menorValorIndicador);
-			case 10: magnitudImpacto = maximoIntermedio(indicador,opc,mayorValorIndicador,menorValorIndicador);
-			case 11: magnitudImpacto = minimoIntermedio(indicador,opc,mayorValorIndicador,menorValorIndicador);
-			case 12: magnitudImpacto = umbralCreciente(indicador,opc,mayorValorIndicador,menorValorIndicador);
-			case 13: magnitudImpacto = umbralDecreciente(indicador,opc,mayorValorIndicador,menorValorIndicador);
+			case 0: {resultado = linealCreciente(x,max,min);
+					break;}
+			case 1: {resultado = linealDecreciente(x,max,min);
+					break;}
+			case 2: {resultado = parabolica1Creciente(x,max,min);
+					break;}
+			case 3: {resultado = parabolica1Decreciente(x,max,min);
+					break;}
+			case 4: {resultado = parabolica2Creciente(x,max,min);
+					break;}
+			case 5: {resultado = parabolica2Decreciente(x,max,min);
+					break;}
+			case 6: {resultado = parabolicaDoble1Creciente(x,max,min);
+					break;}
+			case 7: {resultado = parabolicaDoble1DeCreciente(x,max,min);
+					break;}
+			case 8: {resultado = parabolicaDoble2Creciente(x,max,min);
+					break;}
+			case 9: {resultado = parabolicaDoble2DeCreciente(x,max,min);
+					break;}
+			case 10: {resultado = maximoIntermedio(x,opc,max,min);
+					break;}
+			case 11: {resultado = minimoIntermedio(x,opc,max,min);
+					break;}
+			case 12: {resultado = umbralCreciente(x,opc,max,min);
+					break;}
+			case 13: {resultado = umbralDecreciente(x,opc,max,min);
+					 break;}
 		}
+		return resultado;
 	}
 
 }
