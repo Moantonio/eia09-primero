@@ -241,4 +241,4 @@ function hideMenuItems(exceptionArray){
   dhtmlgoodies_menuObj.style.visibility = 'visible';
  }
 
-  window.onload = initDhtmlGoodiesMenu;
+ window.onload = initDhtmlGoodiesMenu;
