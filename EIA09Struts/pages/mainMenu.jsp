@@ -27,7 +27,7 @@
 					<li><a href="">Abrir </a></li>
 					<li><a href="">Guardar </a></li>
 					<li><a href="">Guardar como... </a></li>
-					<li><a href="">Descripcion </a></li>
+					<li><a href="../pages/proyecto/menuProyecto.jsp">Descripcion </a></li>
 					<li><a href="">Salir </a></li>		 
 				</ul>
 			</li>
@@ -35,7 +35,7 @@
 		    <li><a href=""> Alternativas</a>
 			   <ul>
 					<!--Ahora un submenu nivel 1 para Alternativas con sus opciones -->
-					<li><a href="">Añadir</a></li>
+					<li><a href="../pages/alternativa/alternativaInfo.jsp">Añadir</a></li>
 					<li><a href="">Modificar </a></li>
 					<ul>
 							<!-- Ponemos un submenu nivel 2 para Modificar -->
@@ -82,9 +82,9 @@
 			</li>
 		</ul>
 	</div>
-	<div id="contenido">
-		<!-- Se incluye el jsp de la opcion seleccionada -->	
+	<!--<div id="contenido">
+		<!-- Se incluye el jsp de la opcion seleccionada 
 		<jsp:include page="proyecto/menuProyecto.jsp"></jsp:include>	
-	</div>
+	</div>-->
 </body>
 </html>
