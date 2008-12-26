@@ -15,22 +15,22 @@ import eia.util.TipoProyecto;
  * Clase que implementa un proyecto de estudio de impacto ambiental.
  */
 public class Proyecto {
-	
+
 	/**
 	 * Ficha de información general del proyecto de estudio.
 	 */
 	private InfoProyecto informacion;
-	
+
 	/**
 	 * Tipo de proyecto de estudio.
 	 */
 	private TipoProyecto tipo;
-	
+
 	/**
 	 * Alternativas de realización del proyecto.
 	 */
 	private ArrayList<Alternativa> alternativas;
-	
+
 	/**
 	 * Factores ambientales influyentes para el estudio del proyecto.
 	 */
@@ -47,7 +47,7 @@ public class Proyecto {
 		alternativas = new ArrayList<Alternativa>();
 		factores = new Arbol<Factor>();
 	}
-	
+
 	/**
 	 * Constructor por defecto.
 	 */
@@ -113,7 +113,7 @@ public class Proyecto {
 	public Arbol<Factor> getFactores() {
 		return factores;
 	}
-	
+
     /**
      * Mutador para el atributo 'factores'.
      * @param factores Factores ambientes influyentes a asociar al proyecto.
@@ -121,7 +121,7 @@ public class Proyecto {
 	public void setFactores(Arbol<Factor> factores) {
 		this.factores = factores;
 	}
-	
+
 	/**
 	 * Función para la obtención de la mejor alternativa realizable de las
 	 * establecidas en el proyecto.
