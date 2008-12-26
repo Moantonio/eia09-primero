@@ -118,17 +118,6 @@ public class formPrincipal {
 			framePrincipal.setContentPane(getPanelContenidoPrincipal());
 			framePrincipal.setTitle("EIA09");
 			framePrincipal.setResizable(false);
-
-			//TODO Recordar eliminar esto
-			//Proyecto de ejemplo prueba
-			//Creamos el proyecto
-			InfoProyecto info = new InfoProyecto();
-			info.setNombre("Prueba");
-			info.setDescripcion("descripción");
-			proyecto = new Proyecto(info,TipoProyecto.AUTOVÍA);
-			//Actualizamos la vista
-			actualizarDescripcion();
-			actualizarAlternativas();
 		}
 		return framePrincipal;
 	}
@@ -584,7 +573,7 @@ public class formPrincipal {
 			modeloTabla.addColumn("Valoración");
 			alternativasTable.setRowSelectionAllowed(true);
 			alternativasTable.setShowVerticalLines(false);
-			//alternativasTable.setEnabled(false);
+			alternativasTable.setEnabled(false);
 			alternativasTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			alternativasTable.setRowSelectionAllowed(true);
 			alternativasTable.getTableHeader().setReorderingAllowed(false);
@@ -710,7 +699,7 @@ public class formPrincipal {
 			anadirAltButton.setText("Añadir");
 			anadirAltButton.setLocation(new Point(135, 138));
 			anadirAltButton.setSize(new Dimension(88, 17));
-			//anadirAltButton.setEnabled(false);
+			anadirAltButton.setEnabled(false);
 			anadirAltButton.setBackground(Color.white);
 			anadirAltButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -728,7 +717,7 @@ public class formPrincipal {
 			eliminarAltButton.setText("Eliminar");
 			eliminarAltButton.setLocation(new Point(327, 138));
 			eliminarAltButton.setSize(new Dimension(88, 17));
-			//eliminarAltButton.setEnabled(false);
+			eliminarAltButton.setEnabled(false);
 			eliminarAltButton.setBackground(Color.white);
 			eliminarAltButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -750,7 +739,7 @@ public class formPrincipal {
 			editarAltButton.setText("Editar");
 			editarAltButton.setLocation(new Point(231, 138));
 			editarAltButton.setSize(new Dimension(88, 17));
-			//editarAltButton.setEnabled(false);
+			editarAltButton.setEnabled(false);
 			editarAltButton.setBackground(Color.white);
 			editarAltButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
