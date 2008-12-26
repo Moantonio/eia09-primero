@@ -8,6 +8,8 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -19,6 +21,14 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
+
 import eia.model.Efecto;
 import eia.model.ValoracionCualitativa;
 import eia.model.ValoracionCuantitativa;
@@ -107,11 +117,12 @@ public class formEfecto extends JDialog {
 	private JPanel caracterPanel = null;
 	private JButton aceptarCuantitativaButton = null;
 	private JButton cancelarCuantitativaButton = null;
+	private JLabel opcionLabel = null;
+	private JTextField opcionTextField = null;
 	// Variables de modelo
 	private Efecto efecto;
 	private boolean flagAceptar = false;
-	private JLabel opcionLabel = null;
-	private JTextField opcionTextField = null;
+	private BufferedImage grafica = null;
 
 	public boolean isFlagAceptar() {
 		return flagAceptar;
@@ -389,11 +400,6 @@ public class formEfecto extends JDialog {
 		return modificarJuicioButton;
 	}
 
-	/**
-	 * This method initializes juicioComboBox
-	 *
-	 * @return javax.swing.JComboBox
-	 */
 	private JComboBox getJuicioComboBox() {
 		if (juicioComboBox == null) {
 			String[] opciones = {ValorJuicio.despreciable.toString(),ValorJuicio.especial.toString(),
@@ -407,11 +413,6 @@ public class formEfecto extends JDialog {
 		return juicioComboBox;
 	}
 
-	/**
-	 * This method initializes valCualitativaPanel
-	 *
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getValCualitativaPanel() {
 		if (valCualitativaPanel == null) {
 			valCualitativaPanel = new JPanel();
@@ -423,11 +424,6 @@ public class formEfecto extends JDialog {
 		return valCualitativaPanel;
 	}
 
-	/**
-	 * This method initializes cualitativaPanel
-	 *
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getCualitativaPanel() {
 		if (cualitativaPanel == null) {
 			momentoCriticoLabel = new JLabel();
@@ -512,11 +508,6 @@ public class formEfecto extends JDialog {
 		return cualitativaPanel;
 	}
 
-	/**
-	 * This method initializes aceptarCualitativaButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getAceptarCualitativaButton() {
 		if (aceptarCualitativaButton == null) {
 			aceptarCualitativaButton = new JButton();
@@ -536,11 +527,6 @@ public class formEfecto extends JDialog {
 		return aceptarCualitativaButton;
 	}
 
-	/**
-	 * This method initializes cancelarCualitativaButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getCancelarCualitativaButton() {
 		if (cancelarCualitativaButton == null) {
 			cancelarCualitativaButton = new JButton();
@@ -560,11 +546,6 @@ public class formEfecto extends JDialog {
 		return cancelarCualitativaButton;
 	}
 
-	/**
-	 * This method initializes signoComboBox
-	 *
-	 * @return javax.swing.JComboBox
-	 */
 	private JComboBox getSignoComboBox() {
 		if (signoComboBox == null) {
 			String[] opciones = {"positivo", "negativo"};
@@ -575,11 +556,6 @@ public class formEfecto extends JDialog {
 		return signoComboBox;
 	}
 
-	/**
-	 * This method initializes acumulacionComboBox
-	 *
-	 * @return javax.swing.JComboBox
-	 */
 	private JComboBox getAcumulacionComboBox() {
 		if (acumulacionComboBox == null) {
 			String[] opciones = {"no asignar","simple", "acumulativo", "sinérgico"};
@@ -590,11 +566,6 @@ public class formEfecto extends JDialog {
 		return acumulacionComboBox;
 	}
 
-	/**
-	 * This method initializes extensionComboBox
-	 *
-	 * @return javax.swing.JComboBox
-	 */
 	private JComboBox getExtensionComboBox() {
 		if (extensionComboBox == null) {
 			String[] opciones = {"no asignar","puntual", "parcial", "extenso", "total"};
@@ -605,11 +576,6 @@ public class formEfecto extends JDialog {
 		return extensionComboBox;
 	}
 
-	/**
-	 * This method initializes intensidadComboBox
-	 *
-	 * @return javax.swing.JComboBox
-	 */
 	private JComboBox getIntensidadComboBox() {
 		if (intensidadComboBox == null) {
 			String[] opciones = {"no asignar","baja", "media", "alta", "muy alta", "total"};
@@ -620,11 +586,6 @@ public class formEfecto extends JDialog {
 		return intensidadComboBox;
 	}
 
-	/**
-	 * This method initializes persistenciaComboBox
-	 *
-	 * @return javax.swing.JComboBox
-	 */
 	private JComboBox getPersistenciaComboBox() {
 		if (persistenciaComboBox == null) {
 			String[] opciones = {"no asignar","fugaz", "temporal", "permanente"};
@@ -635,11 +596,6 @@ public class formEfecto extends JDialog {
 		return persistenciaComboBox;
 	}
 
-	/**
-	 * This method initializes reversibilidadComboBox
-	 *
-	 * @return javax.swing.JComboBox
-	 */
 	private JComboBox getReversibilidadComboBox() {
 		if (reversibilidadComboBox == null) {
 			String[] opciones = {"no asignar","corto plazo", "medio plazo", "largo plazo", "irreversible"};
@@ -650,11 +606,6 @@ public class formEfecto extends JDialog {
 		return reversibilidadComboBox;
 	}
 
-	/**
-	 * This method initializes recuperabilidadComboBox
-	 *
-	 * @return javax.swing.JComboBox
-	 */
 	private JComboBox getRecuperabilidadComboBox() {
 		if (recuperabilidadComboBox == null) {
 			String[] opciones = {"no asignar","inmediata", "medio plazo", "mitigable", "largo plazo", "irrecuperable"};
@@ -665,11 +616,6 @@ public class formEfecto extends JDialog {
 		return recuperabilidadComboBox;
 	}
 
-	/**
-	 * This method initializes periodicidadComboBox
-	 *
-	 * @return javax.swing.JComboBox
-	 */
 	private JComboBox getPeriodicidadComboBox() {
 		if (periodicidadComboBox == null) {
 			String[] opciones = {"no asignar","discontinuo", "periódico", "continuo"};
@@ -680,11 +626,6 @@ public class formEfecto extends JDialog {
 		return periodicidadComboBox;
 	}
 
-	/**
-	 * This method initializes efectoComboBox
-	 *
-	 * @return javax.swing.JComboBox
-	 */
 	private JComboBox getEfectoComboBox() {
 		if (efectoComboBox == null) {
 			String[] opciones = {"directo", "indirecto secundario", "indirecto terciario"};
@@ -695,11 +636,6 @@ public class formEfecto extends JDialog {
 		return efectoComboBox;
 	}
 
-	/**
-	 * This method initializes momentoComboBox
-	 *
-	 * @return javax.swing.JComboBox
-	 */
 	private JComboBox getMomentoComboBox() {
 		if (momentoComboBox == null) {
 			String[] opciones = {"no asignar","inmediato", "medio plazo", "largo plazo"};
@@ -710,11 +646,6 @@ public class formEfecto extends JDialog {
 		return momentoComboBox;
 	}
 
-	/**
-	 * This method initializes incidenciaPanel
-	 *
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getIncidenciaPanel() {
 		if (incidenciaPanel == null) {
 			incidenciaLabel = new JLabel();
@@ -733,11 +664,6 @@ public class formEfecto extends JDialog {
 		return incidenciaPanel;
 	}
 
-	/**
-	 * This method initializes incidenciaTextField
-	 *
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getIncidenciaTextField() {
 		if (incidenciaTextField == null) {
 			incidenciaTextField = new JTextField();
@@ -748,11 +674,6 @@ public class formEfecto extends JDialog {
 		return incidenciaTextField;
 	}
 
-	/**
-	 * This method initializes extensionCriticaCheckBox
-	 *
-	 * @return javax.swing.JCheckBox
-	 */
 	private JCheckBox getExtensionCriticaCheckBox() {
 		if (extensionCriticaCheckBox == null) {
 			extensionCriticaCheckBox = new JCheckBox();
@@ -762,11 +683,6 @@ public class formEfecto extends JDialog {
 		return extensionCriticaCheckBox;
 	}
 
-	/**
-	 * This method initializes momentoCriticoCheckBox
-	 *
-	 * @return javax.swing.JCheckBox
-	 */
 	private JCheckBox getMomentoCriticoCheckBox() {
 		if (momentoCriticoCheckBox == null) {
 			momentoCriticoCheckBox = new JCheckBox();
@@ -776,11 +692,6 @@ public class formEfecto extends JDialog {
 		return momentoCriticoCheckBox;
 	}
 
-	/**
-	 * This method initializes calcularCualitativaButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getCalcularCualitativaButton() {
 		if (calcularCualitativaButton == null) {
 			calcularCualitativaButton = new JButton();
@@ -797,11 +708,6 @@ public class formEfecto extends JDialog {
 		return calcularCualitativaButton;
 	}
 
-	/**
-	 * This method initializes valCuantitativaPane
-	 *
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getValCuantitativaPane() {
 		if (valCuantitativaPane == null) {
 			valCuantitativaPane = new JPanel();
@@ -814,11 +720,6 @@ public class formEfecto extends JDialog {
 		return valCuantitativaPane;
 	}
 
-	/**
-	 * This method initializes cuantitativaPanel
-	 *
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getCuantitativaPanel() {
 		if (cuantitativaPanel == null) {
 			fTransformacionLabel = new JLabel();
@@ -840,11 +741,6 @@ public class formEfecto extends JDialog {
 		return cuantitativaPanel;
 	}
 
-	/**
-	 * This method initializes fTransformacionComboBox
-	 *
-	 * @return javax.swing.JComboBox
-	 */
 	private JComboBox getFTransformacionComboBox() {
 		if (fTransformacionComboBox == null) {
 			String[] opciones = {"Lineal creciente", "Lineal decreciente", "Parabólica creciente I",
@@ -859,11 +755,6 @@ public class formEfecto extends JDialog {
 		return fTransformacionComboBox;
 	}
 
-	/**
-	 * This method initializes asistenteButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getAsistenteButton() {
 		if (asistenteButton == null) {
 			asistenteButton = new JButton();
@@ -879,11 +770,6 @@ public class formEfecto extends JDialog {
 		return asistenteButton;
 	}
 
-	/**
-	 * This method initializes magnitudPanel
-	 *
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getMagnitudPanel() {
 		if (magnitudPanel == null) {
 			magnitudLabel = new JLabel();
@@ -901,11 +787,6 @@ public class formEfecto extends JDialog {
 		return magnitudPanel;
 	}
 
-	/**
-	 * This method initializes magnitudTextField
-	 *
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getMagnitudTextField() {
 		if (magnitudTextField == null) {
 			magnitudTextField = new JTextField();
@@ -916,11 +797,6 @@ public class formEfecto extends JDialog {
 		return magnitudTextField;
 	}
 
-	/**
-	 * This method initializes graficoButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getGraficoButton() {
 		if (graficoButton == null) {
 			graficoButton = new JButton();
@@ -938,11 +814,6 @@ public class formEfecto extends JDialog {
 		return graficoButton;
 	}
 
-	/**
-	 * This method initializes indicadoresPanel
-	 *
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getIndicadoresPanel() {
 		if (indicadoresPanel == null) {
 			opcionLabel = new JLabel();
@@ -977,11 +848,6 @@ public class formEfecto extends JDialog {
 		return indicadoresPanel;
 	}
 
-	/**
-	 * This method initializes valormaxTextField
-	 *
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getValormaxTextField() {
 		if (valormaxTextField == null) {
 			valormaxTextField = new JTextField();
@@ -991,11 +857,6 @@ public class formEfecto extends JDialog {
 		return valormaxTextField;
 	}
 
-	/**
-	 * This method initializes calcularCuantitativaButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getCalcularCuantitativaButton() {
 		if (calcularCuantitativaButton == null) {
 			calcularCuantitativaButton = new JButton();
@@ -1011,11 +872,6 @@ public class formEfecto extends JDialog {
 		return calcularCuantitativaButton;
 	}
 
-	/**
-	 * This method initializes indicadorTextField
-	 *
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getIndicadorTextField() {
 		if (indicadorTextField == null) {
 			indicadorTextField = new JTextField();
@@ -1025,11 +881,6 @@ public class formEfecto extends JDialog {
 		return indicadorTextField;
 	}
 
-	/**
-	 * This method initializes valorMinTextField
-	 *
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getValorMinTextField() {
 		if (valorMinTextField == null) {
 			valorMinTextField = new JTextField();
@@ -1039,11 +890,6 @@ public class formEfecto extends JDialog {
 		return valorMinTextField;
 	}
 
-	/**
-	 * This method initializes cuantitativaTextField
-	 *
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getCuantitativaTextField() {
 		if (cuantitativaTextField == null) {
 			cuantitativaTextField = new JTextField();
@@ -1054,11 +900,6 @@ public class formEfecto extends JDialog {
 		return cuantitativaTextField;
 	}
 
-	/**
-	 * This method initializes caracterPanel
-	 *
-	 * @return javax.swing.JPanel
-	 */
 	private JPanel getCaracterPanel() {
 		if (caracterPanel == null) {
 			caracterPanel = new JPanel();
@@ -1072,11 +913,6 @@ public class formEfecto extends JDialog {
 		return caracterPanel;
 	}
 
-	/**
-	 * This method initializes aceptarCuantitativaButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getAceptarCuantitativaButton() {
 		if (aceptarCuantitativaButton == null) {
 			aceptarCuantitativaButton = new JButton();
@@ -1096,11 +932,6 @@ public class formEfecto extends JDialog {
 		return aceptarCuantitativaButton;
 	}
 
-	/**
-	 * This method initializes cancelarCuantitativaButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getCancelarCuantitativaButton() {
 		if (cancelarCuantitativaButton == null) {
 			cancelarCuantitativaButton = new JButton();
@@ -1271,11 +1102,21 @@ public class formEfecto extends JDialog {
 		ValoracionCuantitativa valoracion = new ValoracionCuantitativa(indicador, indicadorMax, indicadorMin);
 		efecto.setValCuantitativa(valoracion);
 		// Tomamos el número de función de transformación a aplicar
-		 int funcion = fTransformacionComboBox.getSelectedIndex();
+		int funcion = fTransformacionComboBox.getSelectedIndex();
 		// Calculamos
-		 valoracion.calcularValoracion(funcion, opc);
+		valoracion.calcularValoracion(funcion, opc);
+
 		// Generamos la gráfica
-		// TODO generar gráfica
+		XYSeries series = new XYSeries("Evolucion");
+		for (double x = indicadorMin; x <= indicadorMax; x++){
+			double y = valoracion.calcularFuncion(funcion,x,indicadorMax,indicadorMin,opc);
+			series.add(x,y);
+		}
+		XYDataset datos = new XYSeriesCollection(series);
+		JFreeChart chart =
+			ChartFactory.createXYLineChart("Nombre gráfica","X","Y",datos,PlotOrientation.VERTICAL,false,false,true);
+		grafica = chart.createBufferedImage(450,250);
+
 		// Actualizamos la vista
 		actualizarValoraciones();
 	}
@@ -1290,7 +1131,13 @@ public class formEfecto extends JDialog {
 	}
 
 	private void mostrarGrafica(){
-		//TODO Hacer gráfica
+		formGrafica ventanaGrafica = new formGrafica(null, grafica);
+		Point posActual = this.getLocation();
+		posActual.translate(20, 20);
+		ventanaGrafica.setLocation(posActual);
+		ventanaGrafica.setModal(true);
+		ventanaGrafica.setVisible(true);
+		ventanaGrafica.dispose();
 	}
 
 	private void actualizarValoraciones(){
@@ -1341,11 +1188,6 @@ public class formEfecto extends JDialog {
 		}
 	}
 
-	/**
-	 * This method initializes opcionTextField
-	 *
-	 * @return javax.swing.JTextField
-	 */
 	private JTextField getOpcionTextField() {
 		if (opcionTextField == null) {
 			opcionTextField = new JTextField();
