@@ -82,6 +82,7 @@ public class formAlternativa extends JDialog{
 
 	public formAlternativa(Alternativa alt, Arbol<Factor> fact) {
 		super();
+		// TODO alternativa será clon de alt
 		alternativa = alt;
 		factores = fact;
 		initialize();
@@ -89,6 +90,7 @@ public class formAlternativa extends JDialog{
 
 	public formAlternativa(Frame owner, Alternativa alt, Arbol<Factor> fact) {
 		super(owner);
+		// TODO alternativa será clon de alt
 		alternativa = alt;
 		factores = fact;
 		initialize();
@@ -394,14 +396,11 @@ public class formAlternativa extends JDialog{
 			editarEfectosButton.setLocation(new Point(11, 126));
 			editarEfectosButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					//TODO efecto, tiene que ser el seleccionado
-					Efecto efecto = null;
-					formEfecto editarEfecto = new formEfecto(efecto);
-					Point posActual = getDialog().getLocation();
-					posActual.translate(20, 20);
-					editarEfecto.setLocation(posActual);
-					editarEfecto.setModal(true);
-					editarEfecto.setVisible(true);
+					int indice = efectosTable.getSelectedRow();
+					if (indice != -1){
+						Efecto efecto = alternativa.getEfectos().get(indice);
+						editarEfecto(efecto);
+					}
 				}
 			});
 		}
@@ -550,6 +549,20 @@ public class formAlternativa extends JDialog{
 				alternativa.getEfectos().remove(indice);
 			}
 		}
+	}
+
+	private void editarEfecto(Efecto efecto) {
+		formEfecto editarEfecto = new formEfecto(efecto);
+		Point posActual = getDialog().getLocation();
+		posActual.translate(20, 20);
+		editarEfecto.setLocation(posActual);
+		editarEfecto.setModal(true);
+		editarEfecto.setVisible(true);
+		if (editarEfecto.isFlagAceptar()){
+			// TODO Seteamos los cambios cogiendo el clon
+			// efecto = editarEfecto.getEfecto();
+		}
+		editarEfecto.dispose();
 	}
 
 	//TODO A eliminar en un futuro

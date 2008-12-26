@@ -130,6 +130,7 @@ public class formEfecto extends JDialog {
 
 	public formEfecto(Efecto efect) {
 		super();
+		// TODO efecto será clon de efect
 		efecto = efect;
 		initialize();
 	}

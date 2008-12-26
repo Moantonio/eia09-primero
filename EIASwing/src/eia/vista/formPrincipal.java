@@ -968,8 +968,8 @@ public class formPrincipal {
 
 		if(editarAlternativa.isFlagAceptar()){
 			// TODO si le ha dado a aceptar actualizamos info en la tabla
-			// y actualizamos información de la alternativa a partir de la
-			// alternativa del formulario.
+			// y actualizamos la alternativa con su clon
+			// alternativa = editarAlternativa.getAlternativa();
 		}
 		editarAlternativa.dispose();
 
