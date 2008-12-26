@@ -1124,6 +1124,11 @@ public class formEfecto extends JDialog {
 
 	private void mostrarAsistente(){
 		formAsistente asistente = new formAsistente(null);
+		Point posActual = this.getLocation();
+		posActual.translate(20, 20);
+		asistente.setLocation(posActual);
+		asistente.setModal(true);
+		asistente.setVisible(true);
 		if (asistente.isFlagAceptar()){
 			int indiceFuncion = asistente.getFuncionRecomendada();
 			fTransformacionComboBox.setSelectedIndex(indiceFuncion);
