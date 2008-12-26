@@ -375,7 +375,7 @@ public class formEfecto extends JDialog {
 			String[] opciones = {CaracterEfecto.compatible.toString(), CaracterEfecto.critico.toString(),
 					CaracterEfecto.moderado.toString(), CaracterEfecto.severo.toString()};
 			caracterComboBox = new JComboBox(opciones);
-			caracterComboBox.setEditable(false);
+			caracterComboBox.setEnabled(false);
 			caracterComboBox.setSize(new Dimension(135, 18));
 			caracterComboBox.setPreferredSize(new Dimension(31, 38));
 			caracterComboBox.setLocation(new Point(35, 38));
@@ -1174,7 +1174,7 @@ public class formEfecto extends JDialog {
 			efecto.calcularValorTotal();
 			valoracionTextField.setText(String.valueOf(efecto.getValorTotal()));
 			// El caracter se puede editar
-			caracterComboBox.setEditable(true);
+			caracterComboBox.setEnabled(true);
 		}else{
 			valoracionTextField.setText("---");
 			// El caracter no se puede editar
