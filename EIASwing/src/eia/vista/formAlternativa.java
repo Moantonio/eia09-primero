@@ -447,8 +447,9 @@ public class formAlternativa extends JDialog{
 				//si hay alguna acción y algun factor seleccionados
 				//y la acción y el factor son hojas de sus árboles
 				//TODO accion y factor... elegir los que corresponden a los seleccionados
-				Accion accion = null;
-				Factor factor = null;
+
+				Accion accion = (Accion)((DefaultMutableTreeNode)accionesTree.getLastSelectedPathComponent()).getUserObject();
+				Factor factor = (Factor)((DefaultMutableTreeNode)factoresTree.getLastSelectedPathComponent()).getUserObject();
 				formCrearEfecto formNuevoEfecto = new formCrearEfecto(accion.getId(), factor.getId());
 				Point posActual = getDialog().getLocation();
 				posActual.translate(20, 20);
