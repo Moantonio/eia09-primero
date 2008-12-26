@@ -536,28 +536,41 @@ public class formAlternativa extends JDialog{
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				Alternativa alt = new Alternativa("AlternativaPrueba");
+				Accion accionBisAbuelo = new Accion("Factor Bisabuelo");
+				Accion accionAbuelo = new Accion("Factor abuelo");
+				Accion accionAbuela = new Accion("Factor abuela");
+				Accion accionHijo = new Accion("Factor hijo");
+				Accion accionHija = new Accion("Factor hija");
+				DefaultMutableTreeNode nodoBisAbuelo = new DefaultMutableTreeNode(accionBisAbuelo);
+				DefaultMutableTreeNode nodoAbuelo = new DefaultMutableTreeNode(accionAbuelo);
+				DefaultMutableTreeNode nodoAbuela = new DefaultMutableTreeNode(accionAbuela);
+				DefaultMutableTreeNode nodoHija = new DefaultMutableTreeNode(accionHija);
+				DefaultMutableTreeNode nodoHijo = new DefaultMutableTreeNode(accionHijo);
+				DefaultTreeModel acciones = new DefaultTreeModel(nodoBisAbuelo);
+				acciones.insertNodeInto(nodoAbuelo, nodoBisAbuelo, 0);
+				acciones.insertNodeInto(nodoAbuela, nodoBisAbuelo, 1);
+				acciones.insertNodeInto(nodoHijo, nodoAbuelo, 0);
+				acciones.insertNodeInto(nodoHija, nodoAbuela, 0);
 
-				DefaultMutableTreeNode abuelo = new DefaultMutableTreeNode("Sistema físico natural");
-				DefaultMutableTreeNode padre = new DefaultMutableTreeNode("Medio Abiótico");
-				DefaultMutableTreeNode tio = new DefaultMutableTreeNode("Medio Biótico");
-				DefaultMutableTreeNode hijo1=new DefaultMutableTreeNode("Aire");
-				DefaultMutableTreeNode nieto11=new DefaultMutableTreeNode("Calidad del aire");
-				DefaultMutableTreeNode nieto12=new DefaultMutableTreeNode("Nivel sonoro");
-				DefaultMutableTreeNode hijo2=new DefaultMutableTreeNode("Geológia, Geomorfía");
-				DefaultMutableTreeNode nieto21=new DefaultMutableTreeNode("Relieve");
-				DefaultMutableTreeNode nieto22=new DefaultMutableTreeNode("Recursos culturales");
+				Factor factorBisAbuelo = new Factor("Factor Bisabuelo",1);
+				Factor factorAbuelo = new Factor("Factor abuelo",2);
+				Factor factorAbuela = new Factor("Factor abuela",3);
+				Factor factorHijo = new Factor("Factor hijo",4);
+				Factor factorHija = new Factor("Factor hija",5);
+				DefaultMutableTreeNode nodoBisAbuelo2 = new DefaultMutableTreeNode(factorBisAbuelo);
+				DefaultMutableTreeNode nodoAbuelo2 = new DefaultMutableTreeNode(factorAbuelo);
+				DefaultMutableTreeNode nodoAbuela2 = new DefaultMutableTreeNode(factorAbuela);
+				DefaultMutableTreeNode nodoHija2 = new DefaultMutableTreeNode(factorHija);
+				DefaultMutableTreeNode nodoHijo2 = new DefaultMutableTreeNode(factorHijo);
+				DefaultTreeModel factores = new DefaultTreeModel(nodoBisAbuelo2);
+				factores.insertNodeInto(nodoAbuelo2, nodoBisAbuelo2, 0);
+				factores.insertNodeInto(nodoAbuela2, nodoBisAbuelo2, 1);
+				factores.insertNodeInto(nodoHijo2, nodoAbuelo2, 0);
+				factores.insertNodeInto(nodoHija2, nodoAbuela2, 0);
 
-				DefaultTreeModel arbolFactoresPrueba = new DefaultTreeModel(abuelo);
-				arbolFactoresPrueba.insertNodeInto(padre,abuelo,0);
-				arbolFactoresPrueba.insertNodeInto(tio, abuelo, 1);
-				arbolFactoresPrueba.insertNodeInto(hijo1, padre, 0);
-				arbolFactoresPrueba.insertNodeInto(nieto11, hijo1, 0);
-				arbolFactoresPrueba.insertNodeInto(nieto12, hijo1, 0);
-				arbolFactoresPrueba.insertNodeInto(hijo2, padre, 1);
-				arbolFactoresPrueba.insertNodeInto(nieto21, hijo2, 0);
-				arbolFactoresPrueba.insertNodeInto(nieto22, hijo2, 0);
+				alt.setAcciones(acciones);
 
-				formAlternativa application = new formAlternativa(alt,arbolFactoresPrueba);
+				formAlternativa application = new formAlternativa(alt,factores);
 				application.getDialog().setVisible(true);
 			}
 		});
