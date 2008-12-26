@@ -30,9 +30,12 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
+import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
+import eia.model.Accion;
 import eia.model.Alternativa;
+import eia.model.Factor;
 import eia.model.InfoProyecto;
 import eia.model.Proyecto;
 import eia.util.FiltreSimple;
@@ -815,6 +818,25 @@ public class formPrincipal {
 			proyecto = new Proyecto(info,tipo);
 			//TODO Cargamos el arbol de factores para ese tipo de proyecto
 			DefaultTreeModel factores = null;
+
+			//
+			Factor factorBisAbuelo = new Factor("Factor Bisabuelo",1);
+			Factor factorAbuelo = new Factor("Factor abuelo",2);
+			Factor factorAbuela = new Factor("Factor abuela",3);
+			Factor factorHijo = new Factor("Factor hijo",4);
+			Factor factorHija = new Factor("Factor hija",5);
+			DefaultMutableTreeNode nodoBisAbuelo = new DefaultMutableTreeNode(factorBisAbuelo);
+			DefaultMutableTreeNode nodoAbuelo = new DefaultMutableTreeNode(factorAbuelo);
+			DefaultMutableTreeNode nodoAbuela = new DefaultMutableTreeNode(factorAbuela);
+			DefaultMutableTreeNode nodoHija = new DefaultMutableTreeNode(factorHija);
+			DefaultMutableTreeNode nodoHijo = new DefaultMutableTreeNode(factorHijo);
+			factores = new DefaultTreeModel(nodoBisAbuelo);
+			factores.insertNodeInto(nodoAbuelo, nodoBisAbuelo, 0);
+			factores.insertNodeInto(nodoAbuela, nodoBisAbuelo, 1);
+			factores.insertNodeInto(nodoHijo, nodoAbuelo, 0);
+			factores.insertNodeInto(nodoHija, nodoAbuela, 0);
+			//
+
 			proyecto.setFactores(factores);
 			//Actualizamos la vista
 			actualizarDescripcion();
@@ -909,6 +931,26 @@ public class formPrincipal {
 			final Alternativa alternativa = new Alternativa(nombre);
 			//TODO Cargamos el arbol de acciones para ese tipo de proyecto
 			DefaultTreeModel acciones = null;
+
+			//
+			Accion accionBisAbuelo = new Accion("Factor Bisabuelo");
+			Accion accionAbuelo = new Accion("Factor abuelo");
+			Accion accionAbuela = new Accion("Factor abuela");
+			Accion accionHijo = new Accion("Factor hijo");
+			Accion accionHija = new Accion("Factor hija");
+			DefaultMutableTreeNode nodoBisAbuelo = new DefaultMutableTreeNode(accionBisAbuelo);
+			DefaultMutableTreeNode nodoAbuelo = new DefaultMutableTreeNode(accionAbuelo);
+			DefaultMutableTreeNode nodoAbuela = new DefaultMutableTreeNode(accionAbuela);
+			DefaultMutableTreeNode nodoHija = new DefaultMutableTreeNode(accionHija);
+			DefaultMutableTreeNode nodoHijo = new DefaultMutableTreeNode(accionHijo);
+			acciones = new DefaultTreeModel(nodoBisAbuelo);
+			acciones.insertNodeInto(nodoAbuelo, nodoBisAbuelo, 0);
+			acciones.insertNodeInto(nodoAbuela, nodoBisAbuelo, 1);
+			acciones.insertNodeInto(nodoHijo, nodoAbuelo, 0);
+			acciones.insertNodeInto(nodoHija, nodoAbuela, 0);
+			//
+
+
 			alternativa.setAcciones(acciones);
 			// La añadimos al proyecto
 			proyecto.getAlternativas().add(alternativa);
