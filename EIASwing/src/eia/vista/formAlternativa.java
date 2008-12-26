@@ -52,7 +52,6 @@ public class formAlternativa extends JDialog{
 	private JPanel AccionesPanel = null;
 	private JPanel factoresPanel = null;
 	private JButton AnadirButton = null;
-	private JButton modificarButton = null;
 	private JButton eliminarButton = null;
 	private JTree accionesTree = null;
 	private JTree factoresTree = null;
@@ -150,7 +149,6 @@ public class formAlternativa extends JDialog{
 			AccionesPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Acciones" +
 					""));
 			AccionesPanel.add(getAnadirButton(), null);
-			AccionesPanel.add(getModificarButton(), null);
 			AccionesPanel.add(getEliminarButton(), null);
 			AccionesPanel.add(getAccionesScrollPane(), null);
 		}
@@ -185,25 +183,6 @@ public class formAlternativa extends JDialog{
 			});
 		}
 		return AnadirButton;
-	}
-
-	private JButton getModificarButton() {
-		if (modificarButton == null) {
-			modificarButton = new JButton();
-			modificarButton.setBounds(new Rectangle(77, 160, 85, 20));
-			modificarButton.setFont(new Font("Dialog", Font.BOLD, 10));
-			modificarButton.setText("Modificar");
-			modificarButton.addActionListener(new java.awt.event.ActionListener() {
-				public void actionPerformed(java.awt.event.ActionEvent e) {
-					if (!accionesTree.isSelectionEmpty()){
-						// TODO Auto-generated Event stub actionPerformed()
-					}
-
-				}
-			});
-
-		}
-		return modificarButton;
 	}
 
 	private JButton getEliminarButton() {
@@ -564,7 +543,6 @@ public class formAlternativa extends JDialog{
 	private void anadirAccion(){
 		// TODO añadir la accion real al arbol de acciones
 		// creo q deberia ser un arbol del tipo DefaultMutableTreeNode
-
 		DefaultMutableTreeNode padre = (DefaultMutableTreeNode)accionesTree.getLastSelectedPathComponent();
 		formCrearAccion formNuevaAccion = new formCrearAccion(null, padre.toString());
 		Point posActual = getDialog().getLocation();
@@ -574,6 +552,7 @@ public class formAlternativa extends JDialog{
 		formNuevaAccion.setVisible(true);
 		if(formNuevaAccion.isFlagAceptar()){
 			String nombreAccion = formNuevaAccion.getNombreAccion();
+			// Insertamos en la tabla
 			DefaultMutableTreeNode nuevo = new DefaultMutableTreeNode(nombreAccion);
 			modeloArbol1.insertNodeInto(nuevo,padre,0);
 		}
