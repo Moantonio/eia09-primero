@@ -30,6 +30,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
+import javax.swing.tree.DefaultTreeModel;
+
 import eia.model.Alternativa;
 import eia.model.InfoProyecto;
 import eia.model.Proyecto;
@@ -822,6 +824,9 @@ public class formPrincipal {
 			info.setNombre(nombre);
 			info.setDescripcion(descripcion);
 			proyecto = new Proyecto(info,tipo);
+			//TODO Cargamos el arbol de factores para ese tipo de proyecto
+			DefaultTreeModel factores = null;
+			proyecto.setFactores(factores);
 			//Actualizamos la vista
 			actualizarDescripcion();
 			actualizarAlternativas();
@@ -911,8 +916,12 @@ public class formPrincipal {
 		crearAlternativa.setVisible(true);
 		if(crearAlternativa.isFlagAceptar()){
 			String nombre = crearAlternativa.getNombreAlternativa();
-			//Crear alternativa con ese nombre y añadir al proyecto
+			//Crear alternativa con ese nombre
 			final Alternativa alternativa = new Alternativa(nombre);
+			//TODO Cargamos el arbol de acciones para ese tipo de proyecto
+			DefaultTreeModel acciones = null;
+			alternativa.setAcciones(acciones);
+			// La añadimos al proyecto
 			proyecto.getAlternativas().add(alternativa);
 			//Refrescar la lista
 			String[] fila = {nombre,""};
