@@ -330,7 +330,7 @@ public class formAlternativa extends JDialog{
 					int indice = efectosTable.getSelectedRow();
 					if (indice != -1){
 						Efecto efecto = alternativa.getEfectos().get(indice);
-						editarEfecto(efecto);
+						editarEfecto(efecto,indice);
 					}
 				}
 			});
@@ -485,7 +485,7 @@ public class formAlternativa extends JDialog{
 		}
 	}
 
-	private void editarEfecto(Efecto efecto) {
+	private void editarEfecto(Efecto efecto,int indice) {
 		formEfecto editarEfecto = new formEfecto(efecto);
 		Point posActual = getDialog().getLocation();
 		posActual.translate(20, 20);
@@ -495,6 +495,15 @@ public class formAlternativa extends JDialog{
 		if (editarEfecto.isFlagAceptar()){
 			// TODO Seteamos los cambios cogiendo el clon
 			// efecto = editarEfecto.getEfecto();
+			JOptionPane.showConfirmDialog (null,
+					"Aceptado");
+			
+			modeloTabla.setValueAt(efecto.getJuicio(), indice, 1);
+			modeloTabla.setValueAt(efecto.getValCuantitativa(), indice, 2);
+			modeloTabla.setValueAt(efecto.getValCuantitativa(), indice, 3);
+			modeloTabla.setValueAt(efecto.getValorTotal(), indice, 4);
+			modeloTabla.setValueAt(efecto.getCaracter(), indice, 5);
+			
 		}
 		editarEfecto.dispose();
 	}
