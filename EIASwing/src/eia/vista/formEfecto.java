@@ -629,7 +629,7 @@ public class formEfecto extends JDialog {
 
 	private JComboBox getEfectoComboBox() {
 		if (efectoComboBox == null) {
-			String[] opciones = {"directo", "indirecto secundario", "indirecto terciario"};
+			String[] opciones = {"no asignar","directo", "indirecto secundario", "indirecto terciario"};
 			efectoComboBox = new JComboBox(opciones);
 			efectoComboBox.setLocation(new Point(324, 120));
 			efectoComboBox.setSize(new Dimension(120, 18));
