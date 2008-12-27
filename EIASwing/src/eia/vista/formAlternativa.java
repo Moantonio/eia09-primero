@@ -456,7 +456,7 @@ public class formAlternativa extends JDialog{
 					// Lo añadimos a la alternativa
 					alternativa.getEfectos().add(efecto);
 				    // Lo añadimos a la tabla
-					String[] datos = {id,"","","","",""};
+					String[] datos = {id,juicio.toString(),"","","",""};
 					modeloTabla.addRow(datos);
 					valorarButton.setEnabled(false);
 					valoracionTextField.setText("");
