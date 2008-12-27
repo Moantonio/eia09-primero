@@ -1070,14 +1070,14 @@ public class formEfecto extends JDialog {
 		}
 
 		 // Fijamos el momento crítico
-		 if (momentoCriticoCheckBox.isSelected()){
+		 if (momentoCriticoCheckBox.isSelected()&&(momentoComboBox.getSelectedIndex()!=0)){
 			 valoracion.setMomentoCritico(ValoracionCualitativa.MOM_CRITICO);
 		 }else{
 			 valoracion.setMomentoCritico(ValoracionCualitativa.MOM_NO_CRITICO);
 		 }
 
 		 // Fijamos la extension crítica
-		 if (extensionCriticaCheckBox.isSelected()){
+		 if (extensionCriticaCheckBox.isSelected()&&(extensionComboBox.getSelectedIndex()!=0)){
 			 valoracion.setExtensionCritica(ValoracionCualitativa.EXT_CRITICA);
 		 }else{
 			 valoracion.setExtensionCritica(ValoracionCualitativa.EXT_NO_CRITICA);

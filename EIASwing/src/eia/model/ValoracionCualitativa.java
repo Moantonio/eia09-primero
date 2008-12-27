@@ -402,8 +402,12 @@ public class ValoracionCualitativa {
 		int max = 0;
 		if (acumulacion!=0)
 			max+= ValoracionCualitativa.ACU_SINERGICO;
-		if (extension!=0)
+		if (extension!=0){
 			max+= ValoracionCualitativa.EXT_TOTAL;
+			if(extensionCritica!=0){
+				max+= ValoracionCualitativa.EXT_CRITICA;
+			}
+		}
 		if (intensidad!=0)
 			max+= ValoracionCualitativa.INT_TOTAL;
 		if (persistencia!=0)
@@ -414,8 +418,12 @@ public class ValoracionCualitativa {
 			max+= ValoracionCualitativa.REC_IRRECUPERABLE;
 		if (periodicidad!=0)
 			max+= ValoracionCualitativa.PER_CONTINUO;
-		if (momento!=0)
+		if (momento!=0){
 			max+= ValoracionCualitativa.MOM_INMEDIATO;
+			if(momentoCritico!=0){
+				max+= ValoracionCualitativa.MOM_CRITICO;
+			}
+		}
 		if (efecto!=0)
 			max+= ValoracionCualitativa.EFE_DIRECTO;
 		return max;
