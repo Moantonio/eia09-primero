@@ -70,6 +70,7 @@ public class formAlternativa extends JDialog{
 	private JScrollPane factoresScrollPane = null;
 	private JScrollPane accionesScrollPane = null;
 	private boolean flagAceptar = false;
+	private JButton valorarButton = null;
 
 	//Variables del modelo
 	private Alternativa alternativa;
@@ -122,8 +123,26 @@ public class formAlternativa extends JDialog{
 			jContentPane.add(getAceptarButton(), null);
 			jContentPane.add(getCancelarButton(), null);
 			jContentPane.add(getValoracionPanel(), null);
+
 		}
 		return jContentPane;
+	}
+
+	private JButton getValorarButton() {
+		if (valorarButton == null) {
+			valorarButton = new JButton();
+			valorarButton.setBounds(new Rectangle(300, 6, 80, 18));
+			valorarButton.setPreferredSize(new Dimension(71, 26));
+			valorarButton.setFont(new Font("Dialog", Font.BOLD, 10));
+			valorarButton.setText("Valorar");
+			valorarButton.setEnabled(false);
+			valorarButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					valorarAlternativa();
+				}
+			});
+		}
+		return valorarButton;
 	}
 
 	private JTextField getAltDeRealizcionTextField() {
@@ -204,28 +223,6 @@ public class formAlternativa extends JDialog{
 			defaultTreeSelectionModel.setSelectionMode(4);
 			DefaultTreeCellRenderer defaultTreeCellRenderer = new DefaultTreeCellRenderer();
 			defaultTreeCellRenderer.setAutoscrolls(true);
-
-			/*DefaultMutableTreeNode abuelo = new DefaultMutableTreeNode("Acciones");
-			DefaultMutableTreeNode padre = new DefaultMutableTreeNode("Fase Construcción");
-			DefaultMutableTreeNode tio = new DefaultMutableTreeNode("Fase Matenimiento");
-			DefaultMutableTreeNode hijo1=new DefaultMutableTreeNode("Limpieza");
-			DefaultMutableTreeNode nieto11=new DefaultMutableTreeNode("Calidad del aire");
-			DefaultMutableTreeNode nieto12=new DefaultMutableTreeNode("Nivel sonoro");
-			DefaultMutableTreeNode hijo2=new DefaultMutableTreeNode("Caminos");
-			DefaultMutableTreeNode nieto21=new DefaultMutableTreeNode("Relieve");
-			DefaultMutableTreeNode nieto22=new DefaultMutableTreeNode("Recursos culturales");
-
-
-			modeloArbol1 = new DefaultTreeModel(abuelo);
-			modeloArbol1.insertNodeInto(padre,abuelo,0);
-			modeloArbol1.insertNodeInto(tio, abuelo, 1);
-			modeloArbol1.insertNodeInto(hijo1, padre, 0);
-			modeloArbol1.insertNodeInto(nieto11, hijo1, 0);
-			modeloArbol1.insertNodeInto(nieto12, hijo1, 0);
-			modeloArbol1.insertNodeInto(hijo2, padre, 1);
-			modeloArbol1.insertNodeInto(nieto21, hijo2, 0);
-			modeloArbol1.insertNodeInto(nieto22, hijo2, 0);*/
-
 			accionesTree = new JTree(alternativa.getAcciones());
 		}
 		return accionesTree;
@@ -313,8 +310,6 @@ public class formAlternativa extends JDialog{
 			col.getColumn(2).setPreferredWidth(80);
 			col.getColumn(3).setPreferredWidth(90);
 			col.getColumn(4).setPreferredWidth(50);
-
-
 		}
 		return efectosTable;
 	}
@@ -362,7 +357,7 @@ public class formAlternativa extends JDialog{
 			valoracionTextField = new JTextField();
 			valoracionTextField.setFont(new Font("Dialog", Font.PLAIN, 16));
 			valoracionTextField.setEnabled(false);
-			valoracionTextField.setBounds(new Rectangle(156, 4, 105, 25));
+			valoracionTextField.setBounds(new Rectangle(156, 4, 105, 23));
 		}
 		return valoracionTextField;
 	}
@@ -404,10 +399,11 @@ public class formAlternativa extends JDialog{
 		if (valoracionPanel == null) {
 			valoracionPanel = new JPanel();
 			valoracionPanel.setLayout(null);
-			valoracionPanel.setBounds(new Rectangle(90, 393, 267, 31));
+			valoracionPanel.setBounds(new Rectangle(40, 393, 400, 31));
 			valoracionPanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.gray));
 			valoracionPanel.add(getValoracionTextField(), null);
 			valoracionPanel.add(valoracionLabel, null);
+			valoracionPanel.add(getValorarButton(), null);
 		}
 		return valoracionPanel;
 	}
@@ -496,7 +492,6 @@ public class formAlternativa extends JDialog{
 		if (editarEfecto.isFlagAceptar()){
 			// TODO Seteamos los cambios cogiendo el clon
 			// efecto = editarEfecto.getEfecto();
-
 			modeloTabla.setValueAt(efecto.getJuicio(), indice, 1);
 			if(efecto.getValCualitativa()!= null)
 				modeloTabla.setValueAt(efecto.getValCualitativa().getIncidencia(), indice, 2);
@@ -508,6 +503,10 @@ public class formAlternativa extends JDialog{
 				}
 			}
 
+			// Comprobamos si todos los efectos están valorados
+			if(comprobarValorados()){
+				valorarButton.setEnabled(true);
+			}
 		}
 		editarEfecto.dispose();
 	}
@@ -562,6 +561,28 @@ public class formAlternativa extends JDialog{
 			alternativa.getAcciones().insertNodeInto(nuevo,padre,0);
 		}
 		formNuevaAccion.dispose();
+	}
+
+	private void valorarAlternativa() {
+
+		alternativa.calcularValorTotal();
+	}
+
+	private boolean comprobarValorados(){
+		// Comprobamos si todos los efecto están valorados
+		int i = 0;
+		boolean valorados = true;
+		while (valorados&&i<alternativa.getEfectos().size())
+		{
+			Efecto efecto = alternativa.getEfectos().get(i);
+
+			// Si el efecto no se ha valorado
+			if (efecto.getValCualitativa()==null || efecto.getValCuantitativa()==null){
+				valorados = false;
+			}
+			i++;
+		}
+		return valorados;
 	}
 
 	//TODO A eliminar en un futuro
