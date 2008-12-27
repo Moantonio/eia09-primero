@@ -458,7 +458,11 @@ public class ValoracionCualitativa {
 		int suma =(acumulacion+extension+extensionCritica+intensidad+persistencia+
 				reversibilidad+recuperabilidad+periodicidad+momento+momentoCritico+efecto);
 
-		incidencia = signo*(double)(suma - min)/(max-min);
+		incidencia = redondear(signo*(double)(suma - min)/(max-min),3);
 	}
 
+	private double redondear(double nD, int nDec)
+	{
+	  return Math.round(nD*Math.pow(10,nDec))/Math.pow(10,nDec);
+	}
 }

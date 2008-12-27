@@ -19,22 +19,22 @@ public class Efecto {
 	 * Acción asociada al efecto/impacto.
 	 */
 	private Accion accion;
-	
+
 	/**
 	 * Factor asociado al efecto/impacto.
 	 */
 	private Factor factor;
-	
+
 	/**
 	 * Nombre del efecto/impacto ambiental.
 	 */
 	private String id;
-	
+
 	/**
 	 * Descripción del efecto/impacto ambiental.
 	 */
 	private String descripcion;
-	
+
 	/**
 	 * Valor del efecto/impacto por simple enjuiciamiento.
 	 */
@@ -44,22 +44,22 @@ public class Efecto {
 	 * Valoración cualitativa del efecto/impacto ambiental.
 	 */
 	private ValoracionCualitativa valCualitativa;
-	
+
 	/**
 	 * Valoración cuantitativa del efecto/impacto ambiental.
 	 */
 	private ValoracionCuantitativa valCuantitativa;
-	
+
 	/**
 	 * Valor total del efecto/impacto.
 	 */
 	private double valorTotal;
-	
+
 	/**
 	 * Caracter de valoración del efecto/impacto ambiental.
 	 */
 	private CaracterEfecto caracter;
-	
+
 	/**
 	 * Constructor por defecto.
 	 */
@@ -72,9 +72,9 @@ public class Efecto {
 		valCualitativa = null;
 		valCuantitativa = null;
 		valorTotal = 0;
-		caracter = null; 
+		caracter = null;
 	}
-	
+
 	/**
 	 * Constructor por parámetros.
 	 * @param accion Acción a asociar al efecto/impacto.
@@ -91,9 +91,9 @@ public class Efecto {
 		valCualitativa = null;
 		valCuantitativa = null;
 		valorTotal = 0;
-		caracter = null; 
+		caracter = null;
 	}
-	
+
 	/**
 	 * Constructor por parámetros.
 	 * @param accion Acción a asociar al efecto/impacto.
@@ -111,7 +111,7 @@ public class Efecto {
 		valCualitativa = null;
 		valCuantitativa = null;
 		valorTotal = 0;
-		caracter = null; 
+		caracter = null;
 	}
 
 	/**
@@ -257,7 +257,7 @@ public class Efecto {
 	public void setCaracter(CaracterEfecto caracter) {
 		this.caracter = caracter;
 	}
-	
+
 	/**
 	 * Función para calcular la valoración cuantitativa del efecto/impacto,
 	 * estableciendo dicho valor en el atributo 'valCualitativa'.
@@ -265,16 +265,21 @@ public class Efecto {
 	public void calcularValorCuantitativo(){
 		//TODO Calcular Valor Cuantitativo
 	}
-	
+
 	/**
 	 * Función para calcular el valor total de impacto del efecto,
 	 * estableciendo dicho valor en el atributo 'valorTotal'.
 	 */
 	public void calcularValorTotal(){
 		if (juicio == ValorJuicio.significativo && valCualitativa!=null && valCuantitativa!=null){
-			valorTotal = valCuantitativa.getMagnitudImpacto() * valCualitativa.getIncidencia()* factor.getPeso();
+			valorTotal = redondear(valCuantitativa.getMagnitudImpacto() * valCualitativa.getIncidencia()* factor.getPeso(),3);
 		}else{
 			valorTotal = 0;
 		}
+	}
+
+	private double redondear(double nD, int nDec)
+	{
+	  return Math.round(nD*Math.pow(10,nDec))/Math.pow(10,nDec);
 	}
 }

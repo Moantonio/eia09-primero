@@ -341,7 +341,7 @@ public class ValoracionCuantitativa {
 	 * @param opc Parámetro opcional ('a', 'umbral') para las funciones que lo demanden.
 	 */
 	public void calcularValoracion(int numFuncion, double opc){
-		magnitudImpacto = calcularFuncion(numFuncion,indicador,mayorValorIndicador,menorValorIndicador,opc);
+		magnitudImpacto = redondear(calcularFuncion(numFuncion,indicador,mayorValorIndicador,menorValorIndicador,opc),3);
 	}
 
 	/**
@@ -386,6 +386,11 @@ public class ValoracionCuantitativa {
 					 break;}
 		}
 		return resultado;
+	}
+
+	private double redondear(double nD, int nDec)
+	{
+	  return Math.round(nD*Math.pow(10,nDec))/Math.pow(10,nDec);
 	}
 
 }
