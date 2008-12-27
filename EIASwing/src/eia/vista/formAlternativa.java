@@ -507,9 +507,6 @@ public class formAlternativa extends JDialog{
 				}
 			}
 
-
-
-
 		}
 		editarEfecto.dispose();
 	}

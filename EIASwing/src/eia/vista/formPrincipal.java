@@ -755,7 +755,7 @@ public class formPrincipal {
 					int indice = alternativasTable.getSelectedRow();
 					if (indice != -1){
 						Alternativa alternativa = proyecto.getAlternativas().get(indice);
-						editarAlternativa(alternativa);
+						editarAlternativa(alternativa,indice);
 					}
 				}
 			});
@@ -970,7 +970,7 @@ public class formPrincipal {
 			getModificarAlternativaMenu().add(alternativaModItem);
 			alternativaModItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					editarAlternativa(alternativa);
+					editarAlternativa(alternativa,0);
 				}
 			});
 			//Lo ponemos en el menú eliminar
@@ -1005,7 +1005,7 @@ public class formPrincipal {
 		}
 	}
 
-	private void editarAlternativa(Alternativa alternativa) {
+	private void editarAlternativa(Alternativa alternativa,int indice) {
 		formAlternativa editarAlternativa = new formAlternativa(getFramePrincipal(), alternativa, proyecto.getFactores());
 		Point posActual = getFramePrincipal().getLocation();
 		posActual.translate(20, 20);
@@ -1017,6 +1017,8 @@ public class formPrincipal {
 			// TODO si le ha dado a aceptar actualizamos info en la tabla
 			// y actualizamos la alternativa con su clon
 			// alternativa = editarAlternativa.getAlternativa();
+			modeloTabla.setValueAt(alternativa.getId(), indice, 0);
+			modeloTabla.setValueAt(alternativa.getValorTotal(),indice,1);
 		}
 		editarAlternativa.dispose();
 
