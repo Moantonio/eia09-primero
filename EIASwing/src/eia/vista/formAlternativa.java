@@ -378,6 +378,7 @@ public class formAlternativa extends JDialog{
 				public void actionPerformed(ActionEvent e) {
 					flagAceptar = true;
 					setVisible(false);
+					alternativa.setId(altDeRealizcionTextField.getText());
 				}
 			});
 		}
