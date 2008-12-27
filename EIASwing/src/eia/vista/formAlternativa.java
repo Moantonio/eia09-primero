@@ -9,6 +9,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -20,7 +21,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.ListSelectionModel;
-import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
@@ -28,6 +28,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultTreeSelectionModel;
+
 import eia.model.Accion;
 import eia.model.Alternativa;
 import eia.model.Efecto;
@@ -75,7 +76,6 @@ public class formAlternativa extends JDialog{
 	//Variables del modelo
 	private Alternativa alternativa;
 	private DefaultTreeModel factores;
-	private boolean valorada = false;
 
 	public formAlternativa(Alternativa alt, DefaultTreeModel fact) {
 		super();
@@ -460,7 +460,7 @@ public class formAlternativa extends JDialog{
 					modeloTabla.addRow(datos);
 					valorarButton.setEnabled(false);
 					valoracionTextField.setText("");
-					valorada = false;
+					alternativa.setValorada(false);
 				}
 				formNuevoEfecto.dispose();
 			}
@@ -504,7 +504,7 @@ public class formAlternativa extends JDialog{
 			}
 
 			// Comprobamos si todos los efectos están valorados
-			valorada = false;
+			alternativa.setValorada(false);
 			valoracionTextField.setText("");
 			if(comprobarValorados()){
 				valorarButton.setEnabled(true);
@@ -563,7 +563,7 @@ public class formAlternativa extends JDialog{
 
 	private void valorarAlternativa() {
 
-		valorada = true;
+		alternativa.setValorada(true);
 		alternativa.calcularValorTotal();
 		valoracionTextField.setText(String.valueOf(alternativa.getValorTotal()));
 	}
@@ -610,18 +610,19 @@ public class formAlternativa extends JDialog{
 		    	total = String.valueOf(efecto.getValorTotal());
 		    	caracter = efecto.getCaracter().toString();
 		    }
-			String[] datos = {id,"",cualitativa,cuantitativa,total,caracter};
+			String[] datos = {id,juicio,cualitativa,cuantitativa,total,caracter};
 			modeloTabla.addRow(datos);
 		}
 
 		// Comprobamos si todos los efectos están valorados
 		if(comprobarValorados()){
-			valorada = true;
+			alternativa.setValorada(true);
 			valorarButton.setEnabled(true);
 			valoracionTextField.setText(String.valueOf(alternativa.getValorTotal()));
 		}
 	}
 
+	/*
 	//TODO A eliminar en un futuro
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -666,9 +667,6 @@ public class formAlternativa extends JDialog{
 			}
 		});
 	}
-
-	public boolean isValorada() {
-		return valorada;
-	}
+	*/
 
 }  //  @jve:decl-index=0:visual-constraint="4,11"

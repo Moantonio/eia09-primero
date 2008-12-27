@@ -36,6 +36,8 @@ public class Alternativa {
 	 */
 	private double valorTotal;
 
+	private boolean valorada;
+
 	/**
 	 * Constructor por defecto.
 	 */
@@ -45,6 +47,7 @@ public class Alternativa {
 		acciones = null;
 		efectos = new ArrayList<Efecto>();
 		valorTotal = 0;
+		valorada = false;
 	}
 
 	/**
@@ -57,6 +60,7 @@ public class Alternativa {
 		acciones = null;
 		efectos = new ArrayList<Efecto>();
 		valorTotal = 0;
+		valorada = false;
 	}
 
 	/**
@@ -141,6 +145,14 @@ public class Alternativa {
 
 	private double redondear(double nD, int nDec){
 	  return Math.round(nD*Math.pow(10,nDec))/Math.pow(10,nDec);
+	}
+
+	public boolean getValorada() {
+		return valorada;
+	}
+
+	public void setValorada(boolean valorada) {
+		this.valorada = valorada;
 	}
 
 }

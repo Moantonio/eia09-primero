@@ -1039,7 +1039,10 @@ public class formPrincipal {
 			// TODO ctualizamos la alternativa con su clon
 			// alternativa = editarAlternativa.getAlternativa();
 			modeloTabla.setValueAt(alternativa.getId(), indice, 0);
-			modeloTabla.setValueAt(alternativa.getValorTotal(),indice,1);
+
+			if (alternativa.getValorada()){
+				modeloTabla.setValueAt(alternativa.getValorTotal(),indice,1);
+			}
 		}
 		editarAlternativa.dispose();
 
