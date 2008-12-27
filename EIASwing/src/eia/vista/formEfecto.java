@@ -16,6 +16,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
@@ -1093,13 +1094,36 @@ public class formEfecto extends JDialog {
 	private void calcularCuantitativa(){
 
 		// Obtenemos el indicador
-		double indicador = Double.parseDouble(indicadorTextField.getText());
+		double indicador = 0;
+		try{
+		indicador = Double.parseDouble(indicadorTextField.getText());
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(this, "Valor de indicador incorrecto o no indicado. Sólo se permiten caracteres numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+		};
 		// Obtenemos el valor max
-		double indicadorMax = Double.parseDouble(valormaxTextField.getText());
+		double indicadorMax = 0;
+		try{indicadorMax = Double.parseDouble(valormaxTextField.getText());
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(this, "Valor máximo de indicador incorrecto o no indicado. Sólo se permiten caracteres numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+		};
+
 		// Obtenemos el valor mínimo
-		double indicadorMin = Double.parseDouble(valorMinTextField.getText());
+		double indicadorMin = 0;
+		try{indicadorMin = Double.parseDouble(valorMinTextField.getText());
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(this, "Valor mínimo de indicador incorrecto o no indicado. Sólo se permiten caracteres numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+		};
+
 		// Obtenemos el umbral/a
-		double opc = Double.parseDouble(opcionTextField.getText());
+		double opc = 0;
+		try{
+			if(opcionTextField.getText().length()!=0){
+				opc = Double.parseDouble(opcionTextField.getText());
+			}
+		}catch(Exception e){
+			JOptionPane.showMessageDialog(this, "Valor Umbral/a incorrecto. Sólo se permiten caracteres numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+		};
+
 		// Creamos la valoración cuantitativa y se la asignamos al proyecto
 		ValoracionCuantitativa valoracion = new ValoracionCuantitativa(indicador, indicadorMax, indicadorMin);
 		efecto.setValCuantitativa(valoracion);
@@ -1120,6 +1144,7 @@ public class formEfecto extends JDialog {
 		grafica = chart.createBufferedImage(450,250);
 
 		// Actualizamos la vista
+		graficoButton.setEnabled(true);
 		actualizarValoraciones();
 	}
 
@@ -1164,7 +1189,6 @@ public class formEfecto extends JDialog {
 			String magnitud = String.valueOf(efecto.getValCuantitativa().getMagnitudImpacto());
 			cuantitativaTextField.setText(magnitud);
 			magnitudTextField.setText(magnitud);
-			graficoButton.setEnabled(true);
 		}else{
 			cuantitativaTextField.setText("---");
 			magnitudTextField.setText("---");
@@ -1219,6 +1243,7 @@ public class formEfecto extends JDialog {
 		if (opcionTextField == null) {
 			opcionTextField = new JTextField();
 			opcionTextField.setBounds(new Rectangle(345, 43, 40, 18));
+			opcionTextField.setText("0");
 		}
 		return opcionTextField;
 	}
