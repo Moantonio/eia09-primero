@@ -174,6 +174,7 @@ public class formPrincipal {
 			menuFactores.add(getVerFactoresMenuItem());
 			menuFactores.add(getModificarPesosMenuItem());
 			menuFactores.setMnemonic(KeyEvent.VK_F);
+			menuFactores.setEnabled(false);
 		}
 		return menuFactores;
 	}
@@ -186,6 +187,7 @@ public class formPrincipal {
 			menuAlternativas.add(getModificarAlternativaMenu());
 			menuAlternativas.add(getEliminarAlternativaMenu());
 			menuAlternativas.setMnemonic(KeyEvent.VK_A);
+			menuAlternativas.setEnabled(false);
 		}
 		return menuAlternativas;
 	}
@@ -245,6 +247,7 @@ public class formPrincipal {
 			menuValoracion.add(getValorarMenuItem());
 			menuValoracion.add(getVerResultadosMenuItem());
 			menuValoracion.setMnemonic(KeyEvent.VK_V);
+			menuValoracion.setEnabled(false);
 		}
 		return menuValoracion;
 	}
@@ -255,6 +258,7 @@ public class formPrincipal {
 			menuInformes.setText("Informes");
 			menuInformes.add(getVerInformeMenuItem());
 			menuInformes.setMnemonic(KeyEvent.VK_I);
+			menuInformes.setEnabled(false);
 		}
 		return menuInformes;
 	}
@@ -371,6 +375,7 @@ public class formPrincipal {
 			guardarMenuItem = new JMenuItem();
 			guardarMenuItem.setText("Guardar");
 			guardarMenuItem.setMnemonic(KeyEvent.VK_G);
+			guardarMenuItem.setEnabled(false);
 		}
 		return guardarMenuItem;
 	}
@@ -380,6 +385,7 @@ public class formPrincipal {
 			guardarComoMenuItem = new JMenuItem();
 			guardarComoMenuItem.setText("Guardar como...");
 			guardarComoMenuItem.setMnemonic(KeyEvent.VK_U);
+			guardarComoMenuItem.setEnabled(false);
 			guardarComoMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					guardarComoProyecto();
@@ -805,6 +811,15 @@ public class formPrincipal {
 		eliminarAltButton.setEnabled(true);
 	}
 
+	private void actualizarMenu(){
+		menuAlternativas.setEnabled(true);
+		menuFactores.setEnabled(true);
+		menuValoracion.setEnabled(true);
+		menuInformes.setEnabled(true);
+		guardarMenuItem.setEnabled(true);
+		guardarComoMenuItem.setEnabled(true);
+	}
+
 	private void crearProyecto(TipoProyecto tipo){
 		// Creamos un formulario de creaccion de proyecto
 		formCrearProyecto ventanaCrear = new formCrearProyecto(tipo.toString());
@@ -847,6 +862,7 @@ public class formPrincipal {
 			//Actualizamos la vista
 			actualizarDescripcion();
 			actualizarAlternativas();
+			actualizarMenu();
 		}
 		ventanaCrear.dispose();
 	}
@@ -893,6 +909,10 @@ public class formPrincipal {
 		// Controlamos la selección
 	    if (seleccion == JFileChooser.APPROVE_OPTION) {
 	    	//File file = fileChooser.getSelectedFile();
+			//Actualizamos la vista
+			actualizarDescripcion();
+			actualizarAlternativas();
+			actualizarMenu();
 	    }
 	}
 
@@ -1014,8 +1034,7 @@ public class formPrincipal {
 		editarAlternativa.setVisible(true);
 
 		if(editarAlternativa.isFlagAceptar()){
-			// TODO si le ha dado a aceptar actualizamos info en la tabla
-			// y actualizamos la alternativa con su clon
+			// TODO ctualizamos la alternativa con su clon
 			// alternativa = editarAlternativa.getAlternativa();
 			modeloTabla.setValueAt(alternativa.getId(), indice, 0);
 			modeloTabla.setValueAt(alternativa.getValorTotal(),indice,1);
