@@ -96,6 +96,7 @@ public class formAlternativa extends JDialog{
 		this.setSize(500, 500);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Alternativas de realización");
+		actualizarVista();
 	}
 
 	private JDialog getDialog() {
@@ -566,23 +567,59 @@ public class formAlternativa extends JDialog{
 	private void valorarAlternativa() {
 
 		alternativa.calcularValorTotal();
+		valoracionTextField.setText(String.valueOf(alternativa.getValorTotal()));
 	}
 
 	private boolean comprobarValorados(){
 		// Comprobamos si todos los efecto están valorados
 		int i = 0;
 		boolean valorados = true;
-		while (valorados&&i<alternativa.getEfectos().size())
-		{
-			Efecto efecto = alternativa.getEfectos().get(i);
+		if (i>0){
+			while (valorados&&i<alternativa.getEfectos().size())
+			{
+				Efecto efecto = alternativa.getEfectos().get(i);
 
-			// Si el efecto no se ha valorado
-			if (efecto.getValCualitativa()==null || efecto.getValCuantitativa()==null){
-				valorados = false;
+				// Si el efecto no se ha valorado
+				if (efecto.getValCualitativa()==null || efecto.getValCuantitativa()==null){
+					valorados = false;
+				}
+				i++;
 			}
-			i++;
+		}else{
+			valorados = false;
 		}
 		return valorados;
+	}
+
+	private void actualizarVista(){
+		for(int i=0;i<alternativa.getEfectos().size();i++){
+			// Mostramos la información del efecto
+		    Efecto efecto = alternativa.getEfectos().get(i);
+		    String id = efecto.getId();
+		    String juicio = efecto.getJuicio().toString();
+		    String cualitativa = "";
+		    if (efecto.getValCualitativa()!=null){
+		    	cualitativa = String.valueOf(efecto.getValCualitativa().getIncidencia());
+		    }
+		    String cuantitativa = "";
+		    if (efecto.getValCuantitativa()!=null){
+		    	cuantitativa = String.valueOf(efecto.getValCuantitativa().getIndicador());
+		    }
+		    String total = "";
+		    String caracter = "";
+		    if(efecto.getValCualitativa()!=null&&efecto.getValCuantitativa()!=null){
+		    	total = String.valueOf(efecto.getValorTotal());
+		    	caracter = efecto.getCaracter().toString();
+		    }
+			String[] datos = {id,"",cualitativa,cuantitativa,total,caracter};
+			modeloTabla.addRow(datos);
+		}
+
+		// Comprobamos si todos los efectos están valorados
+		if(comprobarValorados()){
+			valorarButton.setEnabled(true);
+			valoracionTextField.setText(String.valueOf(alternativa.getValorTotal()));
+		}
 	}
 
 	//TODO A eliminar en un futuro

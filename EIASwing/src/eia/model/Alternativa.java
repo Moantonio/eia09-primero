@@ -135,8 +135,12 @@ public class Alternativa {
 					efectos.get(i).calcularValorTotal();
 				valor += efectos.get(i).getValorTotal();
 			}
-			valorTotal = valor;
+			valorTotal = redondear(valor,3);
 		}
+	}
+
+	private double redondear(double nD, int nDec){
+	  return Math.round(nD*Math.pow(10,nDec))/Math.pow(10,nDec);
 	}
 
 }
