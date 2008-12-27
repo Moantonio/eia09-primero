@@ -697,6 +697,7 @@ public class formPrincipal {
 			modificarButton = new JButton();
 			modificarButton.setBounds(new Rectangle(322, 175, 94, 17));
 			modificarButton.setText("Modificar");
+			modificarButton.setEnabled(false);
 			modificarButton.setBackground(Color.white);
 			modificarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -802,6 +803,7 @@ public class formPrincipal {
 		paisTextField.setText(proyecto.getInformacion().getPais());
 		fechaTextField.setText(String.valueOf(proyecto.getInformacion().getFecha().getTime()));
 		vidaUtilTextField.setText(String.valueOf(proyecto.getInformacion().getVidaUtil()));
+		modificarButton.setEnabled(true);
 	}
 
 	private void actualizarAlternativas(){
