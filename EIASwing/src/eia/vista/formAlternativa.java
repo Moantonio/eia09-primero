@@ -522,7 +522,24 @@ public class formAlternativa extends JDialog{
 
 			// Eliminamos de la tabla
 			DefaultMutableTreeNode nodo = (DefaultMutableTreeNode)accionesTree.getLastSelectedPathComponent();
+			Accion accion = (Accion) nodo.getUserObject();
 			alternativa.getAcciones().removeNodeFromParent(nodo);
+			//Eliminamos los efectos que tengan esa acción
+			eliminarEfectos(accion);
+		}
+	}
+
+	private void eliminarEfectos(Accion accion) {
+		// Recorremos la lista de efectos
+		for (int i=0;i<alternativa.getEfectos().size();i++){
+			Efecto efecto = alternativa.getEfectos().get(i);
+			// Si el efecto tiene la acción lo eliminamos
+			if(efecto.getAccion() == accion){
+			    // Elimina el efecto de la tabla
+				modeloTabla.removeRow(i);
+				// Eliminamos el efecto de la alternativa
+				alternativa.getEfectos().remove(i);
+			}
 		}
 	}
 
