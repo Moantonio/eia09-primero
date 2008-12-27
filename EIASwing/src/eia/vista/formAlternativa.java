@@ -377,7 +377,7 @@ public class formAlternativa extends JDialog{
 			aceptarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					flagAceptar = true;
-					setVisible(false);
+					setVisible(false);			
 				}
 			});
 		}

@@ -582,7 +582,7 @@ public class formPrincipal {
 			alternativasTable.setEnabled(false);
 			alternativasTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			alternativasTable.setRowSelectionAllowed(true);
-			alternativasTable.getTableHeader().setReorderingAllowed(false);
+			alternativasTable.getTableHeader().setReorderingAllowed(false);			
 
 
 			TableColumnModel col = alternativasTable.getColumnModel();

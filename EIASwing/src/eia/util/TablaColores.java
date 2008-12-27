@@ -26,6 +26,7 @@ public class TablaColores extends JTable{
 	    } else {
 	        component.setBackground(Color.RED);
 	    }
+
 	    return component;
 	}
 
