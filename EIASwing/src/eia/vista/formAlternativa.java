@@ -539,6 +539,7 @@ public class formAlternativa extends JDialog{
 				modeloTabla.removeRow(i);
 				// Eliminamos el efecto de la alternativa
 				alternativa.getEfectos().remove(i);
+				i--;
 			}
 		}
 	}
