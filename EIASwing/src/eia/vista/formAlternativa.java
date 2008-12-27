@@ -377,7 +377,7 @@ public class formAlternativa extends JDialog{
 			aceptarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					flagAceptar = true;
-					setVisible(false);			
+					setVisible(false);
 				}
 			});
 		}
@@ -495,9 +495,7 @@ public class formAlternativa extends JDialog{
 		if (editarEfecto.isFlagAceptar()){
 			// TODO Seteamos los cambios cogiendo el clon
 			// efecto = editarEfecto.getEfecto();
-			JOptionPane.showConfirmDialog (null,
-					"Aceptado");
-			
+
 			modeloTabla.setValueAt(efecto.getJuicio(), indice, 1);
 			if(efecto.getValCualitativa()!= null)
 				modeloTabla.setValueAt(efecto.getValCualitativa().getIncidencia(), indice, 2);
@@ -505,7 +503,7 @@ public class formAlternativa extends JDialog{
 				modeloTabla.setValueAt(efecto.getValCuantitativa().getMagnitudImpacto(), indice, 3);
 			modeloTabla.setValueAt(efecto.getValorTotal(), indice, 4);
 			modeloTabla.setValueAt(efecto.getCaracter(), indice, 5);
-			
+
 		}
 		editarEfecto.dispose();
 	}

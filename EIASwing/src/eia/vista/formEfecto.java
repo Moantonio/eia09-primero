@@ -1084,8 +1084,7 @@ public class formEfecto extends JDialog {
 
 		 // Procedemos a realizar el cálculo de la valoración
 		 valoracion.calcularValoracion();
-
-		 getEfecto().setValCualitativa(valoracion);
+         getEfecto().setValCualitativa(valoracion);
 
 		 // Actualizamos la vista
 		 actualizarValoraciones();
