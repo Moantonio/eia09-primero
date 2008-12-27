@@ -75,6 +75,7 @@ public class formAlternativa extends JDialog{
 	//Variables del modelo
 	private Alternativa alternativa;
 	private DefaultTreeModel factores;
+	private boolean valorada = false;
 
 	public formAlternativa(Alternativa alt, DefaultTreeModel fact) {
 		super();
@@ -436,10 +437,6 @@ public class formAlternativa extends JDialog{
 				!factoresTree.isSelectionEmpty()&&
 				alternativa.getAcciones().isLeaf(accionesTree.getLastSelectedPathComponent())&&
 				factores.isLeaf(factoresTree.getLastSelectedPathComponent())){
-				//si hay alguna acción y algun factor seleccionados
-				//y la acción y el factor son hojas de sus árboles
-				//TODO accion y factor... elegir los que corresponden a los seleccionados
-
 				Accion accion = (Accion)((DefaultMutableTreeNode)accionesTree.getLastSelectedPathComponent()).getUserObject();
 				Factor factor = (Factor)((DefaultMutableTreeNode)factoresTree.getLastSelectedPathComponent()).getUserObject();
 				formCrearEfecto formNuevoEfecto = new formCrearEfecto(accion.getId(), factor.getId());
@@ -461,7 +458,9 @@ public class formAlternativa extends JDialog{
 				    // Lo añadimos a la tabla
 					String[] datos = {id,"","","","",""};
 					modeloTabla.addRow(datos);
-
+					valorarButton.setEnabled(false);
+					valoracionTextField.setText("");
+					valorada = false;
 				}
 				formNuevoEfecto.dispose();
 			}
@@ -505,6 +504,8 @@ public class formAlternativa extends JDialog{
 			}
 
 			// Comprobamos si todos los efectos están valorados
+			valorada = false;
+			valoracionTextField.setText("");
 			if(comprobarValorados()){
 				valorarButton.setEnabled(true);
 			}
@@ -518,8 +519,6 @@ public class formAlternativa extends JDialog{
 				"Eliminar acción",
 				JOptionPane.YES_NO_OPTION);
 		if (seleccion==JOptionPane.YES_OPTION){
-			//TODO eliminar la acción del arbol de alternativas
-
 			// Eliminamos de la tabla
 			DefaultMutableTreeNode nodo = (DefaultMutableTreeNode)accionesTree.getLastSelectedPathComponent();
 			Accion accion = (Accion) nodo.getUserObject();
@@ -545,8 +544,6 @@ public class formAlternativa extends JDialog{
 	}
 
 	private void anadirAccion(){
-		// TODO añadir la accion real al arbol de acciones
-		// creo q deberia ser un arbol del tipo DefaultMutableTreeNode
 		DefaultMutableTreeNode padre = (DefaultMutableTreeNode)accionesTree.getLastSelectedPathComponent();
 		formCrearAccion formNuevaAccion = new formCrearAccion(null, padre.toString());
 		Point posActual = getDialog().getLocation();
@@ -566,6 +563,7 @@ public class formAlternativa extends JDialog{
 
 	private void valorarAlternativa() {
 
+		valorada = true;
 		alternativa.calcularValorTotal();
 		valoracionTextField.setText(String.valueOf(alternativa.getValorTotal()));
 	}
@@ -573,9 +571,10 @@ public class formAlternativa extends JDialog{
 	private boolean comprobarValorados(){
 		// Comprobamos si todos los efecto están valorados
 		int i = 0;
+		int size = alternativa.getEfectos().size();
 		boolean valorados = true;
-		if (i>0){
-			while (valorados&&i<alternativa.getEfectos().size())
+		if (size>0){
+			while (valorados&&i<size)
 			{
 				Efecto efecto = alternativa.getEfectos().get(i);
 
@@ -617,6 +616,7 @@ public class formAlternativa extends JDialog{
 
 		// Comprobamos si todos los efectos están valorados
 		if(comprobarValorados()){
+			valorada = true;
 			valorarButton.setEnabled(true);
 			valoracionTextField.setText(String.valueOf(alternativa.getValorTotal()));
 		}
@@ -665,6 +665,10 @@ public class formAlternativa extends JDialog{
 				application.getDialog().setVisible(true);
 			}
 		});
+	}
+
+	public boolean isValorada() {
+		return valorada;
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="4,11"
