@@ -499,8 +499,10 @@ public class formAlternativa extends JDialog{
 					"Aceptado");
 			
 			modeloTabla.setValueAt(efecto.getJuicio(), indice, 1);
-			modeloTabla.setValueAt(efecto.getValCuantitativa(), indice, 2);
-			modeloTabla.setValueAt(efecto.getValCuantitativa(), indice, 3);
+			if(efecto.getValCualitativa()!= null)
+				modeloTabla.setValueAt(efecto.getValCualitativa().getIncidencia(), indice, 2);
+			if(efecto.getValCuantitativa()!= null)
+				modeloTabla.setValueAt(efecto.getValCuantitativa().getMagnitudImpacto(), indice, 3);
 			modeloTabla.setValueAt(efecto.getValorTotal(), indice, 4);
 			modeloTabla.setValueAt(efecto.getCaracter(), indice, 5);
 			
