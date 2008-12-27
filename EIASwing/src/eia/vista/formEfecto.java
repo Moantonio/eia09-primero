@@ -1093,17 +1093,20 @@ public class formEfecto extends JDialog {
 
 	private void calcularCuantitativa(){
 
+		boolean error = false;
 		// Obtenemos el indicador
 		double indicador = 0;
 		try{
 		indicador = Double.parseDouble(indicadorTextField.getText());
 		}catch(Exception e){
+			error = true;
 			JOptionPane.showMessageDialog(this, "Valor de indicador incorrecto o no indicado. Sólo se permiten caracteres numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
 		};
 		// Obtenemos el valor max
 		double indicadorMax = 0;
 		try{indicadorMax = Double.parseDouble(valormaxTextField.getText());
 		}catch(Exception e){
+			error = true;
 			JOptionPane.showMessageDialog(this, "Valor máximo de indicador incorrecto o no indicado. Sólo se permiten caracteres numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
 		};
 
@@ -1111,6 +1114,7 @@ public class formEfecto extends JDialog {
 		double indicadorMin = 0;
 		try{indicadorMin = Double.parseDouble(valorMinTextField.getText());
 		}catch(Exception e){
+			error = true;
 			JOptionPane.showMessageDialog(this, "Valor mínimo de indicador incorrecto o no indicado. Sólo se permiten caracteres numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
 		};
 
@@ -1121,31 +1125,34 @@ public class formEfecto extends JDialog {
 				opc = Double.parseDouble(opcionTextField.getText());
 			}
 		}catch(Exception e){
+			error = true;
 			JOptionPane.showMessageDialog(this, "Valor Umbral/a incorrecto. Sólo se permiten caracteres numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
 		};
 
-		// Creamos la valoración cuantitativa y se la asignamos al proyecto
-		ValoracionCuantitativa valoracion = new ValoracionCuantitativa(indicador, indicadorMax, indicadorMin);
-		efecto.setValCuantitativa(valoracion);
-		// Tomamos el número de función de transformación a aplicar
-		int funcion = fTransformacionComboBox.getSelectedIndex();
-		// Calculamos
-		valoracion.calcularValoracion(funcion, opc);
+		if (!error){
+			// Creamos la valoración cuantitativa y se la asignamos al proyecto
+			ValoracionCuantitativa valoracion = new ValoracionCuantitativa(indicador, indicadorMax, indicadorMin);
+			efecto.setValCuantitativa(valoracion);
+			// Tomamos el número de función de transformación a aplicar
+			int funcion = fTransformacionComboBox.getSelectedIndex();
+			// Calculamos
+			valoracion.calcularValoracion(funcion, opc);
 
-		// Generamos la gráfica
-		XYSeries series = new XYSeries("Evolucion");
-		for (double x = indicadorMin; x <= indicadorMax; x++){
-			double y = valoracion.calcularFuncion(funcion,x,indicadorMax,indicadorMin,opc);
-			series.add(x,y);
+			// Generamos la gráfica
+			XYSeries series = new XYSeries("Evolucion");
+			for (double x = indicadorMin; x <= indicadorMax; x++){
+				double y = valoracion.calcularFuncion(funcion,x,indicadorMax,indicadorMin,opc);
+				series.add(x,y);
+			}
+			XYDataset datos = new XYSeriesCollection(series);
+			JFreeChart chart =
+				ChartFactory.createXYLineChart("Nombre gráfica","X","Y",datos,PlotOrientation.VERTICAL,false,false,true);
+			grafica = chart.createBufferedImage(450,250);
+
+			// Actualizamos la vista
+			graficoButton.setEnabled(true);
+			actualizarValoraciones();
 		}
-		XYDataset datos = new XYSeriesCollection(series);
-		JFreeChart chart =
-			ChartFactory.createXYLineChart("Nombre gráfica","X","Y",datos,PlotOrientation.VERTICAL,false,false,true);
-		grafica = chart.createBufferedImage(450,250);
-
-		// Actualizamos la vista
-		graficoButton.setEnabled(true);
-		actualizarValoraciones();
 	}
 
 	private void mostrarAsistente(){
@@ -1180,8 +1187,8 @@ public class formEfecto extends JDialog {
 			cualitativaTextField.setText(incidencia);
 			incidenciaTextField.setText(incidencia);
 		}else{
-			cualitativaTextField.setText("---");
-			incidenciaTextField.setText("---");
+			cualitativaTextField.setText("No valorado");
+			incidenciaTextField.setText("No valorado");
 		}
 
 		// Valoración cuantitativa
@@ -1190,8 +1197,8 @@ public class formEfecto extends JDialog {
 			cuantitativaTextField.setText(magnitud);
 			magnitudTextField.setText(magnitud);
 		}else{
-			cuantitativaTextField.setText("---");
-			magnitudTextField.setText("---");
+			cuantitativaTextField.setText("No valorado");
+			magnitudTextField.setText("No valorado");
 		}
 
 		// Si tenemos la valoración total
@@ -1201,7 +1208,7 @@ public class formEfecto extends JDialog {
 			// El caracter se puede editar
 			caracterComboBox.setEnabled(true);
 		}else{
-			valoracionTextField.setText("---");
+			valoracionTextField.setText("No valorado");
 			// El caracter no se puede editar
 			caracterComboBox.setEditable(false);
 		}
