@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -577,12 +578,13 @@ public class formPrincipal {
 			modeloTabla.addColumn("Alternativa");
 			modeloTabla.addColumn("Valoración");
 
+
 			alternativasTable.setRowSelectionAllowed(true);
 			alternativasTable.setShowVerticalLines(false);
 			alternativasTable.setEnabled(false);
 			alternativasTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			alternativasTable.setRowSelectionAllowed(true);
-			alternativasTable.getTableHeader().setReorderingAllowed(false);			
+			alternativasTable.getTableHeader().setReorderingAllowed(false);
 
 
 			TableColumnModel col = alternativasTable.getColumnModel();
@@ -961,6 +963,7 @@ public class formPrincipal {
 			//Refrescar la lista
 			String[] fila = {nombre,""};
 			modeloTabla.addRow(fila);
+
 			//Lo ponemos en el menú modificar
 			JMenuItem alternativaModItem = new JMenuItem();
 			alternativaModItem.setText(nombre);
