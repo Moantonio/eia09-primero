@@ -27,7 +27,7 @@
 					<li><a href="">Abrir </a></li>
 					<li><a href="">Guardar </a></li>
 					<li><a href="">Guardar como... </a></li>
-					<li><a href="../pages/proyecto/menuProyecto.jsp">Descripcion </a></li>
+					<li><a href="eia/showProjectDescription.action">Descripcion </a></li>
 					<li><a href="">Salir </a></li>		 
 				</ul>
 			</li>
@@ -35,7 +35,7 @@
 		    <li><a href=""> Alternativas</a>
 			   <ul>
 					<!--Ahora un submenu nivel 1 para Alternativas con sus opciones -->
-					<li><a href="../pages/alternativa/alternativaInfo.jsp">Añadir</a></li>
+					<li><a href="eia/showAlternativaInfo.action">Añadir</a></li>
 					<li><a href="">Modificar </a></li>
 					<ul>
 							<!-- Ponemos un submenu nivel 2 para Modificar -->
