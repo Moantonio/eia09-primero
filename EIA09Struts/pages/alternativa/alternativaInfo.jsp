@@ -48,6 +48,13 @@
 			gridEfectos.init();
 			gridEfectos.addRow(1, "Efecto1,valjuicio1,valcuant1,valcual1,total1,caracter1",gridEfectos.getRowsNum());
 	}
+	
+	function abrirVentana (pagina, w, h, t, l) {
+		var opciones1="toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, width=";
+		var opciones2 = w + ", height=" + h + ", top=" + t + ", left=" + l;
+		window.open(pagina,"",opciones1 + opciones2);
+	}
+
 	</script>
 </head>
 <body onload="doInitGridAcciones(); doInitGridFactores();doInitGridEfectos();">
@@ -60,9 +67,9 @@
 		</div>
 		<div  style="height:10px;"></div>
 		<div id="botonesAccion">
-			<input type="button" value="Añadir"/>
-			<input type="button" value="Editar"/>
-			<input type="button" value="Eliminar"/>
+			<input type="button" value="Añadir" onclick=""/>
+			<input type="button" value="Editar" onclick=""/>
+			<input type="button" value="Eliminar" onclick=""/>
 		</div>	
 		<div id="headEfectos">
 			<h3>Efectos</h3>
@@ -71,8 +78,8 @@
 			<div id="gridefectos"/>
 		</div>
 		<div id="botonesEfectos">
-			<input type="button" value="Editar"/>
-			<input type="button" value="Eliminar"/>
+			<input type="button" value="Editar" onclick="abrirVentana('../../pages/alternativa/efectoInfo.jsp',850,500,85,140)"/>
+			<input type="button" value="Eliminar" onclick=""/>
 		</div>
 		<div id="boxValTotal">
 			<s:label name="labelValTotal" value="Valoracion Total: "/>
@@ -83,7 +90,7 @@
 			<input type="button" value="Cancelar"/>
 		</div>
 		<div id="contenedorBoton">
-			<a href="">Crear Efecto</a>
+			<a href="javascript:abrirVentana('../../pages/alternativa/crearEfecto.jsp',700,325,85,140)">Crear Efecto</a>
 		</div>
 		<div id="contenedorFactores">
 			<div id="gridfactores"/>			
