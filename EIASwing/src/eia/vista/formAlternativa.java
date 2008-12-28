@@ -21,6 +21,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
@@ -187,7 +188,7 @@ public class formAlternativa extends JDialog{
 	private JButton getAnadirButton() {
 		if (AnadirButton == null) {
 			AnadirButton = new JButton();
-			AnadirButton.setBounds(new Rectangle(9, 160, 69, 20));
+			AnadirButton.setBounds(new Rectangle(8, 160, 119, 20));
 			AnadirButton.setPreferredSize(new Dimension(71, 26));
 			AnadirButton.setFont(new Font("Dialog", Font.BOLD, 10));
 			AnadirButton.setText("Añadir");
@@ -202,12 +203,15 @@ public class formAlternativa extends JDialog{
 		return AnadirButton;
 	}
 
+	/**
+	 * @return
+	 */
 	private JButton getEliminarButton() {
 		if (eliminarButton == null) {
 			eliminarButton = new JButton();
 			eliminarButton.setText("Eliminar");
 			eliminarButton.setFont(new Font("Dialog", Font.BOLD, 10));
-			eliminarButton.setBounds(new Rectangle(161, 160, 77, 20));
+			eliminarButton.setBounds(new Rectangle(120, 160, 119, 20));
 			eliminarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (!accionesTree.isSelectionEmpty()){
@@ -298,7 +302,7 @@ public class formAlternativa extends JDialog{
 
 			efectosTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			efectosTable.setLocation(new Point(2, 20));
-			efectosTable.setSize(new Dimension(434, 80));
+			efectosTable.setSize(new Dimension(450, 80));
 			efectosTable.setShowVerticalLines(false);
 			efectosTable.getTableHeader().setReorderingAllowed(false);
 			TableColumnModel col = efectosTable.getColumnModel();
@@ -307,11 +311,11 @@ public class formAlternativa extends JDialog{
 			col.getColumn(2).setResizable(false);
 			col.getColumn(3).setResizable(false);
 			col.getColumn(4).setResizable(false);
-			col.getColumn(0).setPreferredWidth(200);
-			col.getColumn(1).setPreferredWidth(60);
+			col.getColumn(0).setPreferredWidth(150);
+			col.getColumn(1).setPreferredWidth(100);
 			col.getColumn(2).setPreferredWidth(80);
 			col.getColumn(3).setPreferredWidth(90);
-			col.getColumn(4).setPreferredWidth(50);
+			col.getColumn(4).setPreferredWidth(40);
 		}
 		return efectosTable;
 	}
@@ -622,7 +626,7 @@ public class formAlternativa extends JDialog{
 		}
 	}
 
-	/*
+
 	//TODO A eliminar en un futuro
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -667,6 +671,6 @@ public class formAlternativa extends JDialog{
 			}
 		});
 	}
-	*/
+
 
 }  //  @jve:decl-index=0:visual-constraint="4,11"
