@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!ELEMENT alternativaProyEIA (nombre, listaAcciones, listaEfectos?, valorTotalAlternativa?)>
+<!ELEMENT alternativaProyEIA (nombre, listaAcciones, listaEfectos?, valorTotalAlternativa?, valorada)>
 <!ELEMENT nombre (#PCDATA)>
 	<!ATTLIST nombre
-	generica (true|false) "false"
-	>	
+	generica (true|false) "false">	
 <!ELEMENT listaAcciones (accion)+>
 	<!ELEMENT accion (nombreAccion,listaAcciones?)>
 	<!ELEMENT nombreAccion (#PCDATA)>
@@ -37,7 +36,7 @@
 		<!ELEMENT incidencia (#PCDATA)>
 	
 	<!ELEMENT valorTotal (#PCDATA)>
-	
+	<!ELEMENT valorada (#PCDATA)>
 <!ELEMENT valorTotalAlternativa (#PCDATA)>				
 
 
