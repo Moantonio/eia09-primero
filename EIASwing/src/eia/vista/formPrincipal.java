@@ -43,6 +43,7 @@ import eia.util.FiltreSimple;
 import eia.util.TablaColores;
 import eia.util.TablaNoEditable;
 import eia.util.TipoProyecto;
+import eia.util.xml.XMLAlternativa;
 import eia.util.xml.XMLProyecto;
 
 public class formPrincipal {
@@ -994,47 +995,25 @@ public class formPrincipal {
 		if(crearAlternativa.isFlagAceptar()){
 			String nombre = crearAlternativa.getNombreAlternativa();
 
-			/*
-			String filename;
-			if (proyecto.getTipo() == TipoProyecto.AUTOVÍA){
-				filename = ".\\plantillas\\alternativaVia.xml";
-			} else if(proyecto.getTipo() == TipoProyecto.PRESA){
-				filename = ".\\plantillas\\alternativaPresa.xml";
-			} else if(proyecto.getTipo() == TipoProyecto.PUERTODEPORTIVO){
-				filename = ".\\plantillas\\alternativaPuerto.xml";
-			} else if(proyecto.getTipo() == TipoProyecto.VERTEDERO){
-				filename = ".\\plantillas\\alternativaVertedero.xml";
+			final Alternativa alternativa;
+			if (proyecto.getTipo() != TipoProyecto.PERSONALIZADO){
+				String filename = null;
+				if (proyecto.getTipo() == TipoProyecto.AUTOVÍA){
+					filename = ".\\plantillas\\alternativaVia.xml";
+				} else if(proyecto.getTipo() == TipoProyecto.PRESA){
+					filename = ".\\plantillas\\alternativaPresa.xml";
+				} else if(proyecto.getTipo() == TipoProyecto.PUERTODEPORTIVO){
+					filename = ".\\plantillas\\alternativaPuerto.xml";
+				} else if(proyecto.getTipo() == TipoProyecto.VERTEDERO){
+					filename = ".\\plantillas\\alternativaVertedero.xml";
+				}
+				XMLAlternativa xmlAlt = new XMLAlternativa(proyecto,".\\plantillas\\alternativaProyEIA.dtd");
+				alternativa = (Alternativa)xmlAlt.leer(filename);
+			}else{
+				alternativa = new Alternativa();
 			}
-			XMLAlternativa xmlAlt = new XMLAlternativa(proyecto,".\\plantillas\\alternativaProyEIA.dtd");
-			final Alternativa alternativa = (Alternativa)xmlAlt.leer(filename);
 			alternativa.setId(nombre);
-			*/
 
-			//Crear alternativa con ese nombre
-			final Alternativa alternativa = new Alternativa(nombre);
-			//TODO Cargamos el arbol de acciones para ese tipo de proyecto
-			DefaultTreeModel acciones = null;
-
-			//
-			Accion accionBisAbuelo = new Accion("Factor Bisabuelo");
-			Accion accionAbuelo = new Accion("Factor abuelo");
-			Accion accionAbuela = new Accion("Factor abuela");
-			Accion accionHijo = new Accion("Factor hijo");
-			Accion accionHija = new Accion("Factor hija");
-			DefaultMutableTreeNode nodoBisAbuelo = new DefaultMutableTreeNode(accionBisAbuelo);
-			DefaultMutableTreeNode nodoAbuelo = new DefaultMutableTreeNode(accionAbuelo);
-			DefaultMutableTreeNode nodoAbuela = new DefaultMutableTreeNode(accionAbuela);
-			DefaultMutableTreeNode nodoHija = new DefaultMutableTreeNode(accionHija);
-			DefaultMutableTreeNode nodoHijo = new DefaultMutableTreeNode(accionHijo);
-			acciones = new DefaultTreeModel(nodoBisAbuelo);
-			acciones.insertNodeInto(nodoAbuelo, nodoBisAbuelo, 0);
-			acciones.insertNodeInto(nodoAbuela, nodoBisAbuelo, 1);
-			acciones.insertNodeInto(nodoHijo, nodoAbuelo, 0);
-			acciones.insertNodeInto(nodoHija, nodoAbuela, 0);
-			//
-
-
-			alternativa.setAcciones(acciones);
 			// La añadimos al proyecto
 			proyecto.getAlternativas().add(alternativa);
 			//Refrescar la lista

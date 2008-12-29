@@ -1,7 +1,10 @@
 package eia.model;
 
 import java.util.ArrayList;
+
+import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
 
 
 /**
@@ -47,7 +50,8 @@ public class Alternativa implements Cloneable{
 	public Alternativa(){
 
 		id ="";
-		acciones = null;
+		DefaultMutableTreeNode nodo = new DefaultMutableTreeNode();
+		acciones = new DefaultTreeModel(nodo);
 		efectos = new ArrayList<Efecto>();
 		valorTotal = 0;
 		valorada = false;
@@ -60,7 +64,8 @@ public class Alternativa implements Cloneable{
 	public Alternativa(String id){
 
 		this.id = id;
-		acciones = null;
+		DefaultMutableTreeNode nodo = new DefaultMutableTreeNode();
+		acciones = new DefaultTreeModel(nodo);
 		efectos = new ArrayList<Efecto>();
 		valorTotal = 0;
 		valorada = false;
