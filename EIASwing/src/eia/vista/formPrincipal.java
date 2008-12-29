@@ -870,8 +870,8 @@ public class formPrincipal {
 			info.setNombre(nombre);
 			info.setDescripcion(descripcion);
 
-			XMLProyecto xmlProy = new XMLProyecto(".\\src\\eia\\util\\xml\\plantillas\\proyectoEIA.dtd");
-			proyecto = (Proyecto)xmlProy.leer(".\\src\\eia\\util\\xml\\plantillas\\proyectoVacio.xml");
+			XMLProyecto xmlProy = new XMLProyecto(".\\plantillas\\proyectoEIA.dtd");
+			proyecto = (Proyecto)xmlProy.leer(".\\plantillas\\proyectoVacio.xml");
 			proyecto.setInformacion(info);
 			proyecto.setTipo(tipo);
 
@@ -927,7 +927,7 @@ public class formPrincipal {
 		if (seleccion == JFileChooser.APPROVE_OPTION) {
 			/*
 			ficheroProyecto = fileChooser.getSelectedFile();
-			XMLProyecto xmlProy = new XMLProyecto("..\\util\\xml\\plantillas\\proyectoEIA.dtd");
+			XMLProyecto xmlProy = new XMLProyecto(".\\plantillas\\proyectoEIA.dtd");
 			proyecto = (Proyecto)xmlProy.leer(ficheroProyecto.getAbsolutePath());
 			*/
 
@@ -946,7 +946,7 @@ public class formPrincipal {
 
 	private void guardarProyecto() {
 		if (ficheroProyecto!=null){
-			//XMLProyecto xmlProy = new XMLProyecto("..\\util\\xml\\plantillas\\proyectoVacio.xml");
+			//XMLProyecto xmlProy = new XMLProyecto(".\\plantillas\\proyectoEIA.dtd");
 			//xmlProy.escribir(proyecto,ficheroProyecto.getAbsolutePath());
 		}
 	}
@@ -964,7 +964,7 @@ public class formPrincipal {
 		if (seleccion == JFileChooser.APPROVE_OPTION) {
 			/*
 			ficheroProyecto = fileChooser.getSelectedFile();
-			XMLProyecto xmlProy = new XMLProyecto("..\\util\\xml\\plantillas\\proyectoVacio.xml");
+			XMLProyecto xmlProy = new XMLProyecto(".\\plantillas\\proyectoEIA.dtd");
 			xmlProy.escribir(proyecto,ficheroProyecto.getAbsolutePath());
 			*/
 			guardarMenuItem.setEnabled(true);
@@ -997,15 +997,15 @@ public class formPrincipal {
 			/*
 			String filename;
 			if (proyecto.getTipo() == TipoProyecto.AUTOVÍA){
-				filename = "..\\util\\xml\\plantillas\\alternativaVia.xml";
+				filename = ".\\plantillas\\alternativaVia.xml";
 			} else if(proyecto.getTipo() == TipoProyecto.PRESA){
-				filename = "..\\util\\xml\\plantillas\\alternativaPresa.xml";
+				filename = ".\\plantillas\\alternativaPresa.xml";
 			} else if(proyecto.getTipo() == TipoProyecto.PUERTODEPORTIVO){
-				filename = "..\\util\\xml\\plantillas\\alternativaPuerto.xml";
+				filename = ".\\plantillas\\alternativaPuerto.xml";
 			} else if(proyecto.getTipo() == TipoProyecto.VERTEDERO){
-				filename = "..\\util\\xml\\plantillas\\alternativaVertedero.xml";
+				filename = ".\\plantillas\\alternativaVertedero.xml";
 			}
-			XMLAlternativa xmlAlt = new XMLAlternativa(proyecto,"..\\util\\xml\\plantillas\\alternativaProyEIA.dtd");
+			XMLAlternativa xmlAlt = new XMLAlternativa(proyecto,".\\plantillas\\alternativaProyEIA.dtd");
 			final Alternativa alternativa = (Alternativa)xmlAlt.leer(filename);
 			alternativa.setId(nombre);
 			*/
