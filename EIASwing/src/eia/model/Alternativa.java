@@ -14,7 +14,7 @@ import javax.swing.tree.DefaultTreeModel;
 /**
  * Clase que implementa una alternativa de realización de un proyecto.
  */
-public class Alternativa {
+public class Alternativa implements Cloneable{
 
 	/**
 	 * Nombre de la alternativa de realización.
@@ -154,5 +154,17 @@ public class Alternativa {
 	public void setValorada(boolean valorada) {
 		this.valorada = valorada;
 	}
+
+    public Object clone(){
+        Object copia = null;
+        try{
+            copia = super.clone();
+        }catch(CloneNotSupportedException ex){
+            System.out.println("Imposible duplicar");
+        }
+        ((Alternativa)copia).id = new String(this.id);
+        ((Alternativa)copia).efectos = (ArrayList<Efecto>) this.efectos.clone();
+        return copia;
+    }
 
 }

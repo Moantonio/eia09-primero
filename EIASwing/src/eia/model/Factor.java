@@ -86,7 +86,7 @@ public class Factor implements Cloneable {
         }catch(CloneNotSupportedException ex){
             System.out.println("Imposible duplicar");
         }
-        ((Factor)copia).id = new String(id);
+        ((Factor)copia).id = new String(this.id);
         return copia;
     }
 }

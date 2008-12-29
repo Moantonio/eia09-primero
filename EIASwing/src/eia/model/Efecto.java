@@ -13,7 +13,7 @@ import eia.util.ValorJuicio;
 /**
  * Clase que implementa un efecto/impacto ambiental.
  */
-public class Efecto {
+public class Efecto implements Cloneable {
 
 	/**
 	 * Acción asociada al efecto/impacto.
@@ -282,4 +282,22 @@ public class Efecto {
 	{
 	  return Math.round(nD*Math.pow(10,nDec))/Math.pow(10,nDec);
 	}
+
+    public Object clone(){
+        Object copia = null;
+        try{
+            copia = super.clone();
+        }catch(CloneNotSupportedException ex){
+            System.out.println("Imposible duplicar");
+        }
+        ((Efecto)copia).accion = this.accion;
+        ((Efecto)copia).factor = this.factor;
+        ((Efecto)copia).caracter = this.caracter;
+        ((Efecto)copia).descripcion = new String(this.descripcion);
+        ((Efecto)copia).id = new String(this.id);
+        ((Efecto)copia).juicio = this.juicio;
+        ((Efecto)copia).valCualitativa = (ValoracionCualitativa) this.valCualitativa.clone();
+        ((Efecto)copia).valCuantitativa = (ValoracionCuantitativa) this.valCuantitativa.clone();
+        return copia;
+    }
 }

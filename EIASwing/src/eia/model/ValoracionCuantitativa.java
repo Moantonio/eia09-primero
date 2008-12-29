@@ -11,7 +11,7 @@ package eia.model;
  * Clase que implementa la información para el análisis/valoración
  * cuantitativa de un efecto/impacto ambiental.
  */
-public class ValoracionCuantitativa {
+public class ValoracionCuantitativa implements Cloneable {
 
 	/**
 	 * Magnitud del efecto/impacto en unidades heterogéneas.
@@ -393,4 +393,13 @@ public class ValoracionCuantitativa {
 	  return Math.round(nD*Math.pow(10,nDec))/Math.pow(10,nDec);
 	}
 
+    public Object clone(){
+        Object copia = null;
+        try{
+            copia = super.clone();
+        }catch(CloneNotSupportedException ex){
+            System.out.println("Imposible duplicar");
+        }
+        return copia;
+    }
 }

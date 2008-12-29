@@ -63,7 +63,7 @@ public class Accion implements Cloneable {
         }catch(CloneNotSupportedException ex){
             System.out.println("Imposible duplicar");
         }
-        ((Accion)copia).id = new String(id);
+        ((Accion)copia).id = new String(this.id);
         return copia;
     }
 

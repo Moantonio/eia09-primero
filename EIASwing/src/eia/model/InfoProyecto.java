@@ -13,7 +13,7 @@ import java.util.Date;
  * Clase que implementa la ficha con la información
  * de un proyecto de estudio de impacto ambiental.
  */
-public class InfoProyecto {
+public class InfoProyecto implements Cloneable{
 
 	/**
 	 * Nombre del proyecto de estudio de impacto ambiental.
@@ -46,11 +46,6 @@ public class InfoProyecto {
 	private String provincia;
 
 	/**
-	 * Región de realización del proyecto de estudio de impacto ambiental.
-	 */
-	private String region;
-
-	/**
 	 * Pais de realización del proyecto de estudio de impacto ambiental.
 	 */
 	private String pais;
@@ -75,7 +70,6 @@ public class InfoProyecto {
 		this.autor = "";
 		this.poblacion = "";
 		this.provincia = "";
-		this.region = "";
 		this.pais = "";
 		this.fecha = new Date();
 		this.vidaUtil = 0;
@@ -95,7 +89,7 @@ public class InfoProyecto {
 	 * @param vidaUtil Vida útil del proyecto de estudio.
 	 */
 	public InfoProyecto(String nombre, String descripcion, String compania,
-			String autor, String poblacion, String provincia, String region, String pais,
+			String autor, String poblacion, String provincia, String pais,
 			Date fecha, int vidaUtil) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -103,7 +97,6 @@ public class InfoProyecto {
 		this.autor = autor;
 		this.poblacion = poblacion;
 		this.provincia = provincia;
-		this.region = region;
 		this.pais = pais;
 		this.fecha = fecha;
 		this.vidaUtil = vidaUtil;
@@ -253,19 +246,21 @@ public class InfoProyecto {
 		this.vidaUtil = vidaUtil;
 	}
 
-	/**
-	 * Mutador para el atributo 'region'.
-	 * @param region Región de realización del proyecto de estudio a asociar.
-	 */
-	public void setRegion(String region) {
-		this.region = region;
-	}
-
-	/**
-	 * Accesor para el atributo 'region'.
-	 * @return Región de realización del proyecto de estudio.
-	 */
-	public String getRegion() {
-		return region;
-	}
+    public Object clone(){
+        Object copia = null;
+        try{
+            copia = super.clone();
+        }catch(CloneNotSupportedException ex){
+            System.out.println("Imposible duplicar");
+        }
+        ((InfoProyecto)copia).autor = new String(this.autor);
+        ((InfoProyecto)copia).compania = new String(this.compania);
+        ((InfoProyecto)copia).descripcion = new String(this.descripcion);
+        ((InfoProyecto)copia).fecha = (Date) this.fecha.clone();
+        ((InfoProyecto)copia).nombre = new String(this.nombre);
+        ((InfoProyecto)copia).pais = new String(this.pais);
+        ((InfoProyecto)copia).poblacion = new String(this.poblacion);
+        ((InfoProyecto)copia).provincia = new String(this.provincia);
+        return copia;
+    }
 }

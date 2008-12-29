@@ -11,7 +11,7 @@ package eia.model;
  * Clase que implementa la información para el análisis/valoración
  * cualitativa completa de un efecto/impacto ambiental.
  */
-public class ValoracionCualitativa {
+public class ValoracionCualitativa implements Cloneable {
 
 	// Constantes para los distintos valores de los atributos
 	public static final int SIG_POSITIVO = 1;
@@ -473,4 +473,14 @@ public class ValoracionCualitativa {
 	{
 	  return Math.round(nD*Math.pow(10,nDec))/Math.pow(10,nDec);
 	}
+
+    public Object clone(){
+        Object copia = null;
+        try{
+            copia = super.clone();
+        }catch(CloneNotSupportedException ex){
+            System.out.println("Imposible duplicar");
+        }
+        return copia;
+    }
 }
