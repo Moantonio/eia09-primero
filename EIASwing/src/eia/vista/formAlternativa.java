@@ -80,7 +80,6 @@ public class formAlternativa extends JDialog{
 
 	public formAlternativa(Alternativa alt, DefaultTreeModel fact) {
 		super();
-		// TODO alternativa será clon de alt
 		alternativa = alt;
 		factores = fact;
 		initialize();
@@ -88,7 +87,6 @@ public class formAlternativa extends JDialog{
 
 	public formAlternativa(Frame owner, Alternativa alt,DefaultTreeModel fact) {
 		super(owner);
-		// TODO alternativa será clon de alt
 		alternativa = alt;
 		factores = fact;
 		initialize();
@@ -487,15 +485,19 @@ public class formAlternativa extends JDialog{
 	}
 
 	private void editarEfecto(Efecto efecto,int indice) {
-		formEfecto editarEfecto = new formEfecto(efecto);
+		formEfecto editarEfecto = new formEfecto((Efecto)efecto.clone());
 		Point posActual = getDialog().getLocation();
 		posActual.translate(20, 20);
 		editarEfecto.setLocation(posActual);
 		editarEfecto.setModal(true);
 		editarEfecto.setVisible(true);
 		if (editarEfecto.isFlagAceptar()){
-			// TODO Seteamos los cambios cogiendo el clon
-			// efecto = editarEfecto.getEfecto();
+			// Seteamos los cambios cogiendo el clon
+			efecto.setValCualitativa(editarEfecto.getEfecto().getValCualitativa());
+			efecto.setValCuantitativa(editarEfecto.getEfecto().getValCuantitativa());
+			efecto.setJuicio(editarEfecto.getEfecto().getJuicio());
+			efecto.setCaracter(editarEfecto.getEfecto().getCaracter());
+
 			modeloTabla.setValueAt(efecto.getJuicio(), indice, 1);
 			if(efecto.getValCualitativa()!= null)
 				modeloTabla.setValueAt(efecto.getValCualitativa().getIncidencia(), indice, 2);

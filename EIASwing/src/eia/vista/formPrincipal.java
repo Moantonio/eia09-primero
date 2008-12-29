@@ -1103,7 +1103,7 @@ public class formPrincipal {
 	}
 
 	private void editarAlternativa(Alternativa alternativa,int indice) {
-		formAlternativa editarAlternativa = new formAlternativa(getFramePrincipal(), alternativa, proyecto.getFactores());
+		formAlternativa editarAlternativa = new formAlternativa(getFramePrincipal(), (Alternativa)alternativa.clone(), proyecto.getFactores());
 		Point posActual = getFramePrincipal().getLocation();
 		posActual.translate(20, 20);
 		editarAlternativa.setLocation(posActual);
@@ -1111,8 +1111,10 @@ public class formPrincipal {
 		editarAlternativa.setVisible(true);
 
 		if(editarAlternativa.isFlagAceptar()){
-			// TODO ctualizamos la alternativa con su clon
-			// alternativa = editarAlternativa.getAlternativa();
+			// Actualizamos la alternativa con su clon
+			alternativa.setEfectos(editarAlternativa.getAlternativa().getEfectos());
+			alternativa.setValorTotal(editarAlternativa.getAlternativa().getValorTotal());
+			alternativa.setValorada(editarAlternativa.getAlternativa().getValorada());
 			modeloTabla.setValueAt(alternativa.getId(), indice, 0);
 
 			if (alternativa.getValorada()){
