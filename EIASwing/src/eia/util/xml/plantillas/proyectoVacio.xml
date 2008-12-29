@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE proyectoEIA SYSTEM "C:\Documents and Settings\Luis\Escritorio\XML\XML\proyectoEIA.dtd">
+<!DOCTYPE proyectoEIA SYSTEM ".\proyectoEIA.dtd">
 <proyectoEIA>
 	<nombre/>
 	<descripcion/>
@@ -13,7 +13,6 @@
 	<vidaUtil/>
 	<poblacion/>
 	<provincia/>
-	<region/>
 	<pais/>
 	<listaAlternativas/>
 	<listaFactores>
