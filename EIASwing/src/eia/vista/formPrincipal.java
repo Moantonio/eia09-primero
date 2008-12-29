@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.text.SimpleDateFormat;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -31,12 +32,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
 
-import eia.model.Accion;
 import eia.model.Alternativa;
-import eia.model.Factor;
 import eia.model.InfoProyecto;
 import eia.model.Proyecto;
 import eia.util.FiltreSimple;
@@ -803,8 +800,9 @@ public class formPrincipal {
 		poblacionTextField.setText(proyecto.getInformacion().getPoblacion());
 		provinciaTextField.setText(proyecto.getInformacion().getProvincia());
 		paisTextField.setText(proyecto.getInformacion().getPais());
-		//TODO Areglar ke muestre bien la fecha
-		fechaTextField.setText(String.valueOf(proyecto.getInformacion().getFecha().getTime()));
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        String fechaStr = format.format(proyecto.getInformacion().getFecha());
+		fechaTextField.setText(fechaStr);
 		vidaUtilTextField.setText(String.valueOf(proyecto.getInformacion().getVidaUtil()));
 		modificarButton.setEnabled(true);
 	}
