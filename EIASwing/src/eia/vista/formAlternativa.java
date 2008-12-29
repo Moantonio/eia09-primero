@@ -495,6 +495,7 @@ public class formAlternativa extends JDialog{
 			// Seteamos los cambios cogiendo el clon
 			efecto.setValCualitativa(editarEfecto.getEfecto().getValCualitativa());
 			efecto.setValCuantitativa(editarEfecto.getEfecto().getValCuantitativa());
+			efecto.setValorTotal(editarEfecto.getEfecto().getValorTotal());
 			efecto.setJuicio(editarEfecto.getEfecto().getJuicio());
 			efecto.setCaracter(editarEfecto.getEfecto().getCaracter());
 
