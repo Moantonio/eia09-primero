@@ -6,11 +6,11 @@
 	<promotor/>
 	<redactor/>
 	<fecha>
-		<dia/>
-		<mes/>
-		<anio/>
+		<dia>01</dia>
+		<mes>01</mes>
+		<anio>2009</anio>
 	</fecha>
-	<vidaUtil/>
+	<vidaUtil>0</vidaUtil>
 	<poblacion/>
 	<provincia/>
 	<pais/>

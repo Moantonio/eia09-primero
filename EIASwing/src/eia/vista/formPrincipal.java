@@ -802,6 +802,7 @@ public class formPrincipal {
 		poblacionTextField.setText(proyecto.getInformacion().getPoblacion());
 		provinciaTextField.setText(proyecto.getInformacion().getProvincia());
 		paisTextField.setText(proyecto.getInformacion().getPais());
+		//TODO Areglar ke muestre bien la fecha
 		fechaTextField.setText(String.valueOf(proyecto.getInformacion().getFecha().getTime()));
 		vidaUtilTextField.setText(String.valueOf(proyecto.getInformacion().getVidaUtil()));
 		modificarButton.setEnabled(true);
@@ -869,39 +870,13 @@ public class formPrincipal {
 			info.setNombre(nombre);
 			info.setDescripcion(descripcion);
 
-			//---------------------------- PUMMMM ---------------------
-			XMLProyecto xmlProy = new XMLProyecto("..\\util\\xml\\plantillas\\proyectoEIA.dtd");
-			proyecto = (Proyecto)xmlProy.leer("..\\util\\xml\\plantillas\\proyectoVacio.xml");
+			//TODO Apañar acceso a los XML
+			//XMLProyecto xmlProy = new XMLProyecto("..\\util\\xml\\plantillas\\proyectoEIA.dtd");
+			//proyecto = (Proyecto)xmlProy.leer("..\\util\\xml\\plantillas\\proyectoVacio.xml");
+			XMLProyecto xmlProy = new XMLProyecto("C:\\Proyectos\\EIASwing\\src\\eia\\util\\xml\\plantillas\\proyectoEIA.dtd");
+			proyecto = (Proyecto)xmlProy.leer("C:\\Proyectos\\EIASwing\\src\\eia\\util\\xml\\plantillas\\proyectoVacio.xml");
 			proyecto.setInformacion(info);
 			proyecto.setTipo(tipo);
-			//-------------------------------------------------
-
-
-			/*
-			proyecto = new Proyecto(info,tipo);
-			//TODO Cargamos el arbol de factores para ese tipo de proyecto
-			DefaultTreeModel factores = null;
-
-			//
-			Factor factorBisAbuelo = new Factor("Factor Bisabuelo",1);
-			Factor factorAbuelo = new Factor("Factor abuelo",2);
-			Factor factorAbuela = new Factor("Factor abuela",3);
-			Factor factorHijo = new Factor("Factor hijo",4);
-			Factor factorHija = new Factor("Factor hija",5);
-			DefaultMutableTreeNode nodoBisAbuelo = new DefaultMutableTreeNode(factorBisAbuelo);
-			DefaultMutableTreeNode nodoAbuelo = new DefaultMutableTreeNode(factorAbuelo);
-			DefaultMutableTreeNode nodoAbuela = new DefaultMutableTreeNode(factorAbuela);
-			DefaultMutableTreeNode nodoHija = new DefaultMutableTreeNode(factorHija);
-			DefaultMutableTreeNode nodoHijo = new DefaultMutableTreeNode(factorHijo);
-			factores = new DefaultTreeModel(nodoBisAbuelo);
-			factores.insertNodeInto(nodoAbuelo, nodoBisAbuelo, 0);
-			factores.insertNodeInto(nodoAbuela, nodoBisAbuelo, 1);
-			factores.insertNodeInto(nodoHijo, nodoAbuelo, 0);
-			factores.insertNodeInto(nodoHija, nodoAbuela, 0);
-			//
-
-			proyecto.setFactores(factores);
-			*/
 
 			//Actualizamos la vista
 			actualizarDescripcion();
