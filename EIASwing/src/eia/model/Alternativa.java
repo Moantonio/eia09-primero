@@ -36,6 +36,9 @@ public class Alternativa implements Cloneable{
 	 */
 	private double valorTotal;
 
+	/**
+	 * Indica si la alternativa ha sido valorada.
+	 */
 	private boolean valorada;
 
 	/**
@@ -128,6 +131,22 @@ public class Alternativa implements Cloneable{
 	}
 
 	/**
+	 * Accesor para el atributo 'valorada'.
+	 * @return Indica si la alternativa ha sido valorada.
+	 */
+	public boolean getValorada() {
+		return valorada;
+	}
+
+	/**
+	 * Mutador para el atributo 'valorada'.
+	 * @param valorada Valor a asignar al atributo.
+	 */
+	public void setValorada(boolean valorada) {
+		this.valorada = valorada;
+	}
+
+	/**
 	 * Función para calcular el valor total de impacto de la alternativa,
 	 * estableciendo dicho valor en el atributo 'valorTotal'.
 	 */
@@ -143,18 +162,21 @@ public class Alternativa implements Cloneable{
 		}
 	}
 
+	/**
+	 * Función para redondear un número de tipo double al número de cifras
+	 * decimales indicadas por parámetro.
+	 * @param nD Número a redondear.
+	 * @param nDec Número de cifras decimales a redondear.
+	 * @return Número redondeado.
+	 */
 	private double redondear(double nD, int nDec){
 	  return Math.round(nD*Math.pow(10,nDec))/Math.pow(10,nDec);
 	}
 
-	public boolean getValorada() {
-		return valorada;
-	}
-
-	public void setValorada(boolean valorada) {
-		this.valorada = valorada;
-	}
-
+	/**
+	 * Función para clonar el objeto Alternativa.
+	 * @return Copia del objeto Alternativa.
+	 */
     public Object clone(){
         Object copia = null;
         try{

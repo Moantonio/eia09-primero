@@ -388,11 +388,22 @@ public class ValoracionCuantitativa implements Cloneable {
 		return resultado;
 	}
 
+	/**
+	 * Función para redondear un número de tipo double al número de cifras
+	 * decimales indicadas por parámetro.
+	 * @param nD Número a redondear.
+	 * @param nDec Número de cifras decimales a redondear.
+	 * @return Número redondeado.
+	 */
 	private double redondear(double nD, int nDec)
 	{
 	  return Math.round(nD*Math.pow(10,nDec))/Math.pow(10,nDec);
 	}
 
+	/**
+	 * Función para clonar el objeto ValoracionCuantitativa.
+	 * @return Copia del objeto ValoracionCuantitativa.
+	 */
     public Object clone(){
         Object copia = null;
         try{
