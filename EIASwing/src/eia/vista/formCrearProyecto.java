@@ -103,15 +103,16 @@ public class formCrearProyecto extends JDialog {
 	private JButton getAceptarButton() {
 		if (aceptarButton == null) {
 			aceptarButton = new JButton();
-			aceptarButton.setName("");
 			aceptarButton.setText("Aceptar");
 			aceptarButton.setSize(new Dimension(79, 20));
 			aceptarButton.setLocation(new Point(138, 167));
 			aceptarButton.setBackground(Color.white);
 			aceptarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					flagAceptar = true;
-					setVisible(false);
+					if (!nombreTextField.getText().equals("")){
+						flagAceptar = true;
+						setVisible(false);	
+					}					
 				}
 			});
 		}
