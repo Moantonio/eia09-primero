@@ -43,6 +43,7 @@ import eia.util.FiltreSimple;
 import eia.util.TablaColores;
 import eia.util.TablaNoEditable;
 import eia.util.TipoProyecto;
+import eia.util.xml.XMLProyecto;
 
 public class formPrincipal {
 
@@ -112,7 +113,7 @@ public class formPrincipal {
 
 	// Variables del modelo
 	private Proyecto proyecto = null;  //  @jve:decl-index=0:
-	//private File ficheroProyecto = null;
+	private File ficheroProyecto = null;
 
 	private JFrame getFramePrincipal() {
 		if (framePrincipal == null) {
@@ -376,6 +377,11 @@ public class formPrincipal {
 			guardarMenuItem.setText("Guardar");
 			guardarMenuItem.setMnemonic(KeyEvent.VK_G);
 			guardarMenuItem.setEnabled(false);
+			guardarMenuItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					guardarProyecto();
+				}
+			});
 		}
 		return guardarMenuItem;
 	}
@@ -811,6 +817,34 @@ public class formPrincipal {
 		anadirAltButton.setEnabled(true);
 		editarAltButton.setEnabled(true);
 		eliminarAltButton.setEnabled(true);
+
+		for (int i=0;i<proyecto.getAlternativas().size();i++)
+		{
+			final Alternativa alternativa = proyecto.getAlternativas().get(i);
+			//Lo añadimos a la lista
+			String[] fila = {alternativa.getId(),""};
+			modeloTabla.addRow(fila);
+
+			//Lo ponemos en el menú modificar
+			JMenuItem alternativaModItem = new JMenuItem();
+			alternativaModItem.setText(alternativa.getId());
+			getModificarAlternativaMenu().add(alternativaModItem);
+			alternativaModItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					editarAlternativa(alternativa,0);
+				}
+			});
+			//Lo ponemos en el menú eliminar
+			JMenuItem alternativaElimItem = new JMenuItem();
+			alternativaElimItem.setText(alternativa.getId());
+			getEliminarAlternativaMenu().add(alternativaElimItem);
+			alternativaElimItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					eliminarAlternativa(alternativa);
+				}
+			});
+		}
+
 	}
 
 	private void actualizarMenu(){
@@ -818,7 +852,6 @@ public class formPrincipal {
 		menuFactores.setEnabled(true);
 		menuValoracion.setEnabled(true);
 		menuInformes.setEnabled(true);
-		guardarMenuItem.setEnabled(true);
 		guardarComoMenuItem.setEnabled(true);
 	}
 
@@ -838,6 +871,14 @@ public class formPrincipal {
 			InfoProyecto info = new InfoProyecto();
 			info.setNombre(nombre);
 			info.setDescripcion(descripcion);
+
+			/*
+			XMLProyecto cargador = new XMLProyecto();
+			proyecto = cargador.leer("");
+			proyecto.setInformacion(info);
+			proyecto.setTipo(tipo);
+			*/
+
 			proyecto = new Proyecto(info,tipo);
 			//TODO Cargamos el arbol de factores para ese tipo de proyecto
 			DefaultTreeModel factores = null;
@@ -865,6 +906,7 @@ public class formPrincipal {
 			actualizarDescripcion();
 			actualizarAlternativas();
 			actualizarMenu();
+			ficheroProyecto = null;
 		}
 		ventanaCrear.dispose();
 	}
@@ -904,18 +946,30 @@ public class formPrincipal {
 		JFileChooser fileChooser = new JFileChooser();
 		// Aplicamos filtro
 		FiltreSimple filtro = new FiltreSimple("Ficheros XML",".xml");
-        fileChooser.setFileFilter(filtro);
+		fileChooser.setFileFilter(filtro);
 		// Directorio por defecto
 		fileChooser.setCurrentDirectory(new File("./"));
 		int seleccion = fileChooser.showOpenDialog(null);
 		// Controlamos la selección
-	    if (seleccion == JFileChooser.APPROVE_OPTION) {
-	    	//File file = fileChooser.getSelectedFile();
+		if (seleccion == JFileChooser.APPROVE_OPTION) {
+			/*
+			ficheroProyecto = fileChooser.getSelectedFile();
+			XMLProyecto cargador = new XMLProyecto();
+			proyecto = cargador.leer(ficheroProyecto.getAbsolutePath());
+			*/
 			//Actualizamos la vista
 			actualizarDescripcion();
 			actualizarAlternativas();
 			actualizarMenu();
-	    }
+			guardarMenuItem.setEnabled(true);
+		}
+	}
+
+	private void guardarProyecto() {
+		if (ficheroProyecto!=null){
+			//XMLProyecto cargador = new XMLProyecto();
+			//cargador.escribir(proyecto, ficheroProyecto.getAbsolutePath());
+		}
 	}
 
 	private void guardarComoProyecto() {
@@ -923,14 +977,17 @@ public class formPrincipal {
 		JFileChooser fileChooser = new JFileChooser();
 		// Aplicamos filtro
 		FiltreSimple filtro = new FiltreSimple("Ficheros XML",".xml");
-        fileChooser.setFileFilter(filtro);
+		fileChooser.setFileFilter(filtro);
 		// Directorio por defecto
 		fileChooser.setCurrentDirectory(new File("./"));
 		int seleccion = fileChooser.showSaveDialog(null);
 		// Controlamos la selección
-	    if (seleccion == JFileChooser.APPROVE_OPTION) {
-	    	//File file = fileChooser.getSelectedFile();
-	    }
+		if (seleccion == JFileChooser.APPROVE_OPTION) {
+			//ficheroProyecto = fileChooser.getSelectedFile();
+			//XMLProyecto cargador = new XMLProyecto();
+			//cargador.escribir(proyecto, ficheroProyecto.getAbsolutePath());
+			guardarMenuItem.setEnabled(true);
+		}
 	}
 
 	private void permitirModificarDescripcion() {
