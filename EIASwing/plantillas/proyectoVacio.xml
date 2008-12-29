@@ -14,6 +14,7 @@
 	<poblacion/>
 	<provincia/>
 	<pais/>
+	<tipo>PERSONALIZADO</tipo>
 	<listaAlternativas/>
 	<listaFactores>
 		<factor>

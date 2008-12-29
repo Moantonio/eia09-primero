@@ -796,7 +796,7 @@ public class formPrincipal {
 
 	private void actualizarDescripcion(){
 		nombreTextField.setText(proyecto.getInformacion().getNombre());
-		//TODO tipoTextField.setText(proyecto.getTipo().toString());
+		tipoTextField.setText(proyecto.getTipo().toString());
 		descripcionTextArea.setText(proyecto.getInformacion().getDescripcion());
 		companiaTextField.setText(proyecto.getInformacion().getCompania());
 		autorTextField.setText(proyecto.getInformacion().getAutor());

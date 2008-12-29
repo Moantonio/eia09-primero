@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!ELEMENT proyectoEIA (nombre, descripcion, promotor, redactor, fecha, vidaUtil,poblacion, provincia, pais, listaAlternativas, listaFactores, valorTotal?)>
+<!ELEMENT proyectoEIA (nombre, descripcion, promotor, redactor, fecha, vidaUtil,poblacion, provincia, pais, tipo, listaAlternativas, listaFactores, valorTotal?)>
 	
 <!ELEMENT nombre (#PCDATA)>
 <!ELEMENT descripcion (#PCDATA)>
@@ -13,6 +13,7 @@
 <!ELEMENT poblacion (#PCDATA)>
 <!ELEMENT provincia (#PCDATA)>
 <!ELEMENT pais (#PCDATA)>
+<!ELEMENT tipo (#PCDATA)>
 <!ELEMENT listaAlternativas (nombreAlternativa, valorTotal?)*>
 <!ELEMENT nombreAlternativa (#PCDATA)>
 <!ELEMENT listaFactores (factor)+>

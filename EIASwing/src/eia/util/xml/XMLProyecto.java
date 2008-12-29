@@ -20,6 +20,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import eia.util.Constants;
+import eia.util.TipoProyecto;
 
 import eia.model.Alternativa;
 import eia.model.Factor;
@@ -79,6 +80,22 @@ public class XMLProyecto extends XMLTools{
         									 fecha,
         									 Integer.valueOf(elemento.getElementsByTagName("vidaUtil").item(0).getTextContent()).intValue());
         proy.setInformacion(info);
+
+        //Cogemos el tipo del proyecto
+        String textoTipo = elemento.getElementsByTagName("tipo").item(0).getTextContent();
+        TipoProyecto tipo;
+        if (textoTipo.compareTo("AUTOVÍA") == 0){
+        	tipo = TipoProyecto.AUTOVÍA;
+        } else if (textoTipo.compareTo("VERTEDERO") == 0){
+        	tipo = TipoProyecto.VERTEDERO;
+        } else if (textoTipo.compareTo("PUERTODEPORTIVO") == 0){
+        	tipo = TipoProyecto.PUERTODEPORTIVO;
+        } else if (textoTipo.compareTo("PRESA") == 0){
+        	tipo = TipoProyecto.PRESA;
+        } else {
+        	tipo = TipoProyecto.PERSONALIZADO;
+        }
+        proy.setTipo(tipo);
 
         //Cogemos la lista principal de factores.
         Element listaFactores = (Element)elemento.getElementsByTagName("listaFactores").item(0);
@@ -276,6 +293,10 @@ public class XMLProyecto extends XMLTools{
             Element pais = (Element)document.createElement("pais");
             pais.setTextContent(proy.getInformacion().getPais());
             root.appendChild(pais);
+
+            Element tipo = (Element)document.createElement("tipo");
+            tipo.setTextContent(proy.getTipo().toString());
+            root.appendChild(tipo);
 
             //Creamos la lista de alternativas.
             ArrayList<Alternativa> listaAlt = proy.getAlternativas();
