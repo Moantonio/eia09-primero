@@ -846,8 +846,6 @@ public class formPrincipal {
 	private void actualizarMenu(){
 		menuAlternativas.setEnabled(true);
 		menuFactores.setEnabled(true);
-		menuValoracion.setEnabled(true);
-		menuInformes.setEnabled(true);
 		guardarComoMenuItem.setEnabled(true);
 	}
 
@@ -960,7 +958,8 @@ public class formPrincipal {
 			guardarMenuItem.setEnabled(true);
 
 			if (comprobarValorar()){
-				verResultadosMenuItem.setEnabled(true);
+				menuValoracion.setEnabled(true);
+				menuInformes.setEnabled(true);
 			}
 		}
 	}
@@ -1121,7 +1120,8 @@ public class formPrincipal {
 			}
 			// Vemos si podemos valorar el proyecto
 			if (comprobarValorar()){
-				verResultadosMenuItem.setEnabled(true);
+				menuValoracion.setEnabled(true);
+				menuInformes.setEnabled(true);
 			}
 		}
 		editarAlternativa.dispose();
