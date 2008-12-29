@@ -162,8 +162,18 @@ public class Alternativa implements Cloneable{
         }catch(CloneNotSupportedException ex){
             System.out.println("Imposible duplicar");
         }
-        ((Alternativa)copia).id = new String(this.id);
-        ((Alternativa)copia).efectos = (ArrayList<Efecto>) this.efectos.clone();
+        if (this.id != null){
+        	((Alternativa)copia).id = new String(this.id);
+        }else{
+        	((Alternativa)copia).id = new String();
+        }
+
+        ((Alternativa)copia).efectos = new ArrayList<Efecto>();
+        for (int i=0; i<this.getEfectos().size();i++){
+        	Efecto efecto = this.getEfectos().get(i);
+        	((Alternativa)copia).efectos.add((Efecto) efecto.clone());
+        }
+
         return copia;
     }
 
