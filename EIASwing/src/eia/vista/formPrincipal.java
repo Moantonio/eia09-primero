@@ -113,7 +113,7 @@ public class formPrincipal {
 
 	// Variables del modelo
 	private Proyecto proyecto = null;  //  @jve:decl-index=0:
-	private File ficheroProyecto = null;
+	private File ficheroProyecto = null;  //  @jve:decl-index=0:
 
 	private JFrame getFramePrincipal() {
 		if (framePrincipal == null) {
@@ -796,7 +796,7 @@ public class formPrincipal {
 
 	private void actualizarDescripcion(){
 		nombreTextField.setText(proyecto.getInformacion().getNombre());
-		tipoTextField.setText(proyecto.getTipo().toString());
+		//TODO tipoTextField.setText(proyecto.getTipo().toString());
 		descripcionTextArea.setText(proyecto.getInformacion().getDescripcion());
 		companiaTextField.setText(proyecto.getInformacion().getCompania());
 		autorTextField.setText(proyecto.getInformacion().getAutor());
@@ -922,15 +922,14 @@ public class formPrincipal {
 		FiltreSimple filtro = new FiltreSimple("Ficheros XML",".xml");
 		fileChooser.setFileFilter(filtro);
 		// Directorio por defecto
-		fileChooser.setCurrentDirectory(new File("./"));
+		fileChooser.setCurrentDirectory(new File(".\\plantillas\\"));
 		int seleccion = fileChooser.showOpenDialog(null);
 		// Controlamos la selección
 		if (seleccion == JFileChooser.APPROVE_OPTION) {
-			/*
+
 			ficheroProyecto = fileChooser.getSelectedFile();
-			XMLProyecto xmlProy = new XMLProyecto(".\\plantillas\\proyectoEIA.dtd");
+			XMLProyecto xmlProy = new XMLProyecto(".\\proyectoEIA.dtd");
 			proyecto = (Proyecto)xmlProy.leer(ficheroProyecto.getAbsolutePath());
-			*/
 
 			//Actualizamos la vista
 			actualizarDescripcion();
@@ -947,8 +946,8 @@ public class formPrincipal {
 
 	private void guardarProyecto() {
 		if (ficheroProyecto!=null){
-			//XMLProyecto xmlProy = new XMLProyecto(".\\plantillas\\proyectoEIA.dtd");
-			//xmlProy.escribir(proyecto,ficheroProyecto.getAbsolutePath());
+			XMLProyecto xmlProy = new XMLProyecto(".\\proyectoEIA.dtd");
+			xmlProy.escribir(proyecto,ficheroProyecto.getAbsolutePath());
 		}
 	}
 
@@ -959,15 +958,15 @@ public class formPrincipal {
 		FiltreSimple filtro = new FiltreSimple("Ficheros XML",".xml");
 		fileChooser.setFileFilter(filtro);
 		// Directorio por defecto
-		fileChooser.setCurrentDirectory(new File("./"));
+		fileChooser.setCurrentDirectory(new File(".\\plantillas\\"));
 		int seleccion = fileChooser.showSaveDialog(null);
 		// Controlamos la selección
 		if (seleccion == JFileChooser.APPROVE_OPTION) {
-			/*
+
 			ficheroProyecto = fileChooser.getSelectedFile();
-			XMLProyecto xmlProy = new XMLProyecto(".\\plantillas\\proyectoEIA.dtd");
+			XMLProyecto xmlProy = new XMLProyecto(".\\proyectoEIA.dtd");
 			xmlProy.escribir(proyecto,ficheroProyecto.getAbsolutePath());
-			*/
+
 			guardarMenuItem.setEnabled(true);
 		}
 	}
