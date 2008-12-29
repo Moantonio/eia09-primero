@@ -818,7 +818,11 @@ public class formPrincipal {
 		{
 			final Alternativa alternativa = proyecto.getAlternativas().get(i);
 			//Lo añadimos a la lista
-			String[] fila = {alternativa.getId(),""};
+			String valor = "Sin valorar";
+			if (alternativa.getValorada()){
+				valor = String.valueOf(alternativa.getValorTotal());
+			}
+			String[] fila = {alternativa.getId(),valor};
 			modeloTabla.addRow(fila);
 
 			//Lo ponemos en el menú modificar
@@ -1056,7 +1060,7 @@ public class formPrincipal {
 			// La añadimos al proyecto
 			proyecto.getAlternativas().add(alternativa);
 			//Refrescar la lista
-			String[] fila = {nombre,""};
+			String[] fila = {nombre,"Sin valorar"};
 			modeloTabla.addRow(fila);
 
 			//Lo ponemos en el menú modificar
