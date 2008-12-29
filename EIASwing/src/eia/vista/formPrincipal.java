@@ -869,11 +869,12 @@ public class formPrincipal {
 			info.setNombre(nombre);
 			info.setDescripcion(descripcion);
 
-
+			//---------------------------- PUMMMM ---------------------
 			XMLProyecto xmlProy = new XMLProyecto("..\\util\\xml\\plantillas\\proyectoEIA.dtd");
 			proyecto = (Proyecto)xmlProy.leer("..\\util\\xml\\plantillas\\proyectoVacio.xml");
 			proyecto.setInformacion(info);
 			proyecto.setTipo(tipo);
+			//-------------------------------------------------
 
 
 			/*
