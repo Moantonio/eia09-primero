@@ -72,7 +72,6 @@ public class formPrincipal {
 	private JMenuItem guardarComoMenuItem = null;
 	private JMenuItem verFactoresMenuItem = null;
 	private JMenuItem modificarPesosMenuItem = null;
-	private JMenuItem valorarMenuItem = null;
 	private JMenuItem verResultadosMenuItem = null;
 	private JMenuItem verInformeMenuItem = null;
 	private JMenuItem funcionamientoMenuItem = null;
@@ -246,7 +245,6 @@ public class formPrincipal {
 		if (menuValoracion == null) {
 			menuValoracion = new JMenu();
 			menuValoracion.setText("Valoracion");
-			menuValoracion.add(getValorarMenuItem());
 			menuValoracion.add(getVerResultadosMenuItem());
 			menuValoracion.setMnemonic(KeyEvent.VK_V);
 			menuValoracion.setEnabled(false);
@@ -423,18 +421,15 @@ public class formPrincipal {
 		return modificarPesosMenuItem;
 	}
 
-	private JMenuItem getValorarMenuItem() {
-		if (valorarMenuItem == null) {
-			valorarMenuItem = new JMenuItem();
-			valorarMenuItem.setText("Valorar");
-		}
-		return valorarMenuItem;
-	}
-
 	private JMenuItem getVerResultadosMenuItem() {
 		if (verResultadosMenuItem == null) {
 			verResultadosMenuItem = new JMenuItem();
 			verResultadosMenuItem.setText("Ver resultados");
+			verResultadosMenuItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					valorarAlternativas();
+			}
+		});
 		}
 		return verResultadosMenuItem;
 	}
@@ -963,6 +958,10 @@ public class formPrincipal {
 			actualizarAlternativas();
 			actualizarMenu();
 			guardarMenuItem.setEnabled(true);
+
+			if (comprobarValorar()){
+				verResultadosMenuItem.setEnabled(true);
+			}
 		}
 	}
 
@@ -1120,9 +1119,25 @@ public class formPrincipal {
 			if (alternativa.getValorada()){
 				modeloTabla.setValueAt(alternativa.getValorTotal(),indice,1);
 			}
+			// Vemos si podemos valorar el proyecto
+			if (comprobarValorar()){
+				verResultadosMenuItem.setEnabled(true);
+			}
 		}
 		editarAlternativa.dispose();
 
+	}
+
+	private boolean comprobarValorar(){
+		boolean valorar = true;
+		int i = 0;
+		while (valorar&&i<proyecto.getAlternativas().size()){
+			if (!proyecto.getAlternativas().get(i).getValorada()){
+				valorar = false;
+			}
+			i++;
+		}
+		return valorar;
 	}
 
 	private void mostrarFactores(){
@@ -1132,6 +1147,11 @@ public class formPrincipal {
 		visualizarFactores.setLocation(posActual);
 		visualizarFactores.setModal(true);
 		visualizarFactores.setVisible(true);
+	}
+
+	private void valorarAlternativas(){
+		String id = proyecto.analizarAlternativas().getId();
+		JOptionPane.showMessageDialog(null, "Mejor alternativa de realización: "+id, "Valorar alternativas", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public static void main(String[] args) {
