@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE alternativaProyEIA SYSTEM ".\alternativaProyEIA.dtd">
+<alternativaProyEIA>
+	<nombre generica="true"></nombre>
+	<listaAcciones>
+		<accion>
+			<nombreAccion>Fase de Planeamiento</nombreAccion>
+			<listaAcciones>
+				<accion>
+					<nombreAccion>Diseño y localización de alternativas</nombreAccion>
+				</accion>
+			</listaAcciones>
+		</accion>
+		<accion>
+			<nombreAccion>Fase de construcción</nombreAccion>
+			<listaAcciones>
+				<accion>
+					<nombreAccion>Excavaciones</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Eliminación cubierta terrestre y vegetación</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Movimiento de tierras</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Alteración hidrología</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Alteración drenaje</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Producción de ruidos y vibraciones</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Capa impermeabilizadota</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Construcción edificios auxiliares</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Instalación planteas de tratamiento</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Vías de acceso</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Presupuesto inversión</nombreAccion>
+				</accion>
+			</listaAcciones>
+		</accion>
+		
+		<accion>
+			<nombreAccion>Fase de Funcionamiento</nombreAccion>
+			<listaAcciones>
+				<accion>
+					<nombreAccion>Transporte</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Recogida de residuos sólidos</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Almacenamiento y vertido</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Lixiviados</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Recubrimientos de tierra</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Pre-tratamiento de residuos</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Tratamiento de residuos</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Funcionamiento planta incineradora</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Olores</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Vapores, humos y polvos emitidos a la atmósfera</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Producción de ruidos y vibraciones</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Obtención productos recuperables y reciclado</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Residuos del horno</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Incendios</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Coste económico</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Beneficio económico (productos recuperables)</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Presencia de insectos roedores y aves</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Composición y producción de residuos</nombreAccion>
+					<listaAcciones>
+						<accion>
+							<nombreAccion>Metales</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Vidrio</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Restos reparaciones</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Tierras</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Materia orgánica</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Papel</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Cartón</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Plásticos</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Madera</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Goma</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Textiles</nombreAccion>
+						</accion>
+					</listaAcciones>
+				</accion>
+				<accion>
+					<nombreAccion>Otras Características de las basuras</nombreAccion>
+					<listaAcciones>
+						<accion>
+							<nombreAccion>Densidad</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Poder calorífico</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Humedad</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Relación carbono/hidrógeno</nombreAccion>
+						</accion>
+					</listaAcciones>
+				</accion>
+			</listaAcciones>
+		</accion>
+	</listaAcciones>
+</alternativaProyEIA>
