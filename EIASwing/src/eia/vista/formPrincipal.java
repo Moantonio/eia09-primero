@@ -43,7 +43,6 @@ import eia.util.FiltreSimple;
 import eia.util.TablaColores;
 import eia.util.TablaNoEditable;
 import eia.util.TipoProyecto;
-import eia.util.xml.XMLAlternativa;
 import eia.util.xml.XMLProyecto;
 
 public class formPrincipal {
@@ -870,13 +869,14 @@ public class formPrincipal {
 			info.setNombre(nombre);
 			info.setDescripcion(descripcion);
 
-			/*
-			XMLProyecto cargador = new XMLProyecto();
-			proyecto = cargador.leer("");
+
+			XMLProyecto xmlProy = new XMLProyecto("..\\util\\xml\\plantillas\\proyectoEIA.dtd");
+			proyecto = (Proyecto)xmlProy.leer("..\\util\\xml\\plantillas\\proyectoVacio.xml");
 			proyecto.setInformacion(info);
 			proyecto.setTipo(tipo);
-			*/
 
+
+			/*
 			proyecto = new Proyecto(info,tipo);
 			//TODO Cargamos el arbol de factores para ese tipo de proyecto
 			DefaultTreeModel factores = null;
@@ -900,6 +900,8 @@ public class formPrincipal {
 			//
 
 			proyecto.setFactores(factores);
+			*/
+
 			//Actualizamos la vista
 			actualizarDescripcion();
 			actualizarAlternativas();
@@ -952,9 +954,10 @@ public class formPrincipal {
 		if (seleccion == JFileChooser.APPROVE_OPTION) {
 			/*
 			ficheroProyecto = fileChooser.getSelectedFile();
-			XMLProyecto cargador = new XMLProyecto();
-			proyecto = cargador.leer(ficheroProyecto.getAbsolutePath());
+			XMLProyecto xmlProy = new XMLProyecto("..\\util\\xml\\plantillas\\proyectoEIA.dtd");
+			proyecto = (Proyecto)xmlProy.leer(ficheroProyecto.getAbsolutePath());
 			*/
+
 			//Actualizamos la vista
 			actualizarDescripcion();
 			actualizarAlternativas();
@@ -970,8 +973,8 @@ public class formPrincipal {
 
 	private void guardarProyecto() {
 		if (ficheroProyecto!=null){
-			//XMLProyecto cargador = new XMLProyecto();
-			//cargador.escribir(proyecto, ficheroProyecto.getAbsolutePath());
+			//XMLProyecto xmlProy = new XMLProyecto("..\\util\\xml\\plantillas\\proyectoVacio.xml");
+			//xmlProy.escribir(proyecto,ficheroProyecto.getAbsolutePath());
 		}
 	}
 
@@ -986,9 +989,11 @@ public class formPrincipal {
 		int seleccion = fileChooser.showSaveDialog(null);
 		// Controlamos la selección
 		if (seleccion == JFileChooser.APPROVE_OPTION) {
-			//ficheroProyecto = fileChooser.getSelectedFile();
-			//XMLProyecto cargador = new XMLProyecto();
-			//cargador.escribir(proyecto, ficheroProyecto.getAbsolutePath());
+			/*
+			ficheroProyecto = fileChooser.getSelectedFile();
+			XMLProyecto xmlProy = new XMLProyecto("..\\util\\xml\\plantillas\\proyectoVacio.xml");
+			xmlProy.escribir(proyecto,ficheroProyecto.getAbsolutePath());
+			*/
 			guardarMenuItem.setEnabled(true);
 		}
 	}
@@ -1019,16 +1024,16 @@ public class formPrincipal {
 			/*
 			String filename;
 			if (proyecto.getTipo() == TipoProyecto.AUTOVÍA){
-				filename = "../util/xml/plantillas/alternativaVia.xml";
+				filename = "..\\util\\xml\\plantillas\\alternativaVia.xml";
 			} else if(proyecto.getTipo() == TipoProyecto.PRESA){
-				filename = "../util/xml/plantillas/alternativaPresa.xml";
+				filename = "..\\util\\xml\\plantillas\\alternativaPresa.xml";
 			} else if(proyecto.getTipo() == TipoProyecto.PUERTODEPORTIVO){
-				filename = "../util/xml/plantillas/alternativaPuerto.xml";
+				filename = "..\\util\\xml\\plantillas\\alternativaPuerto.xml";
 			} else if(proyecto.getTipo() == TipoProyecto.VERTEDERO){
-				filename = "../util/xml/plantillas/alternativaVertedero.xml";
+				filename = "..\\util\\xml\\plantillas\\alternativaVertedero.xml";
 			}
-			XMLAlternativa cargador = new XMLAlternativa();
-			final Alternativa alternativa = cargador.leer(filename);
+			XMLAlternativa xmlAlt = new XMLAlternativa(proyecto,"..\\util\\xml\\plantillas\\alternativaProyEIA.dtd");
+			final Alternativa alternativa = (Alternativa)xmlAlt.leer(filename);
 			alternativa.setId(nombre);
 			*/
 
