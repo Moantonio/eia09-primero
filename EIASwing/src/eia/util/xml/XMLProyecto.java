@@ -3,10 +3,13 @@ package eia.util.xml;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.StringTokenizer;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -22,7 +25,6 @@ import eia.model.Alternativa;
 import eia.model.Factor;
 import eia.model.InfoProyecto;
 import eia.model.Proyecto;
-import eia.util.Arbol;
 
 public class XMLProyecto extends XMLTools{
 	
@@ -84,12 +86,17 @@ public class XMLProyecto extends XMLTools{
         NodeList factores = listaFactores.getElementsByTagName("factor");
         
         //Para cada factor, vamos recorriendo los subfactores y creando el arbol.
-        Arbol<Factor> arbolFact = new Arbol<Factor>();
+        //Arbol<Factor> arbolFact = new Arbol<Factor>();
+        DefaultMutableTreeNode arbolFact = new DefaultMutableTreeNode();
+        int index = 0; 
         for(int i = 0; i < factores.getLength(); i++){
-        	Arbol<Factor> arbolI = recorrerFactores((Element)factores.item(i));
-        	arbolFact.añadirHijo(arbolI);
-        }        
-        proy.setFactores(arbolFact);   
+        	//Arbol<Factor> arbolI = recorrerFactores((Element)factores.item(i));
+        	//arbolFact.añadirHijo(arbolI);
+        	DefaultMutableTreeNode arbolI = recorrerFactores((Element)factores.item(i));
+        	if(!esSubArbol(arbolI,arbolFact))
+        		arbolFact.insert(arbolI,index++);
+        }  
+        proy.setFactores(new DefaultTreeModel(arbolFact));   
         
       //Cogemos la lista de alternativas.
         Element listaAlternativas = (Element)elemento.getElementsByTagName("listaAlternativas").item(0);
@@ -103,6 +110,26 @@ public class XMLProyecto extends XMLTools{
         proy.setAlternativas(listaAlt);
         escribirLog(proy);
         return proy;
+    }
+    
+    private boolean esSubArbol(DefaultMutableTreeNode arbolH, DefaultMutableTreeNode arbolP){
+    	boolean esHijo = false;
+    	Enumeration eHijos = arbolP.children();
+    	while(eHijos.hasMoreElements()){
+    		Enumeration eP = ((DefaultMutableTreeNode)eHijos.nextElement()).breadthFirstEnumeration();
+	    	while(eP.hasMoreElements() && !esHijo){
+	    		Enumeration eH = arbolH.breadthFirstEnumeration();
+	    		DefaultMutableTreeNode nodoP = (DefaultMutableTreeNode)eP.nextElement();
+	    		while(eH.hasMoreElements() && !esHijo){
+	    			DefaultMutableTreeNode nodoH = (DefaultMutableTreeNode)eH.nextElement();
+	    			if(nodoP.getUserObject()!= null && nodoH.getUserObject()!= null)
+	    				if(nodoP.getUserObject().toString().equals(nodoH.getUserObject().toString()))
+	    					esHijo = true;
+	    		}
+	    		
+	    	}
+    	}
+    	return esHijo;
     }
      /**
       * Metodo privado que dado un proyecto cargado escribe su informacion en el log.
@@ -123,7 +150,7 @@ public class XMLProyecto extends XMLTools{
 		log.info("Pais: "+ p.getInformacion().getPais());
 		log.info("Alternativas: \n");
 		
-		log.info("Factores: \n");
+		/*log.info("Factores: \n");
 		ArrayList<Arbol<Factor>> listaFactores = p.getFactores().getHijos();
 		for(int i = 0; i<listaFactores.size(); i++){
 			Arbol<Factor> arbFact = listaFactores.get(i);
@@ -135,7 +162,7 @@ public class XMLProyecto extends XMLTools{
 				log.info("Nombre factor: "+arbFact.getElemento().getId());
 				log.info("Peso: "+arbFact.getElemento().getPeso());
 			}
-		}
+		}*/
     }
     
     /**
@@ -143,13 +170,15 @@ public class XMLProyecto extends XMLTools{
      * @param factor Factor que puede tener una lista de subfactores.
      * @return Estructura de arbol con factores y subfactores.
      */
-    private Arbol<Factor> recorrerFactores(Element factor){
+    private DefaultMutableTreeNode recorrerFactores(Element factor){
     	//Caso base
     	if(factor.getElementsByTagName("listaFactores").getLength() == 0){
     		Factor f = new Factor (factor.getElementsByTagName("nombreFactor").item(0).getTextContent(),
 					   Integer.valueOf(factor.getElementsByTagName("peso").item(0).getTextContent()));
-    		Arbol<Factor> arb = new Arbol<Factor>();
-    		arb.setElemento(f);
+    		//Arbol<Factor> arb = new Arbol<Factor>();
+    		//arb.setElemento(f);
+    		DefaultMutableTreeNode arb = new DefaultMutableTreeNode();
+    		arb.setUserObject(f);    		
     		return arb;
     	}
     	//Caso recursivo
@@ -160,12 +189,18 @@ public class XMLProyecto extends XMLTools{
     		//Creamos el nodo padre del arbol.
     		Factor f = new Factor (factor.getElementsByTagName("nombreFactor").item(0).getTextContent(),
     				Integer.valueOf(factor.getElementsByTagName("peso").item(0).getTextContent()));
-    		Arbol<Factor> padre = new Arbol<Factor>();
-    		padre.setElemento(f);
+    		//Arbol<Factor> padre = new Arbol<Factor>();
+    		//padre.setElemento(f);
+    		DefaultMutableTreeNode padre = new DefaultMutableTreeNode();
+    		padre.setUserObject(f);
+    		int index = 0; 
     		//Recorremos cada subfactor.
     		for(int i = 0; i < factores.getLength(); i++){
-    			Arbol<Factor> arb = recorrerFactores((Element)factores.item(i));    			
-    			padre.añadirHijo(arb);
+    			//Arbol<Factor> arb = recorrerFactores((Element)factores.item(i));
+    			//padre.añadirHijo(arb);
+    			DefaultMutableTreeNode arb = recorrerFactores((Element)factores.item(i));
+    			if(!esSubArbol(arb,padre))
+    				padre.insert(arb,index++);
     		}
     		return padre;
     	}
@@ -262,15 +297,19 @@ public class XMLProyecto extends XMLTools{
             //Creamos la lista de factores.
             Element listaFactores = (Element)document.createElement("listaFactores");
             
-            Arbol<Factor> factores = proy.getFactores();
+            DefaultTreeModel factores = proy.getFactores();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode)factores.getRoot();
             
-            int numHijos = factores.getHijos().size();
+            //int numHijos = factores.getHijos().size();
+            int numHijos = raiz.getChildCount();
+            Enumeration children = raiz.children();
             
             for(int i=0; i< numHijos; i++){
             	int cont = 1;
-            	Element factor = recorrerFactores(factores.getHijos().get(i),document,cont);
-            	if(factores.getHijos().get(i).getHijos().size() > 0 )
-            		i = i + cont + 1;
+            	DefaultMutableTreeNode nodoI = (DefaultMutableTreeNode)children.nextElement();
+            	Element factor = recorrerFactores(nodoI,document,cont);
+            	/*if(nodoI.getChildCount() > 0 )
+            		i = i + cont + 1;*/
             	listaFactores.appendChild(factor);
             }            
             root.appendChild(listaFactores);           
@@ -289,10 +328,10 @@ public class XMLProyecto extends XMLTools{
      * @param factor Arbol de factores y subfactores.
      * @return El elemento factor con factores y subfactores.
      */
-    private Element recorrerFactores(Arbol<Factor> factor, Document document, int cont){
+    private Element recorrerFactores(DefaultMutableTreeNode factor, Document document, int cont){
     	
     	Element elemFactor = (Element)document.createElement("factor");
-    	Factor f = factor.getElemento();
+    	Factor f = (Factor)factor.getUserObject();
     	
     	Element nombreFactor = (Element)document.createElement("nombreFactor");
     	nombreFactor.setTextContent(f.getId());
@@ -304,16 +343,18 @@ public class XMLProyecto extends XMLTools{
     	elemFactor.appendChild(peso);    	
     	
     	//Caso base: es un factor hijo, no tiene subfactores.
-    	if(factor.getHijos().size() == 0){        	
+    	if(factor.getChildCount() == 0){        	
         	return elemFactor;
     	}
     	//Caso recursivo: Tiene una lista de subfactores asociada. 
     	else{ 
     		Element listaSubFactores = document.createElement("listaFactores");
-    		for(int i=0; i<factor.getHijos().size(); i++){
-    			Element elemSubFactor = recorrerFactores(factor.getHijos().get(i), document, cont++);
+    		Enumeration e = factor.children();
+    		for(int i=0; i<factor.getChildCount(); i++){
+    			DefaultMutableTreeNode nodoI = (DefaultMutableTreeNode)e.nextElement();
+    			Element elemSubFactor = recorrerFactores(nodoI, document, cont++);
     			listaSubFactores.appendChild(elemSubFactor);
-    			i = i + cont + 1;
+    			//i = i + cont + 1;
     		}
     		elemFactor.appendChild(listaSubFactores);
     		return elemFactor;

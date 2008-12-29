@@ -1,7 +1,10 @@
 package eia.util.xml;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -20,7 +23,6 @@ import eia.model.ValoracionCualitativa;
 import eia.model.ValoracionCuantitativa;
 import eia.util.CaracterEfecto;
 import eia.util.ValorJuicio;
-import eia.util.Arbol;
 import eia.util.Constants;
 
 public class XMLAlternativa extends XMLTools{
@@ -58,17 +60,21 @@ public class XMLAlternativa extends XMLTools{
         NodeList acciones = listaAcciones.getElementsByTagName("accion");
         
         //Para cada accon, vamos recorriendo las subacciones y creando el arbol.
-        Arbol<Accion> arbolAcc = new Arbol<Accion>();
+        //Arbol<Accion> arbolAcc = new Arbol<Accion>();
+        DefaultMutableTreeNode arbolAcc = new DefaultMutableTreeNode();
+        int index = 0; 
         for(int i = 0; i < acciones.getLength(); i++){
-        	Arbol<Accion> arbolI = recorrerAcciones((Element)acciones.item(i));
-        	arbolAcc.añadirHijo(arbolI);
+        	DefaultMutableTreeNode arbolI = recorrerAcciones((Element)acciones.item(i));
+        	//arbolAcc.añadirHijo(arbolI);
+        	if(!esSubArbol(arbolI,arbolAcc))
+        		arbolAcc.insert(arbolI,index++);
         }        
-        alt.setAcciones(arbolAcc); 
+        alt.setAcciones(new DefaultTreeModel(arbolAcc)); 
         
         //Cargamos la lista de efectos.
         //Necesitamos el arbol de factores del proyecto para guardar los objetos.
         ArrayList<Efecto> listaEf = new ArrayList<Efecto>();
-        Arbol<Factor> arbFact = p.getFactores();
+        DefaultTreeModel arbFact = p.getFactores();
         Element listaEfectos = (Element)elemento.getElementsByTagName("listaEfectos").item(0);
         if(listaEfectos != null){
 	        NodeList efectos = listaEfectos.getElementsByTagName("efecto");
@@ -78,8 +84,8 @@ public class XMLAlternativa extends XMLTools{
 	        	ef.setId(efectoElem.getElementsByTagName("idEfecto").item(0).getTextContent());
 	        	ef.setDescripcion(efectoElem.getElementsByTagName("descripcion").item(0).getTextContent());
 	        	String idAcc = efectoElem.getElementsByTagName("idAccion").item(0).getTextContent();
-	        	ef.setAccion(alt.getAcciones().buscarElemento(idAcc));
-	        	ef.setFactor(arbFact.buscarElemento(efectoElem.getElementsByTagName("idFactor").item(0).getTextContent()));
+	        	ef.setAccion((Accion)buscarElemento(alt.getAcciones(),idAcc));
+	        	ef.setFactor((Factor)buscarElemento(arbFact,efectoElem.getElementsByTagName("idFactor").item(0).getTextContent()));
 	        	ef.setJuicio(ValorJuicio.valueOf(efectoElem.getElementsByTagName("valorSimpleEnjuiciamiento").item(0).getTextContent()));
 	        	ef.setCaracter(CaracterEfecto.valueOf(efectoElem.getElementsByTagName("caracter").item(0).getTextContent()));
 	        	
@@ -122,17 +128,37 @@ public class XMLAlternativa extends XMLTools{
         return alt;
 	}
 	
-	 /**
+	
+	private Object buscarElemento(DefaultTreeModel arbol, String id){
+		Object elem = null;
+		DefaultMutableTreeNode root = (DefaultMutableTreeNode)arbol.getRoot();
+		Enumeration e = root.breadthFirstEnumeration();
+		boolean encontrado = false;
+		while(e.hasMoreElements() && !encontrado){
+			DefaultMutableTreeNode obj = (DefaultMutableTreeNode)e.nextElement();
+			if(obj.getUserObject()!=null && id.equals(obj.getUserObject().toString())){
+				encontrado = true;
+				elem = obj.getUserObject();
+			}
+		}
+		return elem;
+	}
+	
+	
+	
+	/**
      * Metodo privado que dado una accion recorre su lista de subacciones.
      * @param accion Accion que puede tener una lista de subacciones.
      * @return Estructura de arbol con acciones y subacciones.
      */
-    private Arbol<Accion> recorrerAcciones(Element accion){
+    private DefaultMutableTreeNode recorrerAcciones(Element accion){
     	//Caso base
     	if(accion.getElementsByTagName("listaAcciones").getLength() == 0){
     		Accion a = new Accion (accion.getElementsByTagName("nombreAccion").item(0).getTextContent());
-    		Arbol<Accion> arb = new Arbol<Accion>();
-    		arb.setElemento(a);
+    		//Arbol<Accion> arb = new Arbol<Accion>();
+    		//arb.setElemento(a);
+    		DefaultMutableTreeNode arb = new DefaultMutableTreeNode();
+    		arb.setUserObject(a);    		
     		return arb;
     	}
     	//Caso recursivo
@@ -142,17 +168,43 @@ public class XMLAlternativa extends XMLTools{
     		NodeList acciones = listaAcciones.getElementsByTagName("accion");
     		//Creamos el nodo padre del arbol.
     		Accion a = new Accion (accion.getElementsByTagName("nombreAccion").item(0).getTextContent());
-    		Arbol<Accion> padre = new Arbol<Accion>();
-    		padre.setElemento(a);
+    		//Arbol<Accion> padre = new Arbol<Accion>();
+    		//padre.setElemento(a);
+    		DefaultMutableTreeNode padre = new DefaultMutableTreeNode();
+    		padre.setUserObject(a); 
+    		int index=0;
     		//Recorremos cada subfactor.
     		for(int i = 0; i < acciones.getLength(); i++){
-    			Arbol<Accion> arb = recorrerAcciones((Element)acciones.item(i));    			
-    			padre.añadirHijo(arb);
+    			//Arbol<Accion> arb = recorrerAcciones((Element)acciones.item(i));    			
+    			//padre.añadirHijo(arb);
+    			DefaultMutableTreeNode arb = recorrerAcciones((Element)acciones.item(i));
+    			if(!esSubArbol(arb,padre))
+    				padre.insert(arb,index++);
     		}
     		return padre;
     	}
     }
     
+    
+    private boolean esSubArbol(DefaultMutableTreeNode arbolH, DefaultMutableTreeNode arbolP){
+    	boolean esHijo = false;
+    	Enumeration eHijos = arbolP.children();
+    	while(eHijos.hasMoreElements()){
+    		Enumeration eP = ((DefaultMutableTreeNode)eHijos.nextElement()).breadthFirstEnumeration();
+	    	while(eP.hasMoreElements() && !esHijo){
+	    		Enumeration eH = arbolH.breadthFirstEnumeration();
+	    		DefaultMutableTreeNode nodoP = (DefaultMutableTreeNode)eP.nextElement();
+	    		while(eH.hasMoreElements() && !esHijo){
+	    			DefaultMutableTreeNode nodoH = (DefaultMutableTreeNode)eH.nextElement();
+	    			if(nodoP.getUserObject()!= null && nodoH.getUserObject()!= null)
+	    				if(nodoP.getUserObject().toString().equals(nodoH.getUserObject().toString()))
+	    					esHijo = true;
+	    		}
+	    		
+	    	}
+    	}
+    	return esHijo;
+    }
 
 	@Override
 	public void escribir(Object o, String archivo) {
@@ -176,15 +228,20 @@ public class XMLAlternativa extends XMLTools{
             //Creamos la lista de acciones.
             Element listaAcciones = (Element)document.createElement("listaAcciones");
             
-            Arbol<Accion> acciones = alt.getAcciones();
+            DefaultTreeModel acciones = alt.getAcciones();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode)acciones.getRoot();
             
-            int numHijos = acciones.getHijos().size();
+            //int numHijos = acciones.getHijos().size();
+            int numHijos = raiz.getChildCount();
+            Enumeration children = raiz.children();
             
             for(int i=0; i< numHijos; i++){
             	int cont = 1;
-            	Element accion = recorrerAcciones(acciones.getHijos().get(i),document,cont);
-            	if(acciones.getHijos().get(i).getHijos().size() > 0 )
-            		i = i + cont + 1;
+            	     	
+            	DefaultMutableTreeNode nodoI = (DefaultMutableTreeNode)children.nextElement();
+            	Element accion = recorrerAcciones(nodoI,document,cont);       
+            	/*if(acciones.getHijos().get(i).getHijos().size() > 0 )
+            		i = i + cont + 1;*/
             	listaAcciones.appendChild(accion);
             }            
             root.appendChild(listaAcciones);
@@ -320,10 +377,10 @@ public class XMLAlternativa extends XMLTools{
      * @param factor Arbol de acciones y subacciones.
      * @return El elemento accion con acciones y subacciones.
      */
-    private Element recorrerAcciones(Arbol<Accion> accion, Document document, int cont){
+    private Element recorrerAcciones(DefaultMutableTreeNode accion, Document document, int cont){
     	
     	Element elemAccion = (Element)document.createElement("accion");
-    	Accion a = accion.getElemento();
+    	Accion a = (Accion)accion.getUserObject();
     	
     	Element nombreAccion = (Element)document.createElement("nombreAccion");
     	nombreAccion.setTextContent(a.getId());
@@ -331,16 +388,18 @@ public class XMLAlternativa extends XMLTools{
     	elemAccion.appendChild(nombreAccion);
     	
     	//Caso base: es un factor hijo, no tiene subfactores.
-    	if(accion.getHijos().size() == 0){        	
+    	if(accion.getChildCount() == 0){        	
         	return elemAccion;
     	}
     	//Caso recursivo: Tiene una lista de subfactores asociada. 
     	else{ 
     		Element listaSubAcciones = document.createElement("listaAcciones");
-    		for(int i=0; i<accion.getHijos().size(); i++){
-    			Element elemSubAccion = recorrerAcciones(accion.getHijos().get(i), document, cont++);
+    		Enumeration e = accion.children();
+    		for(int i=0; i<accion.getChildCount(); i++){
+    			DefaultMutableTreeNode nodoI = (DefaultMutableTreeNode)e.nextElement();
+    			Element elemSubAccion = recorrerAcciones(nodoI, document, cont++);
     			listaSubAcciones.appendChild(elemSubAccion);
-    			i = i + cont + 1;
+    			//i = i + cont + 1;
     		}
     		elemAccion.appendChild(listaSubAcciones);
     		return elemAccion;
