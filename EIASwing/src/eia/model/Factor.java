@@ -10,17 +10,17 @@ package eia.model;
 /**
  * Clase que implementa un factor ambiental.
  */
-public class Factor {
+public class Factor implements Cloneable {
 	/**
 	 * Nombre del factor ambiental.
 	 */
 	private String id;
-	
+
 	/**
 	 * Valor de peso del factor ambiental.
 	 */
 	private int peso;
-	
+
 	/**
 	 * Constructor por defecto.
 	 */
@@ -28,7 +28,7 @@ public class Factor {
 		id = "";
 		peso = 0;
 	}
-	
+
 	/**
 	 * Constructor por parámetros.
 	 * @param id Nombre del factor ambiental.
@@ -38,7 +38,7 @@ public class Factor {
 		this.id = id;
 		this.peso = peso;
 	}
-	
+
 	/**
 	 * Mutador para el atributo 'id'.
 	 * @param id Nombre a asignar al factor ambiental.
@@ -46,7 +46,7 @@ public class Factor {
 	public void setId(String id){
 		this.id = id;
 	}
-	
+
 	/**
 	 * Accesor para el atributo 'id'.
 	 * @return Nombre del factor ambiental.
@@ -54,7 +54,7 @@ public class Factor {
 	public String getId(){
 		return id;
 	}
-	
+
 	/**
 	 * Mutador para el atributo 'peso'.
 	 * @param peso Valor de peso a asignar al factor ambiental.
@@ -62,7 +62,7 @@ public class Factor {
 	public void setPeso(int peso){
 		this.peso = peso;
 	}
-	
+
 	/**
 	 * Accesor para el atributo 'peso'.
 	 * @return Valor de peso del factor ambiental.
@@ -70,7 +70,7 @@ public class Factor {
 	public int getPeso(){
 		return peso;
 	}
-	
+
 	/**
 	 * Vuelca sobre un String la información sobre el factor.
 	 * @return Cadena de caracteres con información sobre el factor.
@@ -78,4 +78,15 @@ public class Factor {
 	public String toString(){
 		return id;
 	}
+
+    public Object clone(){
+        Object copia = null;
+        try{
+            copia = super.clone();
+        }catch(CloneNotSupportedException ex){
+            System.out.println("Imposible duplicar");
+        }
+        ((Factor)copia).id = new String(id);
+        return copia;
+    }
 }
