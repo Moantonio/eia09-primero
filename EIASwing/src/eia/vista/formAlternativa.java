@@ -282,7 +282,7 @@ public class formAlternativa extends JDialog{
 	private JScrollPane getEfectosScrollPane() {
 		if (efectosScrollPane == null) {
 			efectosScrollPane = new JScrollPane();
-			efectosScrollPane.setBounds(new Rectangle(11, 17, 436, 107));
+			efectosScrollPane.setBounds(new Rectangle(5, 17, 445, 107));
 			efectosScrollPane.setViewportView(getEfectosTable());
 		}
 		return efectosScrollPane;
@@ -310,10 +310,10 @@ public class formAlternativa extends JDialog{
 			col.getColumn(3).setResizable(false);
 			col.getColumn(4).setResizable(false);
 			col.getColumn(0).setPreferredWidth(150);
-			col.getColumn(1).setPreferredWidth(100);
+			col.getColumn(1).setPreferredWidth(90);
 			col.getColumn(2).setPreferredWidth(80);
 			col.getColumn(3).setPreferredWidth(90);
-			col.getColumn(4).setPreferredWidth(40);
+			col.getColumn(4).setPreferredWidth(32);
 		}
 		return efectosTable;
 	}
@@ -608,8 +608,9 @@ public class formAlternativa extends JDialog{
 		    }
 		    String cuantitativa = "";
 		    if (efecto.getValCuantitativa()!=null){
-		    	cuantitativa = String.valueOf(efecto.getValCuantitativa().getIndicador());
+		    	cuantitativa = String.valueOf(efecto.getValCuantitativa().getMagnitudImpacto());
 		    }
+		    
 		    String total = "";
 		    String caracter = "";
 		    if(efecto.getValCualitativa()!=null&&efecto.getValCuantitativa()!=null){
