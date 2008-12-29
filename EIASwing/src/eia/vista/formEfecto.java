@@ -380,6 +380,9 @@ public class formEfecto extends JDialog {
 			caracterComboBox.setSize(new Dimension(135, 18));
 			caracterComboBox.setPreferredSize(new Dimension(31, 38));
 			caracterComboBox.setLocation(new Point(35, 38));
+			if (efecto.getValCualitativa() != null && efecto.getValCuantitativa() != null){
+				caracterComboBox.setSelectedItem(efecto.getCaracter().toString());
+			}
 		}
 		return caracterComboBox;
 	}
