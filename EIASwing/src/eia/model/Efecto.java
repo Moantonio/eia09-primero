@@ -293,11 +293,32 @@ public class Efecto implements Cloneable {
         ((Efecto)copia).accion = this.accion;
         ((Efecto)copia).factor = this.factor;
         ((Efecto)copia).caracter = this.caracter;
-        ((Efecto)copia).descripcion = new String(this.descripcion);
-        ((Efecto)copia).id = new String(this.id);
+
+        if (this.descripcion != null){
+        	((Efecto)copia).descripcion = new String(this.descripcion);
+        }else{
+        	((Efecto)copia).descripcion = new String();
+        }
+
+        if (this.id != null){
+        	((Efecto)copia).id = new String(this.id);
+        }else{
+        	((Efecto)copia).id = new String();
+        }
+
         ((Efecto)copia).juicio = this.juicio;
-        ((Efecto)copia).valCualitativa = (ValoracionCualitativa) this.valCualitativa.clone();
-        ((Efecto)copia).valCuantitativa = (ValoracionCuantitativa) this.valCuantitativa.clone();
+
+        if (this.valCualitativa != null){
+        	((Efecto)copia).valCualitativa = (ValoracionCualitativa) this.valCualitativa.clone();
+        }else{
+        	((Efecto)copia).valCualitativa = null;
+        }
+
+        if (this.valCuantitativa != null){
+        	((Efecto)copia).valCuantitativa = (ValoracionCuantitativa) this.valCuantitativa.clone();
+        }else{
+        	((Efecto)copia).valCuantitativa = null;
+        }
         return copia;
     }
 }

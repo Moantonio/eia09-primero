@@ -10,7 +10,7 @@ package eia.model;
 /**
  * Clase que implementa una acción ambiental.
  */
-public class Accion implements Cloneable {
+public class Accion {
 
 	/**
 	 * Nombre de la acción ambiental.
@@ -55,16 +55,5 @@ public class Accion implements Cloneable {
 	public String toString(){
 		return id;
 	}
-
-    public Object clone(){
-        Object copia = null;
-        try{
-            copia = super.clone();
-        }catch(CloneNotSupportedException ex){
-            System.out.println("Imposible duplicar");
-        }
-        ((Accion)copia).id = new String(this.id);
-        return copia;
-    }
 
 }

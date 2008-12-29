@@ -13,7 +13,7 @@ import java.util.Date;
  * Clase que implementa la ficha con la información
  * de un proyecto de estudio de impacto ambiental.
  */
-public class InfoProyecto implements Cloneable{
+public class InfoProyecto {
 
 	/**
 	 * Nombre del proyecto de estudio de impacto ambiental.
@@ -245,22 +245,4 @@ public class InfoProyecto implements Cloneable{
 	public void setVidaUtil(int vidaUtil) {
 		this.vidaUtil = vidaUtil;
 	}
-
-    public Object clone(){
-        Object copia = null;
-        try{
-            copia = super.clone();
-        }catch(CloneNotSupportedException ex){
-            System.out.println("Imposible duplicar");
-        }
-        ((InfoProyecto)copia).autor = new String(this.autor);
-        ((InfoProyecto)copia).compania = new String(this.compania);
-        ((InfoProyecto)copia).descripcion = new String(this.descripcion);
-        ((InfoProyecto)copia).fecha = (Date) this.fecha.clone();
-        ((InfoProyecto)copia).nombre = new String(this.nombre);
-        ((InfoProyecto)copia).pais = new String(this.pais);
-        ((InfoProyecto)copia).poblacion = new String(this.poblacion);
-        ((InfoProyecto)copia).provincia = new String(this.provincia);
-        return copia;
-    }
 }

@@ -10,7 +10,7 @@ package eia.model;
 /**
  * Clase que implementa un factor ambiental.
  */
-public class Factor implements Cloneable {
+public class Factor {
 	/**
 	 * Nombre del factor ambiental.
 	 */
@@ -79,14 +79,4 @@ public class Factor implements Cloneable {
 		return id;
 	}
 
-    public Object clone(){
-        Object copia = null;
-        try{
-            copia = super.clone();
-        }catch(CloneNotSupportedException ex){
-            System.out.println("Imposible duplicar");
-        }
-        ((Factor)copia).id = new String(this.id);
-        return copia;
-    }
 }
