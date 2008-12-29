@@ -43,6 +43,7 @@ import eia.util.FiltreSimple;
 import eia.util.TablaColores;
 import eia.util.TablaNoEditable;
 import eia.util.TipoProyecto;
+import eia.util.xml.XMLAlternativa;
 import eia.util.xml.XMLProyecto;
 
 public class formPrincipal {
@@ -1012,6 +1013,23 @@ public class formPrincipal {
 		crearAlternativa.setVisible(true);
 		if(crearAlternativa.isFlagAceptar()){
 			String nombre = crearAlternativa.getNombreAlternativa();
+
+			/*
+			String filename;
+			if (proyecto.getTipo() == TipoProyecto.AUTOVÍA){
+				filename = "../util/xml/plantillas/alternativaVia.xml";
+			} else if(proyecto.getTipo() == TipoProyecto.PRESA){
+				filename = "../util/xml/plantillas/alternativaPresa.xml";
+			} else if(proyecto.getTipo() == TipoProyecto.PUERTODEPORTIVO){
+				filename = "../util/xml/plantillas/alternativaPuerto.xml";
+			} else if(proyecto.getTipo() == TipoProyecto.VERTEDERO){
+				filename = "../util/xml/plantillas/alternativaVertedero.xml";
+			}
+			XMLAlternativa cargador = new XMLAlternativa();
+			final Alternativa alternativa = cargador.leer(filename);
+			alternativa.setId(nombre);
+			*/
+
 			//Crear alternativa con ese nombre
 			final Alternativa alternativa = new Alternativa(nombre);
 			//TODO Cargamos el arbol de acciones para ese tipo de proyecto
