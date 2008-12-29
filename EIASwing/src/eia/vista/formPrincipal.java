@@ -870,11 +870,8 @@ public class formPrincipal {
 			info.setNombre(nombre);
 			info.setDescripcion(descripcion);
 
-			//TODO Apañar acceso a los XML
-			//XMLProyecto xmlProy = new XMLProyecto("..\\util\\xml\\plantillas\\proyectoEIA.dtd");
-			//proyecto = (Proyecto)xmlProy.leer("..\\util\\xml\\plantillas\\proyectoVacio.xml");
-			XMLProyecto xmlProy = new XMLProyecto("C:\\Proyectos\\EIASwing\\src\\eia\\util\\xml\\plantillas\\proyectoEIA.dtd");
-			proyecto = (Proyecto)xmlProy.leer("C:\\Proyectos\\EIASwing\\src\\eia\\util\\xml\\plantillas\\proyectoVacio.xml");
+			XMLProyecto xmlProy = new XMLProyecto(".\\src\\eia\\util\\xml\\plantillas\\proyectoEIA.dtd");
+			proyecto = (Proyecto)xmlProy.leer(".\\src\\eia\\util\\xml\\plantillas\\proyectoVacio.xml");
 			proyecto.setInformacion(info);
 			proyecto.setTipo(tipo);
 
