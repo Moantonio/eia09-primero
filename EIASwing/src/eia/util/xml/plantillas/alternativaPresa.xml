@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE alternativaProyEIA SYSTEM ".\alternativaProyEIA.dtd">
+<alternativaProyEIA>
+	<nombre generica="true"></nombre>
+	<listaAcciones>
+		<accion>
+			<nombreAccion>Fase de Planeamiento</nombreAccion>
+			<listaAcciones>
+				<accion>
+					<nombreAccion>Diseño y localización de alternativas</nombreAccion>
+				</accion>
+			</listaAcciones>
+		</accion>
+		<accion>
+			<nombreAccion>Fase de Construcción</nombreAccion>
+			<listaAcciones>
+				<accion>
+					<nombreAccion>Desviación de aguas y ataguías</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Caminos y pistas de acceso y montaje</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Infraestructuras</nombreAccion>
+					<listaAcciones>
+						<accion>
+							<nombreAccion>Líneas de transporte eléctrico</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Canales</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Conducciones de agua</nombreAccion>
+						</accion>
+					</listaAcciones>
+				</accion>
+				<accion>
+					<nombreAccion>Obras de construcción propiamente dichas</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Transporte de materiales</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Movimiento de maquinaria pesada</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Vertido de tierras y otros materiales</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Edificios de obra</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Deforestación del vaso</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Explotación canteras</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Reposición de viales destruidos o inundados</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Expropiaciones</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Incremento de la mano de obra</nombreAccion>
+				</accion>
+			</listaAcciones>
+		</accion>
+		<accion>
+			<nombreAccion>Fase de Funcionamiento</nombreAccion>
+			<listaAcciones>
+				<accion>
+					<nombreAccion>Presa y embalsamado del agua</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Infraestructuras</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Oscilaciones del nivel de agua embalsada</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Regulación del caudal de aguas abajo de la presa</nombreAccion>
+				</accion>
+			</listaAcciones>
+		</accion>
+	</listaAcciones>
+</alternativaProyEIA>
