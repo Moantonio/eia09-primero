@@ -127,9 +127,10 @@ public class XMLProyecto extends XMLTools{
         for(int k=0; k<alternativas.getLength(); k++){
             Alternativa alt = new Alternativa();
 
-            alt.setId(elemento.getElementsByTagName("nombreAlt").item(0).getTextContent());
+            alt.setId(elemento.getElementsByTagName("nombreAlt").item(k).getTextContent());
 
-          //Cogemos la lista principal de acciones.
+            //TODO Esto no lo hace bien a partir de la 2ª pasada: Vuelve a coger el 1º arbol.
+            //Cogemos la lista principal de acciones.
             Element listaAcciones = (Element)elemento.getElementsByTagName("listaAcciones").item(0);
             NodeList acciones = listaAcciones.getElementsByTagName("accion");
 
@@ -149,7 +150,7 @@ public class XMLProyecto extends XMLTools{
             //Necesitamos el arbol de factores del proyecto para guardar los objetos.
             ArrayList<Efecto> listaEf = new ArrayList<Efecto>();
             DefaultTreeModel arbFact = proy.getFactores();
-            Element listaEfectos = (Element)elemento.getElementsByTagName("listaEfectos").item(0);
+            Element listaEfectos = (Element)elemento.getElementsByTagName("listaEfectos").item(k);
             if(listaEfectos != null){
     	        NodeList efectos = listaEfectos.getElementsByTagName("efecto");
     	        for(int i=0; i < efectos.getLength(); i++){
@@ -199,10 +200,10 @@ public class XMLProyecto extends XMLTools{
     	        }
             }
             alt.setEfectos(listaEf);
-            if(elemento.getElementsByTagName("valorTotalAlternativa").item(0)!=null)
-            	alt.setValorTotal(Double.valueOf(elemento.getElementsByTagName("valorTotalAlternativa").item(0).getTextContent()));
+            if(elemento.getElementsByTagName("valorTotalAlternativa").item(k)!=null)
+            	alt.setValorTotal(Double.valueOf(elemento.getElementsByTagName("valorTotalAlternativa").item(k).getTextContent()));
 
-            String valoradaTexto = elemento.getElementsByTagName("valorada").item(0).getTextContent();
+            String valoradaTexto = elemento.getElementsByTagName("valorada").item(k).getTextContent();
             if (valoradaTexto.compareTo("true")==0){
                 alt.setValorada(true);
             }else{
