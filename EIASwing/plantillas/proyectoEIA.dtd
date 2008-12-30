@@ -31,7 +31,7 @@
 	<!ELEMENT nombreAccion (#PCDATA)>
 
 <!ELEMENT listaEfectos (efecto)+>
-<!ELEMENT efecto (idEfecto, descripcion, caracter, idAccion, idFactor, 			        valorSimpleEnjuiciamiento?, valorCuantitativo?,valorCualitativo?, valorTotal?)>
+<!ELEMENT efecto (idEfecto, descripcion, caracter?, idAccion, idFactor, 			        valorSimpleEnjuiciamiento?, valorCuantitativo?,valorCualitativo?, valorTotal?)>
 	<!ELEMENT idEfecto (#PCDATA)>
 	<!ELEMENT caracter (#PCDATA)>
 	<!ELEMENT idAccion (#PCDATA)>

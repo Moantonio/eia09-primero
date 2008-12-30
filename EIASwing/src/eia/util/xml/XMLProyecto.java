@@ -161,7 +161,10 @@ public class XMLProyecto extends XMLTools{
     	        	ef.setAccion((Accion)buscarElemento(alt.getAcciones(),idAcc));
     	        	ef.setFactor((Factor)buscarElemento(arbFact,efectoElem.getElementsByTagName("idFactor").item(0).getTextContent()));
     	        	ef.setJuicio(ValorJuicio.valueOf(efectoElem.getElementsByTagName("valorSimpleEnjuiciamiento").item(0).getTextContent()));
-    	        	ef.setCaracter(CaracterEfecto.valueOf(efectoElem.getElementsByTagName("caracter").item(0).getTextContent()));
+    	        	Element caracter = (Element)efectoElem.getElementsByTagName("caracter").item(0);
+    	        	if (caracter != null){
+    	        		ef.setCaracter(CaracterEfecto.valueOf(efectoElem.getElementsByTagName("caracter").item(0).getTextContent()));
+    	        	}
 
     	        	Element valoracion = (Element)efectoElem.getElementsByTagName("valorCuantitativo").item(0);
     	        	if(valoracion != null){
@@ -429,9 +432,12 @@ public class XMLProyecto extends XMLTools{
     	            	descripcionAlt.setTextContent(ef.getDescripcion());
     	            	elemEfecto.appendChild(descripcionAlt);
 
-    	            	Element caracter = document.createElement("caracter");
-    	            	caracter.setTextContent(ef.getCaracter().toString());
-    	            	elemEfecto.appendChild(caracter);
+    	            	// El caracter no es obligatorio
+    	            	if (ef.getCaracter() != null){
+    	            		Element caracter = document.createElement("caracter");
+    	            		caracter.setTextContent(ef.getCaracter().toString());
+    	            		elemEfecto.appendChild(caracter);
+    	            	}
 
     	            	Element idAccion = document.createElement("idAccion");
     	            	idAccion.setTextContent(ef.getAccion().getId());
@@ -445,88 +451,93 @@ public class XMLProyecto extends XMLTools{
     	            	valorSimpleEnjuiciamiento.setTextContent(ef.getJuicio().toString());
     	            	elemEfecto.appendChild(valorSimpleEnjuiciamiento);
 
-    	            	Element valorCuantitativo = document.createElement("valorCuantitativo");
+    	            	if (ef.getValCuantitativa() !=null){
+	    	            	Element valorCuantitativo = document.createElement("valorCuantitativo");
 
-    	            	Element indicador = document.createElement("indicador");
-    	            	indicador.setTextContent(Double.toString(ef.getValCuantitativa().getIndicador()));
-    	            	valorCuantitativo.appendChild(indicador);
-    	            	Element maxVal = document.createElement("maxVal");
-    	            	maxVal.setTextContent(Double.toString(ef.getValCuantitativa().getMayorValorIndicador()));
-    	            	valorCuantitativo.appendChild(maxVal);
-    	            	Element minVal = document.createElement("minVal");
-    	            	minVal.setTextContent(Double.toString(ef.getValCuantitativa().getMenorValorIndicador()));
-    	            	valorCuantitativo.appendChild(minVal);
-    	            	Element magnitud = document.createElement("magnitud");
-    	            	magnitud.setTextContent(Double.toString(ef.getValCuantitativa().getMagnitudImpacto()));
-    	            	valorCuantitativo.appendChild(magnitud);
+	    	            	Element indicador = document.createElement("indicador");
+	    	            	indicador.setTextContent(Double.toString(ef.getValCuantitativa().getIndicador()));
+	    	            	valorCuantitativo.appendChild(indicador);
+	    	            	Element maxVal = document.createElement("maxVal");
+	    	            	maxVal.setTextContent(Double.toString(ef.getValCuantitativa().getMayorValorIndicador()));
+	    	            	valorCuantitativo.appendChild(maxVal);
+	    	            	Element minVal = document.createElement("minVal");
+	    	            	minVal.setTextContent(Double.toString(ef.getValCuantitativa().getMenorValorIndicador()));
+	    	            	valorCuantitativo.appendChild(minVal);
+	    	            	Element magnitud = document.createElement("magnitud");
+	    	            	magnitud.setTextContent(Double.toString(ef.getValCuantitativa().getMagnitudImpacto()));
+	    	            	valorCuantitativo.appendChild(magnitud);
 
-    	            	elemEfecto.appendChild(valorCuantitativo);
+	    	            	elemEfecto.appendChild(valorCuantitativo);
+    	            	}
 
-    	            	Element valorCualitativo = document.createElement("valorCualitativo");
+    	            	if (ef.getValCualitativa() !=null){
+	    	            	Element valorCualitativo = document.createElement("valorCualitativo");
 
-    	            	Element signo = document.createElement("signo");
-    	            	signo.setTextContent(Integer.toString(ef.getValCualitativa().getSigno()));
-    	            	valorCualitativo.appendChild(signo);
+	    	            	Element signo = document.createElement("signo");
+	    	            	signo.setTextContent(Integer.toString(ef.getValCualitativa().getSigno()));
+	    	            	valorCualitativo.appendChild(signo);
 
-    	            	Element acumulacion = document.createElement("acumulacion");
-    	            	acumulacion.setTextContent(Integer.toString(ef.getValCualitativa().getAcumulacion()));
-    	            	valorCualitativo.appendChild(acumulacion);
+	    	            	Element acumulacion = document.createElement("acumulacion");
+	    	            	acumulacion.setTextContent(Integer.toString(ef.getValCualitativa().getAcumulacion()));
+	    	            	valorCualitativo.appendChild(acumulacion);
 
-    	            	Element extension = document.createElement("extension");
-    	            	extension.setTextContent(Integer.toString(ef.getValCualitativa().getExtension()));
-    	            	valorCualitativo.appendChild(extension);
+	    	            	Element extension = document.createElement("extension");
+	    	            	extension.setTextContent(Integer.toString(ef.getValCualitativa().getExtension()));
+	    	            	valorCualitativo.appendChild(extension);
 
-    	            	Element extensionCritica = document.createElement("extensionCritica");
-    	            	extensionCritica.setTextContent(Integer.toString(ef.getValCualitativa().getExtensionCritica()));
-    	            	valorCualitativo.appendChild(extensionCritica);
+	    	            	Element extensionCritica = document.createElement("extensionCritica");
+	    	            	extensionCritica.setTextContent(Integer.toString(ef.getValCualitativa().getExtensionCritica()));
+	    	            	valorCualitativo.appendChild(extensionCritica);
 
-    	            	Element intensidad = document.createElement("intensidad");
-    	            	intensidad.setTextContent(Integer.toString(ef.getValCualitativa().getIntensidad()));
-    	            	valorCualitativo.appendChild(intensidad);
+	    	            	Element intensidad = document.createElement("intensidad");
+	    	            	intensidad.setTextContent(Integer.toString(ef.getValCualitativa().getIntensidad()));
+	    	            	valorCualitativo.appendChild(intensidad);
 
-    	            	Element persistencia = document.createElement("persistencia");
-    	            	persistencia.setTextContent(Integer.toString(ef.getValCualitativa().getPersistencia()));
-    	            	valorCualitativo.appendChild(persistencia);
+	    	            	Element persistencia = document.createElement("persistencia");
+	    	            	persistencia.setTextContent(Integer.toString(ef.getValCualitativa().getPersistencia()));
+	    	            	valorCualitativo.appendChild(persistencia);
 
-    	            	Element reversibilidad = document.createElement("reversibilidad");
-    	            	reversibilidad.setTextContent(Integer.toString(ef.getValCualitativa().getReversibilidad()));
-    	            	valorCualitativo.appendChild(reversibilidad);
+	    	            	Element reversibilidad = document.createElement("reversibilidad");
+	    	            	reversibilidad.setTextContent(Integer.toString(ef.getValCualitativa().getReversibilidad()));
+	    	            	valorCualitativo.appendChild(reversibilidad);
 
-    	            	Element recuperabilidad = document.createElement("recuperabilidad");
-    	            	recuperabilidad.setTextContent(Integer.toString(ef.getValCualitativa().getRecuperabilidad()));
-    	            	valorCualitativo.appendChild(recuperabilidad);
+	    	            	Element recuperabilidad = document.createElement("recuperabilidad");
+	    	            	recuperabilidad.setTextContent(Integer.toString(ef.getValCualitativa().getRecuperabilidad()));
+	    	            	valorCualitativo.appendChild(recuperabilidad);
 
-    	            	Element periodicidad = document.createElement("periodicidad");
-    	            	periodicidad.setTextContent(Integer.toString(ef.getValCualitativa().getPeriodicidad()));
-    	            	valorCualitativo.appendChild(periodicidad);
+	    	            	Element periodicidad = document.createElement("periodicidad");
+	    	            	periodicidad.setTextContent(Integer.toString(ef.getValCualitativa().getPeriodicidad()));
+	    	            	valorCualitativo.appendChild(periodicidad);
 
-    	            	Element momento = document.createElement("momento");
-    	            	momento.setTextContent(Integer.toString(ef.getValCualitativa().getMomento()));
-    	            	valorCualitativo.appendChild(momento);
+	    	            	Element momento = document.createElement("momento");
+	    	            	momento.setTextContent(Integer.toString(ef.getValCualitativa().getMomento()));
+	    	            	valorCualitativo.appendChild(momento);
 
-    	            	Element momentoCritico = document.createElement("momentoCritico");
-    	            	momentoCritico.setTextContent(Integer.toString(ef.getValCualitativa().getMomentoCritico()));
-    	            	valorCualitativo.appendChild(momentoCritico);
+	    	            	Element momentoCritico = document.createElement("momentoCritico");
+	    	            	momentoCritico.setTextContent(Integer.toString(ef.getValCualitativa().getMomentoCritico()));
+	    	            	valorCualitativo.appendChild(momentoCritico);
 
-    	            	Element efectoImp = document.createElement("efectoImp");
-    	            	efectoImp.setTextContent(Integer.toString(ef.getValCualitativa().getEfecto()));
-    	            	valorCualitativo.appendChild(efectoImp);
+	    	            	Element efectoImp = document.createElement("efectoImp");
+	    	            	efectoImp.setTextContent(Integer.toString(ef.getValCualitativa().getEfecto()));
+	    	            	valorCualitativo.appendChild(efectoImp);
 
-    	            	Element incidencia = document.createElement("incidencia");
-    	            	incidencia.setTextContent(Double.toString(ef.getValCualitativa().getIncidencia()));
-    	            	valorCualitativo.appendChild(incidencia);
+	    	            	Element incidencia = document.createElement("incidencia");
+	    	            	incidencia.setTextContent(Double.toString(ef.getValCualitativa().getIncidencia()));
+	    	            	valorCualitativo.appendChild(incidencia);
 
-    	            	elemEfecto.appendChild(valorCualitativo);
-
-    	            	Element valorTotal = document.createElement("valorTotal");
-    	            	valorTotal.setTextContent(String.valueOf(ef.getValorTotal()));
-    	            	elemEfecto.appendChild(valorTotal);
+	    	            	elemEfecto.appendChild(valorCualitativo);
+    	            	}
+    	            	if ((ef.getValCualitativa() !=null)&&(ef.getValCuantitativa()!=null)){
+	    	            	Element valorTotal = document.createElement("valorTotal");
+	    	            	valorTotal.setTextContent(String.valueOf(ef.getValorTotal()));
+	    	            	elemEfecto.appendChild(valorTotal);
+    	            	}
 
     	            	listaEfectos.appendChild(elemEfecto);
     	            }
     	            rootAlt.appendChild(listaEfectos);
                 }
-                if(listaAlt.get(k).getValorTotal() > 0){
+                if(listaAlt.get(k).getValorada()){
                 	Element valorTotalAlternativa= document.createElement("valorTotalAlternativa");
                 	valorTotalAlternativa.setTextContent(String.valueOf(listaAlt.get(k).getValorTotal()));
                 	rootAlt.appendChild(valorTotalAlternativa);
@@ -535,7 +546,7 @@ public class XMLProyecto extends XMLTools{
                 Element valorada= document.createElement("valorada");
                 valorada.setTextContent(String.valueOf(listaAlt.get(k).getValorada()));
                 rootAlt.appendChild(valorada);
-                //AKi peta
+
                 listaAlternativas.appendChild(rootAlt);
             }
             root.appendChild(listaAlternativas);
