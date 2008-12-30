@@ -149,6 +149,9 @@
 						<accion>
 							<nombreAccion>Trafico rodado</nombreAccion>
 						</accion>
+						<accion>
+							<nombreAccion>Asfaltado de superficies</nombreAccion>
+						</accion>
 					</listaAcciones>
 				</accion>
 				<accion>

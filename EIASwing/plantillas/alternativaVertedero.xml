@@ -49,7 +49,6 @@
 				</accion>
 			</listaAcciones>
 		</accion>
-		
 		<accion>
 			<nombreAccion>Fase de Funcionamiento</nombreAccion>
 			<listaAcciones>
@@ -84,7 +83,7 @@
 					<nombreAccion>Vapores, humos y polvos emitidos a la atmósfera</nombreAccion>
 				</accion>
 				<accion>
-					<nombreAccion>Producción de ruidos y vibraciones</nombreAccion>
+					<nombreAccion>Producción de ruidos y vibraciones </nombreAccion>
 				</accion>
 				<accion>
 					<nombreAccion>Obtención productos recuperables y reciclado</nombreAccion>
@@ -142,7 +141,7 @@
 						</accion>
 					</listaAcciones>
 				</accion>
-				<accion>
+								<accion>
 					<nombreAccion>Otras Características de las basuras</nombreAccion>
 					<listaAcciones>
 						<accion>
