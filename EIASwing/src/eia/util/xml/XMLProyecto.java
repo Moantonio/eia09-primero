@@ -19,13 +19,19 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import eia.util.CaracterEfecto;
 import eia.util.Constants;
 import eia.util.TipoProyecto;
+import eia.util.ValorJuicio;
 
+import eia.model.Accion;
 import eia.model.Alternativa;
+import eia.model.Efecto;
 import eia.model.Factor;
 import eia.model.InfoProyecto;
 import eia.model.Proyecto;
+import eia.model.ValoracionCualitativa;
+import eia.model.ValoracionCuantitativa;
 
 public class XMLProyecto extends XMLTools{
 
@@ -116,11 +122,89 @@ public class XMLProyecto extends XMLTools{
 
       //Cogemos la lista de alternativas.
         Element listaAlternativas = (Element)elemento.getElementsByTagName("listaAlternativas").item(0);
-        NodeList alternativas = listaAlternativas.getElementsByTagName("nombreAlternativa");
+        NodeList alternativas = listaAlternativas.getElementsByTagName("alternativaProyEIA");
         ArrayList<Alternativa> listaAlt = new ArrayList<Alternativa>();
-        for(int i=0; i<alternativas.getLength(); i++){
-        	Alternativa alt = new Alternativa();
-        	alt.setId(alternativas.item(i).getTextContent());
+        for(int k=0; k<alternativas.getLength(); k++){
+            Alternativa alt = new Alternativa();
+
+            alt.setId(elemento.getElementsByTagName("nombre").item(0).getTextContent());
+
+          //Cogemos la lista principal de acciones.
+            Element listaAcciones = (Element)elemento.getElementsByTagName("listaAcciones").item(0);
+            NodeList acciones = listaAcciones.getElementsByTagName("accion");
+
+            //Para cada accon, vamos recorriendo las subacciones y creando el arbol.
+            //Arbol<Accion> arbolAcc = new Arbol<Accion>();
+            DefaultMutableTreeNode arbolAcc = new DefaultMutableTreeNode();
+            int index2 = 0;
+            for(int i = 0; i < acciones.getLength(); i++){
+            	DefaultMutableTreeNode arbolI = recorrerAcciones((Element)acciones.item(i));
+            	//arbolAcc.añadirHijo(arbolI);
+            	if(!esSubArbol(arbolI,arbolAcc))
+            		arbolAcc.insert(arbolI,index2++);
+            }
+            alt.setAcciones(new DefaultTreeModel(arbolAcc));
+
+            //Cargamos la lista de efectos.
+            //Necesitamos el arbol de factores del proyecto para guardar los objetos.
+            ArrayList<Efecto> listaEf = new ArrayList<Efecto>();
+            DefaultTreeModel arbFact = proy.getFactores();
+            Element listaEfectos = (Element)elemento.getElementsByTagName("listaEfectos").item(0);
+            if(listaEfectos != null){
+    	        NodeList efectos = listaEfectos.getElementsByTagName("efecto");
+    	        for(int i=0; i < efectos.getLength(); i++){
+    	        	Element efectoElem =(Element)efectos.item(i);
+    	        	Efecto ef = new Efecto();
+    	        	ef.setId(efectoElem.getElementsByTagName("idEfecto").item(0).getTextContent());
+    	        	ef.setDescripcion(efectoElem.getElementsByTagName("descripcion").item(0).getTextContent());
+    	        	String idAcc = efectoElem.getElementsByTagName("idAccion").item(0).getTextContent();
+    	        	ef.setAccion((Accion)buscarElemento(alt.getAcciones(),idAcc));
+    	        	ef.setFactor((Factor)buscarElemento(arbFact,efectoElem.getElementsByTagName("idFactor").item(0).getTextContent()));
+    	        	ef.setJuicio(ValorJuicio.valueOf(efectoElem.getElementsByTagName("valorSimpleEnjuiciamiento").item(0).getTextContent()));
+    	        	ef.setCaracter(CaracterEfecto.valueOf(efectoElem.getElementsByTagName("caracter").item(0).getTextContent()));
+
+    	        	Element valoracion = (Element)efectoElem.getElementsByTagName("valorCuantitativo").item(0);
+    	        	if(valoracion != null){
+    		        	ValoracionCuantitativa valCuant = new ValoracionCuantitativa(Double.valueOf(valoracion.getElementsByTagName("indicador").item(0).getTextContent()),
+    							 													 Double.valueOf(valoracion.getElementsByTagName("maxVal").item(0).getTextContent()),
+    							 													 Double.valueOf(valoracion.getElementsByTagName("minVal").item(0).getTextContent()));
+    		        	ef.setValCuantitativa(valCuant);
+    	        	}
+
+    	        	valoracion = (Element)efectoElem.getElementsByTagName("valorCualitativo").item(0);
+    	        	if(valoracion != null){
+    	        		ValoracionCualitativa valCual = new ValoracionCualitativa(Integer.valueOf(valoracion.getElementsByTagName("signo").item(0).getTextContent()),
+    	        																  Integer.valueOf(valoracion.getElementsByTagName("acumulacion").item(0).getTextContent()),
+    	        																  Integer.valueOf(valoracion.getElementsByTagName("extension").item(0).getTextContent()),
+    	        																  Integer.valueOf(valoracion.getElementsByTagName("extensionCritica").item(0).getTextContent()),
+    	        																  Integer.valueOf(valoracion.getElementsByTagName("intensidad").item(0).getTextContent()),
+    	        																  Integer.valueOf(valoracion.getElementsByTagName("persistencia").item(0).getTextContent()),
+    	        																  Integer.valueOf(valoracion.getElementsByTagName("reversibilidad").item(0).getTextContent()),
+    	        																  Integer.valueOf(valoracion.getElementsByTagName("recuperabilidad").item(0).getTextContent()),
+    	        																  Integer.valueOf(valoracion.getElementsByTagName("periodicidad").item(0).getTextContent()),
+    	        																  Integer.valueOf(valoracion.getElementsByTagName("momento").item(0).getTextContent()),
+    	        																  Integer.valueOf(valoracion.getElementsByTagName("momentoCritico").item(0).getTextContent()),
+    	        																  Integer.valueOf(valoracion.getElementsByTagName("efectoImp").item(0).getTextContent()));
+
+    	        		ef.setValCualitativa(valCual);
+    	        	}
+
+    	        	Element elemValorTotal = (Element)efectoElem.getElementsByTagName("valorTotal").item(0);
+    	        	if(elemValorTotal != null)
+    	        		ef.setValorTotal(Double.valueOf(elemValorTotal.getTextContent()));
+    	        	listaEf.add(ef);
+    	        }
+            }
+            alt.setEfectos(listaEf);
+            if(elemento.getElementsByTagName("valorTotalAlternativa").item(0)!=null)
+            	alt.setValorTotal(Double.valueOf(elemento.getElementsByTagName("valorTotalAlternativa").item(0).getTextContent()));
+
+            String valoradaTexto = elemento.getElementsByTagName("valorada").item(0).getTextContent();
+            if (valoradaTexto.compareTo("true")==0){
+                alt.setValorada(true);
+            }else{
+                alt.setValorada(false);
+            }
         	listaAlt.add(alt);
         }
         proy.setAlternativas(listaAlt);
@@ -302,10 +386,157 @@ public class XMLProyecto extends XMLTools{
             ArrayList<Alternativa> listaAlt = proy.getAlternativas();
 
             Element listaAlternativas = (Element)document.createElement("listaAlternativas");
-            for(int i=0; i<listaAlt.size(); i++){
-            	Element elemAlternativa = (Element)document.createElement("nombreAlternativa");
-            	elemAlternativa.setTextContent(listaAlt.get(i).getId());
-            	listaAlternativas.appendChild(elemAlternativa);
+            for(int k=0; k<listaAlt.size(); k++){
+                /*Creación del elemento ráiz*/
+                Element rootAlt = (Element) document.createElement("alternativaProyEIA");
+
+                Element nombreAlt = (Element)document.createElement("nombreAlt");
+                nombreAlt.setTextContent(listaAlt.get(k).getId());
+                rootAlt.appendChild(nombreAlt);
+
+                //Creamos la lista de acciones.
+                Element listaAcciones = (Element)document.createElement("listaAcciones");
+
+                DefaultTreeModel acciones = listaAlt.get(k).getAcciones();
+                DefaultMutableTreeNode raiz = (DefaultMutableTreeNode)acciones.getRoot();
+
+                //int numHijos = acciones.getHijos().size();
+                int numHijos = raiz.getChildCount();
+                Enumeration children = raiz.children();
+
+                for(int i=0; i< numHijos; i++){
+                	int cont = 1;
+
+                	DefaultMutableTreeNode nodoI = (DefaultMutableTreeNode)children.nextElement();
+                	Element accion = recorrerAcciones(nodoI,document,cont);
+                	/*if(acciones.getHijos().get(i).getHijos().size() > 0 )
+                		i = i + cont + 1;*/
+                	listaAcciones.appendChild(accion);
+                }
+                rootAlt.appendChild(listaAcciones);
+
+                if(listaAlt.get(k).getEfectos().size() > 0){
+    	            Element listaEfectos = (Element)document.createElement("listaEfectos");
+    	            for(int i=0; i<listaAlt.get(k).getEfectos().size(); i++){
+    	            	Element elemEfecto = (Element)document.createElement("efecto");
+    	            	Efecto ef = listaAlt.get(k).getEfectos().get(i);
+
+    	            	Element idEfecto = document.createElement("idEfecto");
+    	            	idEfecto.setTextContent(ef.getId());
+    	            	elemEfecto.appendChild(idEfecto);
+
+    	            	Element descripcionAlt = document.createElement("descripcion");
+    	            	descripcionAlt.setTextContent(ef.getDescripcion());
+    	            	elemEfecto.appendChild(descripcionAlt);
+
+    	            	Element caracter = document.createElement("caracter");
+    	            	caracter.setTextContent(ef.getCaracter().toString());
+    	            	elemEfecto.appendChild(caracter);
+
+    	            	Element idAccion = document.createElement("idAccion");
+    	            	idAccion.setTextContent(ef.getAccion().getId());
+    	            	elemEfecto.appendChild(idAccion);
+
+    	            	Element idFactor = document.createElement("idFactor");
+    	            	idFactor.setTextContent(ef.getFactor().getId());
+    	            	elemEfecto.appendChild(idFactor);
+
+    	            	Element valorSimpleEnjuiciamiento = document.createElement("valorSimpleEnjuiciamiento");
+    	            	valorSimpleEnjuiciamiento.setTextContent(ef.getJuicio().toString());
+    	            	elemEfecto.appendChild(valorSimpleEnjuiciamiento);
+
+    	            	Element valorCuantitativo = document.createElement("valorCuantitativo");
+
+    	            	Element indicador = document.createElement("indicador");
+    	            	indicador.setTextContent(Double.toString(ef.getValCuantitativa().getIndicador()));
+    	            	valorCuantitativo.appendChild(indicador);
+    	            	Element maxVal = document.createElement("maxVal");
+    	            	maxVal.setTextContent(Double.toString(ef.getValCuantitativa().getMayorValorIndicador()));
+    	            	valorCuantitativo.appendChild(maxVal);
+    	            	Element minVal = document.createElement("minVal");
+    	            	minVal.setTextContent(Double.toString(ef.getValCuantitativa().getMenorValorIndicador()));
+    	            	valorCuantitativo.appendChild(minVal);
+    	            	Element magnitud = document.createElement("magnitud");
+    	            	magnitud.setTextContent(Double.toString(ef.getValCuantitativa().getMagnitudImpacto()));
+    	            	valorCuantitativo.appendChild(magnitud);
+
+    	            	elemEfecto.appendChild(valorCuantitativo);
+
+    	            	Element valorCualitativo = document.createElement("valorCualitativo");
+
+    	            	Element signo = document.createElement("signo");
+    	            	signo.setTextContent(Integer.toString(ef.getValCualitativa().getSigno()));
+    	            	valorCualitativo.appendChild(signo);
+
+    	            	Element acumulacion = document.createElement("acumulacion");
+    	            	acumulacion.setTextContent(Integer.toString(ef.getValCualitativa().getAcumulacion()));
+    	            	valorCualitativo.appendChild(acumulacion);
+
+    	            	Element extension = document.createElement("extension");
+    	            	extension.setTextContent(Integer.toString(ef.getValCualitativa().getExtension()));
+    	            	valorCualitativo.appendChild(extension);
+
+    	            	Element extensionCritica = document.createElement("extensionCritica");
+    	            	extensionCritica.setTextContent(Integer.toString(ef.getValCualitativa().getExtensionCritica()));
+    	            	valorCualitativo.appendChild(extensionCritica);
+
+    	            	Element intensidad = document.createElement("intensidad");
+    	            	intensidad.setTextContent(Integer.toString(ef.getValCualitativa().getIntensidad()));
+    	            	valorCualitativo.appendChild(intensidad);
+
+    	            	Element persistencia = document.createElement("persistencia");
+    	            	persistencia.setTextContent(Integer.toString(ef.getValCualitativa().getPersistencia()));
+    	            	valorCualitativo.appendChild(persistencia);
+
+    	            	Element reversibilidad = document.createElement("reversibilidad");
+    	            	reversibilidad.setTextContent(Integer.toString(ef.getValCualitativa().getReversibilidad()));
+    	            	valorCualitativo.appendChild(reversibilidad);
+
+    	            	Element recuperabilidad = document.createElement("recuperabilidad");
+    	            	recuperabilidad.setTextContent(Integer.toString(ef.getValCualitativa().getRecuperabilidad()));
+    	            	valorCualitativo.appendChild(recuperabilidad);
+
+    	            	Element periodicidad = document.createElement("periodicidad");
+    	            	periodicidad.setTextContent(Integer.toString(ef.getValCualitativa().getPeriodicidad()));
+    	            	valorCualitativo.appendChild(periodicidad);
+
+    	            	Element momento = document.createElement("momento");
+    	            	momento.setTextContent(Integer.toString(ef.getValCualitativa().getMomento()));
+    	            	valorCualitativo.appendChild(momento);
+
+    	            	Element momentoCritico = document.createElement("momentoCritico");
+    	            	momentoCritico.setTextContent(Integer.toString(ef.getValCualitativa().getMomentoCritico()));
+    	            	valorCualitativo.appendChild(momentoCritico);
+
+    	            	Element efectoImp = document.createElement("efectoImp");
+    	            	efectoImp.setTextContent(Integer.toString(ef.getValCualitativa().getEfecto()));
+    	            	valorCualitativo.appendChild(efectoImp);
+
+    	            	Element incidencia = document.createElement("incidencia");
+    	            	incidencia.setTextContent(Double.toString(ef.getValCualitativa().getIncidencia()));
+    	            	valorCualitativo.appendChild(incidencia);
+
+    	            	elemEfecto.appendChild(valorCualitativo);
+
+    	            	Element valorTotal = document.createElement("valorTotal");
+    	            	valorTotal.setTextContent(String.valueOf(ef.getValorTotal()));
+    	            	elemEfecto.appendChild(valorTotal);
+
+    	            	listaEfectos.appendChild(elemEfecto);
+    	            }
+    	            rootAlt.appendChild(listaEfectos);
+                }
+                if(listaAlt.get(k).getValorTotal() > 0){
+                	Element valorTotalAlternativa= document.createElement("valorTotalAlternativa");
+                	valorTotalAlternativa.setTextContent(String.valueOf(listaAlt.get(k).getValorTotal()));
+                	rootAlt.appendChild(valorTotalAlternativa);
+                }
+
+                Element valorada= document.createElement("valorada");
+                valorada.setTextContent(String.valueOf(listaAlt.get(k).getValorada()));
+                rootAlt.appendChild(valorada);
+                //AKi peta
+                listaAlternativas.appendChild(rootAlt);
             }
             root.appendChild(listaAlternativas);
 
@@ -373,6 +604,94 @@ public class XMLProyecto extends XMLTools{
     		}
     		elemFactor.appendChild(listaSubFactores);
     		return elemFactor;
+    	}
+    }
+
+    /**
+     * Metodo privado que dado un arbol de acciones lo recorre y crea la accion correspondiente.
+     * @param factor Arbol de acciones y subacciones.
+     * @return El elemento accion con acciones y subacciones.
+     */
+    private Element recorrerAcciones(DefaultMutableTreeNode accion, Document document, int cont){
+
+    	Element elemAccion = (Element)document.createElement("accion");
+    	Accion a = (Accion)accion.getUserObject();
+
+    	Element nombreAccion = (Element)document.createElement("nombreAccion");
+    	nombreAccion.setTextContent(a.getId());
+
+    	elemAccion.appendChild(nombreAccion);
+
+    	//Caso base: es un factor hijo, no tiene subfactores.
+    	if(accion.getChildCount() == 0){
+        	return elemAccion;
+    	}
+    	//Caso recursivo: Tiene una lista de subfactores asociada.
+    	else{
+    		Element listaSubAcciones = document.createElement("listaAcciones");
+    		Enumeration e = accion.children();
+    		for(int i=0; i<accion.getChildCount(); i++){
+    			DefaultMutableTreeNode nodoI = (DefaultMutableTreeNode)e.nextElement();
+    			Element elemSubAccion = recorrerAcciones(nodoI, document, cont++);
+    			listaSubAcciones.appendChild(elemSubAccion);
+    			//i = i + cont + 1;
+    		}
+    		elemAccion.appendChild(listaSubAcciones);
+    		return elemAccion;
+    	}
+    }
+
+	private Object buscarElemento(DefaultTreeModel arbol, String id){
+		Object elem = null;
+		DefaultMutableTreeNode root = (DefaultMutableTreeNode)arbol.getRoot();
+		Enumeration e = root.breadthFirstEnumeration();
+		boolean encontrado = false;
+		while(e.hasMoreElements() && !encontrado){
+			DefaultMutableTreeNode obj = (DefaultMutableTreeNode)e.nextElement();
+			if(obj.getUserObject()!=null && id.equals(obj.getUserObject().toString())){
+				encontrado = true;
+				elem = obj.getUserObject();
+			}
+		}
+		return elem;
+	}
+
+	/**
+     * Metodo privado que dado una accion recorre su lista de subacciones.
+     * @param accion Accion que puede tener una lista de subacciones.
+     * @return Estructura de arbol con acciones y subacciones.
+     */
+    private DefaultMutableTreeNode recorrerAcciones(Element accion){
+    	//Caso base
+    	if(accion.getElementsByTagName("listaAcciones").getLength() == 0){
+    		Accion a = new Accion (accion.getElementsByTagName("nombreAccion").item(0).getTextContent());
+    		//Arbol<Accion> arb = new Arbol<Accion>();
+    		//arb.setElemento(a);
+    		DefaultMutableTreeNode arb = new DefaultMutableTreeNode();
+    		arb.setUserObject(a);
+    		return arb;
+    	}
+    	//Caso recursivo
+    	else{
+    		//Cogemos la lista de subfactores.
+    		Element listaAcciones = (Element)accion.getElementsByTagName("listaAcciones").item(0);
+    		NodeList acciones = listaAcciones.getElementsByTagName("accion");
+    		//Creamos el nodo padre del arbol.
+    		Accion a = new Accion (accion.getElementsByTagName("nombreAccion").item(0).getTextContent());
+    		//Arbol<Accion> padre = new Arbol<Accion>();
+    		//padre.setElemento(a);
+    		DefaultMutableTreeNode padre = new DefaultMutableTreeNode();
+    		padre.setUserObject(a);
+    		int index=0;
+    		//Recorremos cada subfactor.
+    		for(int i = 0; i < acciones.getLength(); i++){
+    			//Arbol<Accion> arb = recorrerAcciones((Element)acciones.item(i));
+    			//padre.añadirHijo(arb);
+    			DefaultMutableTreeNode arb = recorrerAcciones((Element)acciones.item(i));
+    			if(!esSubArbol(arb,padre))
+    				padre.insert(arb,index++);
+    		}
+    		return padre;
     	}
     }
 }
