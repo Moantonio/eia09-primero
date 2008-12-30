@@ -127,7 +127,7 @@ public class XMLProyecto extends XMLTools{
         for(int k=0; k<alternativas.getLength(); k++){
             Alternativa alt = new Alternativa();
 
-            alt.setId(elemento.getElementsByTagName("nombre").item(0).getTextContent());
+            alt.setId(elemento.getElementsByTagName("nombreAlt").item(0).getTextContent());
 
           //Cogemos la lista principal de acciones.
             Element listaAcciones = (Element)elemento.getElementsByTagName("listaAcciones").item(0);
