@@ -3,6 +3,7 @@ package eia.util;
 import java.awt.Color;
 import java.awt.Component;
 
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -21,10 +22,16 @@ public class TablaColores extends JTable{
 	public Component prepareRenderer(TableCellRenderer renderer, int rowIndex, int colIndex) {
 	    Component component = super.prepareRenderer(renderer, rowIndex, colIndex);
 
-	    if((rowIndex%2) == 0){
-	    	component.setBackground(Color.GREEN);
+
+	    
+	    if((dataModel.getColumnName(4).equals("Total")&&
+	       getValueAt(rowIndex,4).equals(""))||
+	       (dataModel.getColumnName(1).equals("Valoración")&&
+	       getValueAt(rowIndex,1).equals(""))){
+	    //if((rowIndex%2) == 0){
+	    	component.setForeground(Color.GREEN);
 	    } else {
-	        component.setBackground(Color.RED);
+	        component.setForeground(Color.RED);
 	    }
 
 	    return component;
