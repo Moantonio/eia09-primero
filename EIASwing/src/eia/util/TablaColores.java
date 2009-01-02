@@ -23,12 +23,12 @@ public class TablaColores extends JTable{
 	    Component component = super.prepareRenderer(renderer, rowIndex, colIndex);
 
 
-	    
+
 	    if((dataModel.getColumnName(4).equals("Total")&&
 	       getValueAt(rowIndex,4).equals(""))||
 	       (dataModel.getColumnName(1).equals("Valoración")&&
 	       getValueAt(rowIndex,1).equals(""))){
-	    //if((rowIndex%2) == 0){
+
 	    	component.setForeground(Color.GREEN);
 	    } else {
 	        component.setForeground(Color.RED);
