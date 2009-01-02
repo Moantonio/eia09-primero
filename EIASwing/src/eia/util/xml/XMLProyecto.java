@@ -131,7 +131,7 @@ public class XMLProyecto extends XMLTools{
 
             //TODO Esto no lo hace bien a partir de la 2ª pasada: Vuelve a coger el 1º arbol.
             //Cogemos la lista principal de acciones.
-            Element listaAcciones = (Element)elemento.getElementsByTagName("listaAcciones").item(0);
+            Element listaAcciones = (Element)elemento.getElementsByTagName("listaPrincipalAcciones").item(k);
             NodeList acciones = listaAcciones.getElementsByTagName("accion");
 
             //Para cada accon, vamos recorriendo las subacciones y creando el arbol.
@@ -399,7 +399,7 @@ public class XMLProyecto extends XMLTools{
                 rootAlt.appendChild(nombreAlt);
 
                 //Creamos la lista de acciones.
-                Element listaAcciones = (Element)document.createElement("listaAcciones");
+                Element listaAcciones = (Element)document.createElement("listaPrincipalAcciones");
 
                 DefaultTreeModel acciones = listaAlt.get(k).getAcciones();
                 DefaultMutableTreeNode raiz = (DefaultMutableTreeNode)acciones.getRoot();
