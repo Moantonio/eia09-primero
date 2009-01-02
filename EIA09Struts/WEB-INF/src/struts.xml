@@ -10,10 +10,16 @@
 		<package name="eia" namespace="/eia" extends="struts-default">
 			<action name="showMenu">
 				<result>/pages/mainMenu.jsp</result>
-			</action>			
+			</action>
+			<action name="showProjectDescription">
+				<result>/pages/proyecto/menuProyecto.jsp</result>
+			</action>	
+			<action name="showAlternativaInfo">
+				<result>/pages/alternativa/alternativaInfo.jsp</result>
+			</action>				
 			<action name="doLoadProject" class="eia.load.LoadProject">
-				<result name="input">/pages/menu.jsp</result>
-				<result name="error">/pages/menu.jsp</result>
+				<result name="input">/pages/mainMenu.jsp</result>
+				<result name="error">/pages/mainMenu.jsp</result>
 				<result>/pages/mainMenu.jsp</result>
 			</action>					
 		</package>
