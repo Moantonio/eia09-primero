@@ -21,7 +21,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.ListSelectionModel;
-import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
@@ -638,52 +637,5 @@ public class formAlternativa extends JDialog{
 			valoracionTextField.setText(String.valueOf(alternativa.getValorTotal()));
 		}
 	}
-
-
-	//TODO A eliminar en un futuro
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				Alternativa alt = new Alternativa("AlternativaPrueba");
-				Accion accionBisAbuelo = new Accion("Factor Bisabuelo");
-				Accion accionAbuelo = new Accion("Factor abuelo");
-				Accion accionAbuela = new Accion("Factor abuela");
-				Accion accionHijo = new Accion("Factor hijo");
-				Accion accionHija = new Accion("Factor hija");
-				DefaultMutableTreeNode nodoBisAbuelo = new DefaultMutableTreeNode(accionBisAbuelo);
-				DefaultMutableTreeNode nodoAbuelo = new DefaultMutableTreeNode(accionAbuelo);
-				DefaultMutableTreeNode nodoAbuela = new DefaultMutableTreeNode(accionAbuela);
-				DefaultMutableTreeNode nodoHija = new DefaultMutableTreeNode(accionHija);
-				DefaultMutableTreeNode nodoHijo = new DefaultMutableTreeNode(accionHijo);
-				DefaultTreeModel acciones = new DefaultTreeModel(nodoBisAbuelo);
-				acciones.insertNodeInto(nodoAbuelo, nodoBisAbuelo, 0);
-				acciones.insertNodeInto(nodoAbuela, nodoBisAbuelo, 1);
-				acciones.insertNodeInto(nodoHijo, nodoAbuelo, 0);
-				acciones.insertNodeInto(nodoHija, nodoAbuela, 0);
-
-				Factor factorBisAbuelo = new Factor("Factor Bisabuelo",1);
-				Factor factorAbuelo = new Factor("Factor abuelo",2);
-				Factor factorAbuela = new Factor("Factor abuela",3);
-				Factor factorHijo = new Factor("Factor hijo",4);
-				Factor factorHija = new Factor("Factor hija",5);
-				DefaultMutableTreeNode nodoBisAbuelo2 = new DefaultMutableTreeNode(factorBisAbuelo);
-				DefaultMutableTreeNode nodoAbuelo2 = new DefaultMutableTreeNode(factorAbuelo);
-				DefaultMutableTreeNode nodoAbuela2 = new DefaultMutableTreeNode(factorAbuela);
-				DefaultMutableTreeNode nodoHija2 = new DefaultMutableTreeNode(factorHija);
-				DefaultMutableTreeNode nodoHijo2 = new DefaultMutableTreeNode(factorHijo);
-				DefaultTreeModel factores = new DefaultTreeModel(nodoBisAbuelo2);
-				factores.insertNodeInto(nodoAbuelo2, nodoBisAbuelo2, 0);
-				factores.insertNodeInto(nodoAbuela2, nodoBisAbuelo2, 1);
-				factores.insertNodeInto(nodoHijo2, nodoAbuelo2, 0);
-				factores.insertNodeInto(nodoHija2, nodoAbuela2, 0);
-
-				alt.setAcciones(acciones);
-
-				formAlternativa application = new formAlternativa(alt,factores);
-				application.getDialog().setVisible(true);
-			}
-		});
-	}
-
 
 }  //  @jve:decl-index=0:visual-constraint="4,11"

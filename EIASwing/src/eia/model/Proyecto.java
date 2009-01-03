@@ -131,10 +131,10 @@ public class Proyecto {
 	 */
 	public Alternativa analizarAlternativas(){
 		int numAlternativas = alternativas.size();
-		double mejorValor = -100;
+		double mejorValor = 100;
 		Alternativa mejorAlternativa = null;
 		for (int i=0; i<numAlternativas;i++){
-			if(mejorValor < alternativas.get(i).getValorTotal()){
+			if(mejorValor > alternativas.get(i).getValorTotal()){
 				mejorValor = alternativas.get(i).getValorTotal();
 				mejorAlternativa = alternativas.get(i);
 			}

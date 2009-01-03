@@ -68,7 +68,6 @@ public class formPrincipal {
 	private JMenuItem guardarMenuItem = null;
 	private JMenuItem guardarComoMenuItem = null;
 	private JMenuItem verFactoresMenuItem = null;
-	private JMenuItem modificarPesosMenuItem = null;
 	private JMenuItem verResultadosMenuItem = null;
 	private JMenuItem verInformeMenuItem = null;
 	private JMenuItem funcionamientoMenuItem = null;
@@ -170,7 +169,6 @@ public class formPrincipal {
 			menuFactores = new JMenu();
 			menuFactores.setText("Factores");
 			menuFactores.add(getVerFactoresMenuItem());
-			menuFactores.add(getModificarPesosMenuItem());
 			menuFactores.setMnemonic(KeyEvent.VK_F);
 			menuFactores.setEnabled(false);
 		}
@@ -292,6 +290,7 @@ public class formPrincipal {
 		if (autoviaMenuItem == null) {
 			autoviaMenuItem = new JMenuItem();
 			autoviaMenuItem.setText("Autovía");
+			autoviaMenuItem.setMnemonic(KeyEvent.VK_A);
 			autoviaMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearProyecto(TipoProyecto.AUTOVÍA);
@@ -305,6 +304,7 @@ public class formPrincipal {
 		if (presaMenuItem == null) {
 			presaMenuItem = new JMenuItem();
 			presaMenuItem.setText("Presa");
+			presaMenuItem.setMnemonic(KeyEvent.VK_P);
 			presaMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearProyecto(TipoProyecto.PRESA);
@@ -318,6 +318,7 @@ public class formPrincipal {
 		if (puertoMenuItem == null) {
 			puertoMenuItem = new JMenuItem();
 			puertoMenuItem.setText("Puerto deportivo");
+			puertoMenuItem.setMnemonic(KeyEvent.VK_U);
 			puertoMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearProyecto(TipoProyecto.PUERTODEPORTIVO);
@@ -331,6 +332,7 @@ public class formPrincipal {
 		if (vertederoMenuItem == null) {
 			vertederoMenuItem = new JMenuItem();
 			vertederoMenuItem.setText("Vertedero");
+			vertederoMenuItem.setMnemonic(KeyEvent.VK_V);
 			vertederoMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearProyecto(TipoProyecto.VERTEDERO);
@@ -344,6 +346,7 @@ public class formPrincipal {
 		if (otroMenuItem == null) {
 			otroMenuItem = new JMenuItem();
 			otroMenuItem.setText("Personalizado");
+			otroMenuItem.setMnemonic(KeyEvent.VK_E);
 			otroMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearProyecto(TipoProyecto.PERSONALIZADO);
@@ -401,6 +404,7 @@ public class formPrincipal {
 		if (verFactoresMenuItem == null) {
 			verFactoresMenuItem = new JMenuItem();
 			verFactoresMenuItem.setText("Ver listado");
+			verFactoresMenuItem.setMnemonic(KeyEvent.VK_V);
 			verFactoresMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mostrarFactores();
@@ -410,17 +414,10 @@ public class formPrincipal {
 		return verFactoresMenuItem;
 	}
 
-	private JMenuItem getModificarPesosMenuItem() {
-		if (modificarPesosMenuItem == null) {
-			modificarPesosMenuItem = new JMenuItem();
-			modificarPesosMenuItem.setText("Modificar pesos");
-		}
-		return modificarPesosMenuItem;
-	}
-
 	private JMenuItem getVerResultadosMenuItem() {
 		if (verResultadosMenuItem == null) {
 			verResultadosMenuItem = new JMenuItem();
+			verResultadosMenuItem.setMnemonic(KeyEvent.VK_E);
 			verResultadosMenuItem.setText("Ver resultados");
 			verResultadosMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -434,6 +431,7 @@ public class formPrincipal {
 	private JMenuItem getVerInformeMenuItem() {
 		if (verInformeMenuItem == null) {
 			verInformeMenuItem = new JMenuItem();
+			verInformeMenuItem.setMnemonic(KeyEvent.VK_E);
 			verInformeMenuItem.setText("Ver informe");
 		}
 		return verInformeMenuItem;
@@ -442,6 +440,7 @@ public class formPrincipal {
 	private JMenuItem getFuncionamientoMenuItem() {
 		if (funcionamientoMenuItem == null) {
 			funcionamientoMenuItem = new JMenuItem();
+			funcionamientoMenuItem.setMnemonic(KeyEvent.VK_F);
 			funcionamientoMenuItem.setText("Funcionamiento");
 		}
 		return funcionamientoMenuItem;
@@ -450,6 +449,7 @@ public class formPrincipal {
 	private JMenuItem getLegislacionMenuItem() {
 		if (legislacionMenuItem == null) {
 			legislacionMenuItem = new JMenuItem();
+			legislacionMenuItem.setMnemonic(KeyEvent.VK_L);
 			legislacionMenuItem.setText("Legislación");
 		}
 		return legislacionMenuItem;
@@ -459,6 +459,7 @@ public class formPrincipal {
 		if (anadirAlternativaMenuItem == null) {
 			anadirAlternativaMenuItem = new JMenuItem();
 			anadirAlternativaMenuItem.setText("Añadir");
+			anadirAlternativaMenuItem.setMnemonic(KeyEvent.VK_D);
 			anadirAlternativaMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearAlternativa();
@@ -471,6 +472,7 @@ public class formPrincipal {
 	private JMenu getEliminarAlternativaMenu() {
 		if (eliminarAlternativaMenu == null) {
 			eliminarAlternativaMenu = new JMenu();
+			eliminarAlternativaMenu.setMnemonic(KeyEvent.VK_L);
 			eliminarAlternativaMenu.setText("Eliminar");
 		}
 		return eliminarAlternativaMenu;
@@ -479,6 +481,7 @@ public class formPrincipal {
 	private JMenu getModificarAlternativaMenu() {
 		if (modificarAlternativaMenu == null) {
 			modificarAlternativaMenu = new JMenu();
+			modificarAlternativaMenu.setMnemonic(KeyEvent.VK_E);
 			modificarAlternativaMenu.setText("Editar");
 		}
 		return modificarAlternativaMenu;
@@ -937,7 +940,7 @@ public class formPrincipal {
 
 			if (comprobarValorar()){
 				menuValoracion.setEnabled(true);
-				menuInformes.setEnabled(true);
+				//menuInformes.setEnabled(true);
 			}
 		}
 	}
@@ -1037,6 +1040,9 @@ public class formPrincipal {
 			});
 		}
 		crearAlternativa.dispose();
+
+		menuValoracion.setEnabled(false);
+		//menuInformes.setEnabled(false);
 	}
 
 	private void eliminarAlternativa(Alternativa alternativa) {
@@ -1079,7 +1085,7 @@ public class formPrincipal {
 			// Vemos si podemos valorar el proyecto
 			if (comprobarValorar()){
 				menuValoracion.setEnabled(true);
-				menuInformes.setEnabled(true);
+				//menuInformes.setEnabled(true);
 			}
 		}
 		editarAlternativa.dispose();
