@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
@@ -116,6 +117,7 @@ public class formPrincipal {
 		if (framePrincipal == null) {
 			framePrincipal = new JFrame();
 			framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			//framePrincipal.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\.png"));
 			framePrincipal.setJMenuBar(getMenuPrincipal());
 			framePrincipal.setSize(500, 500);
 			framePrincipal.setContentPane(getPanelContenidoPrincipal());
@@ -153,6 +155,7 @@ public class formPrincipal {
 		if (menuProyecto == null) {
 			menuProyecto = new JMenu();
 			menuProyecto.setText("Proyecto");
+			menuProyecto.setIcon(new ImageIcon(".\\images\\edit-find-replace.png"));
 			menuProyecto.add(getMenuNuevo());
 			menuProyecto.add(getAbrirMenuItem());
 			menuProyecto.addSeparator();
@@ -169,6 +172,7 @@ public class formPrincipal {
 		if (menuFactores == null) {
 			menuFactores = new JMenu();
 			menuFactores.setText("Factores");
+			menuFactores.setIcon(new ImageIcon(".\\images\\text-html.png"));
 			menuFactores.add(getVerFactoresMenuItem());
 			menuFactores.setMnemonic(KeyEvent.VK_F);
 			menuFactores.setEnabled(false);
@@ -183,6 +187,7 @@ public class formPrincipal {
 			menuAlternativas.add(getAnadirAlternativaMenuItem());
 			menuAlternativas.add(getModificarAlternativaMenu());
 			menuAlternativas.add(getEliminarAlternativaMenu());
+			menuAlternativas.setIcon(new ImageIcon(".\\images\\edit-copy.png"));
 			menuAlternativas.setMnemonic(KeyEvent.VK_A);
 			menuAlternativas.setEnabled(false);
 		}
@@ -194,6 +199,7 @@ public class formPrincipal {
 			salirMenuItem = new JMenuItem();
 			salirMenuItem.setText("Salir");
 			salirMenuItem.setMnemonic(KeyEvent.VK_S);
+			salirMenuItem.setIcon(new ImageIcon(".\\images\\system-log-out.png"));
 			salirMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					System.exit(0);
@@ -208,6 +214,7 @@ public class formPrincipal {
 			acercaDeMenuItem = new JMenuItem();
 			acercaDeMenuItem.setText("Acerca de EIA09");
 			acercaDeMenuItem.setMnemonic(KeyEvent.VK_A);
+			acercaDeMenuItem.setIcon(new ImageIcon(".\\images\\format-indent-more.png"));
 			acercaDeMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mostrarAcercaDe();
@@ -249,6 +256,7 @@ public class formPrincipal {
 			menuValoracion.add(getVerResultadosMenuItem());
 			menuValoracion.setMnemonic(KeyEvent.VK_V);
 			menuValoracion.setEnabled(false);
+			menuValoracion.setIcon(new ImageIcon(".\\images\\utilities-system-monitor.png"));
 		}
 		return menuValoracion;
 	}
@@ -260,6 +268,7 @@ public class formPrincipal {
 			menuInformes.add(getVerInformeMenuItem());
 			menuInformes.setMnemonic(KeyEvent.VK_I);
 			menuInformes.setEnabled(false);
+			menuInformes.setIcon(new ImageIcon(".\\images\\preferences-system-windows.png"));
 		}
 		return menuInformes;
 	}
@@ -268,6 +277,7 @@ public class formPrincipal {
 		if (menuAyuda == null) {
 			menuAyuda = new JMenu();
 			menuAyuda.setText("Ayuda");
+			menuAyuda.setIcon(new ImageIcon(".\\images\\help-browser.png"));
 			menuAyuda.add(getFuncionamientoMenuItem());
 			menuAyuda.add(getLegislacionMenuItem());
 			menuAyuda.addSeparator();
@@ -288,6 +298,7 @@ public class formPrincipal {
 			menuNuevo.addSeparator();
 			menuNuevo.add(getOtroMenuItem());
 			menuNuevo.setMnemonic(KeyEvent.VK_N);
+			menuNuevo.setIcon(new ImageIcon(".\\images\\window-new.png"));
 		}
 		return menuNuevo;
 	}
@@ -297,6 +308,7 @@ public class formPrincipal {
 			autoviaMenuItem = new JMenuItem();
 			autoviaMenuItem.setText("Autovía");
 			autoviaMenuItem.setMnemonic(KeyEvent.VK_A);
+			autoviaMenuItem.setIcon(new ImageIcon(".\\images\\x-office-spreadsheet-template.png"));
 			autoviaMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearProyecto(TipoProyecto.AUTOVÍA);
@@ -311,6 +323,7 @@ public class formPrincipal {
 			presaMenuItem = new JMenuItem();
 			presaMenuItem.setText("Presa");
 			presaMenuItem.setMnemonic(KeyEvent.VK_P);
+			presaMenuItem.setIcon(new ImageIcon(".\\images\\x-office-document-template.png"));
 			presaMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearProyecto(TipoProyecto.PRESA);
@@ -324,6 +337,7 @@ public class formPrincipal {
 		if (puertoMenuItem == null) {
 			puertoMenuItem = new JMenuItem();
 			puertoMenuItem.setText("Puerto deportivo");
+			puertoMenuItem.setIcon(new ImageIcon(".\\images\\x-office-drawing-template.png"));
 			puertoMenuItem.setMnemonic(KeyEvent.VK_U);
 			puertoMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -338,6 +352,7 @@ public class formPrincipal {
 		if (vertederoMenuItem == null) {
 			vertederoMenuItem = new JMenuItem();
 			vertederoMenuItem.setText("Vertedero");
+			vertederoMenuItem.setIcon(new ImageIcon(".\\images\\x-office-presentation-template.png"));
 			vertederoMenuItem.setMnemonic(KeyEvent.VK_V);
 			vertederoMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -352,6 +367,7 @@ public class formPrincipal {
 		if (otroMenuItem == null) {
 			otroMenuItem = new JMenuItem();
 			otroMenuItem.setText("Personalizado");
+			otroMenuItem.setIcon(new ImageIcon(".\\images\\x-office-document.png"));
 			otroMenuItem.setMnemonic(KeyEvent.VK_E);
 			otroMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -367,6 +383,7 @@ public class formPrincipal {
 			abrirMenuItem = new JMenuItem();
 			abrirMenuItem.setText("Abrir");
 			abrirMenuItem.setMnemonic(KeyEvent.VK_A);
+			abrirMenuItem.setIcon(new ImageIcon(".\\images\\document-open.png"));
 			abrirMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					abrirProyecto();
@@ -382,6 +399,7 @@ public class formPrincipal {
 			guardarMenuItem.setText("Guardar");
 			guardarMenuItem.setMnemonic(KeyEvent.VK_G);
 			guardarMenuItem.setEnabled(false);
+			guardarMenuItem.setIcon(new ImageIcon(".\\images\\document-save.png"));
 			guardarMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					guardarProyecto();
@@ -397,6 +415,7 @@ public class formPrincipal {
 			guardarComoMenuItem.setText("Guardar como...");
 			guardarComoMenuItem.setMnemonic(KeyEvent.VK_U);
 			guardarComoMenuItem.setEnabled(false);
+			guardarComoMenuItem.setIcon(new ImageIcon(".\\images\\document-save-as.png"));
 			guardarComoMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					guardarComoProyecto();
@@ -411,6 +430,7 @@ public class formPrincipal {
 			verFactoresMenuItem = new JMenuItem();
 			verFactoresMenuItem.setText("Ver listado");
 			verFactoresMenuItem.setMnemonic(KeyEvent.VK_V);
+			verFactoresMenuItem.setIcon(new ImageIcon(".\\images\\text-x-generic-template.png"));
 			verFactoresMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mostrarFactores();
@@ -425,6 +445,7 @@ public class formPrincipal {
 			verResultadosMenuItem = new JMenuItem();
 			verResultadosMenuItem.setMnemonic(KeyEvent.VK_E);
 			verResultadosMenuItem.setText("Ver resultados");
+			verResultadosMenuItem.setIcon(new ImageIcon(".\\images\\view-refresh.png"));
 			verResultadosMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					valorarAlternativas();
@@ -439,6 +460,7 @@ public class formPrincipal {
 			verInformeMenuItem = new JMenuItem();
 			verInformeMenuItem.setMnemonic(KeyEvent.VK_E);
 			verInformeMenuItem.setText("Ver informe");
+			verInformeMenuItem.setIcon(new ImageIcon(".\\images\\format-justify-center.png"));
 		}
 		return verInformeMenuItem;
 	}
@@ -448,6 +470,8 @@ public class formPrincipal {
 			funcionamientoMenuItem = new JMenuItem();
 			funcionamientoMenuItem.setMnemonic(KeyEvent.VK_F);
 			funcionamientoMenuItem.setText("Funcionamiento");
+			funcionamientoMenuItem.setIcon(new ImageIcon(".\\images\\internet-news-reader.png"));
+
 		}
 		return funcionamientoMenuItem;
 	}
@@ -456,6 +480,7 @@ public class formPrincipal {
 		if (legislacionMenuItem == null) {
 			legislacionMenuItem = new JMenuItem();
 			legislacionMenuItem.setMnemonic(KeyEvent.VK_L);
+			legislacionMenuItem.setIcon(new ImageIcon(".\\images\\edit-select-all.png"));
 			legislacionMenuItem.setText("Legislación");
 		}
 		return legislacionMenuItem;
@@ -466,6 +491,7 @@ public class formPrincipal {
 			anadirAlternativaMenuItem = new JMenuItem();
 			anadirAlternativaMenuItem.setText("Añadir");
 			anadirAlternativaMenuItem.setMnemonic(KeyEvent.VK_D);
+			anadirAlternativaMenuItem.setIcon(new ImageIcon(".\\images\\list-add.png"));
 			anadirAlternativaMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearAlternativa();
@@ -478,6 +504,7 @@ public class formPrincipal {
 	private JMenu getEliminarAlternativaMenu() {
 		if (eliminarAlternativaMenu == null) {
 			eliminarAlternativaMenu = new JMenu();
+			eliminarAlternativaMenu.setIcon(new ImageIcon(".\\images\\list-remove.png"));
 			eliminarAlternativaMenu.setMnemonic(KeyEvent.VK_L);
 			eliminarAlternativaMenu.setText("Eliminar");
 		}
@@ -488,6 +515,7 @@ public class formPrincipal {
 		if (modificarAlternativaMenu == null) {
 			modificarAlternativaMenu = new JMenu();
 			modificarAlternativaMenu.setMnemonic(KeyEvent.VK_E);
+			modificarAlternativaMenu.setIcon(new ImageIcon(".\\images\\applications-system.png"));
 			modificarAlternativaMenu.setText("Editar");
 		}
 		return modificarAlternativaMenu;

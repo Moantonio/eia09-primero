@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -95,6 +96,7 @@ public class formAlternativa extends JDialog{
 		this.setSize(500, 500);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Alternativas de realización");
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\edit-copy.png"));
 		actualizarVista();
 	}
 
