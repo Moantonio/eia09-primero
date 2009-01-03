@@ -19,7 +19,8 @@ public class formGrafica extends JDialog {
 	}
 
 	private void initialize() {
-		this.setSize(500, 300);
+		this.setSize(450, 280);
+		this.setResizable(false);
 		this.setTitle("Gráfica valoración cuantitativa");
 		this.setContentPane(getJContentPane());
 	}

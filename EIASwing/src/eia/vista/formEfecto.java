@@ -1147,8 +1147,9 @@ public class formEfecto extends JDialog {
 				series.add(x,y);
 			}
 			XYDataset datos = new XYSeriesCollection(series);
+			String titulo = efecto.getId();
 			JFreeChart chart =
-				ChartFactory.createXYLineChart("Nombre gráfica","X","Y",datos,PlotOrientation.VERTICAL,false,false,true);
+				ChartFactory.createXYLineChart(titulo,"Indicador","Magnitud",datos,PlotOrientation.VERTICAL,false,false,true);
 			grafica = chart.createBufferedImage(450,250);
 
 			// Actualizamos la vista
