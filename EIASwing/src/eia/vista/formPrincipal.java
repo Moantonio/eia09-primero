@@ -817,6 +817,8 @@ public class formPrincipal {
 	}
 
 	private void actualizarAlternativas(){
+		//Limpiar alternativas
+		modeloTabla.setRowCount(0);
 		alternativasTable.setEnabled(true);
 		anadirAltButton.setEnabled(true);
 		editarAltButton.setEnabled(true);
@@ -888,6 +890,7 @@ public class formPrincipal {
 			actualizarAlternativas();
 			actualizarMenu();
 			ficheroProyecto = null;
+			guardarMenuItem.setEnabled(false);
 		}
 		ventanaCrear.dispose();
 	}

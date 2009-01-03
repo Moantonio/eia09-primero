@@ -488,6 +488,12 @@ public class formAlternativa extends JDialog{
 				modeloTabla.removeRow(indice);
 				// Eliminamos el efecto de la alternativa
 				alternativa.getEfectos().remove(indice);
+				// Comprobamos si todos los efectos están valorados
+				alternativa.setValorada(false);
+				valoracionTextField.setText("");
+				if(comprobarValorados()){
+					valorarButton.setEnabled(true);
+				}
 			}
 		}
 	}
