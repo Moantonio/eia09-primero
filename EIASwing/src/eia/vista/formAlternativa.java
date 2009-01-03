@@ -136,6 +136,7 @@ public class formAlternativa extends JDialog{
 			valorarButton.setPreferredSize(new Dimension(71, 26));
 			valorarButton.setFont(new Font("Dialog", Font.BOLD, 10));
 			valorarButton.setText("Valorar");
+			valorarButton.setBackground(Color.white);
 			valorarButton.setEnabled(false);
 			valorarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -151,6 +152,7 @@ public class formAlternativa extends JDialog{
 			altDeRealizcionTextField = new JTextField();
 			altDeRealizcionTextField.setSize(new Dimension(307, 20));
 			altDeRealizcionTextField.setLocation(new Point(163, 4));
+			altDeRealizcionTextField.setEnabled(false);
 			altDeRealizcionTextField.setText(alternativa.getId());
 		}
 		return altDeRealizcionTextField;
@@ -190,6 +192,7 @@ public class formAlternativa extends JDialog{
 			AnadirButton.setPreferredSize(new Dimension(71, 26));
 			AnadirButton.setFont(new Font("Dialog", Font.BOLD, 10));
 			AnadirButton.setText("Añadir");
+			AnadirButton.setBackground(Color.white);
 			AnadirButton.addActionListener(new java.awt.event.ActionListener() {
 				public void actionPerformed(java.awt.event.ActionEvent e) {
 					if (!accionesTree.isSelectionEmpty()){
@@ -209,6 +212,7 @@ public class formAlternativa extends JDialog{
 			eliminarButton = new JButton();
 			eliminarButton.setText("Eliminar");
 			eliminarButton.setFont(new Font("Dialog", Font.BOLD, 10));
+			eliminarButton.setBackground(Color.white);
 			eliminarButton.setBounds(new Rectangle(120, 160, 119, 20));
 			eliminarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -257,6 +261,7 @@ public class formAlternativa extends JDialog{
 			crearEfectoButton.setText("Crear Efecto");
 			crearEfectoButton.setSize(new Dimension(458, 20));
 			crearEfectoButton.setLocation(new Point(13, 219));
+			crearEfectoButton.setBackground(Color.white);
 			crearEfectoButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearEfecto();
@@ -324,6 +329,7 @@ public class formAlternativa extends JDialog{
 			editarEfectosButton.setText("Editar");
 			editarEfectosButton.setSize(new Dimension(217, 20));
 			editarEfectosButton.setLocation(new Point(11, 126));
+			editarEfectosButton.setBackground(Color.white);
 			editarEfectosButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					int indice = efectosTable.getSelectedRow();
@@ -341,6 +347,7 @@ public class formAlternativa extends JDialog{
 		if (eliminarEfectosButton == null) {
 			eliminarEfectosButton = new JButton();
 			eliminarEfectosButton.setText("Eliminar");
+			eliminarEfectosButton.setBackground(Color.white);
 			eliminarEfectosButton.setSize(new Dimension(217, 20));
 			eliminarEfectosButton.setLocation(new Point(227, 126));
 			eliminarEfectosButton.addActionListener(new ActionListener() {
@@ -373,6 +380,7 @@ public class formAlternativa extends JDialog{
 			aceptarButton.setSize(new Dimension(90, 20));
 			aceptarButton.setPreferredSize(new Dimension(80, 26));
 			aceptarButton.setLocation(new Point(278, 435));
+			aceptarButton.setBackground(Color.white);
 			aceptarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					flagAceptar = true;
@@ -388,6 +396,7 @@ public class formAlternativa extends JDialog{
 		if (cancelarButton == null) {
 			cancelarButton = new JButton();
 			cancelarButton.setText("Cancelar");
+			cancelarButton.setBackground(Color.white);
 			cancelarButton.setSize(new Dimension(90, 20));
 			cancelarButton.setLocation(new Point(375, 435));
 			cancelarButton.addActionListener(new ActionListener() {
