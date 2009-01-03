@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -56,6 +57,7 @@ public class formCrearAlternativa extends JDialog {
 		this.setSize(475, 197);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Nueva alternativa de realización");
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\edit-copy.png"));
 	}
 
 	private JPanel getJContentPane() {
