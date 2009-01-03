@@ -129,7 +129,6 @@ public class XMLProyecto extends XMLTools{
 
             alt.setId(elemento.getElementsByTagName("nombreAlt").item(k).getTextContent());
 
-            //TODO Esto no lo hace bien a partir de la 2ª pasada: Vuelve a coger el 1º arbol.
             //Cogemos la lista principal de acciones.
             Element listaAcciones = (Element)elemento.getElementsByTagName("listaPrincipalAcciones").item(k);
             NodeList acciones = listaAcciones.getElementsByTagName("accion");
@@ -172,6 +171,7 @@ public class XMLProyecto extends XMLTools{
     		        	ValoracionCuantitativa valCuant = new ValoracionCuantitativa(Double.valueOf(valoracion.getElementsByTagName("indicador").item(0).getTextContent()),
     							 													 Double.valueOf(valoracion.getElementsByTagName("maxVal").item(0).getTextContent()),
     							 													 Double.valueOf(valoracion.getElementsByTagName("minVal").item(0).getTextContent()));
+    		        	valCuant.setMagnitudImpacto(Double.valueOf(valoracion.getElementsByTagName("magnitud").item(0).getTextContent()));
     		        	ef.setValCuantitativa(valCuant);
     	        	}
 
@@ -190,6 +190,7 @@ public class XMLProyecto extends XMLTools{
     	        																  Integer.valueOf(valoracion.getElementsByTagName("momentoCritico").item(0).getTextContent()),
     	        																  Integer.valueOf(valoracion.getElementsByTagName("efectoImp").item(0).getTextContent()));
 
+    	        		valCual.setIncidencia(Double.valueOf(valoracion.getElementsByTagName("incidencia").item(0).getTextContent()));;
     	        		ef.setValCualitativa(valCual);
     	        	}
 
