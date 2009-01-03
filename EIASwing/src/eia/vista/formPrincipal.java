@@ -966,7 +966,7 @@ public class formPrincipal {
 		if (seleccion == JFileChooser.APPROVE_OPTION) {
 
 			ficheroProyecto = fileChooser.getSelectedFile();
-			XMLProyecto xmlProy = new XMLProyecto(".\\plantillas\\proyectoEIA.dtd");
+			XMLProyecto xmlProy = new XMLProyecto("..\\plantillas\\proyectoEIA.dtd");
 			proyecto = (Proyecto)xmlProy.leer(ficheroProyecto.getAbsolutePath());
 
 			//Actualizamos la vista
@@ -984,7 +984,7 @@ public class formPrincipal {
 
 	private void guardarProyecto() {
 		if (ficheroProyecto!=null){
-			XMLProyecto xmlProy = new XMLProyecto(".\\plantillas\\proyectoEIA.dtd");
+			XMLProyecto xmlProy = new XMLProyecto("..\\plantillas\\proyectoEIA.dtd");
 			xmlProy.escribir(proyecto,ficheroProyecto.getAbsolutePath());
 		}
 	}
@@ -996,13 +996,13 @@ public class formPrincipal {
 		FiltreSimple filtro = new FiltreSimple("Ficheros XML",".xml");
 		fileChooser.setFileFilter(filtro);
 		// Directorio por defecto
-		fileChooser.setCurrentDirectory(new File(".\\proyecto\\"));
+		fileChooser.setCurrentDirectory(new File(".\\proyectos\\"));
 		int seleccion = fileChooser.showSaveDialog(null);
 		// Controlamos la selección
 		if (seleccion == JFileChooser.APPROVE_OPTION) {
 
 			ficheroProyecto = fileChooser.getSelectedFile();
-			XMLProyecto xmlProy = new XMLProyecto(".\\plantillas\\proyectoEIA.dtd");
+			XMLProyecto xmlProy = new XMLProyecto("..\\plantillas\\proyectoEIA.dtd");
 			xmlProy.escribir(proyecto,ficheroProyecto.getAbsolutePath());
 
 			guardarMenuItem.setEnabled(true);
