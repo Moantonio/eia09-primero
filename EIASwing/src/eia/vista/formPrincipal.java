@@ -110,6 +110,7 @@ public class formPrincipal {
 	// Variables del modelo
 	private Proyecto proyecto = null;  //  @jve:decl-index=0:
 	private File ficheroProyecto = null;  //  @jve:decl-index=0:
+	private JLabel autoresLabel = null;
 
 	private JFrame getFramePrincipal() {
 		if (framePrincipal == null) {
@@ -229,9 +230,14 @@ public class formPrincipal {
 
 	private JPanel getPanelContenidoAcercaDe() {
 		if (panelContenidoAcercaDe == null) {
+			autoresLabel = new JLabel();
+			autoresLabel.setBounds(new Rectangle(20, 36, 155, 86));
+			autoresLabel.setFont(new Font("Dialog", Font.BOLD, 24));
+			autoresLabel.setText("Beta v0.1");
 			panelContenidoAcercaDe = new JPanel();
 			panelContenidoAcercaDe.setLayout(null);
 			panelContenidoAcercaDe.setPreferredSize(new Dimension(200, 200));
+			panelContenidoAcercaDe.add(autoresLabel, null);
 		}
 		return panelContenidoAcercaDe;
 	}
