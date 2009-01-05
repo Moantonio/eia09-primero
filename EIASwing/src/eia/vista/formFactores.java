@@ -41,7 +41,6 @@ public class formFactores extends JDialog {
 		this.setSize(350, 500);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Factores ambientales");
-		//TODO pintar el arbol de factores pasado en el cuadro
 	}
 
 	private JPanel getJContentPane() {
