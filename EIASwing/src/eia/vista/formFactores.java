@@ -33,7 +33,6 @@ public class formFactores extends JDialog {
 	private JTree factoresTree = null;
 	private DefaultMutableTreeNode abuelo = null;
 	private DefaultTreeCellRenderer defaultTreeCellRenderer = null;
-	// Arbol de factores
 	private DefaultTreeModel factores;
 	private JTextField pesoTextField = null;
 	private JLabel pesoLabel = null;
