@@ -19,12 +19,15 @@
 	<listaFactores>
 		<factor>
 			<nombreFactor>SISTEMA FÍSICO NATURAL</nombreFactor>
+			<peso>550</peso>
 			<listaFactores>
 				<factor>
 					<nombreFactor>Medio abiótico</nombreFactor>
+					<peso>230</peso>
 					<listaFactores>
 						<factor>
 							<nombreFactor>Aire</nombreFactor>
+							<peso>80</peso>
 							<listaFactores>
 								<factor>
 									<nombreFactor>Calidad del aire</nombreFactor>
@@ -38,6 +41,7 @@
 						</factor>
 						<factor>
 							<nombreFactor>Geología. Geomorfía</nombreFactor>
+							<peso>40</peso>
 							<listaFactores>
 								<factor>
 									<nombreFactor>Relieve</nombreFactor>
@@ -51,6 +55,7 @@
 						</factor>
 						<factor>
 							<nombreFactor>Suelos</nombreFactor>
+							<peso>40</peso>
 							<listaFactores>
 								<factor>
 									<nombreFactor>Contaminación del suelo</nombreFactor>
@@ -74,9 +79,11 @@
 				</factor>
 				<factor>
 					<nombreFactor>Medio biótico</nombreFactor>
+					<peso>240</peso>
 					<listaFactores>
 						<factor>
 							<nombreFactor>Vegetación</nombreFactor>
+							<peso>120</peso>
 							<listaFactores>
 								<factor>
 									<nombreFactor>Formaciones vegetales</nombreFactor>
@@ -96,6 +103,7 @@
 				</factor>
 				<factor>
 					<nombreFactor>Paisaje</nombreFactor>
+					<peso>80</peso>
 					<listaFactores>
 						<factor>
 							<nombreFactor>Calidad. Unidades de paisaje</nombreFactor>
@@ -111,9 +119,11 @@
 		</factor>
 		<factor>
 			<nombreFactor>MEDIO SOCIOECONÓMICO</nombreFactor>
+			<peso>300</peso>
 			<listaFactores>
 				<factor>
 					<nombreFactor>Usos del suelo</nombreFactor>
+					<peso>130</peso>
 					<listaFactores>
 						<factor>
 							<nombreFactor>Usos productivos</nombreFactor>
@@ -135,6 +145,7 @@
 				</factor>
 				<factor>
 					<nombreFactor>Población</nombreFactor>
+					<peso>70</peso>
 					<listaFactores>
 						<factor>
 							<nombreFactor>Empleo</nombreFactor>
@@ -162,6 +173,7 @@
 		</factor>
 		<factor>
 			<nombreFactor>PATRIMONIO CULTURAL</nombreFactor>
+			<peso>100</peso>
 			<listaFactores>
 				<factor>
 					<nombreFactor>Patrimonio histórico artístico</nombreFactor>
@@ -175,6 +187,7 @@
 		</factor>
 		<factor>
 			<nombreFactor>PROCESOS</nombreFactor>
+			<peso>50</peso>
 			<listaFactores>
 				<factor>
 					<nombreFactor>Erosión</nombreFactor>
