@@ -41,7 +41,7 @@ import eia.util.TipoProyecto;
 import eia.util.xml.XMLAlternativa;
 import eia.util.xml.XMLProyecto;
 
-public class formPrincipal {
+public class FormPrincipal {
 
 	private JFrame framePrincipal = null;  //  @jve:decl-index=0:visual-constraint="33,-1"
 	private JPanel panelContenidoPrincipal = null;
@@ -890,7 +890,7 @@ public class formPrincipal {
 
 	private void crearProyecto(TipoProyecto tipo){
 		// Creamos un formulario de creaccion de proyecto
-		formCrearProyecto ventanaCrear = new formCrearProyecto(tipo.toString());
+		FormCrearProyecto ventanaCrear = new FormCrearProyecto(tipo.toString());
 		Point loc = getFramePrincipal().getLocation();
 		loc.translate(20, 20);
 		ventanaCrear.setLocation(loc);
@@ -1020,7 +1020,7 @@ public class formPrincipal {
 	}
 
 	private void crearAlternativa() {
-		formCrearAlternativa crearAlternativa = new formCrearAlternativa(getFramePrincipal(),proyecto.getInformacion().getNombre());
+		FormCrearAlternativa crearAlternativa = new FormCrearAlternativa(getFramePrincipal(),proyecto.getInformacion().getNombre());
 		Point posActual = getFramePrincipal().getLocation();
 		posActual.translate(20, 20);
 		crearAlternativa.setLocation(posActual);
@@ -1099,7 +1099,7 @@ public class formPrincipal {
 	}
 
 	private void editarAlternativa(Alternativa alternativa,int indice) {
-		formAlternativa editarAlternativa = new formAlternativa(getFramePrincipal(), (Alternativa)alternativa.clone(), proyecto.getFactores());
+		FormAlternativaa editarAlternativa = new FormAlternativaa(getFramePrincipal(), (Alternativa)alternativa.clone(), proyecto.getFactores());
 		Point posActual = getFramePrincipal().getLocation();
 		posActual.translate(20, 20);
 		editarAlternativa.setLocation(posActual);
@@ -1139,7 +1139,7 @@ public class formPrincipal {
 	}
 
 	private void mostrarFactores(){
-		formFactores visualizarFactores = new formFactores(getFramePrincipal(), proyecto.getFactores());
+		FormFactores visualizarFactores = new FormFactores(getFramePrincipal(), proyecto.getFactores());
 		Point posActual = getFramePrincipal().getLocation();
 		posActual.translate(20, 20);
 		visualizarFactores.setLocation(posActual);
@@ -1155,7 +1155,7 @@ public class formPrincipal {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				formPrincipal application = new formPrincipal();
+				FormPrincipal application = new FormPrincipal();
 				application.getFramePrincipal().setVisible(true);
 			}
 		});

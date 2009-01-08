@@ -43,7 +43,7 @@ import eia.util.ValorJuicio;
  *         Luis González de Paula.
  */
 
-public class formAlternativa extends JDialog{
+public class FormAlternativaa extends JDialog{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel jContentPane = null;
@@ -76,14 +76,14 @@ public class formAlternativa extends JDialog{
 	private Alternativa alternativa;
 	private DefaultTreeModel factores;
 
-	public formAlternativa(Alternativa alt, DefaultTreeModel fact) {
+	public FormAlternativaa(Alternativa alt, DefaultTreeModel fact) {
 		super();
 		alternativa = alt;
 		factores = fact;
 		initialize();
 	}
 
-	public formAlternativa(Frame owner, Alternativa alt,DefaultTreeModel fact) {
+	public FormAlternativaa(Frame owner, Alternativa alt,DefaultTreeModel fact) {
 		super(owner);
 		alternativa = alt;
 		factores = fact;
