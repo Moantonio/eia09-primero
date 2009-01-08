@@ -118,11 +118,13 @@ public class formFactores extends JDialog {
 					.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
 						public void valueChanged(javax.swing.event.TreeSelectionEvent e) {
 							DefaultMutableTreeNode nodo = (DefaultMutableTreeNode)factoresTree.getLastSelectedPathComponent();
-							Factor factor = (Factor) nodo.getUserObject();
-							if(nodo.getChildCount()!=0){
-								mostrarPeso(0);
-							}else{
-								mostrarPeso(factor.getPeso());
+							if (nodo!=null){
+								Factor factor = (Factor) nodo.getUserObject();
+								if(nodo.getChildCount()!=0){
+									mostrarPeso(0);
+								}else{
+									mostrarPeso(factor.getPeso());
+								}
 							}
 						}
 					});
