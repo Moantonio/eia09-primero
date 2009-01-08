@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE alternativaProyEIA SYSTEM ".\alternativaProyEIA.dtd">
+<alternativaProyEIA>
+	<nombre generica="true"></nombre>
+	<listaAcciones>
+		<accion>
+			<nombreAccion>Fase de Planeamiento</nombreAccion>
+			<listaAcciones>
+				<accion>
+					<nombreAccion>Diseño</nombreAccion>
+					<listaAcciones>
+						<accion>
+							<nombreAccion>Diseño del trazado</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Objetivos y fines del proyecto</nombreAccion>
+						</accion>
+					</listaAcciones>
+				</accion>
+				<accion>
+					<nombreAccion>Localización</nombreAccion>
+					<listaAcciones>
+						<accion>
+							<nombreAccion>Localización del eje viario</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Localización de prestamos y caballeros</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Localización de parques de maquinaria y oficinas</nombreAccion>
+						</accion>
+					</listaAcciones>
+				</accion>
+			</listaAcciones>
+		</accion>
+		<accion>
+			<nombreAccion>Fase de Construcción</nombreAccion>
+			<listaAcciones>
+				<accion>
+					<nombreAccion>Expropiaciones</nombreAccion>
+					<listaAcciones>
+						<accion>
+							<nombreAccion>Expropiaciones</nombreAccion>
+						</accion>
+					</listaAcciones>
+				</accion>
+				<accion>
+					<nombreAccion>Explanaciones y Movimiento de tierras</nombreAccion>
+					<listaAcciones>
+						<accion>
+							<nombreAccion>Desbroce y despeje</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Excavación y acopio tierra vegetal</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Excavaciones en desmontes</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Terraplenes y pedraplenes</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Voladuras y perforaciones</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Préstamos y vertederos</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Demolición de edificios que interfieren</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Desvío de servicios y obras temporales</nombreAccion>
+						</accion>
+					</listaAcciones>
+				</accion>
+				<accion>
+					<nombreAccion>Afirmado</nombreAccion>
+					<listaAcciones>
+						<accion>
+							<nombreAccion>Instalación plantas de obra para firmes</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Riesgos bituminosos y/o curado</nombreAccion>
+						</accion>
+					</listaAcciones>
+				</accion>	
+				<accion>
+					<nombreAccion>Estructuras, obras de fábrica y drenajes</nombreAccion>
+					<listaAcciones>
+						<accion>
+							<nombreAccion>Construcción de puentes y túneles</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Construcción de pasos elevados y subterráneos</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Desvíos y canalizaciones de cauces de aguas</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Obras de drenaje longitudinal y transversal</nombreAccion>
+						</accion>
+					</listaAcciones>
+				</accion>
+				<accion>
+					<nombreAccion>Obras y trabajos auxiliares</nombreAccion>
+					<listaAcciones>
+						<accion>
+							<nombreAccion>Ordenación y desvío del trafico</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Señalización</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Revegetación, cerramientos e iluminación</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Caminos de servicio</nombreAccion>
+						</accion>
+					</listaAcciones>
+				</accion>
+				<accion>
+					<nombreAccion>Fase de construcción</nombreAccion>
+					<listaAcciones>
+						<accion>
+							<nombreAccion>Fase de construcción</nombreAccion>
+						</accion>						
+						<accion>
+							<nombreAccion>Ocupación por la vía</nombreAccion>
+						</accion>
+					</listaAcciones>
+				</accion>	
+			</listaAcciones>
+		</accion>
+		<accion>
+			<nombreAccion>Fase de Funcionamiento</nombreAccion>
+			<listaAcciones>
+				<accion>
+					<nombreAccion>Tráfico</nombreAccion>
+					<listaAcciones>
+						<accion>
+							<nombreAccion>Emisión de ruido</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Vibraciones</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Contaminaciones</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Trafico rodado</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Asfaltado de superficies</nombreAccion>
+						</accion>
+					</listaAcciones>
+				</accion>
+				<accion>
+					<nombreAccion>Mantenimiento</nombreAccion>
+					<listaAcciones>
+						<accion>
+							<nombreAccion>Uso de sales</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Herbicidas y aditivos para la conservación</nombreAccion>
+						</accion>
+							<accion>
+							<nombreAccion>Aparición de escombreras</nombreAccion>
+						</accion>
+					</listaAcciones>
+				</accion>
+			</listaAcciones>
+		</accion>
+	</listaAcciones>
+	<valorada>false</valorada>
+</alternativaProyEIA>

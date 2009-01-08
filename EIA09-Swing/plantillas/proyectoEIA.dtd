@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT proyectoEIA (nombre, descripcion, promotor, redactor, fecha, vidaUtil,poblacion, provincia, pais, tipo, listaAlternativas, listaFactores, valorTotal?)>
+	
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT descripcion (#PCDATA)>
+<!ELEMENT promotor (#PCDATA)>
+<!ELEMENT redactor (#PCDATA)>
+<!ELEMENT fecha (dia, mes, anio)>
+	<!ELEMENT dia (#PCDATA)>
+	<!ELEMENT mes (#PCDATA)>
+	<!ELEMENT anio (#PCDATA)>
+<!ELEMENT vidaUtil (#PCDATA)>
+<!ELEMENT poblacion (#PCDATA)>
+<!ELEMENT provincia (#PCDATA)>
+<!ELEMENT pais (#PCDATA)>
+<!ELEMENT tipo (#PCDATA)>
+<!ELEMENT listaAlternativas (alternativaProyEIA)*>
+<!ELEMENT nombreAlternativa (#PCDATA)>
+<!ELEMENT listaFactores (factor)+>
+		<!ELEMENT factor (nombreFactor,peso?,listaFactores?)>
+		<!ELEMENT nombreFactor (#PCDATA)>
+		<!ELEMENT peso (#PCDATA)>
+<!ELEMENT valorTotal (#PCDATA)>
+
+<!ELEMENT alternativaProyEIA (nombreAlt, listaPrincipalAcciones, listaEfectos?, valorTotalAlternativa?, valorada)>
+<!ELEMENT nombreAlt (#PCDATA)>
+	<!ATTLIST nombreAlt
+	generica (true|false) "false">	
+<!ELEMENT listaPrincipalAcciones (accion)+>
+	<!ELEMENT accion (nombreAccion,listaAcciones?)>
+	<!ELEMENT listaAcciones (accion)+>
+	<!ELEMENT nombreAccion (#PCDATA)>
+
+<!ELEMENT listaEfectos (efecto)+>
+<!ELEMENT efecto (idEfecto, descripcion, caracter?, idAccion, idFactor, 			        valorSimpleEnjuiciamiento?, valorCuantitativo?,valorCualitativo?, valorTotal?)>
+	<!ELEMENT idEfecto (#PCDATA)>
+	<!ELEMENT caracter (#PCDATA)>
+	<!ELEMENT idAccion (#PCDATA)>
+	<!ELEMENT idFactor (#PCDATA)>
+	<!ELEMENT valorSimpleEnjuiciamiento (#PCDATA)>
+	<!ELEMENT valorCuantitativo (indicador, maxVal, minVal, magnitud)>
+		<!ELEMENT indicador (#PCDATA)>
+		<!ELEMENT maxVal (#PCDATA)>
+		<!ELEMENT minVal (#PCDATA)>
+		<!ELEMENT magnitud (#PCDATA)>
+	<!ELEMENT valorCualitativo (signo, acumulacion, extension, extensionCritica, intensidad, persistencia, reversibilidad, recuperabilidad, periodicidad, momento, momentoCritico, efectoImp, incidencia)>
+		<!ELEMENT signo (#PCDATA)>
+		<!ELEMENT acumulacion (#PCDATA)>
+		<!ELEMENT extension (#PCDATA)>
+		<!ELEMENT extensionCritica (#PCDATA)>
+		<!ELEMENT intensidad (#PCDATA)>
+		<!ELEMENT persistencia (#PCDATA)>
+		<!ELEMENT reversibilidad (#PCDATA)>
+		<!ELEMENT recuperabilidad (#PCDATA)>
+		<!ELEMENT periodicidad (#PCDATA)>
+		<!ELEMENT momento (#PCDATA)>
+		<!ELEMENT momentoCritico (#PCDATA)>
+		<!ELEMENT efectoImp (#PCDATA)>
+		<!ELEMENT incidencia (#PCDATA)>
+	
+	<!ELEMENT valorada (#PCDATA)>
+<!ELEMENT valorTotalAlternativa (#PCDATA)>		
