@@ -449,7 +449,7 @@ public class FormAlternativa extends JDialog{
 				factores.isLeaf(factoresTree.getLastSelectedPathComponent())){
 				Accion accion = (Accion)((DefaultMutableTreeNode)accionesTree.getLastSelectedPathComponent()).getUserObject();
 				Factor factor = (Factor)((DefaultMutableTreeNode)factoresTree.getLastSelectedPathComponent()).getUserObject();
-				formCrearEfecto formNuevoEfecto = new formCrearEfecto(accion.getId(), factor.getId());
+				FormCrearEfecto formNuevoEfecto = new FormCrearEfecto(accion.getId(), factor.getId());
 				Point posActual = getDialog().getLocation();
 				posActual.translate(20, 20);
 				formNuevoEfecto.setLocation(posActual);
@@ -566,7 +566,7 @@ public class FormAlternativa extends JDialog{
 
 	private void anadirAccion(){
 		DefaultMutableTreeNode padre = (DefaultMutableTreeNode)accionesTree.getLastSelectedPathComponent();
-		formCrearAccion formNuevaAccion = new formCrearAccion(null, padre.toString());
+		FormCrearAccion formNuevaAccion = new FormCrearAccion(null, padre.toString());
 		Point posActual = getDialog().getLocation();
 		posActual.translate(20, 20);
 		formNuevaAccion.setLocation(posActual);
