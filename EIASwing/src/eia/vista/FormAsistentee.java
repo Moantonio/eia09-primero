@@ -18,7 +18,7 @@ import javax.swing.JTextArea;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
-public class formAsistente extends JDialog {
+public class FormAsistentee extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel jContentPane = null;
@@ -36,7 +36,7 @@ public class formAsistente extends JDialog {
 	// Flag para controlar la pulsación del botón aceptar
 	private boolean flagAceptar = false;
 
-	public formAsistente(Frame owner) {
+	public FormAsistentee(Frame owner) {
 		super(owner);
 		initialize();
 	}

@@ -1161,7 +1161,7 @@ public class formEfecto extends JDialog {
 	}
 
 	private void mostrarAsistente(){
-		formAsistente asistente = new formAsistente(null);
+		FormAsistentee asistente = new FormAsistentee(null);
 		Point posActual = this.getLocation();
 		posActual.translate(20, 20);
 		asistente.setLocation(posActual);
