@@ -1,7 +1,10 @@
 package eia.model;
 
 import java.util.ArrayList;
-import eia.util.Arbol;
+
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+
 
 /**
  * @author SI: EIA'09
@@ -13,37 +16,44 @@ import eia.util.Arbol;
 /**
  * Clase que implementa una alternativa de realización de un proyecto.
  */
-public class Alternativa {
-	
+public class Alternativa implements Cloneable{
+
 	/**
 	 * Nombre de la alternativa de realización.
 	 */
 	private String id;
-	 
+
 	/**
 	 * Arbol de acciones de la alternativa de realización.
 	 */
-	private Arbol<Accion> acciones;
-	
+	private DefaultTreeModel acciones;  //  @jve:decl-index=0:
+
 	/**
 	 * Lista de efectos (impactos) asociados a la alternativa de realización.
 	 */
 	private ArrayList<Efecto> efectos;
-	
+
 	/**
 	 * Valor total del impacto de la alternativa de realización.
 	 */
 	private double valorTotal;
-	
+
+	/**
+	 * Indica si la alternativa ha sido valorada.
+	 */
+	private boolean valorada;
+
 	/**
 	 * Constructor por defecto.
 	 */
 	public Alternativa(){
-		
+
 		id ="";
-		acciones = new Arbol<Accion>();
+		DefaultMutableTreeNode nodo = new DefaultMutableTreeNode();
+		acciones = new DefaultTreeModel(nodo);
 		efectos = new ArrayList<Efecto>();
 		valorTotal = 0;
+		valorada = false;
 	}
 
 	/**
@@ -51,13 +61,15 @@ public class Alternativa {
 	 * @param id Nombre de la alternativa de realización.
 	 */
 	public Alternativa(String id){
-		
+
 		this.id = id;
-		acciones = new Arbol<Accion>();
+		DefaultMutableTreeNode nodo = new DefaultMutableTreeNode();
+		acciones = new DefaultTreeModel(nodo);
 		efectos = new ArrayList<Efecto>();
 		valorTotal = 0;
+		valorada = false;
 	}
-	
+
 	/**
 	 * Accesor para el atributo 'id'.
 	 * @return Nombre de la alternativa de realización.
@@ -110,7 +122,7 @@ public class Alternativa {
 	 * Accesor para el atributo 'acciones'.
 	 * @return Arbol de acciones asociadas a la alternativa de realización.
 	 */
-	public Arbol<Accion> getAcciones() {
+	public DefaultTreeModel  getAcciones() {
 		return acciones;
 	}
 
@@ -118,10 +130,26 @@ public class Alternativa {
 	 * Mutador para el atributo 'acciones'.
 	 * @param acciones Lista de acciones a asociar a la alternativa de realización.
 	 */
-	public void setAcciones(Arbol<Accion> acciones) {
+	public void setAcciones(DefaultTreeModel acciones) {
 		this.acciones = acciones;
 	}
-	
+
+	/**
+	 * Accesor para el atributo 'valorada'.
+	 * @return Indica si la alternativa ha sido valorada.
+	 */
+	public boolean getValorada() {
+		return valorada;
+	}
+
+	/**
+	 * Mutador para el atributo 'valorada'.
+	 * @param valorada Valor a asignar al atributo.
+	 */
+	public void setValorada(boolean valorada) {
+		this.valorada = valorada;
+	}
+
 	/**
 	 * Función para calcular el valor total de impacto de la alternativa,
 	 * estableciendo dicho valor en el atributo 'valorTotal'.
@@ -134,8 +162,45 @@ public class Alternativa {
 					efectos.get(i).calcularValorTotal();
 				valor += efectos.get(i).getValorTotal();
 			}
-			valorTotal = valor;
+			valorTotal = redondear(valor,3);
 		}
 	}
-	
+
+	/**
+	 * Función para redondear un número de tipo double al número de cifras
+	 * decimales indicadas por parámetro.
+	 * @param nD Número a redondear.
+	 * @param nDec Número de cifras decimales a redondear.
+	 * @return Número redondeado.
+	 */
+	private double redondear(double nD, int nDec){
+	  return Math.round(nD*Math.pow(10,nDec))/Math.pow(10,nDec);
+	}
+
+	/**
+	 * Función para clonar el objeto Alternativa.
+	 * @return Copia del objeto Alternativa.
+	 */
+    public Object clone(){
+        Object copia = null;
+        try{
+            copia = super.clone();
+        }catch(CloneNotSupportedException ex){
+            System.out.println("Imposible duplicar");
+        }
+        if (this.id != null){
+        	((Alternativa)copia).id = new String(this.id);
+        }else{
+        	((Alternativa)copia).id = new String();
+        }
+
+        ((Alternativa)copia).efectos = new ArrayList<Efecto>();
+        for (int i=0; i<this.getEfectos().size();i++){
+        	Efecto efecto = this.getEfectos().get(i);
+        	((Alternativa)copia).efectos.add((Efecto) efecto.clone());
+        }
+
+        return copia;
+    }
+
 }

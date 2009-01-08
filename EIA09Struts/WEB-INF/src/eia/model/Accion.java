@@ -16,14 +16,14 @@ public class Accion {
 	 * Nombre de la acción ambiental.
 	 */
 	private String id;
-	
+
 	/**
 	 * Constructor por defecto.
 	 */
 	public Accion(){
 		id = "";
 	}
-	
+
 	/**
 	 *  Constructor por parámetros.
 	 * @param id Nombre de la acción ambiental.
@@ -31,15 +31,15 @@ public class Accion {
 	public Accion(String id){
 		this.id = id;
 	}
-	
+
 	/**
 	 * Mutador para el atributo 'id'.
-	 * @param id Nombre a asignar a la acción ambiental. 
+	 * @param id Nombre a asignar a la acción ambiental.
 	 */
 	public void setId(String id){
 		this.id = id;
 	}
-	
+
 	/**
 	 * Accesor para el atributo 'id'.
 	 * @return Nombre de la acción ambiental.
@@ -47,7 +47,7 @@ public class Accion {
 	public String getId(){
 		return id;
 	}
-	
+
 	/**
 	 * Vuelca sobre un String la información sobre la acción.
 	 * @return Cadena de caracteres con información sobre la acción.
@@ -55,4 +55,5 @@ public class Accion {
 	public String toString(){
 		return id;
 	}
+
 }

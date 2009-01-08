@@ -8,11 +8,11 @@ package eia.model;
  */
 
 /**
- * Clase que implementa la información para el análisis/valoración 
+ * Clase que implementa la información para el análisis/valoración
  * cualitativa completa de un efecto/impacto ambiental.
  */
-public class ValoracionCualitativa {
-	
+public class ValoracionCualitativa implements Cloneable {
+
 	// Constantes para los distintos valores de los atributos
 	public static final int SIG_POSITIVO = 1;
 	public static final int SIG_NEGATIVO = -1;
@@ -26,7 +26,7 @@ public class ValoracionCualitativa {
 	public static final int EXT_NO_CRITICA = 0;
 	public static final int EXT_CRITICA = 4;
 	public static final int INT_BAJA = 1;
-	public static final int INT_MEDIA = 4;
+	public static final int INT_MEDIA = 2;
 	public static final int INT_ALTA = 4;
 	public static final int INT_MUYALTA = 6;
 	public static final int INT_TOTAL = 10;
@@ -55,78 +55,78 @@ public class ValoracionCualitativa {
 	public static final int EFE_INDIRECTO_TER = 1;
 
 	//TODO ¿Es éste el mejor sitio para dejar las constantes?
-	
+
 	/**
 	 * Signo asociado al efecto/impacto: positivo o negativo.
 	 */
 	private int signo;
-	
+
 	/**
-	 * Valor de acumulación asociada al efecto/impacto: 
+	 * Valor de acumulación asociada al efecto/impacto:
 	 * simple, acumulativo o sinérgico.
 	 */
 	private int acumulacion;
-	
+
 	/**
-	 * Valor de extensión (área de influencia) asociada al efecto/impacto: 
-	 * puntual, parcial, extenso o total. 
+	 * Valor de extensión (área de influencia) asociada al efecto/impacto:
+	 * puntual, parcial, extenso o total.
 	 */
 	private int extension;
-	
+
 	/**
-	 * Valor de la extensión crítica (área de influencia) asociada al efecto/impacto: 
-	 * crítica o no crítica. 
+	 * Valor de la extensión crítica (área de influencia) asociada al efecto/impacto:
+	 * crítica o no crítica.
 	 */
 	private int extensionCritica;
-	
+
 	/**
-	 * Valor de intensidad (grado de destrucción) asociada al efecto/impacto: 
+	 * Valor de intensidad (grado de destrucción) asociada al efecto/impacto:
 	 * baja, media, alta, muy alta o total.
 	 */
 	private int intensidad;
-	
+
 	/**
-	 * Valor de persistencia asociada al efecto/impacto: 
+	 * Valor de persistencia asociada al efecto/impacto:
 	 * fugaz, temporal o permanente.
 	 */
 	private int persistencia;
-	
+
 	/**
 	 * Valor de reversibilidad asociada al efecto/impacto:
 	 * corto plazo, medio plazo, largo plazo o irreversible.
 	 */
 	private int reversibilidad;
-	
+
 	/**
 	 * Valor de recuperabilidad (medios humanos) asociada al efecto/impacto:
 	 * inmediata, medio plazo, mitigable, largo plazo o irrecuperable.
 	 */
 	private int recuperabilidad;
-	
+
 	/**
-	 * Valor de periodicidad asociada al efecto/impacto: 
+	 * Valor de periodicidad asociada al efecto/impacto:
 	 * discontinuo, periódico o continuo.
 	 */
 	private int periodicidad;
-	
+
 	/**
 	 * Valor del momento (plazo de manifestación) asociado al efecto/impacto:
 	 * inmediato, medio plazo o largo plazo.
 	 */
 	private int momento;
-	
+
 	/**
 	 * Valor del momento crítico (plazo de manifestación) asociado al efecto/impacto:
 	 * crítico o no crítico.
 	 */
 	private int momentoCritico;
-	
+
 	/**
 	 * Valor de efecto asociado al efecto/impacto:
 	 * directo, indirecto secundario o indirecto terciario.
 	 */
 	private int efecto;
-	
+
 	/**
 	 * Valor de impacto (importancia) del efecto según valoración cualitativa.
 	 */
@@ -148,7 +148,7 @@ public class ValoracionCualitativa {
 	 * @param efecto Valor de efecto del efecto/impacto.
 	 */
 	public ValoracionCualitativa(int signo, int acumulacion, int extension, int extensionCritica,
-			int intensidad, int persistencia, int reversibilidad, int recuperabilidad, 
+			int intensidad, int persistencia, int reversibilidad, int recuperabilidad,
 			int periodicidad, int momento, int momentoCritico, int efecto) {
 		super();
 		this.signo = signo;
@@ -165,7 +165,7 @@ public class ValoracionCualitativa {
 		this.efecto = efecto;
 		incidencia = 0;
 	}
-	
+
 	/**
 	 * Constructor por defecto.
 	 */
@@ -185,7 +185,7 @@ public class ValoracionCualitativa {
 		this.efecto = 0;
 		incidencia = 0;
 	}
-	
+
 	/**
 	 * Accesor para el atributo 'signo'.
 	 * @return Signo del efecto/impacto.
@@ -249,7 +249,7 @@ public class ValoracionCualitativa {
 	public void setExtensionCritica(int extensionCritica) {
 		this.extensionCritica = extensionCritica;
 	}
-	
+
 	/**
 	 * Accesor para el atributo 'intensidad'.
 	 * @return Valor de intensidad del efecto/impacto.
@@ -345,7 +345,7 @@ public class ValoracionCualitativa {
 	public void setMomento(int momento) {
 		this.momento = momento;
 	}
-	
+
 	/**
 	 * Accesor para el atributo 'momentoCritico'.
 	 * @return Valor del momento crítico del efecto/impacto.
@@ -393,7 +393,7 @@ public class ValoracionCualitativa {
 	public void setIncidencia(double incidencia) {
 		this.incidencia = incidencia;
 	}
-	
+
 	/**
 	 * Función para el cálculo del valor máximo, usado para la obtención de la incidencia.
 	 * @return Valor máximo.
@@ -402,8 +402,12 @@ public class ValoracionCualitativa {
 		int max = 0;
 		if (acumulacion!=0)
 			max+= ValoracionCualitativa.ACU_SINERGICO;
-		if (extension!=0)
+		if (extension!=0){
 			max+= ValoracionCualitativa.EXT_TOTAL;
+			if(extensionCritica!=0){
+				max+= ValoracionCualitativa.EXT_CRITICA;
+			}
+		}
 		if (intensidad!=0)
 			max+= ValoracionCualitativa.INT_TOTAL;
 		if (persistencia!=0)
@@ -414,13 +418,17 @@ public class ValoracionCualitativa {
 			max+= ValoracionCualitativa.REC_IRRECUPERABLE;
 		if (periodicidad!=0)
 			max+= ValoracionCualitativa.PER_CONTINUO;
-		if (momento!=0)
+		if (momento!=0){
 			max+= ValoracionCualitativa.MOM_INMEDIATO;
+			if(momentoCritico!=0){
+				max+= ValoracionCualitativa.MOM_CRITICO;
+			}
+		}
 		if (efecto!=0)
 			max+= ValoracionCualitativa.EFE_DIRECTO;
-		return max;	
+		return max;
 	}
-	
+
 	/**
 	 * Función para el cálculo del valor mínimo, usado para la obtención de la incidencia.
 	 * @return Valor mínimo.
@@ -445,9 +453,9 @@ public class ValoracionCualitativa {
 			min+= ValoracionCualitativa.MOM_LARGO_PLAZO;
 		if (efecto!=0)
 			min+= ValoracionCualitativa.EFE_INDIRECTO_TER;
-		return min;	
+		return min;
 	}
-	
+
 	/**
 	 * Función para calcular el valor de impacto del efecto según análisis
 	 * cualitativo completo, estableciendo dicho valor en el atributo 'incidencia'.
@@ -457,7 +465,32 @@ public class ValoracionCualitativa {
 		int max = calculaMaximo();
 		int suma =(acumulacion+extension+extensionCritica+intensidad+persistencia+
 				reversibilidad+recuperabilidad+periodicidad+momento+momentoCritico+efecto);
-	   incidencia = (signo*(suma - min)/(max-min));  
+
+		incidencia = redondear(signo*(double)(suma - min)/(max-min),3);
 	}
 
+	/**
+	 * Función para redondear un número de tipo double al número de cifras
+	 * decimales indicadas por parámetro.
+	 * @param nD Número a redondear.
+	 * @param nDec Número de cifras decimales a redondear.
+	 * @return Número redondeado.
+	 */
+	private double redondear(double nD, int nDec){
+	  return Math.round(nD*Math.pow(10,nDec))/Math.pow(10,nDec);
+	}
+
+	/**
+	 * Función para clonar el objeto ValoracionCualitativa.
+	 * @return Copia del objeto ValoracionCualitativa.
+	 */
+    public Object clone(){
+        Object copia = null;
+        try{
+            copia = super.clone();
+        }catch(CloneNotSupportedException ex){
+            System.out.println("Imposible duplicar");
+        }
+        return copia;
+    }
 }

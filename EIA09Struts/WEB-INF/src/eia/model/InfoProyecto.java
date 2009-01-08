@@ -46,11 +46,6 @@ public class InfoProyecto {
 	private String provincia;
 
 	/**
-	 * Región de realización del proyecto de estudio de impacto ambiental.
-	 */
-	private String region;
-
-	/**
 	 * Pais de realización del proyecto de estudio de impacto ambiental.
 	 */
 	private String pais;
@@ -75,7 +70,6 @@ public class InfoProyecto {
 		this.autor = "";
 		this.poblacion = "";
 		this.provincia = "";
-		this.region = "";
 		this.pais = "";
 		this.fecha = new Date();
 		this.vidaUtil = 0;
@@ -95,7 +89,7 @@ public class InfoProyecto {
 	 * @param vidaUtil Vida útil del proyecto de estudio.
 	 */
 	public InfoProyecto(String nombre, String descripcion, String compania,
-			String autor, String poblacion, String provincia, String region, String pais,
+			String autor, String poblacion, String provincia, String pais,
 			Date fecha, int vidaUtil) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -103,7 +97,6 @@ public class InfoProyecto {
 		this.autor = autor;
 		this.poblacion = poblacion;
 		this.provincia = provincia;
-		this.region = region;
 		this.pais = pais;
 		this.fecha = fecha;
 		this.vidaUtil = vidaUtil;
@@ -251,21 +244,5 @@ public class InfoProyecto {
 	 */
 	public void setVidaUtil(int vidaUtil) {
 		this.vidaUtil = vidaUtil;
-	}
-
-	/**
-	 * Mutador para el atributo 'region'.
-	 * @param region Región de realización del proyecto de estudio a asociar.
-	 */
-	public void setRegion(String region) {
-		this.region = region;
-	}
-
-	/**
-	 * Accesor para el atributo 'region'.
-	 * @return Región de realización del proyecto de estudio.
-	 */
-	public String getRegion() {
-		return region;
 	}
 }

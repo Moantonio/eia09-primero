@@ -1,7 +1,9 @@
 package eia.model;
 
 import java.util.ArrayList;
-import eia.util.Arbol;
+
+import javax.swing.tree.DefaultTreeModel;
+
 import eia.util.TipoProyecto;
 
 /**
@@ -34,7 +36,7 @@ public class Proyecto {
 	/**
 	 * Factores ambientales influyentes para el estudio del proyecto.
 	 */
-	private Arbol<Factor> factores;
+	private DefaultTreeModel factores;
 
 	/**
 	 * Contructor por parámetros.
@@ -45,7 +47,7 @@ public class Proyecto {
 		this.informacion = informacion;
 		this.tipo = tipo;
 		alternativas = new ArrayList<Alternativa>();
-		factores = new Arbol<Factor>();
+		factores = null;
 	}
 
 	/**
@@ -55,7 +57,7 @@ public class Proyecto {
 		informacion = null;
 		tipo = null;
 		alternativas = null;
-		factores = new Arbol<Factor>();
+		factores = null;
 	}
 
 	/**
@@ -110,7 +112,7 @@ public class Proyecto {
 	 * Accesor para el atributo 'factores'.
 	 * @return Factores ambientales influyentes para el estudio del proyecto.
 	 */
-	public Arbol<Factor> getFactores() {
+	public DefaultTreeModel getFactores() {
 		return factores;
 	}
 
@@ -118,7 +120,7 @@ public class Proyecto {
      * Mutador para el atributo 'factores'.
      * @param factores Factores ambientes influyentes a asociar al proyecto.
      */
-	public void setFactores(Arbol<Factor> factores) {
+	public void setFactores(DefaultTreeModel factores) {
 		this.factores = factores;
 	}
 
@@ -129,10 +131,10 @@ public class Proyecto {
 	 */
 	public Alternativa analizarAlternativas(){
 		int numAlternativas = alternativas.size();
-		double mejorValor = -100; //TODO Iniciliación correcta!
+		double mejorValor = 100;
 		Alternativa mejorAlternativa = null;
 		for (int i=0; i<numAlternativas;i++){
-			if(mejorValor < alternativas.get(i).getValorTotal()){
+			if(mejorValor > alternativas.get(i).getValorTotal()){
 				mejorValor = alternativas.get(i).getValorTotal();
 				mejorAlternativa = alternativas.get(i);
 			}

@@ -13,28 +13,28 @@ import eia.util.ValorJuicio;
 /**
  * Clase que implementa un efecto/impacto ambiental.
  */
-public class Efecto {
+public class Efecto implements Cloneable {
 
 	/**
 	 * Acción asociada al efecto/impacto.
 	 */
 	private Accion accion;
-	
+
 	/**
 	 * Factor asociado al efecto/impacto.
 	 */
 	private Factor factor;
-	
+
 	/**
 	 * Nombre del efecto/impacto ambiental.
 	 */
 	private String id;
-	
+
 	/**
 	 * Descripción del efecto/impacto ambiental.
 	 */
 	private String descripcion;
-	
+
 	/**
 	 * Valor del efecto/impacto por simple enjuiciamiento.
 	 */
@@ -44,22 +44,22 @@ public class Efecto {
 	 * Valoración cualitativa del efecto/impacto ambiental.
 	 */
 	private ValoracionCualitativa valCualitativa;
-	
+
 	/**
 	 * Valoración cuantitativa del efecto/impacto ambiental.
 	 */
 	private ValoracionCuantitativa valCuantitativa;
-	
+
 	/**
 	 * Valor total del efecto/impacto.
 	 */
 	private double valorTotal;
-	
+
 	/**
 	 * Caracter de valoración del efecto/impacto ambiental.
 	 */
 	private CaracterEfecto caracter;
-	
+
 	/**
 	 * Constructor por defecto.
 	 */
@@ -72,9 +72,9 @@ public class Efecto {
 		valCualitativa = null;
 		valCuantitativa = null;
 		valorTotal = 0;
-		caracter = null; 
+		caracter = null;
 	}
-	
+
 	/**
 	 * Constructor por parámetros.
 	 * @param accion Acción a asociar al efecto/impacto.
@@ -91,9 +91,9 @@ public class Efecto {
 		valCualitativa = null;
 		valCuantitativa = null;
 		valorTotal = 0;
-		caracter = null; 
+		caracter = null;
 	}
-	
+
 	/**
 	 * Constructor por parámetros.
 	 * @param accion Acción a asociar al efecto/impacto.
@@ -111,7 +111,7 @@ public class Efecto {
 		valCualitativa = null;
 		valCuantitativa = null;
 		valorTotal = 0;
-		caracter = null; 
+		caracter = null;
 	}
 
 	/**
@@ -257,7 +257,7 @@ public class Efecto {
 	public void setCaracter(CaracterEfecto caracter) {
 		this.caracter = caracter;
 	}
-	
+
 	/**
 	 * Función para calcular la valoración cuantitativa del efecto/impacto,
 	 * estableciendo dicho valor en el atributo 'valCualitativa'.
@@ -265,16 +265,70 @@ public class Efecto {
 	public void calcularValorCuantitativo(){
 		//TODO Calcular Valor Cuantitativo
 	}
-	
+
 	/**
 	 * Función para calcular el valor total de impacto del efecto,
 	 * estableciendo dicho valor en el atributo 'valorTotal'.
 	 */
 	public void calcularValorTotal(){
-		if (juicio == ValorJuicio.significativo && valCualitativa!=null && valCuantitativa!=null){
-			valorTotal = valCuantitativa.getMagnitudImpacto() * valCualitativa.getIncidencia()* factor.getPeso();
+		if (valCualitativa!=null && valCuantitativa!=null){
+			valorTotal = redondear(valCuantitativa.getMagnitudImpacto() * valCualitativa.getIncidencia()* factor.getPeso(),3);
 		}else{
 			valorTotal = 0;
 		}
 	}
+
+	/**
+	 * Función para redondear un número de tipo double al número de cifras
+	 * decimales indicadas por parámetro.
+	 * @param nD Número a redondear.
+	 * @param nDec Número de cifras decimales a redondear.
+	 * @return Número redondeado.
+	 */
+	private double redondear(double nD, int nDec){
+	  return Math.round(nD*Math.pow(10,nDec))/Math.pow(10,nDec);
+	}
+
+	/**
+	 * Función para clonar el objeto Efecto.
+	 * @return Copia del objeto Efecto.
+	 */
+    public Object clone(){
+        Object copia = null;
+        try{
+            copia = super.clone();
+        }catch(CloneNotSupportedException ex){
+            System.out.println("Imposible duplicar");
+        }
+        ((Efecto)copia).accion = this.accion;
+        ((Efecto)copia).factor = this.factor;
+        ((Efecto)copia).caracter = this.caracter;
+
+        if (this.descripcion != null){
+        	((Efecto)copia).descripcion = new String(this.descripcion);
+        }else{
+        	((Efecto)copia).descripcion = new String();
+        }
+
+        if (this.id != null){
+        	((Efecto)copia).id = new String(this.id);
+        }else{
+        	((Efecto)copia).id = new String();
+        }
+
+        ((Efecto)copia).juicio = this.juicio;
+
+        if (this.valCualitativa != null){
+        	((Efecto)copia).valCualitativa = (ValoracionCualitativa) this.valCualitativa.clone();
+        }else{
+        	((Efecto)copia).valCualitativa = null;
+        }
+
+        if (this.valCuantitativa != null){
+        	((Efecto)copia).valCuantitativa = (ValoracionCuantitativa) this.valCuantitativa.clone();
+        }else{
+        	((Efecto)copia).valCuantitativa = null;
+        }
+        return copia;
+    }
 }

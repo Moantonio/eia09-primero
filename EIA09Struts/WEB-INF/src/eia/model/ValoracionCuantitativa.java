@@ -11,7 +11,7 @@ package eia.model;
  * Clase que implementa la información para el análisis/valoración
  * cuantitativa de un efecto/impacto ambiental.
  */
-public class ValoracionCuantitativa {
+public class ValoracionCuantitativa implements Cloneable {
 
 	/**
 	 * Magnitud del efecto/impacto en unidades heterogéneas.
@@ -341,7 +341,7 @@ public class ValoracionCuantitativa {
 	 * @param opc Parámetro opcional ('a', 'umbral') para las funciones que lo demanden.
 	 */
 	public void calcularValoracion(int numFuncion, double opc){
-		magnitudImpacto = calcularFuncion(numFuncion,indicador,mayorValorIndicador,menorValorIndicador,opc);
+		magnitudImpacto = redondear(calcularFuncion(numFuncion,indicador,mayorValorIndicador,menorValorIndicador,opc),3);
 	}
 
 	/**
@@ -388,4 +388,29 @@ public class ValoracionCuantitativa {
 		return resultado;
 	}
 
+	/**
+	 * Función para redondear un número de tipo double al número de cifras
+	 * decimales indicadas por parámetro.
+	 * @param nD Número a redondear.
+	 * @param nDec Número de cifras decimales a redondear.
+	 * @return Número redondeado.
+	 */
+	private double redondear(double nD, int nDec)
+	{
+	  return Math.round(nD*Math.pow(10,nDec))/Math.pow(10,nDec);
+	}
+
+	/**
+	 * Función para clonar el objeto ValoracionCuantitativa.
+	 * @return Copia del objeto ValoracionCuantitativa.
+	 */
+    public Object clone(){
+        Object copia = null;
+        try{
+            copia = super.clone();
+        }catch(CloneNotSupportedException ex){
+            System.out.println("Imposible duplicar");
+        }
+        return copia;
+    }
 }
