@@ -34,8 +34,6 @@ import eia.model.Accion;
 import eia.model.Alternativa;
 import eia.model.Efecto;
 import eia.model.Factor;
-import eia.util.TablaColores;
-import eia.util.TablaNoEditable;
 import eia.util.ValorJuicio;
 
 /**

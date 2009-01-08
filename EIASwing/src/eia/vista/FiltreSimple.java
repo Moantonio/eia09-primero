@@ -1,4 +1,4 @@
-package eia.util;
+package eia.vista;
 
 import java.io.File;
 import javax.swing.filechooser.FileFilter;

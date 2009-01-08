@@ -1,4 +1,4 @@
-package eia.util;
+package eia.vista;
 
 import java.awt.Color;
 import java.awt.Component;

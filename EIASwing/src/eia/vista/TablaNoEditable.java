@@ -1,4 +1,4 @@
-package eia.util;
+package eia.vista;
 
 
 import javax.swing.table.DefaultTableModel;
