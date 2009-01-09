@@ -109,6 +109,7 @@ public class FormPrincipal {
 	private Proyecto proyecto = null;  //  @jve:decl-index=0:
 	private File ficheroProyecto = null;  //  @jve:decl-index=0:
 	private JLabel autoresLabel = null;
+	private JScrollPane barraDesplazamiento = null;
 
 	private JFrame getFramePrincipal() {
 		if (framePrincipal == null) {
@@ -571,7 +572,7 @@ public class FormPrincipal {
 			infoProyectoPanel.add(fechaLabel, null);
 			infoProyectoPanel.add(vidaUtilLabel, null);
 			infoProyectoPanel.add(getTipoTextField(), null);
-			infoProyectoPanel.add(getDescripcionTextArea(), null);
+			infoProyectoPanel.add(getScrollPane(), null);
 			infoProyectoPanel.add(getCompaniaTextField(), null);
 			infoProyectoPanel.add(getPoblacionTextField(), null);
 			infoProyectoPanel.add(getPaisTextField(), null);
@@ -658,9 +659,26 @@ public class FormPrincipal {
 			descripcionTextArea.setBounds(new Rectangle(88, 54, 327, 36));
 			descripcionTextArea.setEnabled(false);
 			descripcionTextArea.setBorder(BorderFactory.createLineBorder(new Color(192192192)));
+			descripcionTextArea.setLineWrap(true);
+			descripcionTextArea.setWrapStyleWord(true);
+
+
 		}
 		return descripcionTextArea;
 	}
+
+	private JScrollPane getScrollPane() {
+		if (barraDesplazamiento == null) {
+			barraDesplazamiento = new JScrollPane(getDescripcionTextArea());
+			barraDesplazamiento.setBounds(new Rectangle(88, 54, 327, 36));
+			barraDesplazamiento.setEnabled(true);
+			barraDesplazamiento.setBorder(BorderFactory.createLineBorder(new Color(116, 158, 192), 0));
+
+		}
+		return barraDesplazamiento;
+	}
+
+	JScrollPane scroll = new JScrollPane();
 
 	private JTextField getCompaniaTextField() {
 		if (companiaTextField == null) {
