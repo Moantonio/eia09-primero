@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
@@ -71,6 +72,7 @@ public class FormCrearEfecto extends JDialog {
 		this.setSize(475, 280);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Nuevo efecto");
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\window-new.png"));
 	}
 
 	private JPanel getJContentPane() {
