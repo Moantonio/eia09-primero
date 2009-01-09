@@ -14,6 +14,7 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
@@ -45,6 +46,8 @@ public class FormCrearEfecto extends JDialog {
 	private JButton aceptarButton = null;
 	private JButton cancelarButton = null;
 	private JComboBox enjuiciamientoComboBox = null;
+	private JScrollPane barraDesplazamiento = null;
+
 	// Variables del modelo
 	private boolean flagAceptar = false;
 	private String nombreAccion;
@@ -140,7 +143,7 @@ public class FormCrearEfecto extends JDialog {
 			crearEfectoPanel.add(descripcionLabel, null);
 			crearEfectoPanel.add(enjuiciamientoLabel, null);
 			crearEfectoPanel.add(getNombreTextField(), null);
-			crearEfectoPanel.add(getDescripcionTextArea(), null);
+			crearEfectoPanel.add(getScrollPane(), null);
 			crearEfectoPanel.add(getEnjuiciamientoComboBox(), null);
 		}
 		return crearEfectoPanel;
@@ -159,11 +162,23 @@ public class FormCrearEfecto extends JDialog {
 	private JTextArea getDescripcionTextArea() {
 		if (descripcionTextArea == null) {
 			descripcionTextArea = new JTextArea();
-			descripcionTextArea.setBounds(new Rectangle(135, 56, 272, 47));
+			descripcionTextArea.setBounds(new Rectangle(135, 54, 272, 47));
 			descripcionTextArea.setFont(new Font("Dialog", Font.BOLD, 12));
 			descripcionTextArea.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
+			descripcionTextArea.setLineWrap(true);
+			descripcionTextArea.setWrapStyleWord(true);
 		}
 		return descripcionTextArea;
+	}
+
+	private JScrollPane getScrollPane() {
+		if (barraDesplazamiento == null) {
+			barraDesplazamiento = new JScrollPane(getDescripcionTextArea());
+			barraDesplazamiento.setBounds(new Rectangle(135, 54, 272, 47));
+			barraDesplazamiento.setEnabled(true);
+			barraDesplazamiento.setBorder(BorderFactory.createLineBorder(new Color(116, 158, 192), 0));
+		}
+		return barraDesplazamiento;
 	}
 
 	private JButton getAceptarButton() {

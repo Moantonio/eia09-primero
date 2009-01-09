@@ -104,12 +104,13 @@ public class FormPrincipal {
 	private JButton eliminarAltButton = null;
 	private JButton editarAltButton = null;
 	private JButton aceptarButton = null;
+	private JLabel autoresLabel = null;
+	private JScrollPane barraDesplazamiento = null;
 
 	// Variables del modelo
 	private Proyecto proyecto = null;  //  @jve:decl-index=0:
 	private File ficheroProyecto = null;  //  @jve:decl-index=0:
-	private JLabel autoresLabel = null;
-	private JScrollPane barraDesplazamiento = null;
+
 
 	private JFrame getFramePrincipal() {
 		if (framePrincipal == null) {
@@ -661,8 +662,6 @@ public class FormPrincipal {
 			descripcionTextArea.setBorder(BorderFactory.createLineBorder(new Color(192192192)));
 			descripcionTextArea.setLineWrap(true);
 			descripcionTextArea.setWrapStyleWord(true);
-
-
 		}
 		return descripcionTextArea;
 	}
