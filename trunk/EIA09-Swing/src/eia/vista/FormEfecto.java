@@ -1108,44 +1108,52 @@ public class FormEfecto extends JDialog {
 			JOptionPane.showMessageDialog(this, "Valor de indicador incorrecto o no indicado. Sólo se permiten caracteres numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
 		};
 
-		// Obtenemos el valor max
 		double indicadorMax = 0;
-		try{indicadorMax = Double.parseDouble(valormaxTextField.getText());
-		}catch(Exception e){
-			error = true;
-			JOptionPane.showMessageDialog(this, "Valor máximo de indicador incorrecto o no indicado. Sólo se permiten caracteres numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
-		};
-
-		// Obtenemos el valor mínimo
-		double indicadorMin = 0;
-		try{indicadorMin = Double.parseDouble(valorMinTextField.getText());
-		}catch(Exception e){
-			error = true;
-			JOptionPane.showMessageDialog(this, "Valor mínimo de indicador incorrecto o no indicado. Sólo se permiten caracteres numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
-		};
-
-		// Obtenemos el umbral/a
-		double opc = 0;
-		try{
-			if(opcionTextField.getText().length()!=0){
-				opc = Double.parseDouble(opcionTextField.getText());
-			}
-		}catch(Exception e){
-			error = true;
-			JOptionPane.showMessageDialog(this, "Valor Umbral/a incorrecto. Sólo se permiten caracteres numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
-		};
-
-		// Comprobamos si el max > min
-		if (indicadorMin>=indicadorMax){
-			error = true;
-			JOptionPane.showMessageDialog(this, "Valores incorrectos. El valor máximo " +
-					"de indicador no puede ser menor que el valor mínimo.", "Error", JOptionPane.ERROR_MESSAGE);
-		}else{
-			// Comprobamos que el indicador esté entre [min,max]
-			if (indicador<indicadorMin || indicador>indicadorMax){
+		if (!error){
+			// Obtenemos el valor max
+			try{indicadorMax = Double.parseDouble(valormaxTextField.getText());
+			}catch(Exception e){
 				error = true;
-				JOptionPane.showMessageDialog(this, "Valor de indicador fuera de rango. El indicador no puede ser " +
-						"menor que el valor mínimo o mayor que el valor máximo.", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Valor máximo de indicador incorrecto o no indicado. Sólo se permiten caracteres numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+			};
+		}
+
+		double indicadorMin = 0;
+		if (!error){
+			// Obtenemos el valor mínimo
+			try{indicadorMin = Double.parseDouble(valorMinTextField.getText());
+			}catch(Exception e){
+				error = true;
+				JOptionPane.showMessageDialog(this, "Valor mínimo de indicador incorrecto o no indicado. Sólo se permiten caracteres numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+			};
+		}
+
+		double opc = 0;
+		if (!error){
+			// Obtenemos el umbral/a
+			try{
+				if(opcionTextField.getText().length()!=0){
+					opc = Double.parseDouble(opcionTextField.getText());
+				}
+			}catch(Exception e){
+				error = true;
+				JOptionPane.showMessageDialog(this, "Valor Umbral/a incorrecto. Sólo se permiten caracteres numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+			};
+		}
+
+		if (!error){
+			// Comprobamos si el max > min
+			if (indicadorMin>=indicadorMax){
+				error = true;
+				JOptionPane.showMessageDialog(this, "Valores incorrectos. El valor máximo " +
+						"de indicador no puede ser menor que el valor mínimo.", "Error", JOptionPane.ERROR_MESSAGE);
+			}else{
+				// Comprobamos que el indicador esté entre [min,max]
+				if (indicador<indicadorMin || indicador>indicadorMax){
+					error = true;
+					JOptionPane.showMessageDialog(this, "Valor de indicador fuera de rango. El indicador no puede ser " +
+							"menor que el valor mínimo o mayor que el valor máximo.", "Error", JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		}
 
