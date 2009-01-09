@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
@@ -39,8 +40,9 @@ public class FormCrearProyecto extends JDialog {
 	private JButton cancelarButton = null;
 	private JLabel tipoLabel = null;
 	private JTextField tipoTextField = null;
-	// Variables del modelo
+	private JScrollPane barraDesplazamiento = null;
 	private boolean flagAceptar = false;
+	// Variables del modelo
 	private String tipoProyecto;
 
 	public FormCrearProyecto(String tipo) {
@@ -74,7 +76,7 @@ public class FormCrearProyecto extends JDialog {
 			crearProyectoPanel.add(nombreLabel, null);
 			crearProyectoPanel.add(descripcionLabel, null);
 			crearProyectoPanel.add(getNombreTextField(), null);
-			crearProyectoPanel.add(getDescripcionTextArea(), null);
+			crearProyectoPanel.add(getScrollPane(), null);
 			crearProyectoPanel.add(tipoLabel, null);
 			crearProyectoPanel.add(getTipoTextField(), null);
 		}
@@ -97,8 +99,20 @@ public class FormCrearProyecto extends JDialog {
 			descripcionTextArea.setBounds(new Rectangle(135, 56, 272, 47));
 			descripcionTextArea.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
 			descripcionTextArea.setFont(new Font("Dialog", Font.BOLD, 12));
+			descripcionTextArea.setLineWrap(true);
+			descripcionTextArea.setWrapStyleWord(true);
 		}
 		return descripcionTextArea;
+	}
+
+	private JScrollPane getScrollPane() {
+		if (barraDesplazamiento == null) {
+			barraDesplazamiento = new JScrollPane(getDescripcionTextArea());
+			barraDesplazamiento.setBounds(new Rectangle(135, 56, 272, 47));
+			barraDesplazamiento.setEnabled(true);
+			barraDesplazamiento.setBorder(BorderFactory.createLineBorder(new Color(116, 158, 192), 0));
+		}
+		return barraDesplazamiento;
 	}
 
 	private JButton getAceptarButton() {
