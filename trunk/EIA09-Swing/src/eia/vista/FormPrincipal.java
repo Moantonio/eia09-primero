@@ -1016,7 +1016,18 @@ public class FormPrincipal {
 
 			ficheroProyecto = fileChooser.getSelectedFile();
 			XMLProyecto xmlProy = new XMLProyecto("..\\plantillas\\proyectoEIA.dtd");
-			xmlProy.escribir(proyecto,ficheroProyecto.getAbsolutePath());
+			if(ficheroProyecto.isFile()){
+				//TODO preguntar si quiere sobrescribir
+				int opcion = JOptionPane.showConfirmDialog (null,
+						"¿Está seguro que desea reemplazar este archivo?",
+						"Reemplazar archivo",
+						JOptionPane.YES_NO_OPTION);
+				if (opcion==JOptionPane.YES_OPTION){
+					xmlProy.escribir(proyecto,ficheroProyecto.getAbsolutePath());
+				}
+			}else{
+				xmlProy.escribir(proyecto,ficheroProyecto.getAbsolutePath()+".xml");
+			}
 
 			guardarMenuItem.setEnabled(true);
 		}
