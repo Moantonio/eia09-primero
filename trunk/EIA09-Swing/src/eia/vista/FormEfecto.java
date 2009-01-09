@@ -758,8 +758,26 @@ public class FormEfecto extends JDialog {
 			fTransformacionComboBox = new JComboBox(opciones);
 			fTransformacionComboBox.setSize(new Dimension(196, 17));
 			fTransformacionComboBox.setLocation(new Point(36, 203));
+			fTransformacionComboBox.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					habilitarUmbral();
+				}
+			});
+
 		}
 		return fTransformacionComboBox;
+	}
+
+	private void habilitarUmbral(){
+		int indice = fTransformacionComboBox.getSelectedIndex();
+		if (indice>=10&&indice<=13){
+			opcionTextField.setEnabled(true);
+			opcionTextField.setText("0");
+		}else{
+			opcionTextField.setEnabled(false);
+			opcionTextField.setText(" ");
+		}
+
 	}
 
 	private JButton getAsistenteButton() {
@@ -1129,7 +1147,7 @@ public class FormEfecto extends JDialog {
 		}
 
 		double opc = 0;
-		if (!error){
+		if ((!error)&&(opcionTextField.isEnabled())){
 			// Obtenemos el umbral/a
 			try{
 				if(opcionTextField.getText().length()!=0){
@@ -1137,7 +1155,7 @@ public class FormEfecto extends JDialog {
 				}
 			}catch(Exception e){
 				error = true;
-				JOptionPane.showMessageDialog(this, "Valor Umbral/a incorrecto. Sólo se permiten caracteres numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(this, "Valor umbral/a incorrecto. Sólo se permiten caracteres numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
 			};
 		}
 
@@ -1279,7 +1297,7 @@ public class FormEfecto extends JDialog {
 		if (opcionTextField == null) {
 			opcionTextField = new JTextField();
 			opcionTextField.setBounds(new Rectangle(345, 43, 40, 18));
-			opcionTextField.setText("0");
+			opcionTextField.setEnabled(false);
 		}
 		return opcionTextField;
 	}
