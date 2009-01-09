@@ -1131,6 +1131,8 @@ public class FormPrincipal {
 
 			if (alternativa.getValorada()){
 				modeloTabla.setValueAt(alternativa.getValorTotal(),indice,1);
+			}else{
+				modeloTabla.setValueAt("Sin valorar",indice,1);
 			}
 			// Vemos si podemos valorar el proyecto
 			if (comprobarValorar()){

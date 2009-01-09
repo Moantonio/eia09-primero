@@ -313,11 +313,11 @@ public class FormAlternativa extends JDialog{
 			col.getColumn(2).setResizable(false);
 			col.getColumn(3).setResizable(false);
 			col.getColumn(4).setResizable(false);
-			col.getColumn(0).setPreferredWidth(150);
+			col.getColumn(0).setPreferredWidth(140);
 			col.getColumn(1).setPreferredWidth(90);
 			col.getColumn(2).setPreferredWidth(80);
-			col.getColumn(3).setPreferredWidth(90);
-			col.getColumn(4).setPreferredWidth(32);
+			col.getColumn(3).setPreferredWidth(80);
+			col.getColumn(4).setPreferredWidth(40);
 		}
 		return efectosTable;
 	}
@@ -526,7 +526,7 @@ public class FormAlternativa extends JDialog{
 
 			// Comprobamos si todos los efectos están valorados
 			alternativa.setValorada(false);
-			valoracionTextField.setText("");
+			valoracionTextField.setText(" ");
 			if(comprobarValorados()){
 				valorarButton.setEnabled(true);
 			}
