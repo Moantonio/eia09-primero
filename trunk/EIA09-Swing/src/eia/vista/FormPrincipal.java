@@ -672,7 +672,6 @@ public class FormPrincipal {
 			barraDesplazamiento.setBounds(new Rectangle(88, 54, 327, 36));
 			barraDesplazamiento.setEnabled(true);
 			barraDesplazamiento.setBorder(BorderFactory.createLineBorder(new Color(116, 158, 192), 0));
-
 		}
 		return barraDesplazamiento;
 	}

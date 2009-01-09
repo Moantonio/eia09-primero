@@ -121,9 +121,10 @@ public class FormEfecto extends JDialog {
 	private JButton cancelarCuantitativaButton = null;
 	private JLabel opcionLabel = null;
 	private JTextField opcionTextField = null;
+	private boolean flagAceptar = false;
+
 	// Variables de modelo
 	private Efecto efecto;
-	private boolean flagAceptar = false;
 	private BufferedImage grafica = null;
 
 	public boolean isFlagAceptar() {
