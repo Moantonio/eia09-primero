@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -116,7 +117,7 @@ public class FormPrincipal {
 		if (framePrincipal == null) {
 			framePrincipal = new JFrame();
 			framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			//framePrincipal.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\.png"));
+			framePrincipal.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\system-software-update.png"));
 			framePrincipal.setJMenuBar(getMenuPrincipal());
 			framePrincipal.setSize(500, 500);
 			framePrincipal.setContentPane(getPanelContenidoPrincipal());
@@ -1017,7 +1018,6 @@ public class FormPrincipal {
 			ficheroProyecto = fileChooser.getSelectedFile();
 			XMLProyecto xmlProy = new XMLProyecto("..\\plantillas\\proyectoEIA.dtd");
 			if(ficheroProyecto.isFile()){
-				//TODO preguntar si quiere sobrescribir
 				int opcion = JOptionPane.showConfirmDialog (null,
 						"¿Está seguro que desea reemplazar este archivo?",
 						"Reemplazar archivo",
