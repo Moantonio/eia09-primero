@@ -7,6 +7,7 @@ import java.awt.Frame;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
@@ -45,6 +46,8 @@ public class FormAsistente extends JDialog {
 		this.setSize(475, 197);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Asistente de elección de función de transformación");
+		//TODO
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\image-loading.png"));
 	}
 
 	private JPanel getJContentPane() {

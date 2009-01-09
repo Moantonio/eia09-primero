@@ -2,6 +2,7 @@ package eia.vista;
 
 import javax.swing.JPanel;
 import java.awt.Frame;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JDialog;
@@ -23,6 +24,8 @@ public class FormGrafica extends JDialog {
 		this.setResizable(false);
 		this.setTitle("Gráfica valoración cuantitativa");
 		this.setContentPane(getJContentPane());
+		//TODO
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\utilities-system-monitor.png"));
 	}
 
 	private JPanel getJContentPane() {
