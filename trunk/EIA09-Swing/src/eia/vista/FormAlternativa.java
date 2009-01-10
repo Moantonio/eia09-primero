@@ -91,10 +91,11 @@ public class FormAlternativa extends JDialog{
 	}
 
 	private void initialize() {
-		this.setSize(500, 500);
+		this.setSize(598, 500);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Alternativas de realización");
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\edit-copy.png"));
+		this.setResizable(false);
 		actualizarVista();
 	}
 
@@ -111,7 +112,7 @@ public class FormAlternativa extends JDialog{
 			altDeRealizacionLabel = new JLabel();
 			altDeRealizacionLabel.setText("Alternativa de realización:");
 			altDeRealizacionLabel.setSize(new Dimension(149, 16));
-			altDeRealizacionLabel.setLocation(new Point(12, 6));
+			altDeRealizacionLabel.setLocation(new Point(62, 9));
 			jContentPane = new JPanel();
 			jContentPane.setLayout(null);
 			jContentPane.add(altDeRealizacionLabel, null);
@@ -150,7 +151,7 @@ public class FormAlternativa extends JDialog{
 		if (altDeRealizcionTextField == null) {
 			altDeRealizcionTextField = new JTextField();
 			altDeRealizcionTextField.setSize(new Dimension(307, 20));
-			altDeRealizcionTextField.setLocation(new Point(163, 4));
+			altDeRealizcionTextField.setLocation(new Point(213, 7));
 			altDeRealizcionTextField.setEnabled(false);
 			altDeRealizcionTextField.setText(alternativa.getId());
 		}
@@ -161,8 +162,8 @@ public class FormAlternativa extends JDialog{
 		if (AccionesPanel == null) {
 			AccionesPanel = new JPanel();
 			AccionesPanel.setLayout(null);
-			AccionesPanel.setLocation(new Point(13, 29));
-			AccionesPanel.setSize(new Dimension(249, 186));
+			AccionesPanel.setLocation(new Point(16, 29));
+			AccionesPanel.setSize(new Dimension(280, 186));
 			AccionesPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Acciones" +
 					""));
 			AccionesPanel.add(getAnadirButton(), null);
@@ -177,8 +178,8 @@ public class FormAlternativa extends JDialog{
 			factoresPanel = new JPanel();
 			factoresPanel.setLayout(null);
 			factoresPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Factores", TitledBorder.LEADING, TitledBorder.TOP, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-			factoresPanel.setLocation(new Point(263, 29));
-			factoresPanel.setSize(new Dimension(207, 186));
+			factoresPanel.setLocation(new Point(294, 29));
+			factoresPanel.setSize(new Dimension(282, 186));
 			factoresPanel.add(getFactoresScrollPane(), null);
 		}
 		return factoresPanel;
@@ -187,7 +188,7 @@ public class FormAlternativa extends JDialog{
 	private JButton getAnadirButton() {
 		if (AnadirButton == null) {
 			AnadirButton = new JButton();
-			AnadirButton.setBounds(new Rectangle(8, 160, 119, 20));
+			AnadirButton.setBounds(new Rectangle(10, 160, 131, 20));
 			AnadirButton.setPreferredSize(new Dimension(71, 26));
 			AnadirButton.setFont(new Font("Dialog", Font.BOLD, 10));
 			AnadirButton.setText("Añadir");
@@ -203,16 +204,13 @@ public class FormAlternativa extends JDialog{
 		return AnadirButton;
 	}
 
-	/**
-	 * @return
-	 */
 	private JButton getEliminarButton() {
 		if (eliminarButton == null) {
 			eliminarButton = new JButton();
 			eliminarButton.setText("Eliminar");
 			eliminarButton.setFont(new Font("Dialog", Font.BOLD, 10));
 			eliminarButton.setBackground(Color.white);
-			eliminarButton.setBounds(new Rectangle(120, 160, 119, 20));
+			eliminarButton.setBounds(new Rectangle(140, 160, 131, 20));
 			eliminarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (!accionesTree.isSelectionEmpty()){
@@ -258,8 +256,8 @@ public class FormAlternativa extends JDialog{
 		if (crearEfectoButton == null) {
 			crearEfectoButton = new JButton();
 			crearEfectoButton.setText("Crear Efecto");
-			crearEfectoButton.setSize(new Dimension(458, 20));
-			crearEfectoButton.setLocation(new Point(13, 219));
+			crearEfectoButton.setSize(new Dimension(557, 20));
+			crearEfectoButton.setLocation(new Point(17, 219));
 			crearEfectoButton.setBackground(Color.white);
 			crearEfectoButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -274,7 +272,7 @@ public class FormAlternativa extends JDialog{
 		if (efectossPanel == null) {
 			efectossPanel = new JPanel();
 			efectossPanel.setLayout(null);
-			efectossPanel.setBounds(new Rectangle(13, 239, 457, 150));
+			efectossPanel.setBounds(new Rectangle(13, 239, 565, 153));
 			efectossPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Efectos", TitledBorder.LEADING, TitledBorder.TOP, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
 			efectossPanel.add(getEfectosScrollPane(), null);
 			efectossPanel.add(getEditarEfectosButton(), null);
@@ -286,7 +284,7 @@ public class FormAlternativa extends JDialog{
 	private JScrollPane getEfectosScrollPane() {
 		if (efectosScrollPane == null) {
 			efectosScrollPane = new JScrollPane();
-			efectosScrollPane.setBounds(new Rectangle(5, 17, 445, 107));
+			efectosScrollPane.setBounds(new Rectangle(10, 17, 545, 107));
 			efectosScrollPane.setViewportView(getEfectosTable());
 		}
 		return efectosScrollPane;
@@ -304,7 +302,7 @@ public class FormAlternativa extends JDialog{
 
 			efectosTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			efectosTable.setLocation(new Point(2, 20));
-			efectosTable.setSize(new Dimension(450, 80));
+			efectosTable.setSize(new Dimension(550, 80));
 			efectosTable.setShowVerticalLines(false);
 			efectosTable.getTableHeader().setReorderingAllowed(false);
 			TableColumnModel col = efectosTable.getColumnModel();
@@ -326,7 +324,7 @@ public class FormAlternativa extends JDialog{
 		if (editarEfectosButton == null) {
 			editarEfectosButton = new JButton();
 			editarEfectosButton.setText("Editar");
-			editarEfectosButton.setSize(new Dimension(217, 20));
+			editarEfectosButton.setSize(new Dimension(275, 20));
 			editarEfectosButton.setLocation(new Point(11, 126));
 			editarEfectosButton.setBackground(Color.white);
 			editarEfectosButton.addActionListener(new ActionListener() {
@@ -347,8 +345,8 @@ public class FormAlternativa extends JDialog{
 			eliminarEfectosButton = new JButton();
 			eliminarEfectosButton.setText("Eliminar");
 			eliminarEfectosButton.setBackground(Color.white);
-			eliminarEfectosButton.setSize(new Dimension(217, 20));
-			eliminarEfectosButton.setLocation(new Point(227, 126));
+			eliminarEfectosButton.setSize(new Dimension(267, 20));
+			eliminarEfectosButton.setLocation(new Point(285, 126));
 			eliminarEfectosButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					eliminarEfecto();
@@ -378,7 +376,7 @@ public class FormAlternativa extends JDialog{
 			aceptarButton.setText("Aceptar");
 			aceptarButton.setSize(new Dimension(90, 20));
 			aceptarButton.setPreferredSize(new Dimension(80, 26));
-			aceptarButton.setLocation(new Point(278, 435));
+			aceptarButton.setLocation(new Point(200, 435));
 			aceptarButton.setBackground(Color.white);
 			aceptarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -397,7 +395,7 @@ public class FormAlternativa extends JDialog{
 			cancelarButton.setText("Cancelar");
 			cancelarButton.setBackground(Color.white);
 			cancelarButton.setSize(new Dimension(90, 20));
-			cancelarButton.setLocation(new Point(375, 435));
+			cancelarButton.setLocation(new Point(300, 435));
 			cancelarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					setVisible(false);
@@ -411,7 +409,7 @@ public class FormAlternativa extends JDialog{
 		if (valoracionPanel == null) {
 			valoracionPanel = new JPanel();
 			valoracionPanel.setLayout(null);
-			valoracionPanel.setBounds(new Rectangle(40, 393, 400, 31));
+			valoracionPanel.setBounds(new Rectangle(95, 393, 400, 31));
 			valoracionPanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.gray));
 			valoracionPanel.add(getValoracionTextField(), null);
 			valoracionPanel.add(valoracionLabel, null);
@@ -427,7 +425,7 @@ public class FormAlternativa extends JDialog{
 	private JScrollPane getFactoresScrollPane() {
 		if (factoresScrollPane == null) {
 			factoresScrollPane = new JScrollPane();
-			factoresScrollPane.setBounds(new Rectangle(7, 18, 191, 163));
+			factoresScrollPane.setBounds(new Rectangle(7, 18, 270, 163));
 			factoresScrollPane.setViewportView(getFactoresTree());
 		}
 		return factoresScrollPane;
@@ -436,7 +434,7 @@ public class FormAlternativa extends JDialog{
 	private JScrollPane getAccionesScrollPane() {
 		if (accionesScrollPane == null) {
 			accionesScrollPane = new JScrollPane();
-			accionesScrollPane.setBounds(new Rectangle(7, 17, 233, 141));
+			accionesScrollPane.setBounds(new Rectangle(7, 18, 268, 141));
 			accionesScrollPane.setViewportView(getAccionesTree());
 		}
 		return accionesScrollPane;
