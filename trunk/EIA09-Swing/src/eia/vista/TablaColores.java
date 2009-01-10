@@ -29,9 +29,9 @@ public class TablaColores extends JTable{
 	       (dataModel.getColumnName(1).equals("Valoración")&&
 	       getValueAt(rowIndex,1).equals(""))){
 
-	    	component.setForeground(Color.GREEN);
+	    	component.setForeground(Color.RED);
 	    } else {
-	        component.setForeground(Color.RED);
+	        component.setForeground(Color.BLACK);
 	    }
 
 	    return component;
