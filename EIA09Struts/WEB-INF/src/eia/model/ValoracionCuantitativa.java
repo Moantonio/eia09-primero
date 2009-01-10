@@ -142,7 +142,7 @@ public class ValoracionCuantitativa implements Cloneable {
 	 * @return Resultado de la operación.
 	 */
 	private double parabolica1Creciente(double x, double max, double min){
-		double num = - (double)Math.pow(x,2)+ 2*max*x + (double)Math.pow(min, 2)- 2* max * min;
+		double num = -(double)Math.pow(x,2)+ 2*max*x + (double)Math.pow(min, 2)- 2* max * min;
 		double den = (double)Math.pow(max-min, 2);
 		return num/den;
 	}
@@ -168,7 +168,7 @@ public class ValoracionCuantitativa implements Cloneable {
 	 * @return Resultado de la operación.
 	 */
 	private double parabolica2Creciente(double x, double max, double min){
-		double num = (double)Math.pow(x,2)+ 2*min*x + (double)Math.pow(min, 2);
+		double num = (double)Math.pow(x,2)- 2*min*x + (double)Math.pow(min, 2);
 		double den = (double)Math.pow(max-min, 2);
 		return num/den;
 	}
