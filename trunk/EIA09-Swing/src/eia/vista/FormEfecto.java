@@ -1234,8 +1234,8 @@ public class FormEfecto extends JDialog {
 			cualitativaTextField.setText(incidencia);
 			incidenciaTextField.setText(incidencia);
 		}else{
-			cualitativaTextField.setText("No valorado");
-			incidenciaTextField.setText("No valorado");
+			cualitativaTextField.setText(" ");
+			incidenciaTextField.setText(" ");
 		}
 
 		// Valoración cuantitativa
@@ -1244,8 +1244,8 @@ public class FormEfecto extends JDialog {
 			cuantitativaTextField.setText(magnitud);
 			magnitudTextField.setText(magnitud);
 		}else{
-			cuantitativaTextField.setText("No valorado");
-			magnitudTextField.setText("No valorado");
+			cuantitativaTextField.setText(" ");
+			magnitudTextField.setText(" ");
 		}
 
 		// Si tenemos la valoración total
@@ -1255,7 +1255,7 @@ public class FormEfecto extends JDialog {
 			// El caracter se puede editar
 			caracterComboBox.setEnabled(true);
 		}else{
-			valoracionTextField.setText("No valorado");
+			valoracionTextField.setText(" ");
 			// El caracter no se puede editar
 			caracterComboBox.setEditable(false);
 		}

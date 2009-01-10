@@ -615,17 +615,17 @@ public class FormAlternativa extends JDialog{
 		    Efecto efecto = alternativa.getEfectos().get(i);
 		    String id = efecto.getId();
 		    String juicio = efecto.getJuicio().toString();
-		    String cualitativa = "Sin valorar";
+		    String cualitativa = "";
 		    if (efecto.getValCualitativa()!=null){
 		    	cualitativa = String.valueOf(efecto.getValCualitativa().getIncidencia());
 		    }
-		    String cuantitativa = "Sin valorar";
+		    String cuantitativa = "";
 		    if (efecto.getValCuantitativa()!=null){
 		    	cuantitativa = String.valueOf(efecto.getValCuantitativa().getMagnitudImpacto());
 		    }
 
-		    String total = "Sin valorar";
-		    String caracter = "Sin valorar";
+		    String total = "";
+		    String caracter = "";
 		    if(efecto.getValCualitativa()!=null&&efecto.getValCuantitativa()!=null){
 		    	total = String.valueOf(efecto.getValorTotal());
 		    	caracter = efecto.getCaracter().toString();
