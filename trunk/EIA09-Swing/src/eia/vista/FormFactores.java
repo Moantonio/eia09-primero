@@ -15,6 +15,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -218,11 +219,20 @@ public class FormFactores extends JDialog {
 		if (nodo!=null){
 			Factor factor = (Factor) nodo.getUserObject();
 			if(nodo.getChildCount()==0){
-				int peso = Integer.parseInt(pesoTextField.getText());
-				factor.setPeso(peso);
-				aceptarButton.setVisible(false);
-				pesoTextField.setEnabled(false);
-				modificarButton.setEnabled(true);
+				int peso = 0;
+				boolean error = false;
+				try{
+					peso = Integer.parseInt(pesoTextField.getText());
+				}catch(Exception e){
+					error = true;
+					JOptionPane.showMessageDialog(this, "Valor de peso incorrecto. Sólo se permiten caracteres numéricos enteros.", "Error", JOptionPane.ERROR_MESSAGE);
+				};
+				if (!error){
+					factor.setPeso(peso);
+					aceptarButton.setVisible(false);
+					pesoTextField.setEnabled(false);
+					modificarButton.setEnabled(true);
+				}
 			}
 		}
 	}
