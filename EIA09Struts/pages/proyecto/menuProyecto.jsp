@@ -2,10 +2,10 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-	<link rel="STYLESHEET" type="text/css" href="../../javascript/dhtmlxGrid/codebase/dhtmlxgrid.css">
-	<script src="../../javascript/dhtmlxGrid/codebase/dhtmlxcommon.js"></script>
-	<script src="../../javascript/dhtmlxGrid/codebase/dhtmlxgrid.js"></script>
-	<script src="../../javascript/dhtmlxGrid/codebase/dhtmlxgridcell.js"></script>
+	<link rel="STYLESHEET" type="text/css" href="../javascript/dhtmlxGrid/codebase/dhtmlxgrid.css">
+	<script src="../javascript/dhtmlxGrid/codebase/dhtmlxcommon.js"></script>
+	<script src="../javascript/dhtmlxGrid/codebase/dhtmlxgrid.js"></script>
+	<script src="../javascript/dhtmlxGrid/codebase/dhtmlxgridcell.js"></script>
 	<script>
 		var mygrid;
 		function doInitGrid(){
