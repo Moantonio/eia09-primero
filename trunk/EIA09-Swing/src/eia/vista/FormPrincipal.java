@@ -446,8 +446,8 @@ public class FormPrincipal {
 		if (modificarFactoresMenuItem == null) {
 			modificarFactoresMenuItem = new JMenuItem();
 			modificarFactoresMenuItem.setText("Modificar pesos");
-			modificarFactoresMenuItem.setMnemonic(KeyEvent.VK_V);
-			modificarFactoresMenuItem.setIcon(new ImageIcon(".\\images\\text-x-generic-template.png"));
+			modificarFactoresMenuItem.setMnemonic(KeyEvent.VK_M);
+			modificarFactoresMenuItem.setIcon(new ImageIcon(".\\images\\document-properties.png"));
 			modificarFactoresMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mostrarFactores(true);
