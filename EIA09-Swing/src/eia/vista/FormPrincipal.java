@@ -67,6 +67,7 @@ public class FormPrincipal {
 	private JMenuItem guardarMenuItem = null;
 	private JMenuItem guardarComoMenuItem = null;
 	private JMenuItem verFactoresMenuItem = null;
+	private JMenuItem modificarFactoresMenuItem = null;
 	private JMenuItem verResultadosMenuItem = null;
 	private JMenuItem verInformeMenuItem = null;
 	private JMenuItem funcionamientoMenuItem = null;
@@ -174,6 +175,7 @@ public class FormPrincipal {
 			menuFactores.setText("Factores");
 			menuFactores.setIcon(new ImageIcon(".\\images\\text-html.png"));
 			menuFactores.add(getVerFactoresMenuItem());
+			menuFactores.add(getModificarFactoresMenuItem());
 			menuFactores.setMnemonic(KeyEvent.VK_F);
 			menuFactores.setEnabled(false);
 		}
@@ -433,11 +435,26 @@ public class FormPrincipal {
 			verFactoresMenuItem.setIcon(new ImageIcon(".\\images\\text-x-generic-template.png"));
 			verFactoresMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					mostrarFactores();
+					mostrarFactores(false);
 				}
 			});
 		}
 		return verFactoresMenuItem;
+	}
+
+	private JMenuItem getModificarFactoresMenuItem() {
+		if (modificarFactoresMenuItem == null) {
+			modificarFactoresMenuItem = new JMenuItem();
+			modificarFactoresMenuItem.setText("Modificar pesos");
+			modificarFactoresMenuItem.setMnemonic(KeyEvent.VK_V);
+			modificarFactoresMenuItem.setIcon(new ImageIcon(".\\images\\text-x-generic-template.png"));
+			modificarFactoresMenuItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mostrarFactores(true);
+				}
+			});
+		}
+		return modificarFactoresMenuItem;
 	}
 
 	private JMenuItem getVerResultadosMenuItem() {
@@ -1167,8 +1184,8 @@ public class FormPrincipal {
 		return valorar;
 	}
 
-	private void mostrarFactores(){
-		FormFactores visualizarFactores = new FormFactores(getFramePrincipal(), proyecto.getFactores(), false);
+	private void mostrarFactores(boolean modificar){
+		FormFactores visualizarFactores = new FormFactores(getFramePrincipal(), proyecto.getFactores(), modificar);
 		Point posActual = getFramePrincipal().getLocation();
 		posActual.translate(20, 20);
 		visualizarFactores.setLocation(posActual);
