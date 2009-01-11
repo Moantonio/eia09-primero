@@ -24,7 +24,7 @@
 							<li><a href=""> Vertedero</a></li>
 							<li><a href=""> Otro</a></li>
 						</ul>
-					<li><a href="">Abrir </a></li>
+					<li><a href="eia/showUpload.action">Abrir </a></li>
 					<li><a href="">Guardar </a></li>
 					<li><a href="">Guardar como... </a></li>
 					<li><a href="eia/showProjectDescription.action">Descripcion </a></li>
