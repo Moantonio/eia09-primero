@@ -1168,7 +1168,7 @@ public class FormPrincipal {
 	}
 
 	private void mostrarFactores(){
-		FormFactores visualizarFactores = new FormFactores(getFramePrincipal(), proyecto.getFactores());
+		FormFactores visualizarFactores = new FormFactores(getFramePrincipal(), proyecto.getFactores(), false);
 		Point posActual = getFramePrincipal().getLocation();
 		posActual.translate(20, 20);
 		visualizarFactores.setLocation(posActual);
