@@ -11,18 +11,32 @@
 			<action name="showMenu">
 				<result>/pages/mainMenu.jsp</result>
 			</action>
+			
+			<action name="showUpload">
+				<result>/pages/proyecto/upload.jsp</result>
+			</action>
+			
+			<action name="doLoadProject" class="eia.load.LoadProject">
+				<interceptor-ref name="fileUpload">
+					<param name="maximumSize" >2048000000</param>
+					<param name="allowedTypes">text/xml</param>
+				</interceptor-ref>
+				<interceptor-ref name="basicStack"/>
+				<result name="input">/pages/proyecto/upload.jsp</result>
+				<result name="error">/pages/proyecto/upload.jsp</result>
+				<result>/pages/proyecto/menuProyecto.jsp</result>
+			</action>
+
 			<action name="showProjectDescription">
 				<result>/pages/proyecto/menuProyecto.jsp</result>
-			</action>	
+			</action>
+			
 			<action name="showAlternativaInfo">
 				<result>/pages/alternativa/alternativaInfo.jsp</result>
-			</action>				
-			<action name="doLoadProject" class="eia.load.LoadProject">
-				<result name="input">/pages/mainMenu.jsp</result>
-				<result name="error">/pages/mainMenu.jsp</result>
-				<result>/pages/mainMenu.jsp</result>
 			</action>					
 		</package>
 	<!-- Add packages here -->
+	
+	
 
 </struts>
