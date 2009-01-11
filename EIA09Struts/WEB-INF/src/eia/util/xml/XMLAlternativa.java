@@ -21,9 +21,9 @@ import eia.model.Factor;
 import eia.model.Proyecto;
 import eia.model.ValoracionCualitativa;
 import eia.model.ValoracionCuantitativa;
-import eia.util.CaracterEfecto;
 import eia.util.ValorJuicio;
 import eia.util.Constants;
+import eia.util.CaracterEfecto;
 
 public class XMLAlternativa extends XMLTools{
 
