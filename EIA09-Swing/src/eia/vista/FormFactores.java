@@ -8,8 +8,11 @@ import java.awt.Frame;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -37,9 +40,13 @@ public class FormFactores extends JDialog {
 	private DefaultTreeModel factores;
 	private JTextField pesoTextField = null;
 	private JLabel pesoLabel = null;
+	private JButton modificarButton = null;
+	private JButton aceptarButton = null;
+	private boolean modoModificar = false;
 
-	public FormFactores(Frame owner, DefaultTreeModel factores) {
+	public FormFactores(Frame owner, DefaultTreeModel factores, boolean modificar) {
 		super(owner);
+		this.modoModificar = modificar;
 		this.factores = factores;
 		initialize();
 	}
@@ -49,6 +56,7 @@ public class FormFactores extends JDialog {
 		this.setContentPane(getJContentPane());
 		this.setTitle("Factores ambientales");
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\text-x-generic-template.png"));
+		this.setResizable(false);
 	}
 
 	private JPanel getJContentPane() {
@@ -63,7 +71,11 @@ public class FormFactores extends JDialog {
 	private JPanel getFactoresPanel() {
 		if (factoresPanel == null) {
 			pesoLabel = new JLabel();
-			pesoLabel.setBounds(new Rectangle(110, 426, 35, 14));
+			if(!modoModificar){
+				pesoLabel.setBounds(new Rectangle(110, 426, 35, 14));
+			}else{
+				pesoLabel.setBounds(new Rectangle(25, 426, 35, 14));
+			}
 			pesoLabel.setText("Peso:");
 			factoresPanel = new JPanel();
 			factoresPanel.setLayout(null);
@@ -73,6 +85,8 @@ public class FormFactores extends JDialog {
 			factoresPanel.add(getFactoresScrollPane(), null);
 			factoresPanel.add(getPesoTextField(), null);
 			factoresPanel.add(pesoLabel, null);
+			factoresPanel.add(getModificarButton(),null);
+			factoresPanel.add(getAceptarButton(),null);
 		}
 		return factoresPanel;
 	}
@@ -137,18 +151,80 @@ public class FormFactores extends JDialog {
 	{
 		if(peso==0){
 			pesoTextField.setText("");
+			pesoTextField.setEnabled(false);
+			modificarButton.setEnabled(false);
+			aceptarButton.setVisible(false);
 		}else{
 			pesoTextField.setText(String.valueOf(peso));
+			pesoTextField.setEnabled(false);
+			modificarButton.setEnabled(true);
+			aceptarButton.setVisible(false);
 		}
 	}
 
 	private JTextField getPesoTextField() {
 		if (pesoTextField == null) {
 			pesoTextField = new JTextField();
-			pesoTextField.setBounds(new Rectangle(150, 425, 50, 18));
+			if(!modoModificar){
+				pesoTextField.setBounds(new Rectangle(150, 425, 50, 18));
+			}else{
+				pesoTextField.setBounds(new Rectangle(65, 425, 50, 18));
+			}
 			pesoTextField.setEnabled(false);
 		}
 		return pesoTextField;
+	}
+
+	private JButton getModificarButton() {
+		if (modificarButton == null) {
+			modificarButton = new JButton();
+			modificarButton.setBounds(new Rectangle(120, 425, 87, 17));
+			modificarButton.setText("Modificar");
+			modificarButton.setEnabled(false);
+			modificarButton.setBackground(Color.white);
+			if(!modoModificar){
+				modificarButton.setVisible(false);
+			}
+			modificarButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					aceptarButton.setVisible(true);
+					pesoTextField.setEnabled(true);
+					modificarButton.setEnabled(false);
+				}
+			});
+		}
+		return modificarButton;
+	}
+
+	private JButton getAceptarButton() {
+		if (aceptarButton == null) {
+			aceptarButton = new JButton();
+			aceptarButton.setText("Aceptar");
+			aceptarButton.setLocation(new Point(210, 425));
+			aceptarButton.setSize(new Dimension(80, 17));
+			aceptarButton.setBackground(Color.white);
+			aceptarButton.setVisible(false);
+			aceptarButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					modificarPeso();
+				}
+			});
+		}
+		return aceptarButton;
+	}
+
+	private void modificarPeso(){
+		DefaultMutableTreeNode nodo = (DefaultMutableTreeNode)factoresTree.getLastSelectedPathComponent();
+		if (nodo!=null){
+			Factor factor = (Factor) nodo.getUserObject();
+			if(nodo.getChildCount()==0){
+				int peso = Integer.parseInt(pesoTextField.getText());
+				factor.setPeso(peso);
+				aceptarButton.setVisible(false);
+				pesoTextField.setEnabled(false);
+				modificarButton.setEnabled(true);
+			}
+		}
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="10,10"
