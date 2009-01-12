@@ -37,7 +37,6 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
 
-import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -46,7 +45,6 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRXmlDataSource;
 import net.sf.jasperreports.view.JasperViewer;
-
 import eia.model.Alternativa;
 import eia.model.InfoProyecto;
 import eia.model.Proyecto;
@@ -1237,6 +1235,7 @@ public class FormPrincipal {
 		return generarInformeMenuItem;
 	}
 
+	@SuppressWarnings("unchecked")
 	private void generarInforme() {
 		// Archivo base con el diseño del reporte
 		String reporte=".\\reportes\\informe.jrxml";
