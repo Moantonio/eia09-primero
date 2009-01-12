@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -34,6 +36,15 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.TableColumnModel;
+
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 import eia.model.Alternativa;
 import eia.model.InfoProyecto;
@@ -112,6 +123,7 @@ public class FormPrincipal {
 	// Variables del modelo
 	private Proyecto proyecto = null;  //  @jve:decl-index=0:
 	private File ficheroProyecto = null;  //  @jve:decl-index=0:
+	private JasperPrint informe = null;
 
 
 	private JFrame getFramePrincipal() {
@@ -267,6 +279,7 @@ public class FormPrincipal {
 		if (menuInformes == null) {
 			menuInformes = new JMenu();
 			menuInformes.setText("Informes");
+			menuInformes.add(getGenerarInformeMenuItem());
 			menuInformes.add(getVerInformeMenuItem());
 			menuInformes.setMnemonic(KeyEvent.VK_I);
 			menuInformes.setEnabled(false);
@@ -478,6 +491,11 @@ public class FormPrincipal {
 			verInformeMenuItem.setMnemonic(KeyEvent.VK_E);
 			verInformeMenuItem.setText("Ver informe");
 			verInformeMenuItem.setIcon(new ImageIcon(".\\images\\format-justify-center.png"));
+			verInformeMenuItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					mostrarInforme();
+			}
+		});
 		}
 		return verInformeMenuItem;
 	}
@@ -695,6 +713,7 @@ public class FormPrincipal {
 	}
 
 	JScrollPane scroll = new JScrollPane();
+	private JMenuItem generarInformeMenuItem = null;
 
 	private JTextField getCompaniaTextField() {
 		if (companiaTextField == null) {
@@ -1008,7 +1027,10 @@ public class FormPrincipal {
 
 			if (comprobarValorar()){
 				menuValoracion.setEnabled(true);
-				//menuInformes.setEnabled(true);
+				menuInformes.setEnabled(true);
+			}else{
+				menuValoracion.setEnabled(false);
+				menuInformes.setEnabled(false);
 			}
 		}
 	}
@@ -1118,9 +1140,7 @@ public class FormPrincipal {
 			});
 		}
 		crearAlternativa.dispose();
-
 		menuValoracion.setEnabled(false);
-		//menuInformes.setEnabled(false);
 	}
 
 	private void eliminarAlternativa(Alternativa alternativa) {
@@ -1165,7 +1185,7 @@ public class FormPrincipal {
 			// Vemos si podemos valorar el proyecto
 			if (comprobarValorar()){
 				menuValoracion.setEnabled(true);
-				//menuInformes.setEnabled(true);
+				menuInformes.setEnabled(true);
 			}
 		}
 		editarAlternativa.dispose();
@@ -1196,6 +1216,50 @@ public class FormPrincipal {
 	private void valorarAlternativas(){
 		String id = proyecto.analizarAlternativas().getId();
 		JOptionPane.showMessageDialog(null, "Mejor alternativa de realización: "+id, "Valorar alternativas", JOptionPane.INFORMATION_MESSAGE);
+	}
+
+	private JMenuItem getGenerarInformeMenuItem() {
+		if (generarInformeMenuItem == null) {
+			generarInformeMenuItem = new JMenuItem();
+			generarInformeMenuItem.setMnemonic(KeyEvent.VK_G);
+			generarInformeMenuItem.setText("Generar informe");
+			generarInformeMenuItem.setIcon(new ImageIcon(".\\images\\tab-new.png"));
+			generarInformeMenuItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					generarInforme();
+				}
+			});
+		}
+		return generarInformeMenuItem;
+	}
+
+	private void generarInforme() {
+		// Archivo base con el diseño del reporte
+		String reporte=".\\reportes\\informe.jrxml";
+		try{
+			// Compilamos el diseño
+			JasperReport jasperReport = JasperCompileManager.compileReport(reporte);
+
+			//Llenamos el reporte con la información y parámetros necesarios
+			Map parameters = new HashMap();
+			parameters.put("nombre","EIA09");
+
+			//Generamos el informe
+			informe = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
+			//Exportamos el reporte a pdf y lo guardamos en disco
+			JasperExportManager.exportReportToPdfFile(informe,".\\informes\\informe.pdf");
+
+			verInformeMenuItem.setEnabled(true);
+		}catch (JRException e){
+			e.printStackTrace();
+		}
+	}
+
+	private void mostrarInforme() {
+		if (informe!=null){
+			JasperViewer jviewer = new JasperViewer(informe,false);
+			jviewer.setVisible(true);
+		}
 	}
 
 	public static void main(String[] args) {
