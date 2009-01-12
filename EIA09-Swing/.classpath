@@ -13,5 +13,10 @@
 	<classpathentry kind="lib" path="lib/jasperreports-3.1.2.jar"/>
 	<classpathentry kind="lib" path="lib/jdt-compiler-3.1.1.jar"/>
 	<classpathentry kind="lib" path="lib/poi-3.0.1-FINAL-20070705.jar"/>
+	<classpathentry kind="lib" path="lib/serializer.jar"/>
+	<classpathentry kind="lib" path="lib/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="lib/xml-apis.jar"/>
+	<classpathentry kind="lib" path="lib/xsltc.jar"/>
+	<classpathentry kind="lib" path="lib/xalan.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

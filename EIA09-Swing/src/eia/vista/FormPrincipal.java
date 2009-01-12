@@ -44,6 +44,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRXmlDataSource;
 import net.sf.jasperreports.view.JasperViewer;
 
 import eia.model.Alternativa;
@@ -1243,11 +1244,16 @@ public class FormPrincipal {
 			// Compilamos el diseño
 			JasperReport jasperReport = JasperCompileManager.compileReport(reporte);
 
+			XMLProyecto xmlProy = new XMLProyecto("..\\plantillas\\proyectoEIA.dtd");
+			xmlProy.escribir(proyecto,".\\reportes\\reporte.xml");
+
+			JRXmlDataSource fileXML = new JRXmlDataSource(".\\reportes\\reporte.xml");
+
 			//Llenamos el reporte con la información y parámetros necesarios
 			Map parameters = new HashMap();
 
 			//Generamos el informe
-			informe = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
+			informe = JasperFillManager.fillReport(jasperReport, parameters, fileXML);
 			//Exportamos el reporte a pdf y lo guardamos en disco
 			JasperExportManager.exportReportToPdfFile(informe,".\\informes\\informe.pdf");
 
