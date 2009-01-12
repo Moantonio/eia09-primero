@@ -941,6 +941,18 @@ public class FormPrincipal {
 		guardarComoMenuItem.setEnabled(true);
 	}
 
+	private void actualizarValorar(){
+		if (comprobarValorar()){
+			menuValoracion.setEnabled(true);
+			menuInformes.setEnabled(true);
+			verInformeMenuItem.setEnabled(false);
+		}else{
+			menuValoracion.setEnabled(false);
+			menuInformes.setEnabled(false);
+			verInformeMenuItem.setEnabled(false);
+		}
+	}
+
 	private void crearProyecto(TipoProyecto tipo){
 		// Creamos un formulario de creaccion de proyecto
 		FormCrearProyecto ventanaCrear = new FormCrearProyecto(tipo.toString());
@@ -1015,6 +1027,7 @@ public class FormPrincipal {
 		// Controlamos la selección
 		if (seleccion == JFileChooser.APPROVE_OPTION) {
 
+			informe = null;
 			ficheroProyecto = fileChooser.getSelectedFile();
 			XMLProyecto xmlProy = new XMLProyecto("..\\plantillas\\proyectoEIA.dtd");
 			proyecto = (Proyecto)xmlProy.leer(ficheroProyecto.getAbsolutePath());
@@ -1023,15 +1036,8 @@ public class FormPrincipal {
 			actualizarDescripcion();
 			actualizarAlternativas();
 			actualizarMenu();
+			actualizarValorar();
 			guardarMenuItem.setEnabled(true);
-
-			if (comprobarValorar()){
-				menuValoracion.setEnabled(true);
-				menuInformes.setEnabled(true);
-			}else{
-				menuValoracion.setEnabled(false);
-				menuInformes.setEnabled(false);
-			}
 		}
 	}
 
@@ -1183,10 +1189,7 @@ public class FormPrincipal {
 				modeloTabla.setValueAt("Sin valorar",indice,1);
 			}
 			// Vemos si podemos valorar el proyecto
-			if (comprobarValorar()){
-				menuValoracion.setEnabled(true);
-				menuInformes.setEnabled(true);
-			}
+			actualizarValorar();
 		}
 		editarAlternativa.dispose();
 
