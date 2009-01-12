@@ -1245,7 +1245,6 @@ public class FormPrincipal {
 
 			//Llenamos el reporte con la información y parámetros necesarios
 			Map parameters = new HashMap();
-			parameters.put("nombre","EIA09");
 
 			//Generamos el informe
 			informe = JasperFillManager.fillReport(jasperReport, parameters, new JREmptyDataSource());
