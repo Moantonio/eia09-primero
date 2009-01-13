@@ -18,7 +18,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import eia.util.CaracterEfecto;
-import eia.util.Constants;
 import eia.util.TipoProyecto;
 import eia.util.ValorJuicio;
 
