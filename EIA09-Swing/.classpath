@@ -6,5 +6,17 @@
 	<classpathentry kind="lib" path="lib/jfreechart-1.0.11.jar"/>
 	<classpathentry kind="lib" path="lib/xwork-2.0.6.jar"/>
 	<classpathentry kind="lib" path="lib/jasperreports-3.1.2.jar"/>
+	<classpathentry kind="lib" path="lib/commons-beanutils-1.7.jar"/>
+	<classpathentry kind="lib" path="lib/commons-collections-2.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-digester-1.7.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/iText-2.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/jdt-compiler-3.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/poi-3.0.1-FINAL-20070705.jar"/>
+	<classpathentry kind="lib" path="lib/serializer.jar"/>
+	<classpathentry kind="lib" path="lib/xalan.jar"/>
+	<classpathentry kind="lib" path="lib/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="lib/xml-apis.jar"/>
+	<classpathentry kind="lib" path="lib/xsltc.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
