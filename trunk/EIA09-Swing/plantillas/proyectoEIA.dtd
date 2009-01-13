@@ -22,7 +22,7 @@
 		<!ELEMENT peso (#PCDATA)>
 <!ELEMENT valorTotal (#PCDATA)>
 
-<!ELEMENT alternativaProyEIA (nombreAlt, listaPrincipalAcciones, listaEfectos?, valorTotalAlternativa?, valorada)>
+<!ELEMENT alternativaProyEIA (nombreAlt, listaPrincipalAcciones, listaEfectos, valorTotalAlternativa?, valorada)>
 <!ELEMENT nombreAlt (#PCDATA)>
 	<!ATTLIST nombreAlt
 	generica (true|false) "false">	
@@ -31,7 +31,7 @@
 	<!ELEMENT listaAcciones (accion)+>
 	<!ELEMENT nombreAccion (#PCDATA)>
 
-<!ELEMENT listaEfectos (efecto)+>
+<!ELEMENT listaEfectos (efecto)*>
 <!ELEMENT efecto (idEfecto, descripcion, caracter?, idAccion, idFactor, 			        valorSimpleEnjuiciamiento?, valorCuantitativo?,valorCualitativo?, valorTotal?)>
 	<!ELEMENT idEfecto (#PCDATA)>
 	<!ELEMENT caracter (#PCDATA)>
