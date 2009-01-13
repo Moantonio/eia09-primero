@@ -13,8 +13,6 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -35,11 +33,7 @@ import eia.model.ValoracionCuantitativa;
 
 public class XMLProyecto extends XMLTools{
 
-	Logger log;
-
 	public XMLProyecto(String dtd){
-		log = Logger.getLogger( this.getClass() );
-		PropertyConfigurator.configure(Constants.LOG4J_PROPERTIES);
 		this.setDtd(dtd);
 	}
 
@@ -50,8 +44,6 @@ public class XMLProyecto extends XMLTools{
      * @return
      */
     public Proyecto leer(String filename) {
-
-    	log.info("Cargando xml: " +  filename);
 
         //Se obtiene el objeto Document que representa al archivo xml
         Document doc= readFile(filename);
@@ -72,7 +64,6 @@ public class XMLProyecto extends XMLTools{
 		try {
 			fecha = format.parse(stringFecha.toString());
 		} catch (ParseException e) {
-			log.info(e.getMessage());
 			e.printStackTrace();
 		}
 
@@ -213,7 +204,6 @@ public class XMLProyecto extends XMLTools{
         	listaAlt.add(alt);
         }
         proy.setAlternativas(listaAlt);
-        escribirLog(proy);
         return proy;
     }
 
@@ -235,38 +225,6 @@ public class XMLProyecto extends XMLTools{
 	    	}
     	}
     	return esHijo;
-    }
-     /**
-      * Metodo privado que dado un proyecto cargado escribe su informacion en el log.
-      * @param p Proyecto cargado que contiene la informacion.
-      */
-    private void escribirLog(Proyecto p){
-    	log.info("INFORMACION DEL PROYECTO CARGADO");
-		log.info("================================");
-		log.info("Nombre: "+ p.getInformacion().getNombre());
-		log.info("Descripcion: "+ p.getInformacion().getDescripcion());
-		log.info("Compañia: "+ p.getInformacion().getCompania());
-		log.info("Redactor: "+ p.getInformacion().getAutor());
-		log.info("Fecha: "+ p.getInformacion().getFecha().toString());
-		log.info("Vida Util: "+ p.getInformacion().getVidaUtil());
-		log.info("Poblacion: "+ p.getInformacion().getPoblacion());
-		log.info("Provincia: "+ p.getInformacion().getProvincia());
-		log.info("Pais: "+ p.getInformacion().getPais());
-		log.info("Alternativas: \n");
-
-		/*log.info("Factores: \n");
-		ArrayList<Arbol<Factor>> listaFactores = p.getFactores().getHijos();
-		for(int i = 0; i<listaFactores.size(); i++){
-			Arbol<Factor> arbFact = listaFactores.get(i);
-			if(arbFact.esHoja()){
-				log.info("\t Nombre factor: "+arbFact.getElemento().getId());
-				log.info("\t Peso: "+arbFact.getElemento().getPeso());
-			}
-			else{
-				log.info("Nombre factor: "+arbFact.getElemento().getId());
-				log.info("Peso: "+arbFact.getElemento().getPeso());
-			}
-		}*/
     }
 
     /**
@@ -317,8 +275,6 @@ public class XMLProyecto extends XMLTools{
      * @param archivo Ruta del fichero XML donde queremos almacenar la informacion.
      */
 	public void escribir(Object o, String archivo) {
-		log.info("Guardando informacion en el archivo " + archivo);
-
         Document document=null;
         Proyecto proy = (Proyecto)o;
 
@@ -576,7 +532,6 @@ public class XMLProyecto extends XMLTools{
             //Finalizado el archivo XML se almacena físicamente
             writeFile(document, archivo);
 
-            log.info("Informacion guardada correctamente");
         }
         catch (java.lang.Exception e) {
             System.out.println(e.getMessage());
