@@ -8,8 +8,6 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -27,12 +25,9 @@ import eia.util.Constants;
 
 public class XMLAlternativa extends XMLTools{
 
-	Logger log;
 	Proyecto p;
 
 	public XMLAlternativa(Proyecto p, String dtd){
-		log = Logger.getLogger( this.getClass() );
-		PropertyConfigurator.configure(Constants.LOG4J_PROPERTIES);
 		this.p = p;
 		this.setDtd(dtd);
 	}
@@ -43,7 +38,6 @@ public class XMLAlternativa extends XMLTools{
     * @return Alternativa con los datos cargados.
     */
 	public Alternativa leer(String filename) {
-		log.info("Cargando xml: " +  filename);
 
         //Se obtiene el objeto Document que representa al archivo xml
         Document doc= readFile(filename);
@@ -214,7 +208,6 @@ public class XMLAlternativa extends XMLTools{
 
 	@Override
 	public void escribir(Object o, String archivo) {
-		log.info("Guardando informacion en el archivo " + archivo);
         Document document=null;
         Alternativa alt = (Alternativa)o;
         try{
@@ -376,7 +369,6 @@ public class XMLAlternativa extends XMLTools{
             //Finalizado el archivo XML se almacena físicamente
             writeFile(document, archivo);
 
-            log.info("Informacion guardada correctamente");
         }
         catch (java.lang.Exception e) {
         	System.out.println(e.getMessage());
