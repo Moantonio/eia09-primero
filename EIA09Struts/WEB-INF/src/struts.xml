@@ -26,6 +26,18 @@
 				<result name="error">/pages/proyecto/upload.jsp</result>
 				<result>/pages/proyecto/menuProyecto.jsp</result>
 			</action>
+			
+			<action name="saveProject" class="eia.load.SaveProject">
+				<result name="input">/pages/proyecto/menuProyecto.jsp</result>
+				<result name="error">/pages/proyecto/menuProyecto.jsp</result>
+				<result>/pages/proyecto/menuProyecto.jsp</result>
+			</action>
+			
+			<action name="saveProjectAs" class="eia.load.SaveProjectAs">
+				<result name="input">/pages/proyecto/menuProyecto.jsp</result>
+				<result name="error">/pages/proyecto/menuProyecto.jsp</result>
+				<result>/pages/proyecto/menuProyecto.jsp</result>
+			</action>
 
 			<action name="showProjectDescription">
 				<result>/pages/proyecto/menuProyecto.jsp</result>
