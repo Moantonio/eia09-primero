@@ -19,6 +19,5 @@
 	<classpathentry kind="lib" path="lib/xml-apis.jar"/>
 	<classpathentry kind="lib" path="lib/xsltc.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.3alpha-7.jar"/>
-	<classpathentry kind="lib" path="lib/xalan.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
