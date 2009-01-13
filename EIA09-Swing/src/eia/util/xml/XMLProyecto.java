@@ -374,9 +374,9 @@ public class XMLProyecto extends XMLTools{
                 	listaAcciones.appendChild(accion);
                 }
                 rootAlt.appendChild(listaAcciones);
-
+	            Element listaEfectos = (Element)document.createElement("listaEfectos");
                 if(listaAlt.get(k).getEfectos().size() > 0){
-    	            Element listaEfectos = (Element)document.createElement("listaEfectos");
+    	           // Element listaEfectos = (Element)document.createElement("listaEfectos");
     	            for(int i=0; i<listaAlt.get(k).getEfectos().size(); i++){
     	            	Element elemEfecto = (Element)document.createElement("efecto");
     	            	Efecto ef = listaAlt.get(k).getEfectos().get(i);
@@ -492,8 +492,9 @@ public class XMLProyecto extends XMLTools{
 
     	            	listaEfectos.appendChild(elemEfecto);
     	            }
-    	            rootAlt.appendChild(listaEfectos);
+    	            //rootAlt.appendChild(listaEfectos);
                 }
+                rootAlt.appendChild(listaEfectos);
                 if(listaAlt.get(k).getValorada()){
                 	Element valorTotalAlternativa= document.createElement("valorTotalAlternativa");
                 	valorTotalAlternativa.setTextContent(String.valueOf(listaAlt.get(k).getValorTotal()));
