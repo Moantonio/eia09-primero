@@ -129,7 +129,7 @@ public class FormPrincipal {
 		if (framePrincipal == null) {
 			framePrincipal = new JFrame();
 			framePrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			framePrincipal.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\system-software-update.png"));
+			framePrincipal.setIconImage(Toolkit.getDefaultToolkit().getImage(".//images//system-software-update.png"));
 			framePrincipal.setJMenuBar(getMenuPrincipal());
 			framePrincipal.setSize(500, 500);
 			framePrincipal.setContentPane(getPanelContenidoPrincipal());
@@ -167,7 +167,7 @@ public class FormPrincipal {
 		if (menuProyecto == null) {
 			menuProyecto = new JMenu();
 			menuProyecto.setText("Proyecto");
-			menuProyecto.setIcon(new ImageIcon(".\\images\\edit-find-replace.png"));
+			menuProyecto.setIcon(new ImageIcon(".//images//edit-find-replace.png"));
 			menuProyecto.add(getMenuNuevo());
 			menuProyecto.add(getAbrirMenuItem());
 			menuProyecto.addSeparator();
@@ -184,7 +184,7 @@ public class FormPrincipal {
 		if (menuFactores == null) {
 			menuFactores = new JMenu();
 			menuFactores.setText("Factores");
-			menuFactores.setIcon(new ImageIcon(".\\images\\text-html.png"));
+			menuFactores.setIcon(new ImageIcon(".//images//text-html.png"));
 			menuFactores.add(getVerFactoresMenuItem());
 			menuFactores.add(getModificarFactoresMenuItem());
 			menuFactores.setMnemonic(KeyEvent.VK_F);
@@ -200,7 +200,7 @@ public class FormPrincipal {
 			menuAlternativas.add(getAnadirAlternativaMenuItem());
 			menuAlternativas.add(getModificarAlternativaMenu());
 			menuAlternativas.add(getEliminarAlternativaMenu());
-			menuAlternativas.setIcon(new ImageIcon(".\\images\\edit-copy.png"));
+			menuAlternativas.setIcon(new ImageIcon(".//images//edit-copy.png"));
 			menuAlternativas.setMnemonic(KeyEvent.VK_A);
 			menuAlternativas.setEnabled(false);
 		}
@@ -212,7 +212,7 @@ public class FormPrincipal {
 			salirMenuItem = new JMenuItem();
 			salirMenuItem.setText("Salir");
 			salirMenuItem.setMnemonic(KeyEvent.VK_S);
-			salirMenuItem.setIcon(new ImageIcon(".\\images\\system-log-out.png"));
+			salirMenuItem.setIcon(new ImageIcon(".//images//system-log-out.png"));
 			salirMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					System.exit(0);
@@ -227,7 +227,7 @@ public class FormPrincipal {
 			acercaDeMenuItem = new JMenuItem();
 			acercaDeMenuItem.setText("Acerca de EIA09");
 			acercaDeMenuItem.setMnemonic(KeyEvent.VK_A);
-			acercaDeMenuItem.setIcon(new ImageIcon(".\\images\\format-indent-more.png"));
+			acercaDeMenuItem.setIcon(new ImageIcon(".//images//format-indent-more.png"));
 			acercaDeMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mostrarAcercaDe();
@@ -269,7 +269,7 @@ public class FormPrincipal {
 			menuValoracion.add(getVerResultadosMenuItem());
 			menuValoracion.setMnemonic(KeyEvent.VK_V);
 			menuValoracion.setEnabled(false);
-			menuValoracion.setIcon(new ImageIcon(".\\images\\utilities-system-monitor.png"));
+			menuValoracion.setIcon(new ImageIcon(".//images//utilities-system-monitor.png"));
 		}
 		return menuValoracion;
 	}
@@ -282,7 +282,7 @@ public class FormPrincipal {
 			menuInformes.add(getVerInformeMenuItem());
 			menuInformes.setMnemonic(KeyEvent.VK_I);
 			menuInformes.setEnabled(false);
-			menuInformes.setIcon(new ImageIcon(".\\images\\preferences-system-windows.png"));
+			menuInformes.setIcon(new ImageIcon(".//images//preferences-system-windows.png"));
 		}
 		return menuInformes;
 	}
@@ -291,7 +291,7 @@ public class FormPrincipal {
 		if (menuAyuda == null) {
 			menuAyuda = new JMenu();
 			menuAyuda.setText("Ayuda");
-			menuAyuda.setIcon(new ImageIcon(".\\images\\help-browser.png"));
+			menuAyuda.setIcon(new ImageIcon(".//images//help-browser.png"));
 			menuAyuda.add(getFuncionamientoMenuItem());
 			menuAyuda.add(getLegislacionMenuItem());
 			menuAyuda.addSeparator();
@@ -312,7 +312,7 @@ public class FormPrincipal {
 			menuNuevo.addSeparator();
 			menuNuevo.add(getOtroMenuItem());
 			menuNuevo.setMnemonic(KeyEvent.VK_N);
-			menuNuevo.setIcon(new ImageIcon(".\\images\\window-new.png"));
+			menuNuevo.setIcon(new ImageIcon(".//images//window-new.png"));
 		}
 		return menuNuevo;
 	}
@@ -322,7 +322,7 @@ public class FormPrincipal {
 			autoviaMenuItem = new JMenuItem();
 			autoviaMenuItem.setText("Autovía");
 			autoviaMenuItem.setMnemonic(KeyEvent.VK_A);
-			autoviaMenuItem.setIcon(new ImageIcon(".\\images\\x-office-spreadsheet-template.png"));
+			autoviaMenuItem.setIcon(new ImageIcon(".//images//x-office-spreadsheet-template.png"));
 			autoviaMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearProyecto(TipoProyecto.AUTOVÍA);
@@ -337,7 +337,7 @@ public class FormPrincipal {
 			presaMenuItem = new JMenuItem();
 			presaMenuItem.setText("Presa");
 			presaMenuItem.setMnemonic(KeyEvent.VK_P);
-			presaMenuItem.setIcon(new ImageIcon(".\\images\\x-office-document-template.png"));
+			presaMenuItem.setIcon(new ImageIcon(".//images//x-office-document-template.png"));
 			presaMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearProyecto(TipoProyecto.PRESA);
@@ -351,7 +351,7 @@ public class FormPrincipal {
 		if (puertoMenuItem == null) {
 			puertoMenuItem = new JMenuItem();
 			puertoMenuItem.setText("Puerto deportivo");
-			puertoMenuItem.setIcon(new ImageIcon(".\\images\\x-office-drawing-template.png"));
+			puertoMenuItem.setIcon(new ImageIcon(".//images//x-office-drawing-template.png"));
 			puertoMenuItem.setMnemonic(KeyEvent.VK_U);
 			puertoMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -366,7 +366,7 @@ public class FormPrincipal {
 		if (vertederoMenuItem == null) {
 			vertederoMenuItem = new JMenuItem();
 			vertederoMenuItem.setText("Vertedero");
-			vertederoMenuItem.setIcon(new ImageIcon(".\\images\\x-office-presentation-template.png"));
+			vertederoMenuItem.setIcon(new ImageIcon(".//images//x-office-presentation-template.png"));
 			vertederoMenuItem.setMnemonic(KeyEvent.VK_V);
 			vertederoMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -381,7 +381,7 @@ public class FormPrincipal {
 		if (otroMenuItem == null) {
 			otroMenuItem = new JMenuItem();
 			otroMenuItem.setText("Personalizado");
-			otroMenuItem.setIcon(new ImageIcon(".\\images\\x-office-document.png"));
+			otroMenuItem.setIcon(new ImageIcon(".//images//x-office-document.png"));
 			otroMenuItem.setMnemonic(KeyEvent.VK_E);
 			otroMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -397,7 +397,7 @@ public class FormPrincipal {
 			abrirMenuItem = new JMenuItem();
 			abrirMenuItem.setText("Abrir");
 			abrirMenuItem.setMnemonic(KeyEvent.VK_A);
-			abrirMenuItem.setIcon(new ImageIcon(".\\images\\document-open.png"));
+			abrirMenuItem.setIcon(new ImageIcon(".//images//document-open.png"));
 			abrirMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					abrirProyecto();
@@ -413,7 +413,7 @@ public class FormPrincipal {
 			guardarMenuItem.setText("Guardar");
 			guardarMenuItem.setMnemonic(KeyEvent.VK_G);
 			guardarMenuItem.setEnabled(false);
-			guardarMenuItem.setIcon(new ImageIcon(".\\images\\document-save.png"));
+			guardarMenuItem.setIcon(new ImageIcon(".//images//document-save.png"));
 			guardarMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					guardarProyecto();
@@ -429,7 +429,7 @@ public class FormPrincipal {
 			guardarComoMenuItem.setText("Guardar como...");
 			guardarComoMenuItem.setMnemonic(KeyEvent.VK_U);
 			guardarComoMenuItem.setEnabled(false);
-			guardarComoMenuItem.setIcon(new ImageIcon(".\\images\\document-save-as.png"));
+			guardarComoMenuItem.setIcon(new ImageIcon(".//images//document-save-as.png"));
 			guardarComoMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					guardarComoProyecto();
@@ -444,7 +444,7 @@ public class FormPrincipal {
 			verFactoresMenuItem = new JMenuItem();
 			verFactoresMenuItem.setText("Ver listado");
 			verFactoresMenuItem.setMnemonic(KeyEvent.VK_V);
-			verFactoresMenuItem.setIcon(new ImageIcon(".\\images\\text-x-generic-template.png"));
+			verFactoresMenuItem.setIcon(new ImageIcon(".//images//text-x-generic-template.png"));
 			verFactoresMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mostrarFactores(false);
@@ -459,7 +459,7 @@ public class FormPrincipal {
 			modificarFactoresMenuItem = new JMenuItem();
 			modificarFactoresMenuItem.setText("Modificar pesos");
 			modificarFactoresMenuItem.setMnemonic(KeyEvent.VK_M);
-			modificarFactoresMenuItem.setIcon(new ImageIcon(".\\images\\document-properties.png"));
+			modificarFactoresMenuItem.setIcon(new ImageIcon(".//images//document-properties.png"));
 			modificarFactoresMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mostrarFactores(true);
@@ -474,7 +474,7 @@ public class FormPrincipal {
 			verResultadosMenuItem = new JMenuItem();
 			verResultadosMenuItem.setMnemonic(KeyEvent.VK_E);
 			verResultadosMenuItem.setText("Ver resultados");
-			verResultadosMenuItem.setIcon(new ImageIcon(".\\images\\view-refresh.png"));
+			verResultadosMenuItem.setIcon(new ImageIcon(".//images//view-refresh.png"));
 			verResultadosMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					valorarAlternativas();
@@ -489,7 +489,7 @@ public class FormPrincipal {
 			verInformeMenuItem = new JMenuItem();
 			verInformeMenuItem.setMnemonic(KeyEvent.VK_E);
 			verInformeMenuItem.setText("Ver informe");
-			verInformeMenuItem.setIcon(new ImageIcon(".\\images\\format-justify-center.png"));
+			verInformeMenuItem.setIcon(new ImageIcon(".//images//format-justify-center.png"));
 			verInformeMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					mostrarInforme();
@@ -504,7 +504,7 @@ public class FormPrincipal {
 			funcionamientoMenuItem = new JMenuItem();
 			funcionamientoMenuItem.setMnemonic(KeyEvent.VK_F);
 			funcionamientoMenuItem.setText("Funcionamiento");
-			funcionamientoMenuItem.setIcon(new ImageIcon(".\\images\\internet-news-reader.png"));
+			funcionamientoMenuItem.setIcon(new ImageIcon(".//images//internet-news-reader.png"));
 
 		}
 		return funcionamientoMenuItem;
@@ -514,7 +514,7 @@ public class FormPrincipal {
 		if (legislacionMenuItem == null) {
 			legislacionMenuItem = new JMenuItem();
 			legislacionMenuItem.setMnemonic(KeyEvent.VK_L);
-			legislacionMenuItem.setIcon(new ImageIcon(".\\images\\edit-select-all.png"));
+			legislacionMenuItem.setIcon(new ImageIcon(".//images//edit-select-all.png"));
 			legislacionMenuItem.setText("Legislación");
 		}
 		return legislacionMenuItem;
@@ -525,7 +525,7 @@ public class FormPrincipal {
 			anadirAlternativaMenuItem = new JMenuItem();
 			anadirAlternativaMenuItem.setText("Añadir");
 			anadirAlternativaMenuItem.setMnemonic(KeyEvent.VK_D);
-			anadirAlternativaMenuItem.setIcon(new ImageIcon(".\\images\\list-add.png"));
+			anadirAlternativaMenuItem.setIcon(new ImageIcon(".//images//list-add.png"));
 			anadirAlternativaMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					crearAlternativa();
@@ -538,7 +538,7 @@ public class FormPrincipal {
 	private JMenu getEliminarAlternativaMenu() {
 		if (eliminarAlternativaMenu == null) {
 			eliminarAlternativaMenu = new JMenu();
-			eliminarAlternativaMenu.setIcon(new ImageIcon(".\\images\\list-remove.png"));
+			eliminarAlternativaMenu.setIcon(new ImageIcon(".//images//list-remove.png"));
 			eliminarAlternativaMenu.setMnemonic(KeyEvent.VK_L);
 			eliminarAlternativaMenu.setText("Eliminar");
 		}
@@ -549,7 +549,7 @@ public class FormPrincipal {
 		if (modificarAlternativaMenu == null) {
 			modificarAlternativaMenu = new JMenu();
 			modificarAlternativaMenu.setMnemonic(KeyEvent.VK_E);
-			modificarAlternativaMenu.setIcon(new ImageIcon(".\\images\\applications-system.png"));
+			modificarAlternativaMenu.setIcon(new ImageIcon(".//images//applications-system.png"));
 			modificarAlternativaMenu.setText("Editar");
 		}
 		return modificarAlternativaMenu;
@@ -969,8 +969,8 @@ public class FormPrincipal {
 			info.setNombre(nombre);
 			info.setDescripcion(descripcion);
 
-			XMLProyecto xmlProy = new XMLProyecto(".\\plantillas\\proyectoEIA.dtd");
-			proyecto = (Proyecto)xmlProy.leer(".\\plantillas\\proyectoVacio.xml");
+			XMLProyecto xmlProy = new XMLProyecto(".//plantillas//proyectoEIA.dtd");
+			proyecto = (Proyecto)xmlProy.leer(".//plantillas//proyectoVacio.xml");
 			proyecto.setInformacion(info);
 			proyecto.setTipo(tipo);
 
@@ -1021,14 +1021,14 @@ public class FormPrincipal {
 		FiltreSimple filtro = new FiltreSimple("Ficheros XML",".xml");
 		fileChooser.setFileFilter(filtro);
 		// Directorio por defecto
-		fileChooser.setCurrentDirectory(new File(".\\proyectos\\"));
+		fileChooser.setCurrentDirectory(new File(".//proyectos//"));
 		int seleccion = fileChooser.showOpenDialog(null);
 		// Controlamos la selección
 		if (seleccion == JFileChooser.APPROVE_OPTION) {
 
 			informe = null;
 			ficheroProyecto = fileChooser.getSelectedFile();
-			XMLProyecto xmlProy = new XMLProyecto("..\\plantillas\\proyectoEIA.dtd");
+			XMLProyecto xmlProy = new XMLProyecto("..//plantillas//proyectoEIA.dtd");
 			proyecto = (Proyecto)xmlProy.leer(ficheroProyecto.getAbsolutePath());
 
 			//Actualizamos la vista
@@ -1042,7 +1042,7 @@ public class FormPrincipal {
 
 	private void guardarProyecto() {
 		if (ficheroProyecto!=null){
-			XMLProyecto xmlProy = new XMLProyecto("..\\plantillas\\proyectoEIA.dtd");
+			XMLProyecto xmlProy = new XMLProyecto("..//plantillas//proyectoEIA.dtd");
 			xmlProy.escribir(proyecto,ficheroProyecto.getAbsolutePath());
 		}
 	}
@@ -1054,13 +1054,13 @@ public class FormPrincipal {
 		FiltreSimple filtro = new FiltreSimple("Ficheros XML",".xml");
 		fileChooser.setFileFilter(filtro);
 		// Directorio por defecto
-		fileChooser.setCurrentDirectory(new File(".\\proyectos\\"));
+		fileChooser.setCurrentDirectory(new File(".//proyectos//"));
 		int seleccion = fileChooser.showSaveDialog(null);
 		// Controlamos la selección
 		if (seleccion == JFileChooser.APPROVE_OPTION) {
 
 			ficheroProyecto = fileChooser.getSelectedFile();
-			XMLProyecto xmlProy = new XMLProyecto("..\\plantillas\\proyectoEIA.dtd");
+			XMLProyecto xmlProy = new XMLProyecto("..//plantillas//proyectoEIA.dtd");
 			if(ficheroProyecto.isFile()){
 				int opcion = JOptionPane.showConfirmDialog (null,
 						"¿Está seguro que desea reemplazar este archivo?",
@@ -1104,15 +1104,15 @@ public class FormPrincipal {
 			if (proyecto.getTipo() != TipoProyecto.PERSONALIZADO){
 				String filename = null;
 				if (proyecto.getTipo() == TipoProyecto.AUTOVÍA){
-					filename = ".\\plantillas\\alternativaVia.xml";
+					filename = ".//plantillas//alternativaVia.xml";
 				} else if(proyecto.getTipo() == TipoProyecto.PRESA){
-					filename = ".\\plantillas\\alternativaPresa.xml";
+					filename = ".//plantillas//alternativaPresa.xml";
 				} else if(proyecto.getTipo() == TipoProyecto.PUERTODEPORTIVO){
-					filename = ".\\plantillas\\alternativaPuerto.xml";
+					filename = ".//plantillas//alternativaPuerto.xml";
 				} else if(proyecto.getTipo() == TipoProyecto.VERTEDERO){
-					filename = ".\\plantillas\\alternativaVertedero.xml";
+					filename = ".//plantillas//alternativaVertedero.xml";
 				}
-				XMLAlternativa xmlAlt = new XMLAlternativa(proyecto,".\\plantillas\\alternativaProyEIA.dtd");
+				XMLAlternativa xmlAlt = new XMLAlternativa(proyecto,".//plantillas//alternativaProyEIA.dtd");
 				alternativa = (Alternativa)xmlAlt.leer(filename);
 			}else{
 				alternativa = new Alternativa();
@@ -1225,7 +1225,7 @@ public class FormPrincipal {
 			generarInformeMenuItem = new JMenuItem();
 			generarInformeMenuItem.setMnemonic(KeyEvent.VK_G);
 			generarInformeMenuItem.setText("Generar informe");
-			generarInformeMenuItem.setIcon(new ImageIcon(".\\images\\tab-new.png"));
+			generarInformeMenuItem.setIcon(new ImageIcon(".//images//tab-new.png"));
 			generarInformeMenuItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					generarInforme();
@@ -1238,15 +1238,15 @@ public class FormPrincipal {
 	@SuppressWarnings("unchecked")
 	private void generarInforme() {
 		// Archivo base con el diseño del reporte
-		String reporte=".\\reportes\\informe.jrxml";
+		String reporte=".//reportes//informe.jrxml";
 		try{
 			// Compilamos el diseño
 			JasperReport jasperReport = JasperCompileManager.compileReport(reporte);
 
-			XMLProyecto xmlProy = new XMLProyecto("..\\plantillas\\proyectoEIA.dtd");
-			xmlProy.escribir(proyecto,".\\reportes\\reporte.xml");
+			XMLProyecto xmlProy = new XMLProyecto("..//plantillas//proyectoEIA.dtd");
+			xmlProy.escribir(proyecto,".//reportes//reporte.xml");
 
-			JRXmlDataSource fileXML = new JRXmlDataSource(".\\reportes\\reporte.xml");
+			JRXmlDataSource fileXML = new JRXmlDataSource(".//reportes//reporte.xml");
 
 			//Llenamos el reporte con la información y parámetros necesarios
 			Map parameters = new HashMap();
@@ -1254,7 +1254,7 @@ public class FormPrincipal {
 			//Generamos el informe
 			informe = JasperFillManager.fillReport(jasperReport, parameters, fileXML);
 			//Exportamos el reporte a pdf y lo guardamos en disco
-			JasperExportManager.exportReportToPdfFile(informe,".\\informes\\informe.pdf");
+			JasperExportManager.exportReportToPdfFile(informe,".//informes//informe.pdf");
 
 			verInformeMenuItem.setEnabled(true);
 		}catch (JRException e){
