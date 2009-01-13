@@ -1243,7 +1243,7 @@ public class FormPrincipal {
 			// Compilamos el diseño
 			JasperReport jasperReport = JasperCompileManager.compileReport(reporte);
 
-			XMLProyecto xmlProy = new XMLProyecto("proyectoEIA.dtd");
+			XMLProyecto xmlProy = new XMLProyecto("..//plantillas//proyectoEIA.dtd");
 			xmlProy.escribir(proyecto,".//reportes//reporte.xml");
 
 			JRXmlDataSource fileXML = new JRXmlDataSource(".//reportes//reporte.xml");
