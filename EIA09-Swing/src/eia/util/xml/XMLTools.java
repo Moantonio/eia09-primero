@@ -48,8 +48,8 @@ public abstract class XMLTools {
             Source source = new DOMSource(doc);
             Result result = new StreamResult(filename);
 
-            javax.xml.transform.TransformerFactory lewis = javax.xml.transform.TransformerFactory.newInstance();
-            javax.xml.transform.Transformer xformer = lewis.newTransformer();
+            javax.xml.transform.TransformerFactory xform = javax.xml.transform.TransformerFactory.newInstance();
+            javax.xml.transform.Transformer xformer = xform.newTransformer();
             xformer.setOutputProperty(OutputKeys.DOCTYPE_SYSTEM, dtd);
             xformer.transform(source, result);
         }
