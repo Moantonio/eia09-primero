@@ -206,7 +206,8 @@ public class XMLProyecto extends XMLTools{
         return proy;
     }
 
-    private boolean esSubArbol(DefaultMutableTreeNode arbolH, DefaultMutableTreeNode arbolP){
+    @SuppressWarnings("unchecked")
+	private boolean esSubArbol(DefaultMutableTreeNode arbolH, DefaultMutableTreeNode arbolP){
     	boolean esHijo = false;
     	Enumeration eHijos = arbolP.children();
     	while(eHijos.hasMoreElements()){
@@ -273,6 +274,7 @@ public class XMLProyecto extends XMLTools{
      * @param tabla
      * @param archivo Ruta del fichero XML donde queremos almacenar la informacion.
      */
+	@SuppressWarnings("unchecked")
 	public void escribir(Object o, String archivo) {
         Document document=null;
         Proyecto proy = (Proyecto)o;
@@ -542,7 +544,8 @@ public class XMLProyecto extends XMLTools{
      * @param factor Arbol de factores y subfactores.
      * @return El elemento factor con factores y subfactores.
      */
-    private Element recorrerFactores(DefaultMutableTreeNode factor, Document document, int cont){
+    @SuppressWarnings("unchecked")
+	private Element recorrerFactores(DefaultMutableTreeNode factor, Document document, int cont){
 
     	Element elemFactor = (Element)document.createElement("factor");
     	Factor f = (Factor)factor.getUserObject();
@@ -580,7 +583,8 @@ public class XMLProyecto extends XMLTools{
      * @param factor Arbol de acciones y subacciones.
      * @return El elemento accion con acciones y subacciones.
      */
-    private Element recorrerAcciones(DefaultMutableTreeNode accion, Document document, int cont){
+    @SuppressWarnings("unchecked")
+	private Element recorrerAcciones(DefaultMutableTreeNode accion, Document document, int cont){
 
     	Element elemAccion = (Element)document.createElement("accion");
     	Accion a = (Accion)accion.getUserObject();
@@ -609,6 +613,7 @@ public class XMLProyecto extends XMLTools{
     	}
     }
 
+	@SuppressWarnings("unchecked")
 	private Object buscarElemento(DefaultTreeModel arbol, String id){
 		Object elem = null;
 		DefaultMutableTreeNode root = (DefaultMutableTreeNode)arbol.getRoot();
