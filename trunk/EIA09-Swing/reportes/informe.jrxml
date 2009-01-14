@@ -33,10 +33,7 @@
 	</background>
 	<title>
 		<band height="79">
-			<image hyperlinkType="None">
-				<reportElement x="121" y="10" width="74" height="50"/>
-				<imageExpression class="java.lang.String"><![CDATA["C:\\Proyectos\\EIA09-Swing\\reportes\\logo.PNG"]]></imageExpression>
-			</image>
+
 			<staticText>
 				<reportElement x="23" y="10" width="515" height="32"/>
 				<textElement textAlignment="Center">
