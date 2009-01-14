@@ -128,6 +128,7 @@ public class XMLAlternativa extends XMLTools{
 	}
 
 
+	@SuppressWarnings("unchecked")
 	private Object buscarElemento(DefaultTreeModel arbol, String id){
 		Object elem = null;
 		DefaultMutableTreeNode root = (DefaultMutableTreeNode)arbol.getRoot();
@@ -185,7 +186,8 @@ public class XMLAlternativa extends XMLTools{
     }
 
 
-    private boolean esSubArbol(DefaultMutableTreeNode arbolH, DefaultMutableTreeNode arbolP){
+    @SuppressWarnings("unchecked")
+	private boolean esSubArbol(DefaultMutableTreeNode arbolH, DefaultMutableTreeNode arbolP){
     	boolean esHijo = false;
     	Enumeration eHijos = arbolP.children();
     	while(eHijos.hasMoreElements()){
@@ -205,6 +207,7 @@ public class XMLAlternativa extends XMLTools{
     	return esHijo;
     }
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void escribir(Object o, String archivo) {
         Document document=null;
@@ -379,7 +382,8 @@ public class XMLAlternativa extends XMLTools{
      * @param factor Arbol de acciones y subacciones.
      * @return El elemento accion con acciones y subacciones.
      */
-    private Element recorrerAcciones(DefaultMutableTreeNode accion, Document document, int cont){
+    @SuppressWarnings("unchecked")
+	private Element recorrerAcciones(DefaultMutableTreeNode accion, Document document, int cont){
 
     	Element elemAccion = (Element)document.createElement("accion");
     	Accion a = (Accion)accion.getUserObject();
