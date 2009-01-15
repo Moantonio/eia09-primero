@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Proyectos\\EIA09-Swing\\reportes\\"]]></defaultValueExpression>
+	</parameter>
 	<field name="nombre" class="java.lang.String">
-		<fieldDescription><![CDATA[/proyectoEIA/nombre]]></fieldDescription>
+		<fieldDescription><![CDATA[nombre]]></fieldDescription>
 	</field>
 	<field name="tipo" class="java.lang.String">
-		<fieldDescription><![CDATA[/proyectoEIA/tipo]]></fieldDescription>
+		<fieldDescription><![CDATA[tipo]]></fieldDescription>
 	</field>
 	<field name="descripcion" class="java.lang.String">
-		<fieldDescription><![CDATA[/proyectoEIA/descripcion]]></fieldDescription>
+		<fieldDescription><![CDATA[descripcion]]></fieldDescription>
 	</field>
 	<field name="compania" class="java.lang.String">
-		<fieldDescription><![CDATA[/proyectoEIA/promotor]]></fieldDescription>
+		<fieldDescription><![CDATA[promotor]]></fieldDescription>
 	</field>
 	<field name="autor" class="java.lang.String">
-		<fieldDescription><![CDATA[/proyectoEIA/redactor]]></fieldDescription>
+		<fieldDescription><![CDATA[redactor]]></fieldDescription>
 	</field>
 	<field name="poblacion" class="java.lang.String">
-		<fieldDescription><![CDATA[/proyectoEIA/poblacion]]></fieldDescription>
+		<fieldDescription><![CDATA[poblacion]]></fieldDescription>
 	</field>
 	<field name="pais" class="java.lang.String">
-		<fieldDescription><![CDATA[/proyectoEIA/pais]]></fieldDescription>
+		<fieldDescription><![CDATA[pais]]></fieldDescription>
 	</field>
 	<field name="provincia" class="java.lang.String">
-		<fieldDescription><![CDATA[/proyectoEIA/provincia]]></fieldDescription>
+		<fieldDescription><![CDATA[provincia]]></fieldDescription>
 	</field>
 	<field name="vidaUtil" class="java.lang.String">
-		<fieldDescription><![CDATA[/proyectoEIA/vidaUtil]]></fieldDescription>
+		<fieldDescription><![CDATA[vidaUtil]]></fieldDescription>
 	</field>
 	<field name="fecha" class="java.lang.String"/>
+	<field name="nombreAlternativa" class="java.lang.String">
+		<fieldDescription><![CDATA[listaAlternativas/alternativaProyEIA/nombreAlt]]></fieldDescription>
+	</field>
 	<background>
 		<band/>
 	</background>
 	<title>
 		<band height="79">
-
 			<staticText>
 				<reportElement x="23" y="10" width="515" height="32"/>
 				<textElement textAlignment="Center">
@@ -68,7 +73,7 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="115">
+		<band height="153">
 			<textField hyperlinkType="None">
 				<reportElement x="77" y="13" width="229" height="16"/>
 				<textElement>
@@ -212,7 +217,13 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125"/>
+		<band height="77">
+			<subreport isUsingCache="true">
+				<reportElement key="subreport-1" x="24" y="0" width="437" height="19"/>
+				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("/proyectoEIA/listaAlternativas/alternativaProyEIA")]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[".//reportes//infoAlternativa.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45"/>
