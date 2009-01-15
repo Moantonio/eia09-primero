@@ -1246,7 +1246,7 @@ public class FormPrincipal {
 			XMLProyecto xmlProy = new XMLProyecto("proyectoEIA.dtd");
 			xmlProy.escribir(proyecto,".//reportes//reporte.xml");
 
-			JRXmlDataSource fileXML = new JRXmlDataSource(".//reportes//reporte.xml");
+			JRXmlDataSource fileXML = new JRXmlDataSource(".//reportes//reporte.xml","/proyectoEIA");
 
 			//Llenamos el reporte con la información y parámetros necesarios
 			Map parameters = new HashMap();
