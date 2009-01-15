@@ -1071,6 +1071,7 @@ public class FormPrincipal {
 				}
 			}else{
 				xmlProy.escribir(proyecto,ficheroProyecto.getAbsolutePath()+".xml");
+				ficheroProyecto = new File(ficheroProyecto.getAbsolutePath()+".xml");
 			}
 
 			guardarMenuItem.setEnabled(true);
