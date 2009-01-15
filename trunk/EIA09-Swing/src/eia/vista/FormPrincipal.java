@@ -516,8 +516,18 @@ public class FormPrincipal {
 			legislacionMenuItem.setMnemonic(KeyEvent.VK_L);
 			legislacionMenuItem.setIcon(new ImageIcon(".//images//edit-select-all.png"));
 			legislacionMenuItem.setText("Legislación");
+			legislacionMenuItem.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					lanzarLegislacion();
+				}
+			});
 		}
 		return legislacionMenuItem;
+	}
+
+	private void lanzarLegislacion(){
+		//TODO abrir la dir donde este la legislacion en HTML
+		ApplicationLauncher.launchURL("http://www.google.es");
 	}
 
 	private JMenuItem getAnadirAlternativaMenuItem() {
