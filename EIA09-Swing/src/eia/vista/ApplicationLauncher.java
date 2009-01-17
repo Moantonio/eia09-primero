@@ -7,15 +7,6 @@ import java.io.InputStreamReader;
 
 public class ApplicationLauncher {
 
-	public static void main(String args[]){
-		if( args.length!=1) {
-			System.out.println("Numero de parametros erroneo forma de uso: java -cp . ApplicationLauncher fichero|URL");
-			return;
-		}
-		if(args[0].indexOf("http")!=-1) launchURL(args[0]);
-		else launchDefaultViewer(args[0]);
-	}
-
 	private static String linuxDesktop = null;
 
 	private static String getEnv(String envvar){
