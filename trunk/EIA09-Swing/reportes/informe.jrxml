@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EIA09" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["C:\\Proyectos\\EIA09-Swing\\reportes\\"]]></defaultValueExpression>
 	</parameter>
@@ -30,208 +30,262 @@
 	<field name="vidaUtil" class="java.lang.String">
 		<fieldDescription><![CDATA[vidaUtil]]></fieldDescription>
 	</field>
-	<field name="fecha" class="java.lang.String"/>
 	<field name="nombreAlternativa" class="java.lang.String">
 		<fieldDescription><![CDATA[listaAlternativas/alternativaProyEIA/nombreAlt]]></fieldDescription>
 	</field>
-	<background>
-		<band/>
-	</background>
+	<field name="dia" class="java.lang.String">
+		<fieldDescription><![CDATA[fecha/dia]]></fieldDescription>
+	</field>
+	<field name="mes" class="java.lang.String">
+		<fieldDescription><![CDATA[fecha/mes]]></fieldDescription>
+	</field>
+	<field name="anio" class="java.lang.String">
+		<fieldDescription><![CDATA[fecha/anio]]></fieldDescription>
+	</field>
 	<title>
-		<band height="79">
+		<band height="207">
 			<staticText>
-				<reportElement x="23" y="10" width="515" height="32"/>
+				<reportElement x="19" y="0" width="515" height="32"/>
 				<textElement textAlignment="Center">
 					<font size="24"/>
 				</textElement>
 				<text><![CDATA[EIA09]]></text>
 			</staticText>
-		</band>
-	</title>
-	<pageHeader>
-		<band height="35">
-			<staticText>
-				<reportElement x="23" y="-39" width="515" height="20"/>
-				<textElement textAlignment="Center">
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[   Evaluacion de Impacto Ambiental]]></text>
-			</staticText>
 			<line>
-				<reportElement x="23" y="6" width="515" height="1"/>
+				<reportElement x="19" y="94" width="513" height="1"/>
 			</line>
-			<line>
-				<reportElement x="23" y="26" width="515" height="1"/>
-			</line>
-			<staticText>
-				<reportElement x="23" y="6" width="515" height="18"/>
-				<textElement textAlignment="Center">
-					<font size="14"/>
-				</textElement>
-				<text><![CDATA[Informe de proyecto]]></text>
-			</staticText>
-		</band>
-	</pageHeader>
-	<columnHeader>
-		<band height="153">
 			<textField hyperlinkType="None">
-				<reportElement x="77" y="13" width="229" height="16"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="23" y="13" width="54" height="16"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Nombre:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="306" y="13" width="34" height="16"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Tipo:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="23" y="29" width="78" height="16"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Descripcion:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="23" y="45" width="66" height="16"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Compania:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="306" y="45" width="40" height="16"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Autor:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="23" y="61" width="66" height="16"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Poblacion:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="306" y="61" width="62" height="16"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Provincia:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="23" y="77" width="33" height="16"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Pais:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="306" y="77" width="43" height="16"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Fecha:]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="306" y="93" width="55" height="16"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Vida util:]]></text>
-			</staticText>
-			<textField hyperlinkType="None">
-				<reportElement x="340" y="13" width="198" height="16"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipo}]]></textFieldExpression>
-			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="101" y="29" width="437" height="16"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{descripcion}]]></textFieldExpression>
-			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="89" y="45" width="128" height="16"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{compania}]]></textFieldExpression>
-			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="346" y="45" width="192" height="16"/>
+				<reportElement x="354" y="138" width="165" height="16"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{autor}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="89" y="61" width="100" height="16"/>
+				<reportElement x="348" y="106" width="171" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipo}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="109" y="122" width="410" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="385" y="186" width="55" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[meses]]></text>
+			</staticText>
+			<textField hyperlinkType="None">
+				<reportElement x="97" y="138" width="206" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{compania}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="314" y="170" width="43" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<textField hyperlinkType="None">
+				<reportElement x="97" y="154" width="206" height="16"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{poblacion}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="314" y="138" width="40" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Autor:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="106" width="34" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="172" width="8" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
 			<textField hyperlinkType="None">
-				<reportElement x="368" y="61" width="170" height="16"/>
+				<reportElement x="85" y="106" width="218" height="16"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{provincia}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
-			<textField hyperlinkType="None">
-				<reportElement x="56" y="77" width="100" height="16"/>
+			<staticText>
+				<reportElement x="314" y="154" width="62" height="16"/>
 				<textElement>
-					<font size="12"/>
+					<font size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{pais}]]></textFieldExpression>
-			</textField>
+				<text><![CDATA[Provincia:]]></text>
+			</staticText>
 			<textField hyperlinkType="None">
-				<reportElement x="361" y="93" width="100" height="16"/>
+				<reportElement x="369" y="186" width="16" height="16"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{vidaUtil}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="349" y="77" width="100" height="16"/>
+				<reportElement x="64" y="170" width="100" height="16"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pais}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="106" width="54" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="186" width="55" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vida util:]]></text>
+			</staticText>
+			<textField hyperlinkType="None">
+				<reportElement x="376" y="154" width="143" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{provincia}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="138" width="66" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Compania:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="154" width="66" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Poblacion:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="75" width="161" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion del proyecto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="376" y="172" width="8" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="170" width="33" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pais:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="122" width="78" height="16"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion:]]></text>
+			</staticText>
+			<textField hyperlinkType="None">
+				<reportElement x="385" y="172" width="15" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{mes}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="410" y="172" width="30" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{anio}]]></textFieldExpression>
+			</textField>
+			<textField hyperlinkType="None">
+				<reportElement x="361" y="172" width="15" height="16"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dia}]]></textFieldExpression>
 			</textField>
 		</band>
+	</title>
+	<pageHeader>
+		<band height="28">
+			<staticText>
+				<reportElement x="19" y="-175" width="515" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[   Evaluacion de Impacto Ambiental]]></text>
+			</staticText>
+			<line>
+				<reportElement x="19" y="25" width="513" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="21" y="5" width="161" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Alternativas de realizacion]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band/>
 	</columnHeader>
 	<detail>
-		<band height="77">
+		<band height="19">
 			<subreport isUsingCache="true">
-				<reportElement key="subreport-1" x="24" y="0" width="437" height="19"/>
+				<reportElement key="subreport-1" x="23" y="0" width="515" height="19"/>
 				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("/proyectoEIA/listaAlternativas/alternativaProyEIA")]]></dataSourceExpression>
 				<subreportExpression class="java.lang.String"><![CDATA[".//reportes//infoAlternativa.jasper"]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45"/>
+		<band/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54"/>
+		<band/>
 	</pageFooter>
-	<summary>
-		<band height="42"/>
-	</summary>
+	<lastPageFooter>
+		<band height="31">
+			<staticText>
+				<reportElement x="21" y="0" width="106" height="23"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[La mejor]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
 </jasperReport>
