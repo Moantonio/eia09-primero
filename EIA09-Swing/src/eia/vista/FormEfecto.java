@@ -37,6 +37,13 @@ import eia.model.ValoracionCuantitativa;
 import eia.util.CaracterEfecto;
 import eia.util.ValorJuicio;
 
+/**
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
+
 public class FormEfecto extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -141,7 +148,7 @@ public class FormEfecto extends JDialog {
 		this.setSize(500, 450);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Efecto");
-		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\text-x-script.png"));
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".//images//text-x-script.png"));
 		actualizarValoraciones();
 	}
 

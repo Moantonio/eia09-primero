@@ -18,6 +18,13 @@ import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
+/**
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
+
 public class FormCrearAccion extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -48,7 +55,7 @@ public class FormCrearAccion extends JDialog {
 		this.setSize(475, 197);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Nueva acción");
-		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\window-new.png"));
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".//images//window-new.png"));
 	}
 
 	private JPanel getJContentPane() {

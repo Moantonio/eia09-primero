@@ -8,11 +8,15 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
+/**
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
+
 public class TablaColores extends JTable{
 
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public TablaColores(DefaultTableModel modeloTabla) {

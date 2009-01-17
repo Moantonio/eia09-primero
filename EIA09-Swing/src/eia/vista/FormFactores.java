@@ -29,6 +29,13 @@ import javax.swing.tree.DefaultTreeSelectionModel;
 
 import eia.model.Factor;
 
+/**
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
+
 public class FormFactores extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -56,7 +63,7 @@ public class FormFactores extends JDialog {
 		this.setSize(350, 522);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Factores ambientales");
-		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\text-x-generic-template.png"));
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".//images//text-x-generic-template.png"));
 		this.setResizable(false);
 	}
 

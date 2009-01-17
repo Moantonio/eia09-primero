@@ -19,6 +19,13 @@ import javax.swing.JTextArea;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 
+/**
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
+
 public class FormAsistente extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -46,8 +53,7 @@ public class FormAsistente extends JDialog {
 		this.setSize(475, 197);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Asistente de elección de función de transformación");
-		//TODO
-		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\image-loading.png"));
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".//images//image-loading.png"));
 	}
 
 	private JPanel getJContentPane() {

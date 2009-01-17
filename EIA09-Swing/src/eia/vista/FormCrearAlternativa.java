@@ -57,7 +57,7 @@ public class FormCrearAlternativa extends JDialog {
 		this.setSize(475, 197);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Nueva alternativa de realización");
-		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\edit-copy.png"));
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".//images//edit-copy.png"));
 	}
 
 	private JPanel getJContentPane() {

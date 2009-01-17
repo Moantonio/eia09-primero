@@ -72,7 +72,7 @@ public class FormCrearEfecto extends JDialog {
 		this.setSize(475, 280);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Nuevo efecto");
-		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\window-new.png"));
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".//images//window-new.png"));
 	}
 
 	private JPanel getJContentPane() {

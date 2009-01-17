@@ -52,6 +52,13 @@ import eia.util.TipoProyecto;
 import eia.util.xml.XMLAlternativa;
 import eia.util.xml.XMLProyecto;
 
+/**
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
+
 public class FormPrincipal {
 
 	private JFrame framePrincipal = null;  //  @jve:decl-index=0:visual-constraint="33,-1"
