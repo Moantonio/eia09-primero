@@ -568,44 +568,44 @@ public class FormPrincipal {
 	private JPanel getInfoProyectoPanel() {
 		if (infoProyectoPanel == null) {
 			mesesLabel = new JLabel();
-			mesesLabel.setBounds(new Rectangle(374, 148, 42, 16));
+			mesesLabel.setBounds(new Rectangle(381, 148, 42, 16));
 			mesesLabel.setFont(new Font("Dialog", Font.PLAIN, 12));
 			mesesLabel.setText("meses");
 			vidaUtilLabel = new JLabel();
-			vidaUtilLabel.setBounds(new Rectangle(289, 148, 54, 16));
+			vidaUtilLabel.setBounds(new Rectangle(296, 148, 54, 16));
 			vidaUtilLabel.setText("Vida útil:");
 			fechaLabel = new JLabel();
-			fechaLabel.setBounds(new Rectangle(168, 148, 44, 16));
+			fechaLabel.setBounds(new Rectangle(175, 148, 44, 16));
 			fechaLabel.setText("Fecha:");
 			provinciaLabel = new JLabel();
-			provinciaLabel.setBounds(new Rectangle(229, 123, 59, 16));
+			provinciaLabel.setBounds(new Rectangle(236, 123, 59, 16));
 			provinciaLabel.setText("Provincia:");
 			paisLabel = new JLabel();
-			paisLabel.setBounds(new Rectangle(54, 148, 29, 16));
+			paisLabel.setBounds(new Rectangle(61, 148, 29, 16));
 			paisLabel.setText("Pais:");
 			poblacionLabel = new JLabel();
-			poblacionLabel.setBounds(new Rectangle(22, 124, 60, 16));
+			poblacionLabel.setBounds(new Rectangle(29, 124, 60, 16));
 			poblacionLabel.setText("Población:");
 			autorLabel = new JLabel();
-			autorLabel.setBounds(new Rectangle(249, 98, 37, 16));
+			autorLabel.setBounds(new Rectangle(256, 98, 37, 16));
 			autorLabel.setText("Autor:");
 			companiaLabel = new JLabel();
-			companiaLabel.setBounds(new Rectangle(20, 98, 61, 16));
+			companiaLabel.setBounds(new Rectangle(27, 98, 61, 16));
 			companiaLabel.setText("Compañía:");
 			tipoLabel = new JLabel();
-			tipoLabel.setBounds(new Rectangle(245, 27, 80, 19));
+			tipoLabel.setBounds(new Rectangle(252, 27, 80, 19));
 			tipoLabel.setText("Tipo proyecto:");
 			descripcionLabel = new JLabel();
-			descripcionLabel.setBounds(new Rectangle(8, 66, 72, 16));
+			descripcionLabel.setBounds(new Rectangle(15, 66, 72, 16));
 			descripcionLabel.setText("Descripción:");
 			nombreLabel = new JLabel();
-			nombreLabel.setBounds(new Rectangle(32, 27, 50, 19));
+			nombreLabel.setBounds(new Rectangle(39, 27, 50, 19));
 			nombreLabel.setText("Nombre:");
 			infoProyectoPanel = new JPanel();
 			infoProyectoPanel.setLayout(null);
 			infoProyectoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Descripción del proyecto", TitledBorder.LEADING, TitledBorder.TOP, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-			infoProyectoPanel.setSize(new Dimension(434, 210));
-			infoProyectoPanel.setLocation(new Point(30, 11));
+			infoProyectoPanel.setSize(new Dimension(445, 210));
+			infoProyectoPanel.setLocation(new Point(24, 11));
 			infoProyectoPanel.add(getNombreTextField(), null);
 			infoProyectoPanel.add(nombreLabel, null);
 			infoProyectoPanel.add(descripcionLabel, null);
@@ -638,8 +638,8 @@ public class FormPrincipal {
 			alternativasPanel = new JPanel();
 			alternativasPanel.setLayout(null);
 			alternativasPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Alternativas de realización"));
-			alternativasPanel.setSize(new Dimension(434, 173));
-			alternativasPanel.setLocation(new Point(30, 237));
+			alternativasPanel.setLocation(new Point(24, 237));
+			alternativasPanel.setSize(new Dimension(445, 173));
 			alternativasPanel.add(getAlternativasScrollPane(), null);
 			alternativasPanel.add(getAnadirAltButton(), null);
 			alternativasPanel.add(getEliminarAltButton(), null);
@@ -651,7 +651,7 @@ public class FormPrincipal {
 	private JScrollPane getAlternativasScrollPane() {
 		if (alternativasScrollPane == null) {
 			alternativasScrollPane = new JScrollPane();
-			alternativasScrollPane.setBounds(new Rectangle(16, 31, 401, 100));
+			alternativasScrollPane.setBounds(new Rectangle(20, 28, 401, 100));
 			alternativasScrollPane.setViewportView(getAlternativasTable());
 		}
 		return alternativasScrollPane;
@@ -684,7 +684,7 @@ public class FormPrincipal {
 	private JTextField getNombreTextField() {
 		if (nombreTextField == null) {
 			nombreTextField = new JTextField();
-			nombreTextField.setBounds(new Rectangle(88, 29, 151, 18));
+			nombreTextField.setBounds(new Rectangle(95, 29, 151, 18));
 			nombreTextField.setEnabled(false);
 		}
 		return nombreTextField;
@@ -693,7 +693,7 @@ public class FormPrincipal {
 	private JTextField getTipoTextField() {
 		if (tipoTextField == null) {
 			tipoTextField = new JTextField();
-			tipoTextField.setBounds(new Rectangle(329, 28, 87, 18));
+			tipoTextField.setBounds(new Rectangle(336, 28, 87, 18));
 			tipoTextField.setEnabled(false);
 		}
 		return tipoTextField;
@@ -714,7 +714,7 @@ public class FormPrincipal {
 	private JScrollPane getScrollPane() {
 		if (barraDesplazamiento == null) {
 			barraDesplazamiento = new JScrollPane(getDescripcionTextArea());
-			barraDesplazamiento.setBounds(new Rectangle(88, 54, 327, 36));
+			barraDesplazamiento.setBounds(new Rectangle(95, 54, 327, 36));
 			barraDesplazamiento.setEnabled(true);
 			barraDesplazamiento.setBorder(BorderFactory.createLineBorder(new Color(116, 158, 192), 0));
 		}
@@ -727,7 +727,7 @@ public class FormPrincipal {
 	private JTextField getCompaniaTextField() {
 		if (companiaTextField == null) {
 			companiaTextField = new JTextField();
-			companiaTextField.setBounds(new Rectangle(88, 98, 125, 18));
+			companiaTextField.setBounds(new Rectangle(95, 98, 125, 18));
 			companiaTextField.setEnabled(false);
 		}
 		return companiaTextField;
@@ -736,7 +736,7 @@ public class FormPrincipal {
 	private JTextField getPoblacionTextField() {
 		if (poblacionTextField == null) {
 			poblacionTextField = new JTextField();
-			poblacionTextField.setBounds(new Rectangle(88, 123, 125, 18));
+			poblacionTextField.setBounds(new Rectangle(95, 123, 125, 18));
 			poblacionTextField.setEnabled(false);
 		}
 		return poblacionTextField;
@@ -745,7 +745,7 @@ public class FormPrincipal {
 	private JTextField getPaisTextField() {
 		if (paisTextField == null) {
 			paisTextField = new JTextField();
-			paisTextField.setBounds(new Rectangle(89, 148, 75, 18));
+			paisTextField.setBounds(new Rectangle(96, 148, 75, 18));
 			paisTextField.setEnabled(false);
 		}
 		return paisTextField;
@@ -754,7 +754,7 @@ public class FormPrincipal {
 	private JTextField getProvinciaTextField() {
 		if (provinciaTextField == null) {
 			provinciaTextField = new JTextField();
-			provinciaTextField.setBounds(new Rectangle(292, 123, 125, 18));
+			provinciaTextField.setBounds(new Rectangle(299, 123, 125, 18));
 			provinciaTextField.setEnabled(false);
 		}
 		return provinciaTextField;
@@ -763,7 +763,7 @@ public class FormPrincipal {
 	private JTextField getAutorTextField() {
 		if (autorTextField == null) {
 			autorTextField = new JTextField();
-			autorTextField.setBounds(new Rectangle(292, 98, 125, 18));
+			autorTextField.setBounds(new Rectangle(299, 98, 125, 18));
 			autorTextField.setEnabled(false);
 		}
 		return autorTextField;
@@ -772,7 +772,7 @@ public class FormPrincipal {
 	private JTextField getFechaTextField() {
 		if (fechaTextField == null) {
 			fechaTextField = new JTextField();
-			fechaTextField.setBounds(new Rectangle(210, 148, 75, 18));
+			fechaTextField.setBounds(new Rectangle(217, 148, 75, 18));
 			fechaTextField.setEnabled(false);
 		}
 		return fechaTextField;
@@ -781,7 +781,7 @@ public class FormPrincipal {
 	private JTextField getVidaUtilTextField() {
 		if (vidaUtilTextField == null) {
 			vidaUtilTextField = new JTextField();
-			vidaUtilTextField.setBounds(new Rectangle(343, 148, 29, 18));
+			vidaUtilTextField.setBounds(new Rectangle(350, 148, 29, 18));
 			vidaUtilTextField.setEnabled(false);
 		}
 		return vidaUtilTextField;
@@ -790,7 +790,7 @@ public class FormPrincipal {
 	private JButton getModificarButton() {
 		if (modificarButton == null) {
 			modificarButton = new JButton();
-			modificarButton.setBounds(new Rectangle(322, 175, 94, 17));
+			modificarButton.setBounds(new Rectangle(329, 175, 94, 17));
 			modificarButton.setText("Modificar");
 			modificarButton.setEnabled(false);
 			modificarButton.setBackground(Color.white);
@@ -808,7 +808,7 @@ public class FormPrincipal {
 			anadirAltButton = new JButton();
 			anadirAltButton.setName("");
 			anadirAltButton.setText("Añadir");
-			anadirAltButton.setLocation(new Point(135, 138));
+			anadirAltButton.setLocation(new Point(139, 135));
 			anadirAltButton.setSize(new Dimension(88, 17));
 			anadirAltButton.setEnabled(false);
 			anadirAltButton.setBackground(Color.white);
@@ -826,7 +826,7 @@ public class FormPrincipal {
 			eliminarAltButton = new JButton();
 			eliminarAltButton.setName("");
 			eliminarAltButton.setText("Eliminar");
-			eliminarAltButton.setLocation(new Point(327, 138));
+			eliminarAltButton.setLocation(new Point(331, 135));
 			eliminarAltButton.setSize(new Dimension(88, 17));
 			eliminarAltButton.setEnabled(false);
 			eliminarAltButton.setBackground(Color.white);
@@ -848,7 +848,7 @@ public class FormPrincipal {
 			editarAltButton = new JButton();
 			editarAltButton.setName("");
 			editarAltButton.setText("Editar");
-			editarAltButton.setLocation(new Point(231, 138));
+			editarAltButton.setLocation(new Point(235, 135));
 			editarAltButton.setSize(new Dimension(88, 17));
 			editarAltButton.setEnabled(false);
 			editarAltButton.setBackground(Color.white);
@@ -874,7 +874,7 @@ public class FormPrincipal {
 		if (aceptarButton == null) {
 			aceptarButton = new JButton();
 			aceptarButton.setText("Aceptar");
-			aceptarButton.setLocation(new Point(232, 175));
+			aceptarButton.setLocation(new Point(239, 175));
 			aceptarButton.setSize(new Dimension(87, 17));
 			aceptarButton.setBackground(Color.white);
 			aceptarButton.setVisible(false);
