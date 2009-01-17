@@ -94,7 +94,7 @@ public class FormAlternativa extends JDialog{
 		this.setSize(598, 500);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Alternativas de realización");
-		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\edit-copy.png"));
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".//images//edit-copy.png"));
 		this.setResizable(false);
 		actualizarVista();
 	}

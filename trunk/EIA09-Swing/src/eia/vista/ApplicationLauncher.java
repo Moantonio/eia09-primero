@@ -5,6 +5,13 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
+
 public class ApplicationLauncher {
 
 	private static String linuxDesktop = null;
@@ -23,7 +30,6 @@ public class ApplicationLauncher {
 	}
 
 	private static String getLinuxDesktop(){
-//		solo se averigua el entorno de escritorio una vez, despues se almacena en la variable estatica
 		if(linuxDesktop!=null) return linuxDesktop;
 		if(!getEnv("KDE_FULL_SESSION").equals("") || !getEnv("KDE_MULTIHEAD").equals("")){
 			linuxDesktop="kde";
@@ -61,4 +67,3 @@ public class ApplicationLauncher {
 	}
 
 }
-

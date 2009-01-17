@@ -7,6 +7,13 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JDialog;
 
+/**
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
+
 public class FormGrafica extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -24,8 +31,7 @@ public class FormGrafica extends JDialog {
 		this.setResizable(false);
 		this.setTitle("Gráfica valoración cuantitativa");
 		this.setContentPane(getJContentPane());
-		//TODO
-		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\utilities-system-monitor.png"));
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".//images//utilities-system-monitor.png"));
 	}
 
 	private JPanel getJContentPane() {

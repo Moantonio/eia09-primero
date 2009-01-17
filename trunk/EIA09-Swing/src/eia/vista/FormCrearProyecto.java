@@ -162,7 +162,7 @@ public class FormCrearProyecto extends JDialog {
 		this.setSize(475, 234);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Nuevo proyecto");
-		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".\\images\\window-new.png"));
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".//images//window-new.png"));
 	}
 
 	private JPanel getJContentPane() {
