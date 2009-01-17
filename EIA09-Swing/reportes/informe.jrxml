@@ -44,8 +44,12 @@
 	</field>
 	<title>
 		<band height="207">
+			<image hyperlinkType="None">
+				<reportElement x="194" y="-4" width="63" height="50"/>
+				<imageExpression class="java.lang.String"><![CDATA[".//reportes//logo.PNG"]]></imageExpression>
+			</image>
 			<staticText>
-				<reportElement x="19" y="0" width="515" height="32"/>
+				<reportElement x="27" y="10" width="521" height="32"/>
 				<textElement textAlignment="Center">
 					<font size="24"/>
 				</textElement>
@@ -54,136 +58,139 @@
 			<line>
 				<reportElement x="19" y="94" width="513" height="1"/>
 			</line>
+			<rectangle>
+				<reportElement x="31" y="105" width="488" height="96" forecolor="#CCCCCC"/>
+			</rectangle>
 			<textField hyperlinkType="None">
-				<reportElement x="354" y="138" width="165" height="16"/>
+				<reportElement x="360" y="146" width="145" height="16"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{autor}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="348" y="106" width="171" height="16"/>
+				<reportElement x="354" y="114" width="151" height="16"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipo}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="109" y="122" width="410" height="16"/>
+				<reportElement x="113" y="130" width="392" height="16"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{descripcion}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="385" y="186" width="55" height="16"/>
+				<reportElement x="389" y="178" width="116" height="16"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<text><![CDATA[meses]]></text>
 			</staticText>
 			<textField hyperlinkType="None">
-				<reportElement x="97" y="138" width="206" height="16"/>
+				<reportElement x="104" y="146" width="221" height="16"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{compania}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="314" y="170" width="43" height="16"/>
+				<reportElement x="164" y="178" width="38" height="16"/>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Fecha:]]></text>
 			</staticText>
 			<textField hyperlinkType="None">
-				<reportElement x="97" y="154" width="206" height="16"/>
+				<reportElement x="104" y="162" width="221" height="16"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{poblacion}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="314" y="138" width="40" height="16"/>
+				<reportElement x="325" y="146" width="36" height="16"/>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Autor:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="314" y="106" width="34" height="16"/>
+				<reportElement x="325" y="114" width="30" height="16"/>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tipo:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="400" y="172" width="8" height="16"/>
+				<reportElement x="240" y="178" width="8" height="16"/>
 				<textElement textAlignment="Center">
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<text><![CDATA[/]]></text>
 			</staticText>
 			<textField hyperlinkType="None">
-				<reportElement x="85" y="106" width="218" height="16"/>
+				<reportElement x="95" y="114" width="230" height="16"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="314" y="154" width="62" height="16"/>
+				<reportElement x="325" y="162" width="54" height="16"/>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Provincia:]]></text>
 			</staticText>
 			<textField hyperlinkType="None">
-				<reportElement x="369" y="186" width="16" height="16"/>
-				<textElement>
-					<font size="12"/>
+				<reportElement x="373" y="178" width="16" height="16"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{vidaUtil}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="64" y="170" width="100" height="16"/>
+				<reportElement x="77" y="178" width="87" height="16"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{pais}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="31" y="106" width="54" height="16"/>
+				<reportElement x="48" y="114" width="47" height="16"/>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nombre:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="314" y="186" width="55" height="16"/>
+				<reportElement x="325" y="178" width="48" height="16"/>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Vida util:]]></text>
 			</staticText>
 			<textField hyperlinkType="None">
-				<reportElement x="376" y="154" width="143" height="16"/>
+				<reportElement x="379" y="162" width="126" height="16"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{provincia}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="31" y="138" width="66" height="16"/>
+				<reportElement x="48" y="146" width="58" height="16"/>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Compania:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="31" y="154" width="66" height="16"/>
+				<reportElement x="48" y="162" width="56" height="16"/>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Poblacion:]]></text>
 			</staticText>
@@ -195,44 +202,44 @@
 				<text><![CDATA[Descripcion del proyecto]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="376" y="172" width="8" height="16"/>
+				<reportElement x="217" y="178" width="8" height="16"/>
 				<textElement textAlignment="Center">
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<text><![CDATA[/]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="31" y="170" width="33" height="16"/>
+				<reportElement x="48" y="178" width="29" height="16"/>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Pais:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="31" y="122" width="78" height="16"/>
+				<reportElement x="48" y="130" width="65" height="16"/>
 				<textElement>
-					<font size="12" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Descripcion:]]></text>
 			</staticText>
 			<textField hyperlinkType="None">
-				<reportElement x="385" y="172" width="15" height="16"/>
+				<reportElement x="225" y="178" width="15" height="16"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{mes}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="410" y="172" width="30" height="16"/>
+				<reportElement x="248" y="178" width="77" height="16"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{anio}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="361" y="172" width="15" height="16"/>
+				<reportElement x="202" y="178" width="15" height="16"/>
 				<textElement>
-					<font size="12"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{dia}]]></textFieldExpression>
 			</textField>
@@ -241,7 +248,7 @@
 	<pageHeader>
 		<band height="28">
 			<staticText>
-				<reportElement x="19" y="-175" width="515" height="20"/>
+				<reportElement x="19" y="-163" width="515" height="20"/>
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
@@ -275,17 +282,28 @@
 		<band/>
 	</columnFooter>
 	<pageFooter>
-		<band/>
+		<band height="20">
+			<textField hyperlinkType="None">
+				<reportElement x="523" y="6" width="15" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{PAGE_NUMBER}.toString()]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<lastPageFooter>
-		<band height="31">
-			<staticText>
-				<reportElement x="21" y="0" width="106" height="23"/>
-				<textElement>
-					<font size="16"/>
+		<band height="20">
+			<textField hyperlinkType="None">
+				<reportElement x="523" y="6" width="15" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
 				</textElement>
-				<text><![CDATA[La mejor]]></text>
-			</staticText>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{PAGE_NUMBER}.toString()]]></textFieldExpression>
+			</textField>
 		</band>
 	</lastPageFooter>
+	<noData>
+		<band/>
+	</noData>
 </jasperReport>
