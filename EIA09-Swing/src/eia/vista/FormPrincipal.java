@@ -10,10 +10,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.help.HelpBroker;
+import javax.help.HelpSet;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -131,7 +134,6 @@ public class FormPrincipal {
 	private File ficheroProyecto = null;  //  @jve:decl-index=0:
 	private JasperPrint informe = null;
 
-
 	private JFrame getFramePrincipal() {
 		if (framePrincipal == null) {
 			framePrincipal = new JFrame();
@@ -142,6 +144,7 @@ public class FormPrincipal {
 			framePrincipal.setContentPane(getPanelContenidoPrincipal());
 			framePrincipal.setTitle("EIA09");
 			framePrincipal.setResizable(false);
+			inicializarAyuda();
 		}
 		return framePrincipal;
 	}
@@ -1287,6 +1290,21 @@ public class FormPrincipal {
 		}
 	}
 
+	private void inicializarAyuda(){
+		try {
+			// Carga el fichero de ayuda
+			File fichero = new File(".//help//help_set.hs");
+			URL hsURL = fichero.toURI().toURL();
+
+			// Crea el HelpSet y el HelpBroker
+			HelpSet helpset = new HelpSet(getClass().getClassLoader(), hsURL);
+			HelpBroker ayuda = helpset.createHelpBroker();
+			ayuda.enableHelpOnButton(funcionamientoMenuItem, "aplicacion", helpset);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -1295,4 +1313,5 @@ public class FormPrincipal {
 			}
 		});
 	}
+
 }
