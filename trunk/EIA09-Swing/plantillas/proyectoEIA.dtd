@@ -36,6 +36,7 @@
 	<!ELEMENT idAccion (#PCDATA)>
 	<!ELEMENT idFactor (#PCDATA)>
 	<!ELEMENT valorSimpleEnjuiciamiento (#PCDATA)>
+	<!ELEMENT valorTotal (#PCDATA)>
 	<!ELEMENT valorCuantitativo (indicador, maxVal, minVal, magnitud)>
 		<!ELEMENT indicador (#PCDATA)>
 		<!ELEMENT maxVal (#PCDATA)>
