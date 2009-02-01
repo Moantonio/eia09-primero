@@ -15,7 +15,6 @@
 <!ELEMENT pais (#PCDATA)>
 <!ELEMENT tipo (#PCDATA)>
 <!ELEMENT listaAlternativas (alternativaProyEIA)*>
-<!ELEMENT nombreAlternativa (#PCDATA)>
 <!ELEMENT listaFactores (factor)+>
 		<!ELEMENT factor (nombreFactor,peso?,listaFactores?)>
 		<!ELEMENT nombreFactor (#PCDATA)>
