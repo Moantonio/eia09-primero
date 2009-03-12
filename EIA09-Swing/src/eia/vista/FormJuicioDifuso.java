@@ -3,9 +3,9 @@ package eia.vista;
 import javax.swing.JPanel;
 import java.awt.Frame;
 import java.awt.BorderLayout;
-import javax.swing.JDialog;
+import java.awt.Toolkit;
 
-//TODO
+import javax.swing.JDialog;
 
 /**
  * @author SI: EIA'09
@@ -14,12 +14,13 @@ import javax.swing.JDialog;
  *         Luis González de Paula.
  */
 
-public class FormEnjuiciamientoDifuso extends JDialog {
+//TODO
+public class FormJuicioDifuso extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel jContentPane = null;
 
-	public FormEnjuiciamientoDifuso(Frame owner) {
+	public FormJuicioDifuso(Frame owner) {
 		super(owner);
 		initialize();
 	}
@@ -27,6 +28,8 @@ public class FormEnjuiciamientoDifuso extends JDialog {
 	private void initialize() {
 		this.setSize(300, 200);
 		this.setContentPane(getJContentPane());
+		this.setTitle("Asistente difuso: efecto");
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".//images//image-loading.png"));
 	}
 
 	private JPanel getJContentPane() {
