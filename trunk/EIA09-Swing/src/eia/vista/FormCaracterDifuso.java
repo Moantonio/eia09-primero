@@ -3,6 +3,8 @@ package eia.vista;
 import javax.swing.JPanel;
 import java.awt.Frame;
 import java.awt.BorderLayout;
+import java.awt.Toolkit;
+
 import javax.swing.JDialog;
 
 /**
@@ -26,6 +28,8 @@ public class FormCaracterDifuso extends JDialog {
 	private void initialize() {
 		this.setSize(300, 200);
 		this.setContentPane(getJContentPane());
+		this.setTitle("Asistente difuso: Carácter impacto");
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".//images//image-loading.png"));
 	}
 
 	private JPanel getJContentPane() {
