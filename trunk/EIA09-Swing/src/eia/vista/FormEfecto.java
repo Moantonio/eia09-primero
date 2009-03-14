@@ -133,6 +133,7 @@ public class FormEfecto extends JDialog {
 	// Variables de modelo
 	private Efecto efecto;
 	private BufferedImage grafica = null;
+	private JButton asistenteJuicioButton = null;
 
 	public boolean isFlagAceptar() {
 		return flagAceptar;
@@ -386,9 +387,9 @@ public class FormEfecto extends JDialog {
 					CaracterEfecto.moderado.toString(), CaracterEfecto.severo.toString()};
 			caracterComboBox = new JComboBox(opciones);
 			caracterComboBox.setEnabled(false);
-			caracterComboBox.setSize(new Dimension(135, 18));
-			caracterComboBox.setPreferredSize(new Dimension(31, 38));
-			caracterComboBox.setLocation(new Point(35, 38));
+			caracterComboBox.setSize(new Dimension(100, 18));
+			caracterComboBox.setPreferredSize(new Dimension(20, 20));
+			caracterComboBox.setLocation(new Point(10, 37));
 			if (efecto.getValCualitativa() != null && efecto.getValCuantitativa() != null){
 				caracterComboBox.setSelectedItem(efecto.getCaracter().toString());
 			}
@@ -941,6 +942,7 @@ public class FormEfecto extends JDialog {
 			caracterPanel.setSize(new Dimension(200, 75));
 			caracterPanel.add(getCaracterComboBox(), null);
 			caracterPanel.add(caracterLabel, null);
+			caracterPanel.add(getAsistenteJuicioButton(), null);
 		}
 		return caracterPanel;
 	}
@@ -1307,6 +1309,23 @@ public class FormEfecto extends JDialog {
 			opcionTextField.setEnabled(false);
 		}
 		return opcionTextField;
+	}
+
+	/**
+	 * This method initializes asistenteJuicioButton
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getAsistenteJuicioButton() {
+		if (asistenteJuicioButton == null) {
+			asistenteJuicioButton = new JButton();
+			asistenteJuicioButton.setName("");
+			asistenteJuicioButton.setText("Difuso");
+			asistenteJuicioButton.setLocation(new Point(115, 37));
+			asistenteJuicioButton.setSize(new Dimension(70, 18));
+			asistenteJuicioButton.setBackground(Color.white);
+		}
+		return asistenteJuicioButton;
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="14,15"
