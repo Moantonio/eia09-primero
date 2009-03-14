@@ -8,6 +8,8 @@ import java.awt.Frame;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -19,6 +21,11 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+import eia.fuzzy.impacto.Caracter;
+import eia.util.CaracterEfecto;
 
 /**
  * @author SI: EIA'09
@@ -27,7 +34,6 @@ import javax.swing.border.TitledBorder;
  *         Luis González de Paula.
  */
 
-//TODO
 public class FormCaracterDifuso extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -53,6 +59,12 @@ public class FormCaracterDifuso extends JDialog {
 	private JButton jButton = null;
 	private JButton aceptarButton = null;
 	private JButton cancelarButton = null;
+
+	// Variables del modelo
+	private boolean flagAceptar = false;
+	private CaracterEfecto caracter = CaracterEfecto.compatible;  //  @jve:decl-index=0:
+	private double perRecuperacion = 0.5;
+	private double medCorrectoras = 0.5;
 
 	public FormCaracterDifuso(Frame owner) {
 		super(owner);
@@ -140,6 +152,12 @@ public class FormCaracterDifuso extends JDialog {
 			jMCorrectorasSlider.setLocation(new Point(150, 55));
 			jMCorrectorasSlider.setSize(new Dimension(120, 20));
 			jMCorrectorasSlider.setMaximum(10);
+			jMCorrectorasSlider.addChangeListener(new ChangeListener(){
+				 public void stateChanged(ChangeEvent e) {
+					medCorrectoras = (redondear(jMCorrectorasSlider.getValue()*0.1,3));
+					getJMCorrectorasTextField().setText(String.valueOf(medCorrectoras));
+				}
+			});
 		}
 		return jMCorrectorasSlider;
 	}
@@ -147,8 +165,10 @@ public class FormCaracterDifuso extends JDialog {
 	private JTextField getJMCorrectorasTextField() {
 		if (jMCorrectorasTextField == null) {
 			jMCorrectorasTextField = new JTextField();
-			jMCorrectorasTextField.setLocation(new Point(195, 75));
-			jMCorrectorasTextField.setSize(new Dimension(33, 18));
+			jMCorrectorasTextField.setLocation(new Point(199, 75));
+			jMCorrectorasTextField.setSize(new Dimension(22, 18));
+			jMCorrectorasTextField.setEnabled(false);
+			jMCorrectorasTextField.setText("0.5");
 		}
 		return jMCorrectorasTextField;
 	}
@@ -161,6 +181,12 @@ public class FormCaracterDifuso extends JDialog {
 			jTRecuperacionSlider.setLocation(new Point(150, 140));
 			jTRecuperacionSlider.setSize(new Dimension(120, 20));
 			jTRecuperacionSlider.setMaximum(10);
+			jTRecuperacionSlider.addChangeListener(new ChangeListener(){
+				 public void stateChanged(ChangeEvent e) {
+					 perRecuperacion = (redondear(jTRecuperacionSlider.getValue()*0.1,3));
+					getJTRecuperacionTextField().setText(String.valueOf(perRecuperacion));
+				}
+			});
 		}
 		return jTRecuperacionSlider;
 	}
@@ -168,8 +194,10 @@ public class FormCaracterDifuso extends JDialog {
 	private JTextField getJTRecuperacionTextField() {
 		if (jTRecuperacionTextField == null) {
 			jTRecuperacionTextField = new JTextField();
-			jTRecuperacionTextField.setLocation(new Point(195, 160));
-			jTRecuperacionTextField.setSize(new Dimension(33, 18));
+			jTRecuperacionTextField.setLocation(new Point(199, 160));
+			jTRecuperacionTextField.setSize(new Dimension(22, 18));
+			jTRecuperacionTextField.setEnabled(false);
+			jTRecuperacionTextField.setText("0.5");
 		}
 		return jTRecuperacionTextField;
 	}
@@ -177,13 +205,13 @@ public class FormCaracterDifuso extends JDialog {
 	private JPanel getValoracionPanel() {
 		if (valoracionPanel == null) {
 			jLabel = new JLabel();
-			jLabel.setLocation(new Point(78, 35));
+			jLabel.setLocation(new Point(100, 36));
 			jLabel.setText("::");
 			jLabel.setSize(new Dimension(13, 16));
 			valoracionLabel = new JLabel();
 			valoracionLabel.setText("Carácter impacto");
 			valoracionLabel.setSize(new Dimension(125, 21));
-			valoracionLabel.setLocation(new Point(63, 8));
+			valoracionLabel.setLocation(new Point(68, 8));
 			valoracionLabel.setFont(new Font("Dialog", Font.BOLD, 14));
 			valoracionPanel = new JPanel();
 			valoracionPanel.setLayout(null);
@@ -201,9 +229,9 @@ public class FormCaracterDifuso extends JDialog {
 	private JTextField getValoracionTextField() {
 		if (valoracionTextField == null) {
 			valoracionTextField = new JTextField();
-			valoracionTextField.setLocation(new Point(87, 35));
+			valoracionTextField.setLocation(new Point(115, 35));
 			valoracionTextField.setEnabled(false);
-			valoracionTextField.setSize(new Dimension(141, 18));
+			valoracionTextField.setSize(new Dimension(83, 18));
 		}
 		return valoracionTextField;
 	}
@@ -211,9 +239,9 @@ public class FormCaracterDifuso extends JDialog {
 	private JTextField getValorTextField() {
 		if (valorTextField == null) {
 			valorTextField = new JTextField();
-			valorTextField.setLocation(new Point(20, 35));
+			valorTextField.setLocation(new Point(60, 35));
 			valorTextField.setEnabled(false);
-			valorTextField.setSize(new Dimension(56, 18));
+			valorTextField.setSize(new Dimension(35, 18));
 		}
 		return valorTextField;
 	}
@@ -237,18 +265,65 @@ public class FormCaracterDifuso extends JDialog {
 			jButton.setBackground(Color.white);
 			jButton.setText("Inferir");
 			jButton.setSize(new Dimension(79, 30));
+			jButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					calcularIfencia();
+					aceptarButton.setEnabled(true);
+				}
+			});
 		}
 		return jButton;
+	}
+
+	private void calcularIfencia() {
+		// Creamos el motor de inferencia difuso
+		Caracter motorDifuso = new Caracter();
+
+		// Procesaremos lo valores de entrada del sistema
+		double[] entrada = new double[2];
+		//0: Precisa medidas correctoras?
+		entrada[0] = medCorrectoras;
+		//1: Periodo de recuperacion de los recursos naturales
+		entrada[1] = perRecuperacion;
+
+		// Realizamos la inferencia, obteniendo la salida del sistema
+		// 0 a 0.25 (compatible)
+		// 0.25 a 0.5 (moderado)
+		// 0.5 a 0.75 (severo)
+		// 0.75 a 1 (crítico)
+		double[] salida = motorDifuso.crispInference(entrada);
+
+		// Mostramos los resultados
+		valorTextField.setText(String.valueOf(redondear(salida[0],3)));
+		if (salida[0]<0.25){
+			valoracionTextField.setText("Compatible");
+			caracter = CaracterEfecto.compatible;
+		}else if((salida[0]>=0.25)&&(salida[0]<0.5)){
+			valoracionTextField.setText("Moderado");
+			caracter = CaracterEfecto.moderado;
+		}else if((salida[0]>=0.5)&&(salida[0]<0.75)){
+			valoracionTextField.setText("Severo");
+			caracter = CaracterEfecto.severo;
+		}else{
+			valoracionTextField.setText("Crítico");
+			caracter = CaracterEfecto.critico;
+		}
 	}
 
 	private JButton getAceptarButton() {
 		if (aceptarButton == null) {
 			aceptarButton = new JButton();
-			aceptarButton.setName("");
+			aceptarButton.setEnabled(false);
 			aceptarButton.setText("Aceptar");
 			aceptarButton.setLocation(new Point(145, 305));
 			aceptarButton.setSize(new Dimension(79, 17));
 			aceptarButton.setBackground(Color.white);
+			aceptarButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					flagAceptar = true;
+					setVisible(false);
+				}
+			});
 		}
 		return aceptarButton;
 	}
@@ -262,8 +337,32 @@ public class FormCaracterDifuso extends JDialog {
 			cancelarButton.setLocation(new Point(241, 305));
 			cancelarButton.setSize(new Dimension(85, 17));
 			cancelarButton.setBackground(Color.white);
+			cancelarButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+				}
+			});
 		}
 		return cancelarButton;
+	}
+
+	public boolean isFlagAceptar() {
+		return flagAceptar;
+	}
+
+	public CaracterEfecto getCaracter() {
+		return caracter;
+	}
+
+	/**
+	 * Función para redondear un número de tipo double al número de cifras
+	 * decimales indicadas por parámetro.
+	 * @param nD Número a redondear.
+	 * @param nDec Número de cifras decimales a redondear.
+	 * @return Número redondeado.
+	 */
+	private double redondear(double nD, int nDec){
+	  return Math.round(nD*Math.pow(10,nDec))/Math.pow(10,nDec);
 	}
 
 	public static void main(String[] args) {
