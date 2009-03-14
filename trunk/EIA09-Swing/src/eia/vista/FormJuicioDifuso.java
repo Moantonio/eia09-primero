@@ -53,6 +53,7 @@ public class FormJuicioDifuso extends JDialog {
 	private JButton aceptarButton = null;
 	private JTextField valorTextField = null;
 	private JPanel iferenciaPanel = null;
+	private JLabel jLabel = null;
 
 	public FormJuicioDifuso(Frame owner) {
 		super(owner);
@@ -214,7 +215,8 @@ public class FormJuicioDifuso extends JDialog {
 		if (jButton == null) {
 			jButton = new JButton();
 			jButton.setBackground(Color.white);
-			jButton.setBounds(new Rectangle(21, 23, 79, 17));
+			jButton.setLocation(new Point(21, 16));
+			jButton.setSize(new Dimension(79, 30));
 			jButton.setText("Inferir");
 		}
 		return jButton;
@@ -222,6 +224,10 @@ public class FormJuicioDifuso extends JDialog {
 
 	private JPanel getValoracionPanel() {
 		if (valoracionPanel == null) {
+			jLabel = new JLabel();
+			jLabel.setText("::");
+			jLabel.setLocation(new Point(78, 35));
+			jLabel.setSize(new Dimension(13, 16));
 			valoracionLabel = new JLabel();
 			valoracionLabel.setBounds(new Rectangle(49, 8, 156, 21));
 			valoracionLabel.setText("Simple enjuiciamiento");
@@ -233,6 +239,7 @@ public class FormJuicioDifuso extends JDialog {
 			valoracionPanel.add(getValoracionTextField(), null);
 			valoracionPanel.add(valoracionLabel, null);
 			valoracionPanel.add(getValorTextField(), null);
+			valoracionPanel.add(jLabel, null);
 		}
 		return valoracionPanel;
 	}
@@ -241,7 +248,7 @@ public class FormJuicioDifuso extends JDialog {
 		if (valoracionTextField == null) {
 			valoracionTextField = new JTextField();
 			valoracionTextField.setEnabled(false);
-			valoracionTextField.setLocation(new Point(20, 37));
+			valoracionTextField.setLocation(new Point(87, 35));
 			valoracionTextField.setSize(new Dimension(141, 18));
 		}
 		return valoracionTextField;
@@ -276,7 +283,7 @@ public class FormJuicioDifuso extends JDialog {
 		if (valorTextField == null) {
 			valorTextField = new JTextField();
 			valorTextField.setEnabled(false);
-			valorTextField.setLocation(new Point(175, 37));
+			valorTextField.setLocation(new Point(20, 35));
 			valorTextField.setSize(new Dimension(56, 18));
 		}
 		return valorTextField;
