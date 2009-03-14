@@ -31,6 +31,7 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
+import eia.fuzzy.efecto.SimpleEnjuiciamiento;
 import eia.model.Efecto;
 import eia.model.ValoracionCualitativa;
 import eia.model.ValoracionCuantitativa;
@@ -424,6 +425,18 @@ public class FormEfecto extends JDialog {
 			juicioComboBox.setEnabled(false);
 			juicioComboBox.setLocation(new Point(178, 30));
 			juicioComboBox.setSize(new Dimension(135, 18));
+			juicioComboBox.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					if (juicioComboBox.getSelectedIndex()!=3){
+						efectoTabbedPane.setEnabledAt(1, false);
+						efectoTabbedPane.setEnabledAt(2, false);
+						//TODO Si ya estaba valorado: poner a ¿null? las valoraciones
+					}else{
+						efectoTabbedPane.setEnabledAt(1, true);
+						efectoTabbedPane.setEnabledAt(2, true);
+					}
+				}
+			});
 		}
 		return juicioComboBox;
 	}
@@ -727,7 +740,6 @@ public class FormEfecto extends JDialog {
 		if (valCuantitativaPane == null) {
 			valCuantitativaPane = new JPanel();
 			valCuantitativaPane.setLayout(null);
-			//jContentPane2.setBorder(BorderFactory.createLineBorder(Color.black, 1));
 			valCuantitativaPane.add(getCuantitativaPanel(), null);
 			valCuantitativaPane.add(getAceptarCuantitativaButton(), null);
 			valCuantitativaPane.add(getCancelarCuantitativaButton(), null);
@@ -1237,36 +1249,42 @@ public class FormEfecto extends JDialog {
 
 	private void actualizarValoraciones(){
 
-		// Valoración cualitativa
-		if (efecto.getValCualitativa()!=null){
-			String incidencia = String.valueOf(efecto.getValCualitativa().getIncidencia());
-			cualitativaTextField.setText(incidencia);
-			incidenciaTextField.setText(incidencia);
-		}else{
-			cualitativaTextField.setText(" ");
-			incidenciaTextField.setText(" ");
-		}
+		if (efecto.getJuicio() == ValorJuicio.significativo){
+			// Valoración cualitativa
+			if (efecto.getValCualitativa()!=null){
+				String incidencia = String.valueOf(efecto.getValCualitativa().getIncidencia());
+				cualitativaTextField.setText(incidencia);
+				incidenciaTextField.setText(incidencia);
+			}else{
+				cualitativaTextField.setText(" ");
+				incidenciaTextField.setText(" ");
+			}
 
-		// Valoración cuantitativa
-		if (efecto.getValCuantitativa()!=null){
-			String magnitud = String.valueOf(efecto.getValCuantitativa().getMagnitudImpacto());
-			cuantitativaTextField.setText(magnitud);
-			magnitudTextField.setText(magnitud);
-		}else{
-			cuantitativaTextField.setText(" ");
-			magnitudTextField.setText(" ");
-		}
+			// Valoración cuantitativa
+			if (efecto.getValCuantitativa()!=null){
+				String magnitud = String.valueOf(efecto.getValCuantitativa().getMagnitudImpacto());
+				cuantitativaTextField.setText(magnitud);
+				magnitudTextField.setText(magnitud);
+			}else{
+				cuantitativaTextField.setText(" ");
+				magnitudTextField.setText(" ");
+			}
 
-		// Si tenemos la valoración total
-		if (efecto.getValCuantitativa()!=null && efecto.getValCualitativa()!=null){
-			efecto.calcularValorTotal();
-			valoracionTextField.setText(String.valueOf(efecto.getValorTotal()));
-			// El caracter se puede editar
-			caracterComboBox.setEnabled(true);
+			// Si tenemos la valoración total
+			if (efecto.getValCuantitativa()!=null && efecto.getValCualitativa()!=null){
+				efecto.calcularValorTotal();
+				valoracionTextField.setText(String.valueOf(efecto.getValorTotal()));
+				// El caracter se puede editar
+				caracterComboBox.setEnabled(true);
+			}else{
+				valoracionTextField.setText(" ");
+				// El caracter no se puede editar
+				caracterComboBox.setEditable(false);
+			}
 		}else{
-			valoracionTextField.setText(" ");
-			// El caracter no se puede editar
-			caracterComboBox.setEditable(false);
+			//Deshabilitar valoraciones
+			efectoTabbedPane.setEnabledAt(1, false);
+			efectoTabbedPane.setEnabledAt(2, false);
 		}
 	}
 
