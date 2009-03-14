@@ -469,6 +469,10 @@ public class FormAlternativa extends JDialog{
 					valorarButton.setEnabled(false);
 					valoracionTextField.setText("");
 					alternativa.setValorada(false);
+
+					if(comprobarValorados()){
+						valorarButton.setEnabled(true);
+					}
 				}
 				formNuevoEfecto.dispose();
 			}
@@ -512,14 +516,21 @@ public class FormAlternativa extends JDialog{
 			efecto.setCaracter(editarEfecto.getEfecto().getCaracter());
 
 			modeloTabla.setValueAt(efecto.getJuicio(), indice, 1);
-			if(efecto.getValCualitativa()!= null)
+			if((efecto.getJuicio()==ValorJuicio.significativo)&&(efecto.getValCualitativa()!= null)){
 				modeloTabla.setValueAt(efecto.getValCualitativa().getIncidencia(), indice, 2);
-			if(efecto.getValCuantitativa()!= null){
+			}else{
+				modeloTabla.setValueAt("", indice, 2);
+			}
+			modeloTabla.setValueAt("", indice, 4);
+			modeloTabla.setValueAt("", indice, 5);
+			if((efecto.getJuicio()==ValorJuicio.significativo)&&(efecto.getValCuantitativa()!= null)){
 				modeloTabla.setValueAt(efecto.getValCuantitativa().getMagnitudImpacto(), indice, 3);
 				if(efecto.getValCualitativa()!= null){
 					modeloTabla.setValueAt(efecto.getValorTotal(), indice, 4);
 					modeloTabla.setValueAt(efecto.getCaracter(), indice, 5);
 				}
+			}else{
+				modeloTabla.setValueAt("", indice, 3);
 			}
 
 			// Comprobamos si todos los efectos están valorados
@@ -597,8 +608,8 @@ public class FormAlternativa extends JDialog{
 			{
 				Efecto efecto = alternativa.getEfectos().get(i);
 
-				// Si el efecto no se ha valorado
-				if (efecto.getValCualitativa()==null || efecto.getValCuantitativa()==null){
+				// Si un efecto significativo no se ha valorado
+				if ((efecto.getJuicio()==ValorJuicio.significativo)&&((efecto.getValCualitativa()==null || efecto.getValCuantitativa()==null))){
 					valorados = false;
 				}
 				i++;
@@ -616,17 +627,17 @@ public class FormAlternativa extends JDialog{
 		    String id = efecto.getId();
 		    String juicio = efecto.getJuicio().toString();
 		    String cualitativa = "";
-		    if (efecto.getValCualitativa()!=null){
+		    if ((efecto.getJuicio()==ValorJuicio.significativo)&&(efecto.getValCualitativa()!=null)){
 		    	cualitativa = String.valueOf(efecto.getValCualitativa().getIncidencia());
 		    }
 		    String cuantitativa = "";
-		    if (efecto.getValCuantitativa()!=null){
+		    if ((efecto.getJuicio()==ValorJuicio.significativo)&&(efecto.getValCuantitativa()!=null)){
 		    	cuantitativa = String.valueOf(efecto.getValCuantitativa().getMagnitudImpacto());
 		    }
 
 		    String total = "";
 		    String caracter = "";
-		    if(efecto.getValCualitativa()!=null&&efecto.getValCuantitativa()!=null){
+		    if((efecto.getJuicio()==ValorJuicio.significativo)&&(efecto.getValCualitativa()!=null&&efecto.getValCuantitativa()!=null)){
 		    	total = String.valueOf(efecto.getValorTotal());
 		    	caracter = efecto.getCaracter().toString();
 		    }

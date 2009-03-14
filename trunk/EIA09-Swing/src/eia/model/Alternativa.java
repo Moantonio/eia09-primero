@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
+import eia.util.ValorJuicio;
+
 
 /**
  * @author SI: EIA'09
@@ -158,9 +160,11 @@ public class Alternativa implements Cloneable{
 		double valor = 0;
 		if (efectos.size()!=0){
 			for(int i = 0; i<efectos.size();i++){
-				if (efectos.get(i).getValorTotal() == 0)
-					efectos.get(i).calcularValorTotal();
-				valor += efectos.get(i).getValorTotal();
+				if (efectos.get(i).getJuicio()==ValorJuicio.significativo){
+					if (efectos.get(i).getValorTotal() == 0)
+						efectos.get(i).calcularValorTotal();
+					valor += efectos.get(i).getValorTotal();
+				}
 			}
 			valorTotal = redondear(valor,3);
 		}
