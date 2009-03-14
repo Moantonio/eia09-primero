@@ -7,6 +7,9 @@ import java.awt.Frame;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -16,6 +19,11 @@ import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+import eia.fuzzy.efecto.SimpleEnjuiciamiento;
+import eia.util.ValorJuicio;
 
 /**
  * @author SI: EIA'09
@@ -24,7 +32,6 @@ import javax.swing.border.TitledBorder;
  *         Luis González de Paula.
  */
 
-//TODO
 public class FormJuicioDifuso extends JDialog {
 
 	private static final long serialVersionUID = 1L;
@@ -54,6 +61,13 @@ public class FormJuicioDifuso extends JDialog {
 	private JTextField valorTextField = null;
 	private JPanel iferenciaPanel = null;
 	private JLabel jLabel = null;
+
+	// Variables del modelo
+	private boolean flagAceptar = false;
+	private ValorJuicio valorJuicio = ValorJuicio.despreciable;  //  @jve:decl-index=0:
+	private double modMedioambiente = 0.5;
+	private double modRecursosnaturales = 0.5;
+	private double modPffuncionamiento = 0.5;
 
 	public FormJuicioDifuso(Frame owner) {
 		super(owner);
@@ -98,6 +112,12 @@ public class FormJuicioDifuso extends JDialog {
 			jMAmbienteSlider.setSize(new Dimension(120, 20));
 			jMAmbienteSlider.setLocation(new Point(150, 55));
 			jMAmbienteSlider.setValue(5);
+			jMAmbienteSlider.addChangeListener(new ChangeListener(){
+				 public void stateChanged(ChangeEvent e) {
+					modMedioambiente = (redondear(jMAmbienteSlider.getValue()*0.1,3));
+					getJMATextField().setText(String.valueOf(modMedioambiente));
+				}
+			});
 		}
 		return jMAmbienteSlider;
 	}
@@ -110,6 +130,12 @@ public class FormJuicioDifuso extends JDialog {
 			jRNaturalesSlider.setSize(new Dimension(120, 20));
 			jRNaturalesSlider.setLocation(new Point(150, 125));
 			jRNaturalesSlider.setValue(5);
+			jRNaturalesSlider.addChangeListener(new ChangeListener(){
+				 public void stateChanged(ChangeEvent e) {
+					modRecursosnaturales = (redondear(jRNaturalesSlider.getValue()*0.1,3));
+					getJRNTextField().setText(String.valueOf(modRecursosnaturales));
+				}
+			});
 		}
 		return jRNaturalesSlider;
 	}
@@ -122,6 +148,12 @@ public class FormJuicioDifuso extends JDialog {
 			jPFundamentalesSlider.setSize(new Dimension(120, 20));
 			jPFundamentalesSlider.setLocation(new Point(150, 195));
 			jPFundamentalesSlider.setValue(5);
+			jPFundamentalesSlider.addChangeListener(new ChangeListener(){
+				 public void stateChanged(ChangeEvent e) {
+					modPffuncionamiento = (redondear(jPFundamentalesSlider.getValue()*0.1,3));
+					getJPFTextField().setText(String.valueOf(modPffuncionamiento));
+				}
+			});
 		}
 		return jPFundamentalesSlider;
 	}
@@ -187,8 +219,10 @@ public class FormJuicioDifuso extends JDialog {
 	private JTextField getJMATextField() {
 		if (jMATextField == null) {
 			jMATextField = new JTextField();
-			jMATextField.setSize(new Dimension(33, 18));
-			jMATextField.setLocation(new Point(195, 75));
+			jMATextField.setSize(new Dimension(22, 18));
+			jMATextField.setEnabled(false);
+			jMATextField.setLocation(new Point(199, 75));
+			jMATextField.setText("0.5");
 		}
 		return jMATextField;
 	}
@@ -196,8 +230,10 @@ public class FormJuicioDifuso extends JDialog {
 	private JTextField getJRNTextField() {
 		if (jRNTextField == null) {
 			jRNTextField = new JTextField();
-			jRNTextField.setSize(new Dimension(33, 18));
-			jRNTextField.setLocation(new Point(194, 145));
+			jRNTextField.setSize(new Dimension(22, 18));
+			jRNTextField.setEnabled(false);
+			jRNTextField.setText("0.5");
+			jRNTextField.setLocation(new Point(199, 145));
 		}
 		return jRNTextField;
 	}
@@ -205,8 +241,10 @@ public class FormJuicioDifuso extends JDialog {
 	private JTextField getJPFTextField() {
 		if (jPFTextField == null) {
 			jPFTextField = new JTextField();
-			jPFTextField.setLocation(new Point(194, 215));
-			jPFTextField.setSize(new Dimension(33, 18));
+			jPFTextField.setLocation(new Point(199, 215));
+			jPFTextField.setEnabled(false);
+			jPFTextField.setSize(new Dimension(22, 18));
+			jPFTextField.setText("0.5");
 		}
 		return jPFTextField;
 	}
@@ -218,15 +256,50 @@ public class FormJuicioDifuso extends JDialog {
 			jButton.setLocation(new Point(21, 16));
 			jButton.setSize(new Dimension(79, 30));
 			jButton.setText("Inferir");
+			jButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					calcularIfencia();
+					aceptarButton.setEnabled(true);
+				}
+			});
 		}
 		return jButton;
+	}
+
+	private void calcularIfencia() {
+		// Creamos el motor de inferencia difuso
+		SimpleEnjuiciamiento motorDifuso = new SimpleEnjuiciamiento();
+
+		// Procesaremos lo valores de entrada del sistema
+		double[] entrada = new double[3];
+		//0: Cuánto modifica el medio ambiente?
+		entrada[0] = modMedioambiente;
+		//1: Cuánto modifica los recursos naturales?
+		entrada[1] = modRecursosnaturales;
+		//2: Cuánto modifica los procesos fundamentales de funcionamiento?
+		entrada[2] = modPffuncionamiento;
+
+		// Realizamos la inferencia, obteniendo la salida del sistema
+		// >0.5 (significativo)
+		// <0.5 (despreciable)
+		double[] salida = motorDifuso.crispInference(entrada);
+
+		// Mostramos los resultados
+		valorTextField.setText(String.valueOf(redondear(salida[0],3)));
+		if (salida[0]>0.5){
+			valoracionTextField.setText("Significativo");
+			valorJuicio = ValorJuicio.significativo;
+		}else {
+			valoracionTextField.setText("Despreciable");
+			valorJuicio = ValorJuicio.despreciable;
+		}
 	}
 
 	private JPanel getValoracionPanel() {
 		if (valoracionPanel == null) {
 			jLabel = new JLabel();
 			jLabel.setText("::");
-			jLabel.setLocation(new Point(78, 35));
+			jLabel.setLocation(new Point(100, 36));
 			jLabel.setSize(new Dimension(13, 16));
 			valoracionLabel = new JLabel();
 			valoracionLabel.setBounds(new Rectangle(49, 8, 156, 21));
@@ -248,8 +321,8 @@ public class FormJuicioDifuso extends JDialog {
 		if (valoracionTextField == null) {
 			valoracionTextField = new JTextField();
 			valoracionTextField.setEnabled(false);
-			valoracionTextField.setLocation(new Point(87, 35));
-			valoracionTextField.setSize(new Dimension(141, 18));
+			valoracionTextField.setLocation(new Point(115, 35));
+			valoracionTextField.setSize(new Dimension(83, 18));
 		}
 		return valoracionTextField;
 	}
@@ -263,6 +336,11 @@ public class FormJuicioDifuso extends JDialog {
 			cancelarButton.setLocation(new Point(241, 354));
 			cancelarButton.setSize(new Dimension(85, 17));
 			cancelarButton.setBackground(Color.white);
+			cancelarButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					setVisible(false);
+				}
+			});
 		}
 		return cancelarButton;
 	}
@@ -275,6 +353,13 @@ public class FormJuicioDifuso extends JDialog {
 			aceptarButton.setLocation(new Point(145, 353));
 			aceptarButton.setSize(new Dimension(79, 17));
 			aceptarButton.setBackground(Color.white);
+			aceptarButton.setEnabled(false);
+			aceptarButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					flagAceptar = true;
+					setVisible(false);
+				}
+			});
 		}
 		return aceptarButton;
 	}
@@ -283,8 +368,8 @@ public class FormJuicioDifuso extends JDialog {
 		if (valorTextField == null) {
 			valorTextField = new JTextField();
 			valorTextField.setEnabled(false);
-			valorTextField.setLocation(new Point(20, 35));
-			valorTextField.setSize(new Dimension(56, 18));
+			valorTextField.setLocation(new Point(60, 35));
+			valorTextField.setSize(new Dimension(35, 18));
 		}
 		return valorTextField;
 	}
@@ -299,6 +384,25 @@ public class FormJuicioDifuso extends JDialog {
 			iferenciaPanel.add(getJButton(), null);
 		}
 		return iferenciaPanel;
+	}
+
+	public boolean isFlagAceptar() {
+		return flagAceptar;
+	}
+
+	public ValorJuicio getValorJuicio() {
+		return valorJuicio;
+	}
+
+	/**
+	 * Función para redondear un número de tipo double al número de cifras
+	 * decimales indicadas por parámetro.
+	 * @param nD Número a redondear.
+	 * @param nDec Número de cifras decimales a redondear.
+	 * @return Número redondeado.
+	 */
+	private double redondear(double nD, int nDec){
+	  return Math.round(nD*Math.pow(10,nDec))/Math.pow(10,nDec);
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="10,10"
