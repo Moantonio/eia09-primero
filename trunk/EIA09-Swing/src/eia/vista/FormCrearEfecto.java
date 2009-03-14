@@ -53,6 +53,7 @@ public class FormCrearEfecto extends JDialog {
 	private boolean flagAceptar = false;
 	private String nombreAccion;
 	private String nombreFactor;
+	private JButton asistenteButton = null;
 
 	public FormCrearEfecto(String nAccion, String nFactor) {
 		super();
@@ -69,7 +70,7 @@ public class FormCrearEfecto extends JDialog {
 	}
 
 	private void initialize() {
-		this.setSize(475, 280);
+		this.setSize(475, 275);
 		this.setContentPane(getJContentPane());
 		this.setTitle("Nuevo efecto");
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage(".//images//window-new.png"));
@@ -139,7 +140,7 @@ public class FormCrearEfecto extends JDialog {
 			crearEfectoPanel = new JPanel();
 			crearEfectoPanel.setLayout(null);
 			crearEfectoPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(EtchedBorder.LOWERED), "Información del efecto", TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font("Dialog", Font.BOLD, 12), new Color(51, 51, 51)));
-			crearEfectoPanel.setSize(new Dimension(441, 162));
+			crearEfectoPanel.setSize(new Dimension(441, 153));
 			crearEfectoPanel.setLocation(new Point(13, 40));
 			crearEfectoPanel.add(nombreLabel, null);
 			crearEfectoPanel.add(descripcionLabel, null);
@@ -147,6 +148,7 @@ public class FormCrearEfecto extends JDialog {
 			crearEfectoPanel.add(getNombreTextField(), null);
 			crearEfectoPanel.add(getScrollPane(), null);
 			crearEfectoPanel.add(getEnjuiciamientoComboBox(), null);
+			crearEfectoPanel.add(getAsistenteButton(), null);
 		}
 		return crearEfectoPanel;
 	}
@@ -188,7 +190,7 @@ public class FormCrearEfecto extends JDialog {
 			aceptarButton = new JButton();
 			aceptarButton.setName("");
 			aceptarButton.setText("Aceptar");
-			aceptarButton.setLocation(new Point(139, 215));
+			aceptarButton.setLocation(new Point(139, 205));
 			aceptarButton.setSize(new Dimension(85, 20));
 			aceptarButton.setBackground(Color.white);
 			aceptarButton.addActionListener(new ActionListener() {
@@ -207,7 +209,7 @@ public class FormCrearEfecto extends JDialog {
 			cancelarButton.setName("");
 			cancelarButton.setSelected(false);
 			cancelarButton.setText("Cancelar");
-			cancelarButton.setLocation(new Point(244, 215));
+			cancelarButton.setLocation(new Point(244, 205));
 			cancelarButton.setSize(new Dimension(85, 20));
 			cancelarButton.setBackground(Color.white);
 			cancelarButton.addActionListener(new ActionListener() {
@@ -252,10 +254,28 @@ public class FormCrearEfecto extends JDialog {
 					ValorJuicio.impredecible.toString(), ValorJuicio.significativo.toString()};
 			enjuiciamientoComboBox = new JComboBox(opciones);
 			enjuiciamientoComboBox.setFont(new Font("Dialog", Font.BOLD, 12));
-			enjuiciamientoComboBox.setLocation(new Point(164, 120));
-			enjuiciamientoComboBox.setSize(new Dimension(175, 17));
+			enjuiciamientoComboBox.setLocation(new Point(168, 120));
+			enjuiciamientoComboBox.setSize(new Dimension(160, 17));
 		}
 		return enjuiciamientoComboBox;
+	}
+
+	/**
+	 * This method initializes asistenteButton
+	 *
+	 * @return javax.swing.JButton
+	 */
+	private JButton getAsistenteButton() {
+		if (asistenteButton == null) {
+			asistenteButton = new JButton();
+			asistenteButton.setName("");
+			asistenteButton.setText("Difuso");
+			asistenteButton.setActionCommand("Asistente");
+			asistenteButton.setSize(new Dimension(70, 18));
+			asistenteButton.setLocation(new Point(337, 120));
+			asistenteButton.setBackground(Color.white);
+		}
+		return asistenteButton;
 	}
 
 }
