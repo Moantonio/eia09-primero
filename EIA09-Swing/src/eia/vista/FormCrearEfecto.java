@@ -260,11 +260,6 @@ public class FormCrearEfecto extends JDialog {
 		return enjuiciamientoComboBox;
 	}
 
-	/**
-	 * This method initializes asistenteButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getAsistenteButton() {
 		if (asistenteButton == null) {
 			asistenteButton = new JButton();
@@ -274,8 +269,34 @@ public class FormCrearEfecto extends JDialog {
 			asistenteButton.setSize(new Dimension(70, 18));
 			asistenteButton.setLocation(new Point(337, 120));
 			asistenteButton.setBackground(Color.white);
+			asistenteButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					calculoDifuso();
+				}
+			});
 		}
 		return asistenteButton;
 	}
 
+	private void calculoDifuso(){
+		FormJuicioDifuso ventanaDifuso = new FormJuicioDifuso(null);
+		Point posActual = getDialog().getLocation();
+		posActual.translate(20, 20);
+		ventanaDifuso.setLocation(posActual);
+		ventanaDifuso.setModal(true);
+		ventanaDifuso.setVisible(true);
+		if(ventanaDifuso.isFlagAceptar()){
+			ValorJuicio valor = ventanaDifuso.getValorJuicio();
+			if(valor == ValorJuicio.despreciable){
+				enjuiciamientoComboBox.setSelectedIndex(0);
+			}else{
+				enjuiciamientoComboBox.setSelectedIndex(3);
+			}
+		}
+		ventanaDifuso.dispose();
+	}
+
+	private JDialog getDialog() {
+		return this;
+	}
 }
