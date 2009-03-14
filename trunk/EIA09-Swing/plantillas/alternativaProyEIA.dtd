@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!ELEMENT alternativaProyEIA (nombre, listaAcciones, valorada)>
-<!ELEMENT nombre (#PCDATA)>
-	<!ATTLIST nombre
-	generica (true|false) "false">	
-<!ELEMENT listaAcciones (accion)+>
-	<!ELEMENT accion (nombreAccion,listaAcciones?)>
-	<!ELEMENT nombreAccion (#PCDATA)>		
-<!ELEMENT valorada (#PCDATA)>
