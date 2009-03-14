@@ -1,7 +1,6 @@
 package eia.vista;
 
 import java.awt.Color;
-import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
@@ -18,7 +17,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
@@ -364,18 +362,4 @@ public class FormCaracterDifuso extends JDialog {
 	private double redondear(double nD, int nDec){
 	  return Math.round(nD*Math.pow(10,nDec))/Math.pow(10,nDec);
 	}
-
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				FormCaracterDifuso application = new FormCaracterDifuso(null);
-				application.getDialog().setVisible(true);
-			}
-		});
-	}
-
-	public Dialog getDialog(){
-		return this;
-	}
-
 }
