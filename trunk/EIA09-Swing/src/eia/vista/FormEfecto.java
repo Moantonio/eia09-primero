@@ -1340,10 +1340,10 @@ public class FormEfecto extends JDialog {
 			if(caracter == CaracterEfecto.compatible){
 				caracterComboBox.setSelectedIndex(0);
 			}
-			if(caracter == CaracterEfecto.critico){
+			else if(caracter == CaracterEfecto.critico){
 				caracterComboBox.setSelectedIndex(1);
 			}
-			if(caracter == CaracterEfecto.moderado){
+			else if(caracter == CaracterEfecto.moderado){
 				caracterComboBox.setSelectedIndex(2);
 			}else{
 				caracterComboBox.setSelectedIndex(3);
