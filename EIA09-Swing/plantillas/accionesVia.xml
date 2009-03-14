@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE alternativaProyEIA SYSTEM ".\alternativaProyEIA.dtd">
-<alternativaProyEIA>
-	<nombre generica="true"></nombre>
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE listaAcciones SYSTEM ".\listaAcciones.dtd">
 	<listaAcciones>
 		<accion>
 			<nombreAccion>Fase de Planeamiento</nombreAccion>
@@ -171,5 +169,3 @@
 			</listaAcciones>
 		</accion>
 	</listaAcciones>
-	<valorada>false</valorada>
-</alternativaProyEIA>

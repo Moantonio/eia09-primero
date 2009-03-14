@@ -52,7 +52,7 @@ import eia.model.Alternativa;
 import eia.model.InfoProyecto;
 import eia.model.Proyecto;
 import eia.util.TipoProyecto;
-import eia.util.xml.XMLAlternativa;
+import eia.util.xml.XMLAcciones;
 import eia.util.xml.XMLProyecto;
 
 /**
@@ -1121,22 +1121,20 @@ public class FormPrincipal {
 		if(crearAlternativa.isFlagAceptar()){
 			String nombre = crearAlternativa.getNombreAlternativa();
 
-			final Alternativa alternativa;
+			final Alternativa alternativa = new Alternativa();
 			if (proyecto.getTipo() != TipoProyecto.PERSONALIZADO){
 				String filename = null;
 				if (proyecto.getTipo() == TipoProyecto.AUTOVÍA){
-					filename = ".//plantillas//alternativaVia.xml";
+					filename = ".//plantillas//accionesVia.xml";
 				} else if(proyecto.getTipo() == TipoProyecto.PRESA){
-					filename = ".//plantillas//alternativaPresa.xml";
+					filename = ".//plantillas//accionesPresa.xml";
 				} else if(proyecto.getTipo() == TipoProyecto.PUERTODEPORTIVO){
-					filename = ".//plantillas//alternativaPuerto.xml";
+					filename = ".//plantillas//accionesPuerto.xml";
 				} else if(proyecto.getTipo() == TipoProyecto.VERTEDERO){
-					filename = ".//plantillas//alternativaVertedero.xml";
+					filename = ".//plantillas//accionesVertedero.xml";
 				}
-				XMLAlternativa xmlAlt = new XMLAlternativa(proyecto,".//plantillas//alternativaProyEIA.dtd");
-				alternativa = (Alternativa)xmlAlt.leer(filename);
-			}else{
-				alternativa = new Alternativa();
+				XMLAcciones xmlAcciones = new XMLAcciones(".//plantillas//listaAcciones.dtd");
+				alternativa.setAcciones(xmlAcciones.leer(filename));
 			}
 			alternativa.setId(nombre);
 
