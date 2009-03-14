@@ -1311,11 +1311,6 @@ public class FormEfecto extends JDialog {
 		return opcionTextField;
 	}
 
-	/**
-	 * This method initializes asistenteJuicioButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getAsistenteJuicioButton() {
 		if (asistenteJuicioButton == null) {
 			asistenteJuicioButton = new JButton();
@@ -1324,8 +1319,41 @@ public class FormEfecto extends JDialog {
 			asistenteJuicioButton.setLocation(new Point(115, 37));
 			asistenteJuicioButton.setSize(new Dimension(70, 18));
 			asistenteJuicioButton.setBackground(Color.white);
+			asistenteJuicioButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					calculoDifuso();
+				}
+			});
 		}
 		return asistenteJuicioButton;
+	}
+
+	private void calculoDifuso(){
+		FormCaracterDifuso ventanaDifuso = new FormCaracterDifuso(null);
+		Point posActual = getDialog().getLocation();
+		posActual.translate(20, 20);
+		ventanaDifuso.setLocation(posActual);
+		ventanaDifuso.setModal(true);
+		ventanaDifuso.setVisible(true);
+		if(ventanaDifuso.isFlagAceptar()){
+			CaracterEfecto caracter = ventanaDifuso.getCaracter();
+			if(caracter == CaracterEfecto.compatible){
+				caracterComboBox.setSelectedIndex(0);
+			}
+			if(caracter == CaracterEfecto.critico){
+				caracterComboBox.setSelectedIndex(1);
+			}
+			if(caracter == CaracterEfecto.moderado){
+				caracterComboBox.setSelectedIndex(2);
+			}else{
+				caracterComboBox.setSelectedIndex(3);
+			}
+		}
+		ventanaDifuso.dispose();
+	}
+
+	private JDialog getDialog() {
+		return this;
 	}
 
 }  //  @jve:decl-index=0:visual-constraint="14,15"
