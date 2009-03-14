@@ -54,8 +54,6 @@ public class ValoracionCualitativa implements Cloneable {
 	public static final int EFE_INDIRECTO_SEC = 2;
 	public static final int EFE_INDIRECTO_TER = 1;
 
-	//TODO ¿Es éste el mejor sitio para dejar las constantes?
-
 	/**
 	 * Signo asociado al efecto/impacto: positivo o negativo.
 	 */
