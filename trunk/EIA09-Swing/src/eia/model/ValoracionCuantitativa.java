@@ -29,6 +29,11 @@ public class ValoracionCuantitativa implements Cloneable {
 	private double menorValorIndicador;
 
 	/**
+	 * Número de la función de transformación aplicada para el cáculo de la magnitud.
+	 */
+	private int numFuncion;
+
+	/**
 	 * Valor del efecto/impacto por valoración cuantitativa.
 	 */
 	private double magnitudImpacto;
@@ -44,6 +49,7 @@ public class ValoracionCuantitativa implements Cloneable {
 		this.mayorValorIndicador = mayorValorIndicador;
 		this.menorValorIndicador = menorValorIndicador;
 		this.magnitudImpacto = 0;
+		this.numFuncion = 0;
 	}
 
 	/**
@@ -110,6 +116,21 @@ public class ValoracionCuantitativa implements Cloneable {
 		this.magnitudImpacto = magnitudImpacto;
 	}
 
+	/**
+	 * Accesor para el atributo 'numFuncion'.
+	 * @return Número de la función de transformación aplicada.
+	 */
+	public int getNumFuncion() {
+		return numFuncion;
+	}
+
+	/**
+	 * Mutador para el atributo 'numFuncion'.
+	 * @param numFuncion Número de la función de transformación a asociar.
+	 */
+	public void setNumFuncion(int numFuncion) {
+		this.numFuncion = numFuncion;
+	}
 	/**
 	 * Función de transformación lineal creciente.
 	 * @param x Variable independiente de la función.
@@ -342,6 +363,7 @@ public class ValoracionCuantitativa implements Cloneable {
 	 */
 	public void calcularValoracion(int numFuncion, double opc){
 		magnitudImpacto = redondear(calcularFuncion(numFuncion,indicador,mayorValorIndicador,menorValorIndicador,opc),3);
+		this.numFuncion = numFuncion;
 	}
 
 	/**
@@ -412,5 +434,86 @@ public class ValoracionCuantitativa implements Cloneable {
             System.out.println("Imposible duplicar");
         }
         return copia;
+    }
+
+    /**
+     * Función para obtener el número de referencia de la función de transformación
+     * a partir del nombre de la misma.
+     * @param nombreFuncion Nombre de la función de transformación.
+     * @return Número de referencia de la función de transformación.
+     */
+    public int numFuncionTransformacion(String nombreFuncion){
+    	int num = 0;
+    	if(nombreFuncion.equals("Lineal creciente")){
+    		num = 0;
+    	}else if(nombreFuncion.equals("Lineal decreciente")){
+			num = 1;
+    	}else if(nombreFuncion.equals("Parabólica creciente I")){
+			num = 2;
+    	}else if(nombreFuncion.equals("Parabólica decreciente I")){
+			num = 3;
+    	}else if(nombreFuncion.equals("Parabólica creciente II")){
+			num = 4;
+    	}else if(nombreFuncion.equals("Parabólica decreciente II")){
+			num = 5;
+    	}else if(nombreFuncion.equals("Parabólica doble creciente I")){
+			num = 6;
+    	}else if(nombreFuncion.equals("Parabólica doble decreciente I")){
+			num = 7;
+    	}else if(nombreFuncion.equals("Parabólica doble creciente II")){
+			num = 8;
+    	}else if(nombreFuncion.equals("Parabólica doble decreciente II")){
+			num = 9;
+    	}else if(nombreFuncion.equals("Máximo intermedio")){
+			num = 10;
+    	}else if(nombreFuncion.equals("Mínimo intermedio")){
+			num = 11;
+    	}else if(nombreFuncion.equals("Umbral creciente")){
+			num = 12;
+    	}else if(nombreFuncion.equals("Umbral decreciente")){
+			num = 13;
+    	}
+    	return num;
+    }
+
+    /**
+     * Función para obtener el nombre la función de transformación
+     * a partir del número de referencia de la misma.
+     * @param numFuncion Número de referencia de la función de transformación.
+     * @return Nombre de la función de transformación.
+     */
+    public String nombreFuncionTransformacion(int numFuncion){
+    	String nombreFuncion = "";
+		switch (numFuncion){
+			case 0: {nombreFuncion = "Lineal creciente";
+					break;}
+			case 1: {nombreFuncion = "Lineal decreciente";
+					break;}
+			case 2: {nombreFuncion = "Parabólica creciente I";
+					break;}
+			case 3: {nombreFuncion = "Parabólica decreciente I";
+					break;}
+			case 4: {nombreFuncion = "Parabólica creciente II";
+					break;}
+			case 5: {nombreFuncion = "Parabólica decreciente II";
+					break;}
+			case 6: {nombreFuncion = "Parabólica doble creciente I";
+					break;}
+			case 7: {nombreFuncion = "Parabólica doble decreciente I";
+					break;}
+			case 8: {nombreFuncion = "Parabólica doble creciente II";
+					break;}
+			case 9: {nombreFuncion = "Parabólica doble decreciente II";
+					break;}
+			case 10: {nombreFuncion = "Máximo intermedio";
+					break;}
+			case 11: {nombreFuncion = "Mínimo intermedio";
+					break;}
+			case 12: {nombreFuncion = "Umbral creciente";
+					break;}
+			case 13: {nombreFuncion = "Umbral decreciente";
+					 break;}
+		}
+		return nombreFuncion;
     }
 }
