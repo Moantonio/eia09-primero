@@ -161,6 +161,8 @@ public class XMLProyecto extends XMLTools{
     		        	ValoracionCuantitativa valCuant = new ValoracionCuantitativa(Double.valueOf(valoracion.getElementsByTagName("indicador").item(0).getTextContent()),
     							 													 Double.valueOf(valoracion.getElementsByTagName("maxVal").item(0).getTextContent()),
     							 													 Double.valueOf(valoracion.getElementsByTagName("minVal").item(0).getTextContent()));
+    		        	String nombreFuncion = valoracion.getElementsByTagName("funcionTransformacion").item(0).getTextContent();
+    		        	valCuant.setNumFuncion(valCuant.numFuncionTransformacion(nombreFuncion));
     		        	valCuant.setMagnitudImpacto(Double.valueOf(valoracion.getElementsByTagName("magnitud").item(0).getTextContent()));
     		        	ef.setValCuantitativa(valCuant);
     	        	}
@@ -422,6 +424,9 @@ public class XMLProyecto extends XMLTools{
 	    	            	Element minVal = document.createElement("minVal");
 	    	            	minVal.setTextContent(Double.toString(ef.getValCuantitativa().getMenorValorIndicador()));
 	    	            	valorCuantitativo.appendChild(minVal);
+	    	            	Element funcionTransformacion = document.createElement("funcionTransformacion");
+	    	            	minVal.setTextContent(ef.getValCuantitativa().nombreFuncionTransformacion(ef.getValCuantitativa().getNumFuncion()));
+	    	            	valorCuantitativo.appendChild(funcionTransformacion);
 	    	            	Element magnitud = document.createElement("magnitud");
 	    	            	magnitud.setTextContent(Double.toString(ef.getValCuantitativa().getMagnitudImpacto()));
 	    	            	valorCuantitativo.appendChild(magnitud);

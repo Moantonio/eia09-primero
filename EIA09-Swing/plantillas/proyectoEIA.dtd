@@ -37,10 +37,11 @@
 	<!ELEMENT idFactor (#PCDATA)>
 	<!ELEMENT valorSimpleEnjuiciamiento (#PCDATA)>
 	<!ELEMENT valorTotal (#PCDATA)>
-	<!ELEMENT valorCuantitativo (indicador, maxVal, minVal, magnitud)>
+	<!ELEMENT valorCuantitativo (indicador, maxVal, minVal, funcionTransformacion, magnitud)>
 		<!ELEMENT indicador (#PCDATA)>
 		<!ELEMENT maxVal (#PCDATA)>
 		<!ELEMENT minVal (#PCDATA)>
+		<!ELEMENT funcionTransformacion (#PCDATA)>
 		<!ELEMENT magnitud (#PCDATA)>
 	<!ELEMENT valorCualitativo (signo, acumulacion, extension, extensionCritica, intensidad, persistencia, reversibilidad, recuperabilidad, periodicidad, momento, momentoCritico, efectoImp, incidencia)>
 		<!ELEMENT signo (#PCDATA)>
