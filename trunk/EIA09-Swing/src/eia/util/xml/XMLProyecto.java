@@ -425,7 +425,7 @@ public class XMLProyecto extends XMLTools{
 	    	            	minVal.setTextContent(Double.toString(ef.getValCuantitativa().getMenorValorIndicador()));
 	    	            	valorCuantitativo.appendChild(minVal);
 	    	            	Element funcionTransformacion = document.createElement("funcionTransformacion");
-	    	            	minVal.setTextContent(ef.getValCuantitativa().nombreFuncionTransformacion(ef.getValCuantitativa().getNumFuncion()));
+	    	            	funcionTransformacion.setTextContent(ef.getValCuantitativa().nombreFuncionTransformacion(ef.getValCuantitativa().getNumFuncion()));
 	    	            	valorCuantitativo.appendChild(funcionTransformacion);
 	    	            	Element magnitud = document.createElement("magnitud");
 	    	            	magnitud.setTextContent(Double.toString(ef.getValCuantitativa().getMagnitudImpacto()));
