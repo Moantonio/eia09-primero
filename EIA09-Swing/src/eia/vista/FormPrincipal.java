@@ -921,6 +921,10 @@ public class FormPrincipal {
 		editarAltButton.setEnabled(true);
 		eliminarAltButton.setEnabled(true);
 
+		// Borramos el submenú modificar y eliminar alternativa
+		getModificarAlternativaMenu().removeAll();
+		getEliminarAlternativaMenu().removeAll();
+
 		for (int i=0;i<proyecto.getAlternativas().size();i++)
 		{
 			final Alternativa alternativa = proyecto.getAlternativas().get(i);
