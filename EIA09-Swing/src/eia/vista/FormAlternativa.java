@@ -547,6 +547,7 @@ public class FormAlternativa extends JDialog{
 			// Comprobamos si todos los efectos están valorados
 			alternativa.setValorada(false);
 			valoracionTextField.setText(" ");
+			valorarButton.setEnabled(false);
 			if(comprobarValorados()){
 				valorarButton.setEnabled(true);
 			}
