@@ -13,6 +13,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
@@ -129,12 +130,24 @@ public class FormCrearAlternativa extends JDialog {
 			aceptarButton.setBackground(Color.white);
 			aceptarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					flagAceptar = true;
-					setVisible(false);
+					if (comprobarCondiciones()){
+						flagAceptar = true;
+						setVisible(false);
+					}
 				}
 			});
 		}
 		return aceptarButton;
+	}
+
+	private boolean comprobarCondiciones() {
+		boolean error = false;
+		if (nombreAltTextField.getText().equals("")){
+			error = true;
+			JOptionPane.showMessageDialog(this, "¡Sin nombre de alternativa de realización! \n Introduzca un nombre para identificar la alternativa.", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+
+		return !error;
 	}
 
 	private JButton getCancelarButton() {

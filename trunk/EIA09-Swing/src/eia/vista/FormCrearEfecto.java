@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -195,12 +196,29 @@ public class FormCrearEfecto extends JDialog {
 			aceptarButton.setBackground(Color.white);
 			aceptarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					flagAceptar = true;
-					setVisible(false);
+					if (comprobarCondiciones()){
+						flagAceptar = true;
+						setVisible(false);
+					}
 				}
 			});
 		}
 		return aceptarButton;
+	}
+
+	private boolean comprobarCondiciones() {
+		boolean error = false;
+		if (nombreTextField.getText().equals("")){
+			error = true;
+			JOptionPane.showMessageDialog(this, "¡Sin nombre de efecto ambiental! \n Introduzca un nombre para identificar el efecto.", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+
+		if ((!error)&(descripcionTextArea.getText().equals(""))){
+			error = true;
+			JOptionPane.showMessageDialog(this, "¡Sin descripción del efecto ambiental! \n Introduzca una breve descripción del efecto.", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+
+		return !error;
 	}
 
 	private JButton getCancelarButton() {
