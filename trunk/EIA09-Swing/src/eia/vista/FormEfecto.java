@@ -429,7 +429,9 @@ public class FormEfecto extends JDialog {
 					if (juicioComboBox.getSelectedIndex()!=3){
 						efectoTabbedPane.setEnabledAt(1, false);
 						efectoTabbedPane.setEnabledAt(2, false);
-						//TODO Si ya estaba valorado: poner a ¿null? las valoraciones
+						efecto.setValCualitativa(null);
+						efecto.setValCuantitativa(null);
+						efecto.setValorTotal(0);
 					}else{
 						efectoTabbedPane.setEnabledAt(1, true);
 						efectoTabbedPane.setEnabledAt(2, true);
