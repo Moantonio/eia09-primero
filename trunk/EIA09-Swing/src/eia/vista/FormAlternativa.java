@@ -464,14 +464,26 @@ public class FormAlternativa extends JDialog{
 					// Lo añadimos a la alternativa
 					alternativa.getEfectos().add(efecto);
 				    // Lo añadimos a la tabla
-					String[] datos = {id,juicio.toString(),"","","",""};
+					String cualitativa = "No";
+					String cuantitativa = "No";
+					String total = "No";
+					String caracter = "No";
+					if (juicio==ValorJuicio.significativo){
+							cualitativa = "";
+							cuantitativa = "";
+							total = "";
+							caracter = "";
+					}
+					String[] datos = {id,juicio.toString(),cualitativa,cuantitativa,total,caracter};
 					modeloTabla.addRow(datos);
 					valorarButton.setEnabled(false);
 					valoracionTextField.setText("");
 					alternativa.setValorada(false);
-
+					// Comprobamos si todos los efectos están valorados
 					if(comprobarValorados()){
 						valorarButton.setEnabled(true);
+						if (alternativa.getValorada())
+							valoracionTextField.setText(String.valueOf(alternativa.getValorTotal()));
 					}
 				}
 				formNuevoEfecto.dispose();
@@ -544,12 +556,14 @@ public class FormAlternativa extends JDialog{
 				modeloTabla.setValueAt("No", indice, 5);
 			}
 
-			// Comprobamos si todos los efectos están valorados
 			alternativa.setValorada(false);
 			valoracionTextField.setText(" ");
 			valorarButton.setEnabled(false);
+			// Comprobamos si todos los efectos están valorados
 			if(comprobarValorados()){
 				valorarButton.setEnabled(true);
+				if (alternativa.getValorada())
+					valoracionTextField.setText(String.valueOf(alternativa.getValorTotal()));
 			}
 		}
 		editarEfecto.dispose();
@@ -604,7 +618,6 @@ public class FormAlternativa extends JDialog{
 	}
 
 	private void valorarAlternativa() {
-
 		alternativa.setValorada(true);
 		alternativa.calcularValorTotal();
 		valoracionTextField.setText(String.valueOf(alternativa.getValorTotal()));
@@ -635,33 +648,47 @@ public class FormAlternativa extends JDialog{
 	private void actualizarVista(){
 		for(int i=0;i<alternativa.getEfectos().size();i++){
 			// Mostramos la información del efecto
-		    Efecto efecto = alternativa.getEfectos().get(i);
-		    String id = efecto.getId();
-		    String juicio = efecto.getJuicio().toString();
-		    String cualitativa = "";
-		    if ((efecto.getJuicio()==ValorJuicio.significativo)&&(efecto.getValCualitativa()!=null)){
-		    	cualitativa = String.valueOf(efecto.getValCualitativa().getIncidencia());
-		    }
-		    String cuantitativa = "";
-		    if ((efecto.getJuicio()==ValorJuicio.significativo)&&(efecto.getValCuantitativa()!=null)){
-		    	cuantitativa = String.valueOf(efecto.getValCuantitativa().getMagnitudImpacto());
-		    }
+			Efecto efecto = alternativa.getEfectos().get(i);
+			String id = efecto.getId();
+			String juicio = efecto.getJuicio().toString();
 
-		    String total = "";
-		    String caracter = "";
-		    if((efecto.getJuicio()==ValorJuicio.significativo)&&(efecto.getValCualitativa()!=null&&efecto.getValCuantitativa()!=null)){
-		    	total = String.valueOf(efecto.getValorTotal());
-		    	caracter = efecto.getCaracter().toString();
-		    }
+			String cualitativa = "No";
+			String cuantitativa = "No";
+			String total = "No";
+			String caracter = "No";
+			if (efecto.getJuicio()==ValorJuicio.significativo){
+				if (efecto.getValCualitativa()!=null){
+					cualitativa = String.valueOf(efecto.getValCualitativa().getIncidencia());
+				}else{
+					cualitativa = "";
+				}
+
+				if (efecto.getValCuantitativa()!=null){
+					cuantitativa = String.valueOf(efecto.getValCuantitativa().getMagnitudImpacto());
+				}else{
+					cuantitativa = "";
+				}
+
+				if((efecto.getValCualitativa()!=null&&efecto.getValCuantitativa()!=null)){
+					total = String.valueOf(efecto.getValorTotal());
+					caracter = efecto.getCaracter().toString();
+				} else {
+					total = "";
+					caracter = "";
+				}
+			}
 			String[] datos = {id,juicio,cualitativa,cuantitativa,total,caracter};
 			modeloTabla.addRow(datos);
 		}
 
+		alternativa.setValorada(false);
+		valoracionTextField.setText(" ");
+		valorarButton.setEnabled(false);
 		// Comprobamos si todos los efectos están valorados
 		if(comprobarValorados()){
-			alternativa.setValorada(true);
 			valorarButton.setEnabled(true);
-			valoracionTextField.setText(String.valueOf(alternativa.getValorTotal()));
+			if (alternativa.getValorada())
+				valoracionTextField.setText(String.valueOf(alternativa.getValorTotal()));
 		}
 	}
 
