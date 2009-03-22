@@ -77,6 +77,9 @@
 	<field name="incidencia" class="java.lang.String">
 		<fieldDescription><![CDATA[valorCualitativo/incidencia]]></fieldDescription>
 	</field>
+	<field name="ftrans" class="java.lang.String">
+		<fieldDescription><![CDATA[valorCuantitativo/funcionTransformacion]]></fieldDescription>
+	</field>
 	<background>
 		<band/>
 	</background>
@@ -109,10 +112,10 @@
 				<reportElement key="rectangle-1" x="2" y="12" width="471" height="13" forecolor="#000000" backcolor="#000000"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="310" y="124" width="105" height="40" forecolor="#CCCCCC"/>
+				<reportElement x="334" y="122" width="105" height="40" forecolor="#CCCCCC"/>
 			</rectangle>
 			<rectangle>
-				<reportElement x="310" y="210" width="105" height="40" forecolor="#CCCCCC"/>
+				<reportElement x="333" y="214" width="105" height="40" forecolor="#CCCCCC"/>
 			</rectangle>
 			<textField isBlankWhenNull="false" hyperlinkType="None">
 				<reportElement key="textField" x="15" y="12" width="458" height="13" forecolor="#FFFFFF"/>
@@ -126,7 +129,7 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{efecto}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="116" y="224" width="75" height="14"/>
+				<reportElement x="116" y="224" width="47" height="14"/>
 				<textElement>
 					<font size="10"/>
 				</textElement>
@@ -140,7 +143,7 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{descripcion}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="181" y="278" width="66" height="14"/>
+				<reportElement x="370" y="278" width="66" height="14"/>
 				<textElement>
 					<font size="10"/>
 				</textElement>
@@ -154,7 +157,7 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{accion}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="113" y="239" width="75" height="14"/>
+				<reportElement x="113" y="239" width="50" height="14"/>
 				<textElement>
 					<font size="10"/>
 				</textElement>
@@ -175,7 +178,7 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{intensidad}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="310" y="230" width="105" height="16"/>
+				<reportElement x="334" y="234" width="105" height="16"/>
 				<textElement textAlignment="Center">
 					<font size="10" isBold="false" isUnderline="true"/>
 				</textElement>
@@ -224,7 +227,7 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{extensionCritica}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="350" y="278" width="89" height="14"/>
+				<reportElement x="217" y="278" width="89" height="14"/>
 				<textElement>
 					<font size="10"/>
 				</textElement>
@@ -280,7 +283,7 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{momento}]]></textFieldExpression>
 			</textField>
 			<textField hyperlinkType="None">
-				<reportElement x="310" y="143" width="105" height="16"/>
+				<reportElement x="334" y="143" width="105" height="16"/>
 				<textElement textAlignment="Center">
 					<font size="10" isBold="false" isUnderline="true"/>
 				</textElement>
@@ -349,7 +352,7 @@
 				<text><![CDATA[Valor minimo:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="310" y="214" width="105" height="16"/>
+				<reportElement x="334" y="218" width="105" height="16"/>
 				<textElement textAlignment="Center">
 					<font size="10" isBold="true"/>
 				</textElement>
@@ -426,7 +429,7 @@
 				<text><![CDATA[Periodicidad:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="310" y="127" width="105" height="16"/>
+				<reportElement x="334" y="127" width="105" height="16"/>
 				<textElement textAlignment="Center">
 					<font size="10" isBold="true"/>
 				</textElement>
@@ -447,7 +450,7 @@
 				<text><![CDATA[Mom. critico:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="260" y="278" width="90" height="14"/>
+				<reportElement x="129" y="278" width="90" height="14"/>
 				<textElement>
 					<font size="10" isBold="true"/>
 				</textElement>
@@ -461,7 +464,7 @@
 				<text><![CDATA[Indice:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="133" y="278" width="48" height="14"/>
+				<reportElement x="322" y="278" width="48" height="14"/>
 				<textElement>
 					<font size="10" isBold="true"/>
 				</textElement>
@@ -477,6 +480,18 @@
 			<line>
 				<reportElement key="line-1" x="9" y="271" width="450" height="1" forecolor="#CCCCCC" backcolor="#CCCCCC"/>
 			</line>
+			<staticText>
+				<reportElement x="163" y="225" width="143" height="14"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Funcion de transformacion:]]></text>
+			</staticText>
+			<textField hyperlinkType="None">
+				<reportElement x="182" y="238" width="124" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ftrans}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
