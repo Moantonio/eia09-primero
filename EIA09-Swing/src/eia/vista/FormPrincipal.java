@@ -1236,7 +1236,8 @@ public class FormPrincipal {
 
 	private void valorarAlternativas(){
 		String id = proyecto.analizarAlternativas().getId();
-		JOptionPane.showMessageDialog(null, "Mejor alternativa de realización: "+id, "Valorar alternativas", JOptionPane.INFORMATION_MESSAGE);
+		if (id != null)
+			JOptionPane.showMessageDialog(null, "Mejor alternativa de realización: "+id, "Valorar alternativas", JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	private JMenuItem getGenerarInformeMenuItem() {
