@@ -13,6 +13,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -124,7 +125,7 @@ public class FormCrearProyecto extends JDialog {
 			aceptarButton.setBackground(Color.white);
 			aceptarButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					if (!nombreTextField.getText().equals("")){
+					if(comprobarCondiciones()){
 						flagAceptar = true;
 						setVisible(false);
 					}
@@ -150,6 +151,21 @@ public class FormCrearProyecto extends JDialog {
 			});
 		}
 		return cancelarButton;
+	}
+
+	private boolean comprobarCondiciones() {
+		boolean error = false;
+		if (nombreTextField.getText().equals("")){
+			error = true;
+			JOptionPane.showMessageDialog(this, "¡Sin nombre de proyecto! \n Introduzca un nombre para identificar el proyecto.", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+
+		if ((!error)&(descripcionTextArea.getText().equals(""))){
+			error = true;
+			JOptionPane.showMessageDialog(this, "¡Sin descripción del proyecto! \n Introduzca una breve descripción del proyecto.", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+
+		return !error;
 	}
 
 	public FormCrearProyecto(Frame owner, String tipo) {
