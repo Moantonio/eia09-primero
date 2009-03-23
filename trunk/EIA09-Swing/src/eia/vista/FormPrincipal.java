@@ -21,7 +21,6 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -72,8 +71,6 @@ public class FormPrincipal {
 	private JMenu menuAlternativas = null;
 	private JMenuItem salirMenuItem = null;
 	private JMenuItem acercaDeMenuItem = null;
-	private JDialog dialogAcercaDe = null;  //  @jve:decl-index=0:visual-constraint="544,1"
-	private JPanel panelContenidoAcercaDe = null;
 	private JMenu menuValoracion = null;
 	private JMenu menuInformes = null;
 	private JMenu menuAyuda = null;
@@ -126,7 +123,6 @@ public class FormPrincipal {
 	private JButton eliminarAltButton = null;
 	private JButton editarAltButton = null;
 	private JButton aceptarButton = null;
-	private JLabel autoresLabel = null;
 	private JScrollPane barraDesplazamiento = null;
 
 	// Variables del modelo
@@ -245,31 +241,6 @@ public class FormPrincipal {
 			});
 		}
 		return acercaDeMenuItem;
-	}
-
-	private JDialog getDialogAcercaDe() {
-		if (dialogAcercaDe == null) {
-			dialogAcercaDe = new JDialog(getFramePrincipal(), true);
-			dialogAcercaDe.setTitle("Acerca de EIA09");
-			dialogAcercaDe.setSize(new Dimension(200,200));
-			dialogAcercaDe.setContentPane(getPanelContenidoAcercaDe());
-			dialogAcercaDe.setResizable(false);
-		}
-		return dialogAcercaDe;
-	}
-
-	private JPanel getPanelContenidoAcercaDe() {
-		if (panelContenidoAcercaDe == null) {
-			autoresLabel = new JLabel();
-			autoresLabel.setBounds(new Rectangle(20, 36, 155, 86));
-			autoresLabel.setFont(new Font("Dialog", Font.BOLD, 24));
-			autoresLabel.setText("Beta v0.1");
-			panelContenidoAcercaDe = new JPanel();
-			panelContenidoAcercaDe.setLayout(null);
-			panelContenidoAcercaDe.setPreferredSize(new Dimension(200, 200));
-			panelContenidoAcercaDe.add(autoresLabel, null);
-		}
-		return panelContenidoAcercaDe;
 	}
 
 	private JMenu getMenuValoracion() {
@@ -1030,12 +1001,13 @@ public class FormPrincipal {
 	}
 
 	private void mostrarAcercaDe() {
-		JDialog aboutDialog = getDialogAcercaDe();
+		FormAcercaDe aboutDialog = new FormAcercaDe(getFramePrincipal());
 		Point loc = getFramePrincipal().getLocation();
 		loc.translate(20, 20);
 		aboutDialog.setModal(true);
 		aboutDialog.setLocation(loc);
 		aboutDialog.setVisible(true);
+
 	}
 
 	private void abrirProyecto() {
