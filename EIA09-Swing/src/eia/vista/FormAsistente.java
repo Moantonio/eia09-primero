@@ -523,7 +523,7 @@ public class FormAsistente extends JDialog {
 			cuestionLabel.setSize(new Dimension(350, 20));
 			cuestionLabel.setFont(new Font("Dialog", Font.BOLD, 12));
 			cuestionLabel.setText("¿Al aumentar el valor del indicador, ¿aumenta el impacto?");
-			cuestionLabel.setBackground(SystemColor.control);
+			cuestionLabel.setBackground(new Color(240, 240, 240));
 			cuestionLabel.setEditable(false);
 			asistentePanel = new JPanel();
 			asistentePanel.setLayout(null);
