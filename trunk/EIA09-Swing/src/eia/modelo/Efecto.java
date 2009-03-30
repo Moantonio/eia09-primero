@@ -1,4 +1,4 @@
-package eia.model;
+package eia.modelo;
 
 import eia.util.CaracterEfecto;
 import eia.util.ValorJuicio;

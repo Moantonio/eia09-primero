@@ -21,14 +21,14 @@ import eia.util.CaracterEfecto;
 import eia.util.TipoProyecto;
 import eia.util.ValorJuicio;
 
-import eia.model.Accion;
-import eia.model.Alternativa;
-import eia.model.Efecto;
-import eia.model.Factor;
-import eia.model.InfoProyecto;
-import eia.model.Proyecto;
-import eia.model.ValoracionCualitativa;
-import eia.model.ValoracionCuantitativa;
+import eia.modelo.Accion;
+import eia.modelo.Alternativa;
+import eia.modelo.Efecto;
+import eia.modelo.Factor;
+import eia.modelo.InfoProyecto;
+import eia.modelo.Proyecto;
+import eia.modelo.ValoracionCualitativa;
+import eia.modelo.ValoracionCuantitativa;
 
 public class XMLProyecto extends XMLTools{
 

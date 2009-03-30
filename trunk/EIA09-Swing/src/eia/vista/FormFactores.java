@@ -27,7 +27,7 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultTreeSelectionModel;
 
-import eia.model.Factor;
+import eia.modelo.Factor;
 
 /**
  * @author SI: EIA'09
