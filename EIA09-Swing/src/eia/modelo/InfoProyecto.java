@@ -1,4 +1,4 @@
-package eia.model;
+package eia.modelo;
 
 import java.util.Date;
 

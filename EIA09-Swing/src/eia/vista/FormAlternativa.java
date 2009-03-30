@@ -30,10 +30,10 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultTreeSelectionModel;
 
-import eia.model.Accion;
-import eia.model.Alternativa;
-import eia.model.Efecto;
-import eia.model.Factor;
+import eia.modelo.Accion;
+import eia.modelo.Alternativa;
+import eia.modelo.Efecto;
+import eia.modelo.Factor;
 import eia.util.ValorJuicio;
 
 /**

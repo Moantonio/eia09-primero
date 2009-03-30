@@ -1,4 +1,4 @@
-package eia.model;
+package eia.modelo;
 
 /**
  * @author SI: EIA'09

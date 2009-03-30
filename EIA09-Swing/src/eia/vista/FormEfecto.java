@@ -31,9 +31,9 @@ import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
-import eia.model.Efecto;
-import eia.model.ValoracionCualitativa;
-import eia.model.ValoracionCuantitativa;
+import eia.modelo.Efecto;
+import eia.modelo.ValoracionCualitativa;
+import eia.modelo.ValoracionCuantitativa;
 import eia.util.CaracterEfecto;
 import eia.util.ValorJuicio;
 
