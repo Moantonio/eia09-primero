@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE listaAcciones SYSTEM ".\listaAcciones.dtd">
 	<listaAcciones>
 		<accion>
@@ -99,13 +99,13 @@
 					<nombreAccion>Beneficio económico (productos recuperables)</nombreAccion>
 				</accion>
 				<accion>
-					<nombreAccion>Presencia de insectos roedores y aves</nombreAccion>
-				</accion>
-				<accion>
 					<nombreAccion>Composición y producción de residuos</nombreAccion>
 					<listaAcciones>
 						<accion>
 							<nombreAccion>Metales</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Metales pesados</nombreAccion>
 						</accion>
 						<accion>
 							<nombreAccion>Vidrio</nombreAccion>
@@ -137,9 +137,25 @@
 						<accion>
 							<nombreAccion>Textiles</nombreAccion>
 						</accion>
+						
+						<accion>
+							<nombreAccion>Productos persistentes en las cadenas tróficas</nombreAccion>
+						</accion>
+						
+						<accion>
+							<nombreAccion>Pilas, Baterías de coche y residuos electrónicos </nombreAccion>
+						</accion>						
+						
+						<accion>
+							<nombreAccion>Insecticidas y pesticidas</nombreAccion>
+						</accion>
+						
+						<accion>
+							<nombreAccion>Productos tóxicos y/o radiactivos</nombreAccion>
+						</accion>				
 					</listaAcciones>
 				</accion>
-								<accion>
+				<accion>
 					<nombreAccion>Otras Características de las basuras</nombreAccion>
 					<listaAcciones>
 						<accion>
@@ -153,6 +169,17 @@
 						</accion>
 						<accion>
 							<nombreAccion>Relación carbono/hidrógeno</nombreAccion>
+						</accion>
+					</listaAcciones>
+				</accion>
+				<accion>
+					<nombreAccion>Acciones inducidas</nombreAccion>
+					<listaAcciones>
+						<accion>
+							<nombreAccion>Decremento del valor del suelo</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Decremento del comercio de la zona</nombreAccion>
 						</accion>
 					</listaAcciones>
 				</accion>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE listaAcciones SYSTEM ".\listaAcciones.dtd">
 	<listaAcciones>
 		<accion>
@@ -60,7 +60,7 @@
 					<nombreAccion>Expropiaciones</nombreAccion>
 				</accion>
 				<accion>
-					<nombreAccion>Incremento de la mano de obra</nombreAccion>
+					<nombreAccion>Presupuesto económico de la obra</nombreAccion>
 				</accion>
 			</listaAcciones>
 		</accion>
@@ -78,6 +78,20 @@
 				</accion>
 				<accion>
 					<nombreAccion>Regulación del caudal de aguas abajo de la presa</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Acciones inducidas</nombreAccion>
+					<listaAcciones>
+						<accion>
+							<nombreAccion>Aparición de urbanizaciones</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Incremento del valor del suelo</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Incremento del comercio de la zona</nombreAccion>
+						</accion>
+					</listaAcciones>
 				</accion>
 			</listaAcciones>
 		</accion>

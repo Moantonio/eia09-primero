@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE listaAcciones SYSTEM ".\listaAcciones.dtd">
 	<listaAcciones>
 		<accion>
@@ -51,6 +51,15 @@
 				<accion>
 					<nombreAccion>Alteración cubierta terrestre</nombreAccion>
 				</accion>				
+				<accion>
+					<nombreAccion>Alteración de las corrientes marinas</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Alteración en el transporte de arenas y sedimentos</nombreAccion>
+				</accion>
+				<accion>
+					<nombreAccion>Alteración de la vegetación y fauna marina</nombreAccion>
+				</accion>
 				<accion>
 					<nombreAccion>Explotación de canteras</nombreAccion>
 				</accion>

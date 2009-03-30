@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE listaAcciones SYSTEM ".\listaAcciones.dtd">
 	<listaAcciones>
 		<accion>
@@ -127,6 +127,9 @@
 						</accion>
 					</listaAcciones>
 				</accion>	
+				<accion>
+					<nombreAccion>Presupuesto económico de la obra</nombreAccion>
+				</accion>
 			</listaAcciones>
 		</accion>
 		<accion>
@@ -150,6 +153,18 @@
 						<accion>
 							<nombreAccion>Asfaltado de superficies</nombreAccion>
 						</accion>
+						<accion>
+							<nombreAccion>Accidentes de tráfico</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Olores</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Vapores, humos y polvos emitidos a la atmósfera</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Incendios</nombreAccion>
+						</accion>
 					</listaAcciones>
 				</accion>
 				<accion>
@@ -163,6 +178,29 @@
 						</accion>
 							<accion>
 							<nombreAccion>Aparición de escombreras</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Revegetaciones</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Obras de drenaje</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Canalizaciones</nombreAccion>
+						</accion>
+					</listaAcciones>
+				</accion>
+				<accion>
+					<nombreAccion>Acciones inducidas</nombreAccion>
+					<listaAcciones>
+						<accion>
+							<nombreAccion>Aparición de urbanizaciones</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Incremento del valor del suelo</nombreAccion>
+						</accion>
+						<accion>
+							<nombreAccion>Incremento del comercio de la zona</nombreAccion>
 						</accion>
 					</listaAcciones>
 				</accion>
