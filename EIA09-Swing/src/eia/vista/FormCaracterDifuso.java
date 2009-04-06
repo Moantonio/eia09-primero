@@ -22,7 +22,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import eia.fuzzy.impacto.Caracter;
+import eia.fuzzy.Caracter;
 import eia.util.CaracterEfecto;
 
 /**

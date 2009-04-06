@@ -22,7 +22,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import eia.fuzzy.efecto.SimpleEnjuiciamiento;
+import eia.fuzzy.SimpleEnjuiciamiento;
 import eia.util.ValorJuicio;
 
 /**

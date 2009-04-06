@@ -1,10 +1,10 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++//
-//     Fuzzy Inference Engine caracter      //
+//     Fuzzy Inference Engine simpleEnjuiciamiento      //
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
-package eia.fuzzy.impacto;
+package eia.fuzzy;
 
-public class Caracter implements FuzzyInferenceEngine {
+public class SimpleEnjuiciamiento implements FuzzyInferenceEngine {
 
  //+++++++++++++++++++++++++++++++++++++++++++++++++++++//
  //      Membership function of an input variable       //
@@ -400,6 +400,51 @@ public class Caracter implements FuzzyInferenceEngine {
   }
 
  //+++++++++++++++++++++++++++++++++++++++++++++++++++++//
+ //      Membership function MF_xfl_trapezoid      //
+ //+++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+  private class MF_xfl_trapezoid extends InnerMembershipFunction {
+   double a;
+   double b;
+   double c;
+   double d;
+
+   MF_xfl_trapezoid( double min, double max, double step, double param[]){
+    super.min = min;
+    super.max = max;
+    super.step = step;
+    this.a = param[0];
+    this.b = param[1];
+    this.c = param[2];
+    this.d = param[3];
+   }
+   double param(int _i) {
+    switch(_i) {
+     case 0: return a;
+     case 1: return b;
+     case 2: return c;
+     case 3: return d;
+     default: return 0;
+    }
+   }
+   double isEqual(double x) {
+    return (x<a || x>d? 0: (x<b? (x-a)/(b-a) : (x<c?1 : (d-x)/(d-c))));
+   }
+   double isGreaterOrEqual(double x) {
+    return (x<a? 0 : (x>b? 1 : (x-a)/(b-a) ));
+   }
+   double isSmallerOrEqual(double x) {
+    return (x<c? 1 : (x>d? 0 : (d-x)/(d-c) ));
+   }
+   double center() {
+    return (b+c)/2;
+   }
+   double basis() {
+    return (d-a);
+   }
+  }
+
+ //+++++++++++++++++++++++++++++++++++++++++++++++++++++//
  //     Operator set OP_opAnd      //
  //+++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
@@ -446,81 +491,60 @@ public class Caracter implements FuzzyInferenceEngine {
  }
 
  //+++++++++++++++++++++++++++++++++++++++++++++++++++++//
- //  Type TP_tCorrectora  //
+ //  Type TP_tModificacion  //
  //+++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
- private class TP_tCorrectora {
+ private class TP_tModificacion {
   private double min = 0.0;
   private double max = 1.0;
   private double step = 0.00392156862745098;
-  double _p_no[] = { -1.0,0.0,1.0 };
-  double _p_si[] = { 0.0,1.0,2.0 };
-  MF_xfl_triangle no = new MF_xfl_triangle(min,max,step,_p_no);
-  MF_xfl_triangle si = new MF_xfl_triangle(min,max,step,_p_si);
+  double _p_poco[] = { -1.0,0.0,1.0 };
+  double _p_mucho[] = { 0.0,1.0,2.0 };
+  MF_xfl_triangle poco = new MF_xfl_triangle(min,max,step,_p_poco);
+  MF_xfl_triangle mucho = new MF_xfl_triangle(min,max,step,_p_mucho);
  }
 
  //+++++++++++++++++++++++++++++++++++++++++++++++++++++//
- //  Type TP_tRecuperacion  //
+ //  Type TP_tEfecto  //
  //+++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
- private class TP_tRecuperacion {
+ private class TP_tEfecto {
   private double min = 0.0;
   private double max = 1.0;
   private double step = 0.00392156862745098;
-  double _p_inmediata[] = { -0.5,0.0,0.5 };
-  double _p_dilatada[] = { 0.0,0.5,1.0 };
-  double _p_sinRecuperacion[] = { 0.5,1.0,1.5 };
-  MF_xfl_triangle inmediata = new MF_xfl_triangle(min,max,step,_p_inmediata);
-  MF_xfl_triangle dilatada = new MF_xfl_triangle(min,max,step,_p_dilatada);
-  MF_xfl_triangle sinRecuperacion = new MF_xfl_triangle(min,max,step,_p_sinRecuperacion);
+  double _p_despreciable[] = { -0.2,0.0,0.2,0.6000000000000001 };
+  double _p_significativo[] = { 0.2,0.4000000000000001,1.0,1.2000000000000002 };
+  MF_xfl_trapezoid despreciable = new MF_xfl_trapezoid(min,max,step,_p_despreciable);
+  MF_xfl_trapezoid significativo = new MF_xfl_trapezoid(min,max,step,_p_significativo);
  }
 
  //+++++++++++++++++++++++++++++++++++++++++++++++++++++//
- //  Type TP_tImpacto  //
+ //  Rulebase RL_ruleEfecto  //
  //+++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
- private class TP_tImpacto {
-  private double min = 0.0;
-  private double max = 1.0;
-  private double step = 0.00392156862745098;
-  double _p_compatible[] = { -0.3333333333333333,0.0,0.3333333333333333 };
-  double _p_moderado[] = { 0.0,0.3333333333333333,0.6666666666666666 };
-  double _p_severo[] = { 0.3333333333333333,0.6666666666666666,1.0 };
-  double _p_critico[] = { 0.6666666666666666,1.0,1.3333333333333333 };
-  MF_xfl_triangle compatible = new MF_xfl_triangle(min,max,step,_p_compatible);
-  MF_xfl_triangle moderado = new MF_xfl_triangle(min,max,step,_p_moderado);
-  MF_xfl_triangle severo = new MF_xfl_triangle(min,max,step,_p_severo);
-  MF_xfl_triangle critico = new MF_xfl_triangle(min,max,step,_p_critico);
- }
-
- //+++++++++++++++++++++++++++++++++++++++++++++++++++++//
- //  Rulebase RL_ruleCaracter  //
- //+++++++++++++++++++++++++++++++++++++++++++++++++++++//
-
- private MembershipFunction[] RL_ruleCaracter(MembershipFunction correct, MembershipFunction recup) {
+ private MembershipFunction[] RL_ruleEfecto(MembershipFunction med, MembershipFunction recs, MembershipFunction pf) {
   double _rl;
-  double _input[] = new double[2];
-  if(correct instanceof FuzzySingleton)
-   _input[0] = ((FuzzySingleton) correct).getValue();
-  if(recup instanceof FuzzySingleton)
-   _input[1] = ((FuzzySingleton) recup).getValue();
+  double _input[] = new double[3];
+  if(med instanceof FuzzySingleton)
+   _input[0] = ((FuzzySingleton) med).getValue();
+  if(recs instanceof FuzzySingleton)
+   _input[1] = ((FuzzySingleton) recs).getValue();
+  if(pf instanceof FuzzySingleton)
+   _input[2] = ((FuzzySingleton) pf).getValue();
   OP_opAnd _op = new OP_opAnd();
-  OutputMembershipFunction imp = new OutputMembershipFunction();
-  imp.set(4,_op,_input);
-  TP_tCorrectora _t_correct = new TP_tCorrectora();
-  TP_tRecuperacion _t_recup = new TP_tRecuperacion();
-  TP_tImpacto _t_imp = new TP_tImpacto();
-  int _i_imp=0;
-  _rl = _op.and(_t_correct.no.isEqual(correct),_t_recup.inmediata.isEqual(recup));
-  imp.set(_i_imp,_rl, _t_imp.compatible); _i_imp++;
-  _rl = _t_recup.sinRecuperacion.isEqual(recup);
-  imp.set(_i_imp,_rl, _t_imp.critico); _i_imp++;
-  _rl = _op.and(_t_correct.si.isEqual(correct),_t_recup.dilatada.isEqual(recup));
-  imp.set(_i_imp,_rl, _t_imp.severo); _i_imp++;
-  _rl = _op.and(_t_correct.no.isEqual(correct),_t_recup.dilatada.isEqual(recup));
-  imp.set(_i_imp,_rl, _t_imp.moderado); _i_imp++;
+  OutputMembershipFunction efec = new OutputMembershipFunction();
+  efec.set(2,_op,_input);
+  TP_tModificacion _t_med = new TP_tModificacion();
+  TP_tModificacion _t_recs = new TP_tModificacion();
+  TP_tModificacion _t_pf = new TP_tModificacion();
+  TP_tEfecto _t_efec = new TP_tEfecto();
+  int _i_efec=0;
+  _rl = _op.and(_op.and(_t_med.poco.isEqual(med),_t_recs.poco.isEqual(recs)),_t_pf.poco.isEqual(pf));
+  efec.set(_i_efec,_rl, _t_efec.despreciable); _i_efec++;
+  _rl = _op.or(_op.or(_t_med.mucho.isEqual(med),_t_recs.mucho.isEqual(recs)),_t_pf.mucho.isEqual(pf));
+  efec.set(_i_efec,_rl, _t_efec.significativo); _i_efec++;
   MembershipFunction[] _output = new MembershipFunction[1];
-  _output[0] = imp;
+  _output[0] = efec;
   return _output;
  }
 
@@ -529,50 +553,54 @@ public class Caracter implements FuzzyInferenceEngine {
  //+++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
  public double[] crispInference(double[] _input) {
-  MembershipFunction precisaCorrectoras = new FuzzySingleton(_input[0]);
-  MembershipFunction tiempoRecuperacion = new FuzzySingleton(_input[1]);
-  MembershipFunction impacto;
+  MembershipFunction medioambiente = new FuzzySingleton(_input[0]);
+  MembershipFunction recursosnaturales = new FuzzySingleton(_input[1]);
+  MembershipFunction pffuncionamiento = new FuzzySingleton(_input[2]);
+  MembershipFunction efecto;
   MembershipFunction[] _call;
-  _call = RL_ruleCaracter(precisaCorrectoras,tiempoRecuperacion); impacto=_call[0];
+  _call = RL_ruleEfecto(medioambiente,recursosnaturales,pffuncionamiento); efecto=_call[0];
   double _output[] = new double[1];
-  if(impacto instanceof FuzzySingleton)
-   _output[0] = ((FuzzySingleton) impacto).getValue();
-  else _output[0] = ((OutputMembershipFunction) impacto).defuzzify();
+  if(efecto instanceof FuzzySingleton)
+   _output[0] = ((FuzzySingleton) efecto).getValue();
+  else _output[0] = ((OutputMembershipFunction) efecto).defuzzify();
   return _output;
  }
 
  public double[] crispInference(MembershipFunction[] _input) {
-  MembershipFunction precisaCorrectoras = _input[0];
-  MembershipFunction tiempoRecuperacion = _input[1];
-  MembershipFunction impacto;
+  MembershipFunction medioambiente = _input[0];
+  MembershipFunction recursosnaturales = _input[1];
+  MembershipFunction pffuncionamiento = _input[2];
+  MembershipFunction efecto;
   MembershipFunction[] _call;
-  _call = RL_ruleCaracter(precisaCorrectoras,tiempoRecuperacion); impacto=_call[0];
+  _call = RL_ruleEfecto(medioambiente,recursosnaturales,pffuncionamiento); efecto=_call[0];
   double _output[] = new double[1];
-  if(impacto instanceof FuzzySingleton)
-   _output[0] = ((FuzzySingleton) impacto).getValue();
-  else _output[0] = ((OutputMembershipFunction) impacto).defuzzify();
+  if(efecto instanceof FuzzySingleton)
+   _output[0] = ((FuzzySingleton) efecto).getValue();
+  else _output[0] = ((OutputMembershipFunction) efecto).defuzzify();
   return _output;
  }
 
  public MembershipFunction[] fuzzyInference(double[] _input) {
-  MembershipFunction precisaCorrectoras = new FuzzySingleton(_input[0]);
-  MembershipFunction tiempoRecuperacion = new FuzzySingleton(_input[1]);
-  MembershipFunction impacto;
+  MembershipFunction medioambiente = new FuzzySingleton(_input[0]);
+  MembershipFunction recursosnaturales = new FuzzySingleton(_input[1]);
+  MembershipFunction pffuncionamiento = new FuzzySingleton(_input[2]);
+  MembershipFunction efecto;
   MembershipFunction[] _call;
-  _call = RL_ruleCaracter(precisaCorrectoras,tiempoRecuperacion); impacto=_call[0];
+  _call = RL_ruleEfecto(medioambiente,recursosnaturales,pffuncionamiento); efecto=_call[0];
   MembershipFunction _output[] = new MembershipFunction[1];
-  _output[0] = impacto;
+  _output[0] = efecto;
   return _output;
  }
 
  public MembershipFunction[] fuzzyInference(MembershipFunction[] _input) {
-  MembershipFunction precisaCorrectoras = _input[0];
-  MembershipFunction tiempoRecuperacion = _input[1];
-  MembershipFunction impacto;
+  MembershipFunction medioambiente = _input[0];
+  MembershipFunction recursosnaturales = _input[1];
+  MembershipFunction pffuncionamiento = _input[2];
+  MembershipFunction efecto;
   MembershipFunction[] _call;
-  _call = RL_ruleCaracter(precisaCorrectoras,tiempoRecuperacion); impacto=_call[0];
+  _call = RL_ruleEfecto(medioambiente,recursosnaturales,pffuncionamiento); efecto=_call[0];
   MembershipFunction _output[] = new MembershipFunction[1];
-  _output[0] = impacto;
+  _output[0] = efecto;
   return _output;
  }
 
