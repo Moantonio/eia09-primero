@@ -1,4 +1,4 @@
-package eia.fuzzy.efecto;
+package eia.fuzzy;
 
 public interface FuzzyInferenceEngine {
  public double[] crispInference(double[] input);

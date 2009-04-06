@@ -1,4 +1,4 @@
-package eia.fuzzy.impacto;
+package eia.fuzzy;
 
 public class FuzzySingleton implements MembershipFunction {
  private double value;
