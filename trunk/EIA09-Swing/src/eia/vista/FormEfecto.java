@@ -1277,10 +1277,12 @@ public class FormEfecto extends JDialog {
 				valoracionTextField.setText(String.valueOf(efecto.getValorTotal()));
 				// El caracter se puede editar
 				caracterComboBox.setEnabled(true);
+				asistenteJuicioButton.setEnabled(true);
 			}else{
 				valoracionTextField.setText(" ");
 				// El caracter no se puede editar
 				caracterComboBox.setEditable(false);
+				asistenteJuicioButton.setEnabled(false);
 			}
 		}else{
 			//Deshabilitar valoraciones
@@ -1338,6 +1340,7 @@ public class FormEfecto extends JDialog {
 			asistenteJuicioButton.setLocation(new Point(115, 37));
 			asistenteJuicioButton.setSize(new Dimension(70, 18));
 			asistenteJuicioButton.setBackground(Color.white);
+			asistenteJuicioButton.setEnabled(false);
 			asistenteJuicioButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					calculoDifuso();
