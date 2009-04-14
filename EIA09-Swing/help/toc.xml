@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <toc version="1.0"> <!--  categoryclosedimage="FolderClosed" categoryopenimage="FolderOpened"  
 topicimage="ItemIco"-->
-        <tocitem text="Ejemplo JavaHelp"    target="aplicacion">
-           <tocitem text="Ventana principal"    target="ventana_principal"/>
-           <tocitem text="Ventana secundaria"    target="ventana_secundaria"/>
+        <tocitem text="Introducción a EIA09"    target="intro_eia">
+           <tocitem text="Qué es EIA09"    target="que_es_eia"/>
+           <tocitem text="Ideas generales"    target="ideas_eia"/>
+           <tocitem text="Interfaz EIA09"    target="interfaz_eia"/>
+        </tocitem>
+        <tocitem text="Gestión de proyectos EIA"    target="gestion_proyectos">
+           <tocitem text="Metodología"    target="metodologia"/>
+           <tocitem text="Creación de proyectos"    target="creacion_proyectos"/>
+           <tocitem text="Autoría de proyectos"    target="autoria_proyectos"/>           
+           <tocitem text="Autoría de factores ambientales"    target="autoria_factores"/>           
+           <tocitem text="Valoracion"    target="valoracion_proyectos"/>           
+           <tocitem text="Generación de informes"    target="generacion_informes"/>           
+           <tocitem text="Guardar proyectos"    target="guardar_proyectos"/>           
+           <tocitem text="Cargar proyectos"    target="cargar_proyectos"/>             
+        </tocitem>
+        <tocitem text="Alternativas de realización"    target="alternativas">
+           <tocitem text="Qué es una alternativa"    target="que_es_alternativa"/>
+           <tocitem text="Creación de alternativas"    target="creacion_alternativas"/>
+           <tocitem text="Autoría de alternativas"    target="autoria_alternativas"/>          
+           <tocitem text="Autoría de acciones"    target="autoria_acciones"/>
+           <tocitem text="Eliminación de alternativas"    target="eliminacion_alternativas"/>
+           <tocitem text="Valoración"    target="valoracion_alternativas"/>
+        </tocitem>
+        <tocitem text="Efectos/impactos sobre el medio"    target="efectos">
+           <tocitem text="Qué es un efecto/impacto"    target="que_es_efecto"/>
+           <tocitem text="Creacción de efectos"    target="creacion_efecto"/>
+           <tocitem text="Autoría de efectos"    target="autoria_efecto"/>
+           <tocitem text="Eliminación de efectos"    target="eliminacion_efectos"/>          
+           <tocitem text="Valoración cualitativa"    target="valoracion_cualitativa"/>
+           <tocitem text="Valoración cuantitativa"    target="valoracion_cuantitativa"/>
+           <tocitem text="Valoración global"    target="valoracion_efecto"/>
         </tocitem>
 </toc>

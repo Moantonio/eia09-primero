@@ -1274,7 +1274,7 @@ public class FormPrincipal {
 			// Crea el HelpSet y el HelpBroker
 			HelpSet helpset = new HelpSet(getClass().getClassLoader(), hsURL);
 			HelpBroker ayuda = helpset.createHelpBroker();
-			ayuda.enableHelpOnButton(funcionamientoMenuItem, "aplicacion", helpset);
+			ayuda.enableHelpOnButton(funcionamientoMenuItem, "intro_eia", helpset);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

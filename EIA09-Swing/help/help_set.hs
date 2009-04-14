@@ -5,10 +5,10 @@
  
 
 <helpset version="1.0">
-        <title>Ejemplo ayuda JavaHelp</title>
+        <title>Ayuda - EIA09</title>
         <maps>
                 <!-- Pagina por defecto al mostrar la ayuda -->
-                <homeID>aplicacion</homeID>
+                <homeID>intro_eia</homeID>
                 <!-- Que mapa deseamos -->
                 <mapref location="map_file.jhm"/>
         </maps>

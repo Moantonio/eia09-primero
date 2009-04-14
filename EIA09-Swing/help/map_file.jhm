@@ -3,7 +3,32 @@
 PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 2.0//EN"
 "http://java.sun.com/products/javahelp/map_2_0.dtd">
 <map version="1.0">
-   <mapID target="aplicacion" url="html/main.html" />
-   <mapID target="ventana_principal" url="html/principal.html" />
-   <mapID target="ventana_secundaria" url="html/secundaria.html" />
+   <mapID target="intro_eia" url="html/intro_eia.html" />
+   <mapID target="que_es_eia" url="html/que_es_eia.html" />
+   <mapID target="ideas_eia" url="html/ideas_eia.html" />
+   <mapID target="interfaz_eia" url="html/interfaz_eia.html" />
+   <mapID target="gestion_proyectos" url="html/gestion_proyectos.html" />
+   <mapID target="metodologia" url="html/metodologia.html" />
+   <mapID target="creacion_proyectos" url="html/creacion_proyectos.html" />
+   <mapID target="autoria_proyectos" url="html/autoria_proyectos.html" />
+   <mapID target="autoria_factores" url="html/autoria_factores.html" />
+   <mapID target="valoracion_proyectos" url="html/valoracion_proyectos.html" />
+   <mapID target="generacion_informes" url="html/generacion_informes.html" />
+   <mapID target="guardar_proyectos" url="html/guardar_proyectos.html" />
+   <mapID target="cargar_proyectos" url="html/cargar_proyectos.html" />
+   <mapID target="alternativas" url="html/alternativas.html" />
+   <mapID target="que_es_alternativa" url="html/que_es_alternativa.html" />
+   <mapID target="creacion_alternativas" url="html/creacion_alternativas.html" />
+   <mapID target="autoria_alternativas" url="html/autoria_alternativas.html" />
+   <mapID target="autoria_acciones" url="html/autoria_acciones.html" />
+   <mapID target="eliminacion_alternativas" url="html/eliminacion_alternativas.html" />
+   <mapID target="valoracion_alternativas" url="html/valoracion_alternativas.html" />
+   <mapID target="efectos" url="html/efectos.html" />
+   <mapID target="que_es_efecto" url="html/que_es_efecto.html" />
+   <mapID target="creacion_efecto" url="html/creacion_efecto.html" />
+   <mapID target="autoria_efecto" url="html/autoria_efecto.html" />
+   <mapID target="eliminacion_efectos" url="html/eliminacion_efectos.html" />
+   <mapID target="valoracion_cualitativa" url="html/valoracion_cualitativa.html" />
+   <mapID target="valoracion_cuantitativa" url="html/valoracion_cuantitativa.html" />
+   <mapID target="valoracion_efecto" url="html/valoracion_efecto.html" />
 </map>
