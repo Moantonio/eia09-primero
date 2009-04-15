@@ -24,7 +24,7 @@ topicimage="ItemIco"-->
            <tocitem text="Eliminación de alternativas"    target="eliminacion_alternativas"/>
            <tocitem text="Valoración"    target="valoracion_alternativas"/>
         </tocitem>
-        <tocitem text="Efectos/impactos sobre el medio"    target="efectos">
+        <tocitem text="Efectos/impactos"    target="efectos">
            <tocitem text="Qué es un efecto/impacto"    target="que_es_efecto"/>
            <tocitem text="Creacción de efectos"    target="creacion_efecto"/>
            <tocitem text="Autoría de efectos"    target="autoria_efecto"/>
