@@ -3,5 +3,32 @@
   PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Index Version 1.0//EN"
          "http://java.sun.com/products/javahelp/index_1_0.dtd">
 <index version="1.0">
-        <indexitem text="Ejemplo JavaHelp"    target="que_es_eia"/>
+            <indexitem text="Alternativas de realización"    target="alternativas"/>  
+            <indexitem text="Autoría de acciones"    target="autoria_acciones"/>   
+            <indexitem text="Autoría de alternativas"    target="autoria_alternativas"/>   
+            <indexitem text="Autoría de efectos"    target="autoria_efecto"/>            
+            <indexitem text="Autoría de factores ambientales"    target="autoria_factores"/>  
+            <indexitem text="Autoría de proyectos"    target="autoria_proyectos"/>   
+            <indexitem text="Cargar proyectos"    target="cargar_proyectos"/>  
+            <indexitem text="Creación de alternativas"    target="creacion_alternativas"/>
+            <indexitem text="Creacción de efectos"    target="creacion_efecto"/>
+            <indexitem text="Creación de proyectos"    target="creacion_proyectos"/>
+            <indexitem text="Efectos/impactos"    target="efectos"/>
+            <indexitem text="Eliminación de alternativas"    target="eliminacion_alternativas"/>
+            <indexitem text="Eliminación de efectos"    target="eliminacion_efectos"/>
+            <indexitem text="Generación de informes"    target="generacion_informes"/>
+ 	        <indexitem text="Gestión de proyectos EIA"    target="gestion_proyectos"/>           
+            <indexitem text="Guardar proyectos"    target="guardar_proyectos"/>     
+            <indexitem text="Ideas generales EIA09"    target="ideas_eia"/>
+            <indexitem text="Interfaz EIA09"    target="interfaz_eia"/>
+            <indexitem text="Introducción a EIA09"    target="intro_eia"/>
+            <indexitem text="Metodología EIA09"    target="metodologia"/>
+            <indexitem text="Qué es una alternativa"    target="que_es_alternativa"/>
+            <indexitem text="Qué es un efecto/impacto"    target="que_es_efecto"/>
+            <indexitem text="Qué es EIA09"    target="que_es_eia"/>
+            <indexitem text="Valoración cualitativa"    target="valoracion_cualitativa"/>
+            <indexitem text="Valoración cuantitativa"    target="valoracion_cuantitativa"/>
+            <indexitem text="Valoración de alternativas"    target="valoracion_alternativas"/>    
+            <indexitem text="Valoracion de proyectos"    target="valoracion_proyectos"/>  
+            <indexitem text="Valoración global de impactos"    target="valoracion_efecto"/>
 </index>
