@@ -5,7 +5,6 @@ PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 2.0//EN"
 <map version="1.0">
    <mapID target="intro_eia" url="html/intro_eia.html" />
    <mapID target="que_es_eia" url="html/que_es_eia.html" />
-   <mapID target="ideas_eia" url="html/ideas_eia.html" />
    <mapID target="interfaz_eia" url="html/interfaz_eia.html" />
    <mapID target="gestion_proyectos" url="html/gestion_proyectos.html" />
    <mapID target="metodologia" url="html/metodologia.html" />
