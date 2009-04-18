@@ -3,7 +3,6 @@
 topicimage="ItemIco"-->
         <tocitem text="Introducción a EIA09"    target="intro_eia">
            <tocitem text="Qué es EIA09"    target="que_es_eia"/>
-           <tocitem text="Ideas generales"    target="ideas_eia"/>
            <tocitem text="Interfaz EIA09"    target="interfaz_eia"/>
         </tocitem>
         <tocitem text="Gestión de proyectos EIA"    target="gestion_proyectos">

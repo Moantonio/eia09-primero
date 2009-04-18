@@ -19,7 +19,6 @@
             <indexitem text="Generación de informes"    target="generacion_informes"/>
  	        <indexitem text="Gestión de proyectos EIA"    target="gestion_proyectos"/>           
             <indexitem text="Guardar proyectos"    target="guardar_proyectos"/>     
-            <indexitem text="Ideas generales EIA09"    target="ideas_eia"/>
             <indexitem text="Interfaz EIA09"    target="interfaz_eia"/>
             <indexitem text="Introducción a EIA09"    target="intro_eia"/>
             <indexitem text="Metodología EIA09"    target="metodologia"/>
