@@ -83,7 +83,6 @@ public class InfoProyecto {
 	 * @param autor Autor propietario del proyecto de estudio.
 	 * @param poblacion Población de realización del proyecto de estudio.
 	 * @param provincia Provincia de realización del proyecto de estudio.
-	 * @param region Región de realización del proyecto de estudio.
 	 * @param pais Pais de realización del proyecto de estudio.
 	 * @param fecha Fecha de realización del proyecto de estudio.
 	 * @param vidaUtil Vida útil del proyecto de estudio.

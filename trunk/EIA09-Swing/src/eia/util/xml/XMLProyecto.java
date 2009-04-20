@@ -1,5 +1,12 @@
 package eia.util.xml;
 
+/**
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -30,17 +37,24 @@ import eia.modelo.Proyecto;
 import eia.modelo.ValoracionCualitativa;
 import eia.modelo.ValoracionCuantitativa;
 
+/**
+ * Clase que implementa el manejo de los ficheros XML con la información
+ * de un proyecto EIA.
+ */
 public class XMLProyecto extends XMLTools{
 
+	/**
+	 * Constructor por parámetros.
+	 * @param dtd DTD a asignar.
+	 */
 	public XMLProyecto(String dtd){
 		this.setDtd(dtd);
 	}
 
-
 	 /**
-     * El método leer recupera un proyecto con la información almacenada en el documento XML
-     * @param filename
-     * @return
+     * El método leer recupera un proyecto con la información almacenada en el documento XML.
+     * @param filename Ruta del fichero con el proyecto a leer.
+     * @return Proyecto de EIA con la información contenida en el fichero.
      */
     public Proyecto leer(String filename) {
 
@@ -230,9 +244,9 @@ public class XMLProyecto extends XMLTools{
     }
 
     /**
-     * Metodo privado que dado un factor recorre su lista de subfactores.
+     * Método privado que dado un factor recorre su lista de subfactores.
      * @param factor Factor que puede tener una lista de subfactores.
-     * @return Estructura de arbol con factores y subfactores.
+     * @return Estructura de árbol con factores y subfactores.
      */
     private DefaultMutableTreeNode recorrerFactores(Element factor){
     	//Caso base
@@ -271,10 +285,9 @@ public class XMLProyecto extends XMLTools{
     }
 
     /**
-     * Metodo que alamacena informacion en un fichero XML
-     * @param datos Lista de informacion que ya teniamos almacenada
-     * @param tabla
-     * @param archivo Ruta del fichero XML donde queremos almacenar la informacion.
+     * Método que alamacena informacion en un fichero XML.
+     * @param o Información del proyecto a almacenar.
+     * @param archivo Ruta del fichero XML donde queremos almacenar la información.
      */
 	@SuppressWarnings("unchecked")
 	public void escribir(Object o, String archivo) {
@@ -545,7 +558,7 @@ public class XMLProyecto extends XMLTools{
         }
    }
     /**
-     * Metodo privado que dado un arbol de factores lo recorre y crea el factor correspondiente.
+     * Método privado que dado un arbol de factores lo recorre y crea el factor correspondiente.
      * @param factor Arbol de factores y subfactores.
      * @return El elemento factor con factores y subfactores.
      */
@@ -584,9 +597,9 @@ public class XMLProyecto extends XMLTools{
     }
 
     /**
-     * Metodo privado que dado un arbol de acciones lo recorre y crea la accion correspondiente.
-     * @param factor Arbol de acciones y subacciones.
-     * @return El elemento accion con acciones y subacciones.
+     * Método privado que dado un árbol de acciones lo recorre y crea la acción correspondiente.
+     * @param factor Árbol de acciones y subacciones.
+     * @return El elemento acción con acciones y subacciones.
      */
     @SuppressWarnings("unchecked")
 	private Element recorrerAcciones(DefaultMutableTreeNode accion, Document document, int cont){
@@ -635,9 +648,9 @@ public class XMLProyecto extends XMLTools{
 	}
 
 	/**
-     * Metodo privado que dado una accion recorre su lista de subacciones.
-     * @param accion Accion que puede tener una lista de subacciones.
-     * @return Estructura de arbol con acciones y subacciones.
+     * Método privado que dado una acción recorre su lista de subacciones.
+     * @param accion Acción que puede tener una lista de subacciones.
+     * @return Estructura de árbol con acciones y subacciones.
      */
     private DefaultMutableTreeNode recorrerAcciones(Element accion){
     	//Caso base

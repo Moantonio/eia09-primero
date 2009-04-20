@@ -134,7 +134,7 @@ public class ValoracionCualitativa implements Cloneable {
 	 * Constructor por parámetros.
 	 * @param signo Signo del efecto/impacto.
 	 * @param acumulacion Valor de acumulación del efecto/impacto.
-	 * @param extensión Valor de extensión del efecto/impacto.
+	 * @param extension Valor de extensión del efecto/impacto.
 	 * @param extensionCritica Valor de la extensión crítica del efecto/impacto.
 	 * @param intensidad Valor de intensidad del efecto/impacto.
 	 * @param persistencia Valor de persistencia del efecto/impacto.

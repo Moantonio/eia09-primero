@@ -1,24 +1,36 @@
 package eia.util.xml;
 
-import java.util.Enumeration;
+/**
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
 
+import java.util.Enumeration;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-
 import eia.modelo.Accion;
 
+/**
+ * Clase que implementa el manejo de los ficheros XML con la información
+ * de un árbol de acciones de realización.
+ */
 public class XMLAcciones extends XMLTools{
 
+	/**
+	 * Constructor por parámetro.
+	 * @param dtd DTD a asignar.
+	 */
 	public XMLAcciones(String dtd){
 		this.setDtd(dtd);
 	}
 
-	 /**
-    * El método leer recupera un arbol de acciones de una alternativa, con la información almacenada en el documento XML
+	/**
+    * El método leer recupera un arbol de acciones de una alternativa, con la información almacenada en el documento XML.
     * @param filename Ruta del fichero xml.
     * @return Árbol de acciones con los datos cargados.
     */
@@ -45,9 +57,9 @@ public class XMLAcciones extends XMLTools{
 
 
 	/**
-     * Metodo privado que dado una accion recorre su lista de subacciones.
-     * @param accion Accion que puede tener una lista de subacciones.
-     * @return Estructura de arbol con acciones y subacciones.
+     * Método privado que dado una accion recorre su lista de subacciones.
+     * @param accion Acción que puede tener una lista de subacciones.
+     * @return Estructura de árbol con acciones y subacciones.
      */
     private DefaultMutableTreeNode recorrerAcciones(Element accion){
     	//Caso base
@@ -106,8 +118,6 @@ public class XMLAcciones extends XMLTools{
     }
 
     @Override
-	public void escribir(Object o, String archivo) {
-		//En este caso no haría falta!
-	}
+	public void escribir(Object o, String archivo) {}
 
 }
