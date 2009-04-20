@@ -1038,7 +1038,9 @@ public class FormPrincipal {
 
 	private void guardarProyecto() {
 		if (ficheroProyecto!=null){
-			XMLProyecto xmlProy = new XMLProyecto("..//plantillas//proyectoEIA.dtd");
+			String curDir = System.getProperty("user.dir");
+			curDir = curDir + "//plantillas//proyectoEIA.dtd";
+			XMLProyecto xmlProy = new XMLProyecto(curDir);
 			xmlProy.escribir(proyecto,ficheroProyecto.getAbsolutePath());
 		}
 	}
@@ -1056,7 +1058,10 @@ public class FormPrincipal {
 		if (seleccion == JFileChooser.APPROVE_OPTION) {
 
 			ficheroProyecto = fileChooser.getSelectedFile();
-			XMLProyecto xmlProy = new XMLProyecto("..//plantillas//proyectoEIA.dtd");
+			String curDir = System.getProperty("user.dir");
+			curDir = curDir + "//plantillas//proyectoEIA.dtd";
+			XMLProyecto xmlProy = new XMLProyecto(curDir);
+			//XMLProyecto xmlProy = new XMLProyecto("..//plantillas//proyectoEIA.dtd");
 			if(ficheroProyecto.isFile()){
 				int opcion = JOptionPane.showConfirmDialog (null,
 						"¿Está seguro que desea reemplazar este archivo?",
