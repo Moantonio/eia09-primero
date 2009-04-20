@@ -112,12 +112,9 @@ public class XMLProyecto extends XMLTools{
         NodeList factores = listaFactores.getElementsByTagName("factor");
 
         //Para cada factor, vamos recorriendo los subfactores y creando el arbol.
-        //Arbol<Factor> arbolFact = new Arbol<Factor>();
         DefaultMutableTreeNode arbolFact = new DefaultMutableTreeNode();
         int index = 0;
         for(int i = 0; i < factores.getLength(); i++){
-        	//Arbol<Factor> arbolI = recorrerFactores((Element)factores.item(i));
-        	//arbolFact.añadirHijo(arbolI);
         	DefaultMutableTreeNode arbolI = recorrerFactores((Element)factores.item(i));
         	if(!esSubArbol(arbolI,arbolFact))
         		arbolFact.insert(arbolI,index++);
@@ -137,13 +134,11 @@ public class XMLProyecto extends XMLTools{
             Element listaAcciones = (Element)elemento.getElementsByTagName("listaPrincipalAcciones").item(k);
             NodeList acciones = listaAcciones.getElementsByTagName("accion");
 
-            //Para cada accon, vamos recorriendo las subacciones y creando el arbol.
-            //Arbol<Accion> arbolAcc = new Arbol<Accion>();
+            //Para cada accion, vamos recorriendo las subacciones y creando el arbol.
             DefaultMutableTreeNode arbolAcc = new DefaultMutableTreeNode();
             int index2 = 0;
             for(int i = 0; i < acciones.getLength(); i++){
             	DefaultMutableTreeNode arbolI = recorrerAcciones((Element)acciones.item(i));
-            	//arbolAcc.añadirHijo(arbolI);
             	if(!esSubArbol(arbolI,arbolAcc))
             		arbolAcc.insert(arbolI,index2++);
             }
@@ -253,8 +248,6 @@ public class XMLProyecto extends XMLTools{
     	if(factor.getElementsByTagName("listaFactores").getLength() == 0){
     		Factor f = new Factor (factor.getElementsByTagName("nombreFactor").item(0).getTextContent(),
 					   Integer.valueOf(factor.getElementsByTagName("peso").item(0).getTextContent()));
-    		//Arbol<Factor> arb = new Arbol<Factor>();
-    		//arb.setElemento(f);
     		DefaultMutableTreeNode arb = new DefaultMutableTreeNode();
     		arb.setUserObject(f);
     		return arb;
@@ -267,15 +260,11 @@ public class XMLProyecto extends XMLTools{
     		//Creamos el nodo padre del arbol.
     		Factor f = new Factor (factor.getElementsByTagName("nombreFactor").item(0).getTextContent(),
     				Integer.valueOf(factor.getElementsByTagName("peso").item(0).getTextContent()));
-    		//Arbol<Factor> padre = new Arbol<Factor>();
-    		//padre.setElemento(f);
     		DefaultMutableTreeNode padre = new DefaultMutableTreeNode();
     		padre.setUserObject(f);
     		int index = 0;
     		//Recorremos cada subfactor.
     		for(int i = 0; i < factores.getLength(); i++){
-    			//Arbol<Factor> arb = recorrerFactores((Element)factores.item(i));
-    			//padre.añadirHijo(arb);
     			DefaultMutableTreeNode arb = recorrerFactores((Element)factores.item(i));
     			if(!esSubArbol(arb,padre))
     				padre.insert(arb,index++);
@@ -386,8 +375,6 @@ public class XMLProyecto extends XMLTools{
 
                 	DefaultMutableTreeNode nodoI = (DefaultMutableTreeNode)children.nextElement();
                 	Element accion = recorrerAcciones(nodoI,document,cont);
-                	/*if(acciones.getHijos().get(i).getHijos().size() > 0 )
-                		i = i + cont + 1;*/
                 	listaAcciones.appendChild(accion);
                 }
                 rootAlt.appendChild(listaAcciones);
@@ -512,7 +499,7 @@ public class XMLProyecto extends XMLTools{
 
     	            	listaEfectos.appendChild(elemEfecto);
     	            }
-    	            //rootAlt.appendChild(listaEfectos);
+
                 }
                 rootAlt.appendChild(listaEfectos);
                 if(listaAlt.get(k).getValorada()){
@@ -535,7 +522,6 @@ public class XMLProyecto extends XMLTools{
             DefaultTreeModel factores = proy.getFactores();
             DefaultMutableTreeNode raiz = (DefaultMutableTreeNode)factores.getRoot();
 
-            //int numHijos = factores.getHijos().size();
             int numHijos = raiz.getChildCount();
             Enumeration children = raiz.children();
 
@@ -543,8 +529,6 @@ public class XMLProyecto extends XMLTools{
             	int cont = 1;
             	DefaultMutableTreeNode nodoI = (DefaultMutableTreeNode)children.nextElement();
             	Element factor = recorrerFactores(nodoI,document,cont);
-            	/*if(nodoI.getChildCount() > 0 )
-            		i = i + cont + 1;*/
             	listaFactores.appendChild(factor);
             }
             root.appendChild(listaFactores);
@@ -589,7 +573,6 @@ public class XMLProyecto extends XMLTools{
     			DefaultMutableTreeNode nodoI = (DefaultMutableTreeNode)e.nextElement();
     			Element elemSubFactor = recorrerFactores(nodoI, document, cont++);
     			listaSubFactores.appendChild(elemSubFactor);
-    			//i = i + cont + 1;
     		}
     		elemFactor.appendChild(listaSubFactores);
     		return elemFactor;
@@ -624,7 +607,6 @@ public class XMLProyecto extends XMLTools{
     			DefaultMutableTreeNode nodoI = (DefaultMutableTreeNode)e.nextElement();
     			Element elemSubAccion = recorrerAcciones(nodoI, document, cont++);
     			listaSubAcciones.appendChild(elemSubAccion);
-    			//i = i + cont + 1;
     		}
     		elemAccion.appendChild(listaSubAcciones);
     		return elemAccion;
@@ -656,8 +638,6 @@ public class XMLProyecto extends XMLTools{
     	//Caso base
     	if(accion.getElementsByTagName("listaAcciones").getLength() == 0){
     		Accion a = new Accion (accion.getElementsByTagName("nombreAccion").item(0).getTextContent());
-    		//Arbol<Accion> arb = new Arbol<Accion>();
-    		//arb.setElemento(a);
     		DefaultMutableTreeNode arb = new DefaultMutableTreeNode();
     		arb.setUserObject(a);
     		return arb;
@@ -669,15 +649,11 @@ public class XMLProyecto extends XMLTools{
     		NodeList acciones = listaAcciones.getElementsByTagName("accion");
     		//Creamos el nodo padre del arbol.
     		Accion a = new Accion (accion.getElementsByTagName("nombreAccion").item(0).getTextContent());
-    		//Arbol<Accion> padre = new Arbol<Accion>();
-    		//padre.setElemento(a);
     		DefaultMutableTreeNode padre = new DefaultMutableTreeNode();
     		padre.setUserObject(a);
     		int index=0;
     		//Recorremos cada subfactor.
     		for(int i = 0; i < acciones.getLength(); i++){
-    			//Arbol<Accion> arb = recorrerAcciones((Element)acciones.item(i));
-    			//padre.añadirHijo(arb);
     			DefaultMutableTreeNode arb = recorrerAcciones((Element)acciones.item(i));
     			if(!esSubArbol(arb,padre))
     				padre.insert(arb,index++);
