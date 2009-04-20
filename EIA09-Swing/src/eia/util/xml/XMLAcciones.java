@@ -48,7 +48,6 @@ public class XMLAcciones extends XMLTools{
         int index = 0;
         for(int i = 0; i < acciones.getLength(); i++){
         	DefaultMutableTreeNode arbolI = recorrerAcciones((Element)acciones.item(i));
-        	//arbolAcc.añadirHijo(arbolI);
         	if(!esSubArbol(arbolI,arbolAcc))
         		arbolAcc.insert(arbolI,index++);
         }
@@ -65,8 +64,6 @@ public class XMLAcciones extends XMLTools{
     	//Caso base
     	if(accion.getElementsByTagName("listaAcciones").getLength() == 0){
     		Accion a = new Accion (accion.getElementsByTagName("nombreAccion").item(0).getTextContent());
-    		//Arbol<Accion> arb = new Arbol<Accion>();
-    		//arb.setElemento(a);
     		DefaultMutableTreeNode arb = new DefaultMutableTreeNode();
     		arb.setUserObject(a);
     		return arb;
@@ -78,15 +75,11 @@ public class XMLAcciones extends XMLTools{
     		NodeList acciones = listaAcciones.getElementsByTagName("accion");
     		//Creamos el nodo padre del arbol.
     		Accion a = new Accion (accion.getElementsByTagName("nombreAccion").item(0).getTextContent());
-    		//Arbol<Accion> padre = new Arbol<Accion>();
-    		//padre.setElemento(a);
     		DefaultMutableTreeNode padre = new DefaultMutableTreeNode();
     		padre.setUserObject(a);
     		int index=0;
     		//Recorremos cada subfactor.
     		for(int i = 0; i < acciones.getLength(); i++){
-    			//Arbol<Accion> arb = recorrerAcciones((Element)acciones.item(i));
-    			//padre.añadirHijo(arb);
     			DefaultMutableTreeNode arb = recorrerAcciones((Element)acciones.item(i));
     			if(!esSubArbol(arb,padre))
     				padre.insert(arb,index++);
@@ -94,7 +87,6 @@ public class XMLAcciones extends XMLTools{
     		return padre;
     	}
     }
-
 
     @SuppressWarnings("unchecked")
 	private boolean esSubArbol(DefaultMutableTreeNode arbolH, DefaultMutableTreeNode arbolP){

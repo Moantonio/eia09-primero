@@ -846,11 +846,6 @@ public class FormPrincipal {
 		return editarAltButton;
 	}
 
-	/**
-	 * This method initializes aceptarButton
-	 *
-	 * @return javax.swing.JButton
-	 */
 	private JButton getAceptarButton() {
 		if (aceptarButton == null) {
 			aceptarButton = new JButton();
