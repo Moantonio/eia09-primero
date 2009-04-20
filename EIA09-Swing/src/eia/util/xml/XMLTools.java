@@ -1,7 +1,13 @@
 package eia.util.xml;
 
-import java.io.*;
+/**
+ * @author SI: EIA'09
+ * 		   Vicente Cruz Mínguez.
+ *         Enrique Gallego Martín.
+ *         Luis González de Paula.
+ */
 
+import java.io.*;
 import javax.xml.parsers.*;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.*;
@@ -9,23 +15,18 @@ import javax.xml.transform.stream.*;
 import org.w3c.dom.*;
 
 /**
- *
- * @author SI: EIA09
- *
- */
-
-
-/**
- * Clase que implementa herramientas para el manejo de los ficheros .xml
+ * Clase que implementa herramientas para el manejo de los ficheros XML.
  */
 public abstract class XMLTools {
 
-	/**Atributo que especifica la dtd asociada al XML*/
+	/**
+	 * Atributo que especifica la dtd asociada al XML.
+	 */
 	private String dtd;
 
 	 /**
-	  * Metodo que recibe un archivo de texto xml, y lo almacena en un Document
-	  * @param filename Ruta del fichero xml.
+	  * Metodo que recibe un archivo de texto XML, y lo almacena en un Document
+	  * @param filename Ruta del fichero XML.
 	  * @return Objeto con el fichero almacenado.
 	  */
     public Document readFile(String filename) {
@@ -38,8 +39,9 @@ public abstract class XMLTools {
         }
         return null;
     }
+
     /**
-     * Método que recibe un Document y un archivo, y almacena la estructura xml en el archivo dado.
+     * Método que recibe un Document y un archivo, y almacena la estructura XML en el archivo dado.
      * @param doc Documento con el contenido almacenar.
      * @param filename Nombre del archivo donde almacenar la información.
      */
@@ -57,29 +59,32 @@ public abstract class XMLTools {
         	e.printStackTrace();
         }
     }
+
     /**
-     * Metodo que escribe el contenido de un objeto en un fichero XML.
-     * @param o Objeto que contiene la informacion a guardar en el fichero XML
+     * Método que escribe el contenido de un objeto en un fichero XML.
+     * @param o Objeto que contiene la informacion a guardar en el fichero XML.
      * @param archivo Ruta del fichero XML donde se guardara la informacion.
      */
     public abstract void escribir(Object o,String archivo);
 
     /**
-     * Metodo que lee el contenido de un fichero XML y lo guarda en un objeto.
+     * Método que lee el contenido de un fichero XML y lo guarda en un objeto.
      * @param filename Ruta del fichero XML del cual se obtiene la informacion.
      * @return Objeto con la informacion cargada.
      */
     public abstract Object leer(String filename);
 
     /**
-	 * @return the dtd
+     * Accesor para el atributo 'dtd'
+	 * @return Valor del atributo 'dtd'.
 	 */
 	public String getDtd() {
 		return dtd;
 	}
 
-	/**
-	 * @param dtd the dtd to set
+    /**
+     * Mutador para el atributo 'dtd'.
+	 * @param dtd Valor a asignar al atributo 'dtd'.
 	 */
 	public void setDtd(String dtd) {
 		this.dtd = dtd;
