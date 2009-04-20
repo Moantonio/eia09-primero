@@ -259,14 +259,6 @@ public class Efecto implements Cloneable {
 	}
 
 	/**
-	 * Función para calcular la valoración cuantitativa del efecto/impacto,
-	 * estableciendo dicho valor en el atributo 'valCualitativa'.
-	 */
-	public void calcularValorCuantitativo(){
-		//TODO Calcular Valor Cuantitativo
-	}
-
-	/**
 	 * Función para calcular el valor total de impacto del efecto,
 	 * estableciendo dicho valor en el atributo 'valorTotal'.
 	 */
