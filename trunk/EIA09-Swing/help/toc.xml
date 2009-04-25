@@ -10,7 +10,7 @@ topicimage="ItemIco"-->
            <tocitem text="Creación de proyectos"    target="creacion_proyectos"/>
            <tocitem text="Autoría de proyectos"    target="autoria_proyectos"/>           
            <tocitem text="Autoría de factores ambientales"    target="autoria_factores"/>           
-           <tocitem text="Valoracion"    target="valoracion_proyectos"/>           
+           <tocitem text="Evaluación"    target="valoracion_proyectos"/>           
            <tocitem text="Generación de informes"    target="generacion_informes"/>           
            <tocitem text="Guardar proyectos"    target="guardar_proyectos"/>           
            <tocitem text="Cargar proyectos"    target="cargar_proyectos"/>             
