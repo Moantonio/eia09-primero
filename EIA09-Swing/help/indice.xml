@@ -16,6 +16,7 @@
             <indexitem text="Efectos/impactos"    target="efectos"/>
             <indexitem text="Eliminación de alternativas"    target="eliminacion_alternativas"/>
             <indexitem text="Eliminación de efectos"    target="eliminacion_efectos"/>
+            <indexitem text="Evaluación de proyectos"    target="valoracion_proyectos"/>  
             <indexitem text="Generación de informes"    target="generacion_informes"/>
  	        <indexitem text="Gestión de proyectos EIA"    target="gestion_proyectos"/>           
             <indexitem text="Guardar proyectos"    target="guardar_proyectos"/>     
@@ -28,6 +29,5 @@
             <indexitem text="Valoración cualitativa"    target="valoracion_cualitativa"/>
             <indexitem text="Valoración cuantitativa"    target="valoracion_cuantitativa"/>
             <indexitem text="Valoración de alternativas"    target="valoracion_alternativas"/>    
-            <indexitem text="Valoracion de proyectos"    target="valoracion_proyectos"/>  
             <indexitem text="Valoración global de impactos"    target="valoracion_efecto"/>
 </index>
