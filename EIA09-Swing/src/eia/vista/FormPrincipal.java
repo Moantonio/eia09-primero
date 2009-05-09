@@ -508,7 +508,7 @@ public class FormPrincipal {
 
 	private void lanzarLegislacion(){
 		//TODO abrir la dir donde este la legislacion en HTML
-		ApplicationLauncher.launchURL("http://www.google.es");
+		ApplicationLauncher.launchURL("http://www.eia.es/web/04/cn02.asp");
 	}
 
 	private JMenuItem getAnadirAlternativaMenuItem() {
