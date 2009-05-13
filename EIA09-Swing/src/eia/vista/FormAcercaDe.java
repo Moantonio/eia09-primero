@@ -46,7 +46,7 @@ public class FormAcercaDe extends JDialog {
 	}
 
 	private void initialize() {
-		this.setSize(400, 210);
+		this.setSize(400, 225);
 		this.setTitle("Acerca de EIA09");
 		this.setContentPane(getJContentPane());
 	}
@@ -68,10 +68,10 @@ public class FormAcercaDe extends JDialog {
 	private JPanel getDatosPanel() {
 		if (datosPanel == null) {
 			urlLabel = new JLabel();
-			urlLabel.setText("http://www.google.es");
-			urlLabel.setLocation(new Point(185, 103));
+			urlLabel.setText("http://www.fdi.ucm.es/profesor/lgarmend/EIA09");
+			urlLabel.setLocation(new Point(30, 139));
 			urlLabel.setFont(new Font("Dialog", Font.BOLD, 12));
-			urlLabel.setSize(new Dimension(120, 16));
+			urlLabel.setSize(new Dimension(282, 16));
 			autor2Label = new JLabel();
 			autor2Label.setText("Enrique Gallego Martín");
 			autor2Label.setBounds(new Rectangle(30, 103, 135, 16));
@@ -84,7 +84,7 @@ public class FormAcercaDe extends JDialog {
 			licenciaLabel.setLocation(new Point(120, 59));
 			licenciaLabel.setSize(new Dimension(212, 16));
 			versionLabel = new JLabel();
-			versionLabel.setText("Versión: 0.1");
+			versionLabel.setText("Versión: 1.0");
 			versionLabel.setLocation(new Point(120, 43));
 			versionLabel.setSize(new Dimension(72, 16));
 			nombreLabel = new JLabel();
@@ -98,12 +98,13 @@ public class FormAcercaDe extends JDialog {
 			ImageIcon gpl = new ImageIcon(".//images//gpl.png");
 			gplLabel = new JLabel(gpl);
 			gplLabel.setSize(new Dimension(63, 23));
-			gplLabel.setLocation(new Point(325, 120));
+			gplLabel.setLocation(new Point(325, 133));
 			datosPanel = new JPanel();
 			datosPanel.setLayout(null);
 			datosPanel.setBackground(Color.WHITE);
 			datosPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-			datosPanel.setBounds(new Rectangle(0, 0, 395, 147));
+			datosPanel.setLocation(new Point(0, 0));
+			datosPanel.setSize(new Dimension(395, 162));
 			datosPanel.add(logoLabel);
 			datosPanel.add(gplLabel);
 			datosPanel.add(nombreLabel, null);
@@ -120,7 +121,7 @@ public class FormAcercaDe extends JDialog {
 	private JButton getOkButton() {
 		if (okButton == null) {
 			okButton = new JButton();
-			okButton.setLocation(new Point(300, 152));
+			okButton.setLocation(new Point(300, 167));
 			okButton.setText("Aceptar");
 			okButton.setSize(new Dimension(80, 18));
 			okButton.addActionListener(new ActionListener() {
